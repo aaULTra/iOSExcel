@@ -30,11 +30,13 @@ jobs:
           shasum -a 256 private/Excel.pkg > reports/package.sha256
       - name: Verify installer signature before extraction
         run: |
+          set -euo pipefail
           pkgutil --check-signature private/Excel.pkg | tee reports/package-signature.txt
+          spctl --assess --type install --verbose=2 private/Excel.pkg
           python3 - <<'PY'
           from pathlib import Path
           s=Path('reports/package-signature.txt').read_text()
-          if 'Microsoft Corporation (UBF8T346G9)' not in s or 'signed by a certificate trusted' not in s:
+          if 'Developer ID Installer: Microsoft Corporation (UBF8T346G9)' not in s:
               raise SystemExit('Unexpected installer signer/trust result; investigate before proceeding')
           PY
       - run: python3 tools/extract_pkg.py private/Excel.pkg private/extracted
