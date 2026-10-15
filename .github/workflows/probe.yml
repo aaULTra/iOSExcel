@@ -1,0 +1,27 @@
+name: Test tools and build UIKit probe
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install PyYAML==6.0.3
+      - run: python -m unittest discover -s tests -v
+  probe:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash tools/build_probe.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ExcelPortProbe-unsigned-NOT-Excel
+          path: build/probe/ExcelPortProbe-unsigned.ipa
+          retention-days: 7

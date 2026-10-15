@@ -1,0 +1,56 @@
+name: Analyze official Excel packages (no Microsoft artifacts uploaded)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/analyze.yml"
+      - "tools/**"
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        build: ['16.53.21091200', '16.55.21111400']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download official Microsoft package
+        env:
+          EXCEL_BUILD: ${{ matrix.build }}
+        run: |
+          mkdir -p private reports
+          curl --fail --location --retry 2 --max-time 900 "https://officecdn.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_Excel_${EXCEL_BUILD}_Updater.pkg" -o private/Excel.pkg
+          shasum -a 256 private/Excel.pkg > reports/package.sha256
+      - name: Verify installer signature before extraction
+        run: |
+          pkgutil --check-signature private/Excel.pkg | tee reports/package-signature.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('reports/package-signature.txt').read_text()
+          if 'Microsoft Corporation (UBF8T346G9)' not in s or 'signed by a certificate trusted' not in s:
+              raise SystemExit('Unexpected installer signer/trust result; investigate before proceeding')
+          PY
+      - run: python3 tools/extract_pkg.py private/Excel.pkg private/extracted
+      - run: python3 tools/analyze_excel.py 'private/extracted/Microsoft Excel.app' --output reports/analysis.json
+      - name: Resolve static graph and audit iPhoneOS SDK declarations
+        run: |
+          python3 tools/dependency_map.py 'private/extracted/Microsoft Excel.app' reports/analysis.json reports/dependencies.json
+          python3 -m pip install --target "$RUNNER_TEMP/sdkdeps" PyYAML==6.0.3
+          PYTHONPATH="$RUNNER_TEMP/sdkdeps" python3 tools/audit_sdk.py reports/dependencies.json "$(xcrun --sdk iphoneos --show-sdk-path)" reports/ios-sdk-audit.json
+      - name: Record native tool inventory for cross-checking
+        run: |
+          find 'private/extracted/Microsoft Excel.app/Contents' -type f -perm +111 -print0 | while IFS= read -r -d '' file; do
+            if file "$file" | grep -q 'Mach-O'; then
+              echo "$file"
+              lipo -info "$file"
+              otool -l "$file"
+              nm -arch arm64 -m -u "$file" || true
+            fi
+          done > reports/native-inventory.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Excel-analysis-${{ matrix.build }}
+          path: reports/
+          retention-days: 7
