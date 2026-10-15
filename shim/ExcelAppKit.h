@@ -19,6 +19,8 @@ FOUNDATION_EXPORT NSString *const NSApplicationWillFinishLaunchingNotification;
 FOUNDATION_EXPORT NSString *const NSApplicationDidFinishLaunchingNotification;
 FOUNDATION_EXPORT NSString *const NSApplicationDidBecomeActiveNotification;
 FOUNDATION_EXPORT NSString *const NSApplicationWillResignActiveNotification;
+FOUNDATION_EXPORT NSString *const NSApplicationDidResignActiveNotification;
+FOUNDATION_EXPORT void ExcelShimSetApplicationActive(BOOL active);
 
 @interface NSFontManager : NSObject
 + (instancetype)sharedFontManager;

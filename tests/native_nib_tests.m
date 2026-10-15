@@ -12,6 +12,9 @@ static void Check(BOOL condition, NSString *message) { if (!condition) @throw [N
 - (void)awakeFromNib { [Events addObject:@"awake-delegate"]; }
 - (void)applicationWillFinishLaunching:(NSNotification *)notification { [Events addObject:@"will"]; }
 - (void)applicationDidFinishLaunching:(NSNotification *)notification { [Events addObject:@"did"]; }
+- (void)applicationDidBecomeActive:(NSNotification *)notification { Check(NSApp.isActive,@"Active notification must see active state"); [Events addObject:@"active"]; }
+- (void)applicationWillResignActive:(NSNotification *)notification { Check(NSApp.isActive,@"Will-resign notification must precede state change"); [Events addObject:@"will-resign"]; }
+- (void)applicationDidResignActive:(NSNotification *)notification { Check(!NSApp.isActive,@"Did-resign notification must follow state change"); [Events addObject:@"resigned"]; }
 @end
 @interface EXTestDocumentController : NSDocumentController @end
 @implementation EXTestDocumentController @end
@@ -50,6 +53,10 @@ int main(int argc,const char **argv) {
         NSUInteger will=[Events indexOfObject:@"will"], did=[Events indexOfObject:@"did"];
         Check(will!=NSNotFound && did!=NSNotFound && will<did,@"Launch delegate callback order incorrect");
         [NSApp finishLaunching]; Check([[Events filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF == 'did'"]] count]==1,@"Finish-launch callbacks must not run twice");
-        puts("PASS: native nib bounds checks, reference identity, delegate outlet, awake ordering, startup callbacks and idempotence. No Excel execution or workbook milestone claimed."); return 0;
+        [Events removeAllObjects];
+        ExcelShimSetApplicationActive(YES); ExcelShimSetApplicationActive(YES);
+        ExcelShimSetApplicationActive(NO); ExcelShimSetApplicationActive(NO);
+        Check([Events isEqual:@[@"active",@"will-resign",@"resigned"]],@"Activity notifications must preserve order and ignore repeated scene state");
+        puts("PASS: native nib bounds checks, reference identity, delegate outlet, awake ordering, startup callbacks, activity state transitions and idempotence. No Excel execution or workbook milestone claimed."); return 0;
     } @catch(NSException *exception) { fprintf(stderr,"FAIL: %s: %s\n",exception.name.UTF8String,exception.reason.UTF8String); return 1; } }
 }

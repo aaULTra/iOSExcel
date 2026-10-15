@@ -7,6 +7,7 @@ on:
       - 'tools/nib_archive.py'
       - 'tools/appkit_contracts.m'
       - 'tools/shim_coverage.py'
+      - 'tools/objc_startup.py'
       - 'tools/test_compatibility.sh'
       - 'tests/**'
       - '.github/workflows/compatibility.yml'
@@ -42,6 +43,8 @@ jobs:
               raise SystemExit('Unexpected installer signer')
           PY
       - run: python3 tools/extract_pkg.py private/Excel.pkg private/extracted
+      - name: Inspect actual Excel startup method contracts without executing Office
+        run: python3 tools/objc_startup.py 'private/extracted/Microsoft Excel.app/Contents/MacOS/Microsoft Excel' --class XLApplication --class XLAppDelegate --class XLDocumentController --output reports/objc-startup-16.55.json
       - name: Capture real AppKit ABI contracts for required classes
         run: |
           python3 - <<'PY2'

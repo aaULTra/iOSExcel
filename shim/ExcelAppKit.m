@@ -12,7 +12,8 @@ NSString *const NSApplicationWillFinishLaunchingNotification=@"NSApplicationWill
 NSString *const NSApplicationDidFinishLaunchingNotification=@"NSApplicationDidFinishLaunchingNotification";
 NSString *const NSApplicationDidBecomeActiveNotification=@"NSApplicationDidBecomeActiveNotification";
 NSString *const NSApplicationWillResignActiveNotification=@"NSApplicationWillResignActiveNotification";
-static BOOL EXActive;
+NSString *const NSApplicationDidResignActiveNotification=@"NSApplicationDidResignActiveNotification";
+static BOOL EXActive, EXNotifiedActive;
 static NSArray *EXTopLevelObjects;
 static void EXRequireMainThread(void) {
     if (!NSThread.isMainThread) @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"AppKit compatibility startup requires the main thread" userInfo:nil];
@@ -34,8 +35,8 @@ static void EXRequireMainThread(void) {
 - (id)delegate { return _delegate; }
 - (void)setDelegate:(id)delegate {
     EXRequireMainThread();
-    NSArray *names=@[NSApplicationWillFinishLaunchingNotification,NSApplicationDidFinishLaunchingNotification,NSApplicationDidBecomeActiveNotification,NSApplicationWillResignActiveNotification];
-    NSArray *selectors=@[@"applicationWillFinishLaunching:",@"applicationDidFinishLaunching:",@"applicationDidBecomeActive:",@"applicationWillResignActive:"];
+    NSArray *names=@[NSApplicationWillFinishLaunchingNotification,NSApplicationDidFinishLaunchingNotification,NSApplicationDidBecomeActiveNotification,NSApplicationWillResignActiveNotification,NSApplicationDidResignActiveNotification];
+    NSArray *selectors=@[@"applicationWillFinishLaunching:",@"applicationDidFinishLaunching:",@"applicationDidBecomeActive:",@"applicationWillResignActive:",@"applicationDidResignActive:"];
     NSNotificationCenter *center=NSNotificationCenter.defaultCenter;
     for (NSUInteger i=0;i<names.count;i++) {
         if (_delegate) [center removeObserver:_delegate name:names[i] object:self];
@@ -54,6 +55,14 @@ static void EXRequireMainThread(void) {
     _running=YES; _launching=NO; ExcelShimLog(@"AppKit startup: didFinishLaunching callbacks returned");
 }
 @end
+void ExcelShimSetApplicationActive(BOOL active) {
+    EXRequireMainThread();
+    if (!NSApp.isRunning) { EXActive=active; return; }
+    if (EXNotifiedActive==active) { EXActive=active; return; }
+    if (!active) [NSNotificationCenter.defaultCenter postNotificationName:NSApplicationWillResignActiveNotification object:NSApp];
+    EXActive=active; EXNotifiedActive=active;
+    [NSNotificationCenter.defaultCenter postNotificationName:active?NSApplicationDidBecomeActiveNotification:NSApplicationDidResignActiveNotification object:NSApp];
+}
 @implementation NSFontManager
 + (instancetype)sharedFontManager {
     EXRequireMainThread(); static NSFontManager *manager;
@@ -132,19 +141,19 @@ BOOL ExcelShimStartDesktopApplication(NSURL *contents, NSError **error) {
     self.window.rootViewController.view.backgroundColor=UIColor.systemBackgroundColor; [self.window makeKeyAndVisible];
 }
 - (void)sceneDidBecomeActive:(UIScene *)scene {
-    EXActive=YES; static BOOL started=NO;
-    if (started) { if (NSApp.isRunning) [NSNotificationCenter.defaultCenter postNotificationName:NSApplicationDidBecomeActiveNotification object:NSApp]; return; }
+    ExcelShimSetApplicationActive(YES); static BOOL started=NO;
+    if (started) return;
     started=YES;
     [NSTimer scheduledTimerWithTimeInterval:0.01 repeats:NO block:^(NSTimer *timer) {
         // Excel's entry is just a tail-call to NSApplicationMain. Do not call main again.
         NSURL *contents=[NSBundle.mainBundle.bundleURL URLByAppendingPathComponent:@"Desktop/Microsoft Excel.app/Contents" isDirectory:YES];
         NSError *error=nil;
         if (!ExcelShimStartDesktopApplication(contents,&error)) { ExcelShimLog([@"FIRST STARTUP FAILURE: " stringByAppendingString:error.localizedDescription]); return; }
-        [NSNotificationCenter.defaultCenter postNotificationName:NSApplicationDidBecomeActiveNotification object:NSApp];
+        ExcelShimSetApplicationActive(YES);
     }];
 }
 - (void)sceneWillResignActive:(UIScene *)scene {
-    if (NSApp.isRunning) [NSNotificationCenter.defaultCenter postNotificationName:NSApplicationWillResignActiveNotification object:NSApp]; EXActive=NO;
+    ExcelShimSetApplicationActive(NO);
 }
 @end
 @interface EXDesktopUIKitDelegate : UIResponder <UIApplicationDelegate> @end
