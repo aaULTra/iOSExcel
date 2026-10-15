@@ -1,0 +1,11 @@
+/build/
+/private/
+*.pkg
+*.ipa
+*.dylib
+*.mobileprovision
+*.p12
+*.cer
+*.app/
+__pycache__/
+*.pyc
