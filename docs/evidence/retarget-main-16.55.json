@@ -1,0 +1,50 @@
+{
+  "experiment": "Excel 16.55 main executable metadata retarget, NOT a loader/runtime test",
+  "input_universal_sha256": "09fcf75a0770c4b778af2bee5a5c9c15e87d9c56f3c645d14390ca5df13e2fca",
+  "original_arm64_sha256": "2b43fddda3a80b825088b7e5ee18b8dd35b378852ed0c074ba1c7ab5b1985954",
+  "retargeted_arm64_sha256": "3ed93d75fecfc6f8ce5ccaa352e82311e8dc8e0b921d9cf66b0ca82eeb7106a0",
+  "before": [
+    {
+      "platform": 1,
+      "minos": "11.0.0",
+      "sdk": "11.3.0"
+    }
+  ],
+  "after": [
+    {
+      "platform": 2,
+      "minos": "18.0.0",
+      "sdk": "18.0.0"
+    }
+  ],
+  "changed_byte_offsets": [
+    3408,
+    3414,
+    3417,
+    3418
+  ],
+  "code_checks": [
+    {
+      "section": "__TEXT/__text",
+      "size": 41983228,
+      "unchanged": true,
+      "sha256": "5384ec952c06ba20afaae3e3961a896069228c0f6cc974387331cdacf44df240"
+    }
+  ],
+  "events": [
+    {
+      "offset": 3408,
+      "field": "LC_BUILD_VERSION",
+      "before": [
+        1,
+        720896,
+        721664
+      ],
+      "after": [
+        2,
+        1179648,
+        1179648
+      ]
+    }
+  ]
+}

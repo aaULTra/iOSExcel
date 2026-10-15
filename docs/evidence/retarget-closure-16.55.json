@@ -1,0 +1,1160 @@
+{
+  "scope": "55 images in the resolved static load dependency closure. In-memory metadata experiment, not an iOS package.",
+  "results": [
+    {
+      "path": "Contents/Frameworks/ADAL4.framework/Versions/A/ADAL4",
+      "input_sha256": "8a708dfc53d2aeeeecac78e7500929a3ec3427786159647b416d3e25092be87c",
+      "output_sha256": "972965797f43af3ee69757201340b41d80deb31e2aba2b9d106e9237ed313eed",
+      "events": [
+        {
+          "offset": 3048,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/COMBase.framework/Versions/A/COMBase",
+      "input_sha256": "2e9ef153c91f29deb164076b2aa9cdf456eb2135f827e99c01f387bf5192bf91",
+      "output_sha256": "c724108c34a03466569679c5692efa500dbd63f50bb949efc53d6b9e4ca01197",
+      "events": [
+        {
+          "offset": 2256,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Chart.framework/Versions/A/Chart",
+      "input_sha256": "0eeb11e118aa7a32c0b78d94edc8beb39462cfdb54fbaf1159914dae0c109e64",
+      "output_sha256": "43203be7bcf05588b9bebdd9df17cf9c22e781020841e2722bea9986e96206f9",
+      "events": [
+        {
+          "offset": 3128,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/CocoaUI.framework/Versions/A/CocoaUI",
+      "input_sha256": "b54be8a4fddcbe0c8a4850b57b7ccc5b27b61eff98a8b4dede048809f555d317",
+      "output_sha256": "26acb4793b55f8ddb4817bc30b239e0ad80e9c3dbe23e387e5e24dafe321cae8",
+      "events": [
+        {
+          "offset": 3696,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/FluentUI.framework/Versions/A/FluentUI",
+      "input_sha256": "b194721a1e51525a11782d9007cb736955b8a86937e79ca8712c42bff241cffe",
+      "output_sha256": "4abcbf3d46483c26aa348383a57573992aa96cd675741456d5cec7420446396e",
+      "events": [
+        {
+          "offset": 3136,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Forms.framework/Versions/A/Forms",
+      "input_sha256": "2c6f60f50c57bb58079862400a377b10242e3afa479b1eba3ea714a45c6f73da",
+      "output_sha256": "a5164911a10b912c2cbff0c0ca1b932f313c7c0b3ad31c41d659841d92b5bb70",
+      "events": [
+        {
+          "offset": 2568,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Gfx.framework/Versions/A/Gfx",
+      "input_sha256": "3413e8509216859d3c5ddf40838a0ed87ea5a6d25ab401cd7322046bbac48085",
+      "output_sha256": "cded5fc418cc1f76912105de574598fab6ce2455170f7bc1ad67e836a2146763",
+      "events": [
+        {
+          "offset": 3128,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Hlink.framework/Versions/A/Hlink",
+      "input_sha256": "7aeb5f4a8edfc886e276a1861ad502bc465c9d8586ddd1f800f163ebec782799",
+      "output_sha256": "0fd1893f3ac2b414aab9c48880ef84b8b57795adc3711e74b9db3b37a6d7b2b1",
+      "events": [
+        {
+          "offset": 2968,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MSRightsManagement.framework/Versions/A/MSRightsManagement",
+      "input_sha256": "dc4ad7f18af50b6ef432b8b4f41ebdee4896ed5f2ef51b3532b23c42d2246e3e",
+      "output_sha256": "366a75989dc5f787e0230a4530edf4b0a95bd85d15eca063465740d6a265bae9",
+      "events": [
+        {
+          "offset": 3080,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            720896
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MSXML.framework/Versions/A/MSXML",
+      "input_sha256": "a80844bfa48aa8e5f808725f945a790b37f520a3b59d5ef9dc0fa4521960155d",
+      "output_sha256": "c0cfddbc8f8c011360d0633a2fcdd14c696fb0de71f02230bc1aca5c0064d169",
+      "events": [
+        {
+          "offset": 2248,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MetEx.framework/Versions/A/MetEx",
+      "input_sha256": "9f3622091d1339ee8cda549eed0d7109f2ba932b94672435b3e146a176279629",
+      "output_sha256": "f5289cb2d9cce3ae8e859d5edab45f02ea01877566e568eaadcdac7383ea944d",
+      "events": [
+        {
+          "offset": 2168,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftCSI.framework/Versions/A/MicrosoftCSI",
+      "input_sha256": "0ca40033c99f632c8de1d603a5a95d80a701dc51997fbc5bc4d83791f3b777fc",
+      "output_sha256": "588fa7c375a794263f0a21a87caa302492b416978c3c193a4e1e39b6894a0d14",
+      "events": [
+        {
+          "offset": 2904,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftCloudServices.framework/Versions/A/MicrosoftCloudServices",
+      "input_sha256": "5b44150ef4be7d354a4642da1b40060b44151cb4b35a4e0e3bc4ee72a74f4bf3",
+      "output_sha256": "ae2c84ec8b937aa85314a39dcae36dd4f4d92c95bbd3768706a61eb52a1c03c3",
+      "events": [
+        {
+          "offset": 2208,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftCredui.framework/Versions/A/MicrosoftCredui",
+      "input_sha256": "21234cd9d9417ea74843d7d8ef3daf5a8a4bc1fa313b6889ef7c4c9f65ab3264",
+      "output_sha256": "f12ca5c2d9641ab4fa7cfb6aa41a8e6211bf66428c2d9bc074ad8f481136b1e2",
+      "events": [
+        {
+          "offset": 3072,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftFBA.framework/Versions/A/MicrosoftFBA",
+      "input_sha256": "228cd165872804ea2521d0365c016d01be9f7ccef32d5997e7a83e4cf5f90b10",
+      "output_sha256": "34791843a5fa3bcca9131d3f1d0b4e7edfe013426410965058d9c707ef492dfe",
+      "events": [
+        {
+          "offset": 2984,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftFontLibrary.framework/Versions/A/MicrosoftFontLibrary",
+      "input_sha256": "c72f2059cad03efc45f7eba6027d6dd57aa769fd69d5c1a86dde23ee2e25fc4e",
+      "output_sha256": "a9cb0fb998ee59bfda5dedbb106ff93df8173d3f9a2f0c6ecc3c2acffe7e1b72",
+      "events": [
+        {
+          "offset": 3000,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftIvy.framework/Versions/A/MicrosoftIvy",
+      "input_sha256": "ffea7b3d98269d935aa7b241054229857a20806d55c6d09e3a871ae70ada398b",
+      "output_sha256": "afe351ae2e878ef049ac50780b4243c4963229343c726b7dd2672fe9798a4b3f",
+      "events": [
+        {
+          "offset": 2184,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftPTLS.framework/Versions/A/MicrosoftPTLS",
+      "input_sha256": "48ebe097b93454bb51e1a2dd192a502f9b2c1c3db53c9b233995a2eccc41e808",
+      "output_sha256": "5a5b9d564ac2ea67cdbff02e34499f953b599b92f67a17b7ceaf9a6cab763a01",
+      "events": [
+        {
+          "offset": 1624,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftPTLS7.framework/Versions/A/MicrosoftPTLS7",
+      "input_sha256": "9e401d96dfbf85dc65a8b2218bb9c849c130f59a016e34d77d39068b2fc891d9",
+      "output_sha256": "7824ed94aea273dc1268414deff7566d84f8291c9712c5b838d5d3fd9a0634ec",
+      "events": [
+        {
+          "offset": 1712,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftProofing.framework/Versions/A/MicrosoftProofing",
+      "input_sha256": "a6f0ceb3a858f5e075d3c836e1b7ef60188f0ef56a5b53ea2ca22f39a48a4a0c",
+      "output_sha256": "718ea154d84b32099e56af0e67e581b5e9e965b5d74fbb1abc6fb55e97270868",
+      "events": [
+        {
+          "offset": 2272,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftRichEdit.framework/Versions/A/MicrosoftRichEdit",
+      "input_sha256": "b747cdd4dd780aa69354ce5d16bcc12a5a565b1518c41b2c736bc4bd5c2f0fbd",
+      "output_sha256": "8b345bc1fbb6d5f70dbfd28122e6e207f8234b85bb71288b79950e0a8e33d4f6",
+      "events": [
+        {
+          "offset": 2192,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftWebServices.framework/Versions/A/MicrosoftWebServices",
+      "input_sha256": "d15c3516f5fe1c9072ad29a57db860d560f10547481b1ca861a8486e971350d1",
+      "output_sha256": "8383d643fba9ca5dc44b9101147c23e26af194d95952788fa23618be8005a085",
+      "events": [
+        {
+          "offset": 2280,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MsoCF.framework/Versions/A/MsoCF",
+      "input_sha256": "9c440afec45398c730879bffa8824ee8028b0b5bd953519f98dd28fa8ff28448",
+      "output_sha256": "0e0e06f2fb5126b88cacc997c35fd01751d36603160e6a7cbf509cc3ccc5b798",
+      "events": [
+        {
+          "offset": 3048,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/OLE.framework/Versions/A/OLE",
+      "input_sha256": "b74dd172a2e4ab46727c3fc20a285d3ce6228350e52ae9570fdd564b0e1f7e07",
+      "output_sha256": "25f8df0e57a53ac02d245f4727108f80fb4bf9fdc5cdd28e2d893d659b0a4b23",
+      "events": [
+        {
+          "offset": 3048,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/OLEAutomation.framework/Versions/A/OLEAutomation",
+      "input_sha256": "ba680fc71a387ebb54ea0b7bd8fa893bb4c2634608da79a259ef9feb18b5f60b",
+      "output_sha256": "a57e500a6167a56f735f7bfe784449423b5ce39a2954acc92d647d1c10738bc3",
+      "events": [
+        {
+          "offset": 2264,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/OcsClient.framework/Versions/A/OcsClient",
+      "input_sha256": "3174325b25a2251afe9556772266aad76fda4e41f2ec8f25176ac3b6e3bb7810",
+      "output_sha256": "2630476d2e1167b1245a8a81ffc78240fe5e7c830c2e0cf408b7672570c1c2e6",
+      "events": [
+        {
+          "offset": 2176,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/OfficeArt.framework/Versions/A/OfficeArt",
+      "input_sha256": "1db79f4dabc84337b23f994cf377cf4843940d09f8c12b0afe84781d69933001",
+      "output_sha256": "97c3c6edda045c41ce9faee7df487e10e69a4af3ecb70fb1b15d44a24a979f42",
+      "events": [
+        {
+          "offset": 3296,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Oimg.framework/Versions/A/Oimg",
+      "input_sha256": "cda4973e7e931ca4df1cb1f940882b938f2046fe32cb45c2c63542b91f423011",
+      "output_sha256": "122d66940522b5dac0fa5db425a88f4f96c778fa311b6c5bb230cd9f87e75b28",
+      "events": [
+        {
+          "offset": 2968,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/ProofingUI.framework/Versions/A/ProofingUI",
+      "input_sha256": "c246653d5e35f97b7d5e27813facd4ff514d45278b30ef157ce791a242c243ab",
+      "output_sha256": "6346a1cb1464a328ca591cd1cc9427c8621b9b9d6d7edc6b0f4ec9bda343b3cc",
+      "events": [
+        {
+          "offset": 2744,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/SAExt.framework/Versions/A/SAExt",
+      "input_sha256": "80c927f0e48acd6bab377576e69c10d1ce8d040f62e1095eeaf71727df477a9a",
+      "output_sha256": "d5ef32220cb504220d4705e0c015bbf14b03977466bb57506989f0f259540b68",
+      "events": [
+        {
+          "offset": 2168,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/SmartArt.framework/Versions/A/SmartArt",
+      "input_sha256": "88aafe50cc353604aeab02b28df48c05a00ecf42df8c11f0cb2a4b589051d635",
+      "output_sha256": "ba54bfee55a50c8d5ae423de684d648fe08e642d559790cd96165e7017fbbfef",
+      "events": [
+        {
+          "offset": 3216,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Uniscribe.framework/Versions/A/Uniscribe",
+      "input_sha256": "4b1bd6c3df6f89968f2ed780803692379d6e564326ef9388d10c7ac9bc8e0710",
+      "output_sha256": "4db796b7b46e951f11b2c5d0047065071366e3e61da818f0ffd3463f159aa9c3",
+      "events": [
+        {
+          "offset": 2256,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Visual Basic for Applications.framework/Versions/A/Visual Basic for Applications",
+      "input_sha256": "3dc445be7aa70f7c319f37454c045461878d4ff2577637a84abc2b8823ff7f2c",
+      "output_sha256": "011f128e3f1adc7cf00d6da88aa78dc5e65c09826cf1b64c3343ef3e7540b931",
+      "events": [
+        {
+          "offset": 2856,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/WLMGraphicsDevice.framework/Versions/A/WLMGraphicsDevice",
+      "input_sha256": "9bda3b2f182b14a8e8a5cbbda3bce3e3864a0dab879398c4e12bc7c979c43b6b",
+      "output_sha256": "839c238713cd855db03623f9a347fb6feb7363d8fa7537018ed3f4ac12316972",
+      "events": [
+        {
+          "offset": 2992,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/WLMKernel.framework/Versions/A/WLMKernel",
+      "input_sha256": "1b89dad8ac0c3faad465b0f36a8acb24137a3ae7f07db4358f71d2fcb1271dd4",
+      "output_sha256": "3f1bdc9f0e6c2548990fae7fef422d77a9a9ae102c39735cde9d46f05508f462",
+      "events": [
+        {
+          "offset": 3056,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/WLMUser.framework/Versions/A/WLMUser",
+      "input_sha256": "3ccb73c27b8891aa4ef659237b1d317e848fd7f71ef01e986922e793d385d63c",
+      "output_sha256": "63bc494f6d0d17fd128126616844c6085a90acb71f87addfc0e97ce75f1f0f6c",
+      "events": [
+        {
+          "offset": 3056,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/WinCrypto.framework/Versions/A/WinCrypto",
+      "input_sha256": "ee11a97df9f6b5feb358fbbdee97e750feb7a5053fce9e2bd12092b255938699",
+      "output_sha256": "72d0c52143d4e2116c1c8f23ccb07ce1d46e332e25b7e262a069c6935507acb2",
+      "events": [
+        {
+          "offset": 2256,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/XPG.framework/Versions/A/XPG",
+      "input_sha256": "7e6d8a2501618068335941ab494aa6d444a0df9936f94167c903f110862bfaa2",
+      "output_sha256": "39f84cdcbb97b50cacf121867270cdee5435ac2cfa08037af287fb44c24fa52c",
+      "events": [
+        {
+          "offset": 2728,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Xmllite.framework/Versions/A/Xmllite",
+      "input_sha256": "d2d362000568a725ca0df4b37c25f0553324a3c5ec0f15299f5c3b1aa19fbe36",
+      "output_sha256": "bfba7e04ba7792bb0b46a50928a8f79a3a7c1fc5720f9b79372a0322cab51922",
+      "events": [
+        {
+          "offset": 2176,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/dwrite10.framework/Versions/A/dwrite10",
+      "input_sha256": "ec1a47a2de53e57d0335a38be8bd8fc1689922df82aabf0f342fe769234d60a3",
+      "output_sha256": "8aaebf36d524fa3df8007d535c3b53fc52a5f699fe29211113585db50c14e6dd",
+      "events": [
+        {
+          "offset": 2256,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/libmbupdx2009.dylib",
+      "input_sha256": "aafb81464d51eebc53847667856f6473541613a4af65e55abf0219ba3d2f0471",
+      "output_sha256": "ca00f200764d7b17158a965ec291dc17da941dd12299249fd4969734f850431d",
+      "events": [
+        {
+          "offset": 2240,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/libmsix.dylib",
+      "input_sha256": "ff042ffc72cf31e3ed369e7bd6557ba217ff3565be127ff9093104739d176744",
+      "output_sha256": "14b8de89e5cab5948b05a59ba919159438d151761bc76fa1d6c0cc6e8af7d85a",
+      "events": [
+        {
+          "offset": 2712,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721152
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mbuinstrument.framework/Versions/A/mbuinstrument",
+      "input_sha256": "52ce1e5d690128c217de6310e711f115703a01f8df64f8e9f5b54c29360dd99f",
+      "output_sha256": "ac4ac9cab902525f3cf87d5700b531619d00d416411735cfd039bde3c04dfaaa",
+      "events": [
+        {
+          "offset": 3624,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mbukernel.framework/Versions/A/mbukernel",
+      "input_sha256": "87f23d9aef045ac5b86c5d217841c8fbede1f3d5d24b0173790521e6d2ad3b26",
+      "output_sha256": "5f86e55fd3a17cabb12ed59e29b2664f18a33cddac059dd645504b89f84b73cf",
+      "events": [
+        {
+          "offset": 3056,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mbulocale.framework/Versions/A/mbulocale",
+      "input_sha256": "af96259ffa2af74b8c496bf7ce1ff6b028971d84d4af05a2b26160ce58d2593f",
+      "output_sha256": "05dba65f1dabef67cb859fe2bc5eb163b43baf9d8741eeb4a010b9aa0e0b48a6",
+      "events": [
+        {
+          "offset": 1936,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/merp.framework/Versions/A/merp",
+      "input_sha256": "526b82bfb2158386372af2baa79a7ea8cf7115520a248537118437053c86e2ef",
+      "output_sha256": "9878d1f5c428691efdae1ffeb470dc704470ada018238be36883797090d7aa26",
+      "events": [
+        {
+          "offset": 2888,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/molc.framework/Versions/A/molc",
+      "input_sha256": "27157288472eac57be02ad0a6efe62718eb23651b61cc0dcc14c9b90a976b7b3",
+      "output_sha256": "167ec3d4e4b14108276ea7127b00044aec9318eae27ae6c8c2dd56e16c44fca1",
+      "events": [
+        {
+          "offset": 2968,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mso20.framework/Versions/A/mso20",
+      "input_sha256": "eaa840cb2b4ef88d001a9205574eb10effbbf09e3bd06d2ad53a93215a65db3e",
+      "output_sha256": "a34045c572896429fdc7e07d4d09525a934219e45be8d2a256471f67c4f6b393",
+      "events": [
+        {
+          "offset": 3208,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mso30.framework/Versions/A/mso30",
+      "input_sha256": "cf3401ab27ea92e3e08f28c7cba9777b56e18cb7f17b9b0aa283a5be1672f16e",
+      "output_sha256": "4fd8d8e774e3428618f88cda6eb6ec9cbc4b436e5c7832e84cf353f25ecf328f",
+      "events": [
+        {
+          "offset": 3368,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mso40ui.framework/Versions/A/mso40ui",
+      "input_sha256": "2afc256e8886bee0252bfb6f45d0617433c49ecfcb73a9328393467133e8d30c",
+      "output_sha256": "e09d6ece37016000d62dd3384f636e5c01a231aae2a687e06f76a95a08d47d33",
+      "events": [
+        {
+          "offset": 4096,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mso99.framework/Versions/A/mso99",
+      "input_sha256": "e6bdadcd0c06e794d4fb5d70921be3f65a4469e0b87bae165c148490fffc8ad2",
+      "output_sha256": "f55c4a10f0d33ee5f959ea842bddbd909640d8e825bae3fbabd33f0f7ca6650d",
+      "events": [
+        {
+          "offset": 4248,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/osf.framework/Versions/A/osf",
+      "input_sha256": "c51bbd262b82fca749ddc4dd22b8411b02fc4c4dabae2429637c4ba3ffbaa967",
+      "output_sha256": "ee9afaa1b97532629f7d68aa38f9a7f359ad53bf5b23feeebdb939596defdf67",
+      "events": [
+        {
+          "offset": 3288,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/osfstorage2.framework/Versions/A/osfstorage2",
+      "input_sha256": "817081eb4e3688b3dca44be8d84baf194b6c8c8dc748152db71e88e20435e3fe",
+      "output_sha256": "0b1be5b430359a0e37ccd8f163e3a58adc7409eed2fa77dd6613a8408442c51b",
+      "events": [
+        {
+          "offset": 2824,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/rpcrt4.framework/Versions/A/rpcrt4",
+      "input_sha256": "c35a2e634de6302982dfd619713d3009d367adbdd4f9b4cedec74b609118ae20",
+      "output_sha256": "97e51686667b9eca8c9c93d5bcd6182488bf3521c20ac5ea69b603eca3944145",
+      "events": [
+        {
+          "offset": 2256,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/MacOS/Microsoft Excel",
+      "input_sha256": "09fcf75a0770c4b778af2bee5a5c9c15e87d9c56f3c645d14390ca5df13e2fca",
+      "output_sha256": "3ed93d75fecfc6f8ce5ccaa352e82311e8dc8e0b921d9cf66b0ca82eeb7106a0",
+      "events": [
+        {
+          "offset": 3408,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+# Research record — 2026-10-15
+
+## Evidence discipline
+
+Binary observations are static, not runtime results. Imported names are a lower bound
+on the compatibility surface: dynamic lookup, Objective-C message dispatch, nib decoding,
+plugins and helper launch paths add dependencies. Framework presence on iOS does not
+prove that a macOS symbol or selector exists or has compatible semantics. No on-device
+run or successful Microsoft activation has been observed.
+
+## CyPort inspected FIRST
+
+Repository https://github.com/Thijs2004/CyPort, main at
+15b177ff16c2efc76639e1b7479a8fe7ce535f20 (2026-10-15).
+Inspected README, build.sh, tools/ios_retarget.py, verify_build.sh,
+MacShim.m, MacShimC.c, Launcher.swift and supporting store/cloud sources,
+app/Info.plist, all three entitlement plists, docs/binary-analysis.md, commit history
+and current issues #1 and #2. The upstream README reports gameplay on one iPhone;
+that is an upstream claim, not independently reproduced evidence here. Older comments
+and binary-analysis.md still call it untested; current code/README are the later state.
+
+| Component | Reusable concept | Not transferable to Excel |
+| --- | --- | --- |
+| Retargeter | Thin arm64, edit LC_BUILD_VERSION, exact load paths, validate inputs | Pool/watchdog/free-hook byte patches, fixed engine offsets, automatic syscall reroutes |
+| Two-level bindings | Library ordinals must remain consistent across symtab, bind opcodes and chained fixups | Collapsing AppKit/Carbon/etc. into one shim without complete ordinal handling |
+| UIKit boot | Complete UIKit launch before expensive desktop startup; enter known entry path after foreground | Cyberpunk-specific sharedApplication interception and re-entry assumptions |
+| AppKit wrappers | Explicit classes around UIKit host views/windows; bridge events | Metal-backed single-window game shell is not a desktop spreadsheet UI toolkit |
+| Logging | Documents logs, first-failure runtime iteration | Generic unknown-selector q@: signatures, unsafe ABI guesses |
+| Files | Container paths, Files picker and resource path auditing | REDengine data layout, 65 GB imports, case/SSD retry patches |
+| Entitlements | Derive capabilities from measured requirements and profile | Copying 5 GB game's memory/address-space capabilities into Excel |
+| Services | Identify optional features independently | Offline curl/Galaxy responses or account-success stubs; activation must remain real |
+| Packaging | Native iOS bundle, re-sign nested code, zip Payload | Four top-level game dylibs is not Excel's recursive framework/helper structure |
+
+CyPort leaves stale signatures after retargeting and re-signs at packaging. Its current
+retargeter renumbers duplicate imports in both legacy bind streams and chained fixups.
+This project deliberately does not merge dylib commands or apply instruction patches.
+
+## Official source register
+
+1. Microsoft release/download history:
+   https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac
+   Download URLs were read from its live HTML, not guessed.
+2. Apple silicon support:
+   https://support.microsoft.com/en-gb/office/lifecycle/microsoft-365-office-2021-and-office-2019-support-for-apple-silicon
+3. Microsoft deployment / license-selected feature sets:
+   https://learn.microsoft.com/en-us/microsoft-365-apps/mac/deployment-options-for-office-for-mac
+4. Serializer and device binding:
+   https://learn.microsoft.com/en-us/microsoft-365-apps/mac/volume-license-serializer
+5. Privileged activation helper:
+   https://learn.microsoft.com/en-us/microsoft-365-apps/mac/licensing-helper-tool
+6. Apple UI framework scope / main-thread requirements:
+   https://developer.apple.com/documentation/technologyoverviews/uikit-appkit
+7. Apple DTS: iOS apps may not spawn child processes:
+   https://developer.apple.com/forums/thread/747499
+8. UIKit launch sequence:
+   https://developer.apple.com/documentation/uikit/about-the-app-launch-sequence
+9. Document picker and clipboard mappings to investigate:
+   https://developer.apple.com/documentation/uikit/uidocumentpickerviewcontroller
+   https://developer.apple.com/documentation/uikit/uipasteboard
+
+## Candidate rationale
+
+16.53 (21091200) is the earliest LTSC 2021 release family supported by the supplied
+serializer according to Microsoft. 16.55 (21111400) is a near-contemporary universal
+candidate explicitly covered by Microsoft's Apple silicon documentation. Current
+16.113.4 (26100421) is a comparator, not automatically the preferred port target.
+Older is NOT assumed to mean fewer dependencies: the measured inventories decide.
+No claim is made that the serializer grants a license or supports iPadOS; the user must
+have a valid applicable entitlement, and OS/license compatibility remains unresolved.
+
+All downloaded installers are official Microsoft-hosted non-App-Store packages.
+Their signed contents have not been run. Linux static inspection does not substitute
+for Apple's trust verification; the prepared macOS CI runs pkgutil --check-signature.
+
+## Attached serializer observations
+
+The XAR has two payloads: Office16_all_volume_licensing.pkg (346 cpio entries) and
+Office16_all_licensing.pkg (6 entries). They contain Microsoft Office Setup Assistant,
+its frameworks/error reporter, and licensingV2.helper with a launchd plist. No Excel.app.
+The helper has a plain arm64 slice, platform macOS, minimum 11.0, SDK 11.3. It links
+AppKit, Cocoa, DiskArbitration, IOKit, Security, ApplicationServices and CoreServices,
+among other libraries. The launchd MachServices entry is
+com.microsoft.office.licensingV2.helper.port; Program points to
+/Library/PrivilegedHelperTools/com.microsoft.office.licensingV2.helper.
+The helper imports Mac keychain APIs (including SecKeychainOpen and SecAccessCreate),
+IORegistry APIs and DASessionCreate. These are measured imports, not proof of the
+exact activation path taken on every launch.
+
+Microsoft documents that the volume-license plist is encrypted using the boot drive
+serial number and cannot be copied to another device. No license payloads, keys or
+activation modifications are included in this project. No fake device serials or
+activation-success stubs will be implemented.
+
+## Completed experiment results
+
+Three complete official Excel updater payloads extracted without executing Microsoft
+code: 33,070 cpio entries (16.53), 33,014 (16.55), 44,279 (16.113.4).
+Each full recursive Mach-O inventory completed with zero parser errors.
+Installer hashes/sizes are in docs/evidence/installers.json.
+
+16.55 LC_MAIN first instruction is an unconditional tail branch to an imported
+NSApplicationMain stub; verified through LC_DYSYMTAB's indirect symbol table.
+Info.plist names XLApplication and XLMainMenu. The exported-entry observation is
+reproducible with tools/entry_probe.py, requiring no disassembler package.
+
+M2 experiment changed four bytes in the main arm64 header (platform/minimum/SDK metadata).
+The complete 41,983,228-byte __TEXT/__text section hash is unchanged. All 55 resolved
+startup images separately accepted the same metadata transformation in memory. No
+load path, activation logic, executable instruction, symbol binding or entrypoint was
+patched. Original universal source bytes remain untouched. Whole-tree CLI correctly
+refused an Intel-only file before creating output; this is expected and documented.
+
+Thirteen tests passed, covering malformed/truncated metadata, FAT64 extraction,
+CPU-label mismatch, archive traversal/symlinks, bounded gzip reading, exact metadata
+mutation, iOS-vs-simulator SDK target filtering, ObjC exports and SDK reexports.
+Workflow YAML, shell syntax and app plists parsed successfully. Objective-C compilation,
+Apple installer trust verification, iPhoneOS SDK audit, provisioning, installation and
+all device/runtime tests remain unperformed.
+
+Apple entitlement constraints checked against:
+https://developer.apple.com/documentation/xcode/accessing-app-group-containers
+https://developer.apple.com/documentation/security/sharing-access-to-keychain-items-among-a-collection-of-apps
+The former explicitly excludes `<team identifier>.<group>` app groups from iPadOS.
+The latter explains signing-protected keychain groups and missing-entitlement failures.
+These constrain preserving Office identity storage under a user-signed bundle; they do
+not by themselves prove every possible subscription activation design impossible.

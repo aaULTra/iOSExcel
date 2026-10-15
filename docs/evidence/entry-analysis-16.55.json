@@ -1,0 +1,8 @@
+{
+  "entry_file_offset": 82532,
+  "entry_address": "0x100014264",
+  "instruction": "0x149fefa5",
+  "kind": "B (tail branch)",
+  "target": "0x1028100f8",
+  "imported_symbol": "_NSApplicationMain"
+}

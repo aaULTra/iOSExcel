@@ -1,0 +1,17 @@
+[
+  {
+    "file": "Excel-16.53-complete.pkg",
+    "bytes": 925197070,
+    "sha256": "605542830d5641966b04a7d0cbc622b9aa9bd3184389a7f42808c2656a3217b2"
+  },
+  {
+    "file": "Excel-16.55-complete.pkg",
+    "bytes": 935366693,
+    "sha256": "07b150dba0a31e08b87394d266b61db3030ce897d8415e0505c3b29150c35f39"
+  },
+  {
+    "file": "Excel-16.113.pkg",
+    "bytes": 1174718253,
+    "sha256": "b287cc74567466e470c1983f418cf73181ea448a15c55ab243477fc023fc268e"
+  }
+]

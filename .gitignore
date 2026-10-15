@@ -9,3 +9,7 @@
 *.app/
 __pycache__/
 *.pyc
+
+# Large reproducible inventories are committed only in gzip form.
+/docs/evidence/excel-*.json
+/docs/evidence/dependencies-*.json
