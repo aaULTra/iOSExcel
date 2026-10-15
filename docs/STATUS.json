@@ -12,9 +12,11 @@
   "github_repository_created": true,
   "github_actions_run": true,
   "legitimate_ipados_activation_path_established": false,
-  "tests_passed": 13,
+  "tests_passed": 19,
   "github_repository": "aaULTra/iOSExcel",
   "probe_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38816769202",
   "analysis_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38816989758",
-  "ios_sdk_audit_complete": true
+  "ios_sdk_audit_complete": true,
+  "startup_compatibility": "Observed main-nib decoder, app singleton/delegate notification model and UIKit entry bridge implemented; native CI validation pending",
+  "release_policy": "Only a verified working Excel IPA may be presented; diagnostics remain internal"
 }

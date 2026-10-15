@@ -43,7 +43,7 @@ are included in this repository/archive.
 - `docs/evidence/`: actual binary metadata, imports, Objective-C strings, original
   entitlements, graph, installer hashes and retarget verification. Metadata only.
 - `tools/`: safe extractor, Mach-O reader, dependency mapper, entry probe and retargeter.
-- `shim/`, `app/`: **diagnostics-only** shim and standalone UIKit lifecycle probe.
+- `shim/`: incremental desktop startup/nib compatibility code, under native validation; `app/`: legacy internal UIKit probe.
 - `.github/workflows/`: prepared tests/probe build and official-package analysis workflows.
 
 `python3 -m unittest discover -s tests -v` runs the synthetic safety/regression tests.
@@ -64,8 +64,9 @@ assessment, reproduced the inventory and ran a first iPhoneOS 18.5 .tbd audit. I
 unresolved private reexports/absent stubs, so these counts are NOT device absence proofs.
 No actual Excel loader/UI/activation/workbook milestone beyond M2 has been reached.
 
-Next engineering gate: choose and implement a credible AppKit startup, class/nib,
-drawing/text and legitimate activation strategy. Device testing the isolated probe can
+Current work implements the observed startup nib, application/delegate wiring and UIKit
+entry bridge; see docs/STARTUP.md. Native validation is running. The next gates include
+remaining symbol/class ABI coverage, drawing/text and legitimate activation. Device testing the isolated probe can
 verify signing/lifecycle/logging only; it will not advance Excel itself to M3.
 
 Probe build: https://github.com/aaULTra/iOSExcel/actions/runs/38816769202
@@ -73,3 +74,6 @@ Probe build: https://github.com/aaULTra/iOSExcel/actions/runs/38816769202
 Analysis: https://github.com/aaULTra/iOSExcel/actions/runs/38816989758
 
 No proprietary application binary or activation payload is in this repository.
+
+Release policy: publish no further diagnostic/unfinished IPAs. A working Excel release
+requires verified real desktop Excel opening, editing, calculating and saving .xlsx files.

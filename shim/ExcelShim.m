@@ -1,4 +1,4 @@
-// Diagnostics infrastructure only. No AppKit compatibility is claimed yet.
+// Persistent diagnostics shared by the incremental AppKit compatibility components.
 #import "ExcelShim.h"
 #import <objc/runtime.h>
 #include <fcntl.h>
@@ -14,7 +14,7 @@ void ExcelShimInitialize(void) {
         NSURL *url = [documents URLByAppendingPathComponent:@"excelshim.log"];
         logFD = open(url.fileSystemRepresentation, O_CREAT | O_WRONLY | O_APPEND, 0600);
         NSSetUncaughtExceptionHandler(Uncaught);
-        ExcelShimLog(@"ExcelShim diagnostics loaded; AppKit compatibility NOT implemented");
+        ExcelShimLog(@"ExcelShim diagnostics loaded; incremental compatibility enabled, full Excel runtime unverified");
     });
 }
 void ExcelShimLog(NSString *message) {
