@@ -18,8 +18,8 @@ redirection. It refuses longer replacements and does not grow the header. Import
 ordinals, fixups and executable instructions are unchanged. All modified signatures
 are stale. This command alone cannot create a runnable iPad app.
 
-On macOS with Xcode: `bash tools/build_probe.sh` creates a standalone ad-hoc signed
-UIKit probe IPA for re-signing by the user's sideloading tool. It is NOT Excel.
+The legacy `bash tools/build_probe.sh` is an internal UIKit compilation check.
+Its output is not Excel and must not be published as a release.
 No provisioning profile, developer identity or private credentials are included.
 This build cannot be compiled in the present Linux environment without an Apple SDK/toolchain.
 
@@ -53,3 +53,12 @@ Successful runs: probe 38816769202 and 38816839581; official-package analysis
 38816989758. The first analysis run stopped on an overly specific pkgutil output-string
 check; it was fixed to use pkgutil plus spctl installer assessment and explicit Microsoft
 signer verification. Both 16.53 and 16.55 jobs then succeeded.
+
+The compatibility workflow compiles the startup shim with warnings treated as errors,
+runs native Foundation contracts, compiles/signs the iOS arm64 dylib, verifies exact
+exports, and then downloads/verifies the official package. It checks the actual main
+nib with test stand-ins and captures runtime AppKit type metadata without loading Office.
+It uploads reports only. Successful startup runs are 38820211943 and 38820609645 (latest activity/method inspection changes).
+`tools/objc_startup.py` independently inspects selected real class/method metadata;
+`tools/shim_coverage.py` compares the current dylib names with the actual startup imports.
+Neither tool claims a working implementation merely because a name is exported.

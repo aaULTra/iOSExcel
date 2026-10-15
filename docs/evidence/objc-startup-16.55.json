@@ -1,0 +1,825 @@
+{
+  "kind": "Static Objective-C method metadata; no application execution",
+  "classes": [
+    {
+      "name": "XLApplication",
+      "class_address": "0x103110a48",
+      "superclass_pointer_before_binding": "0x0",
+      "ro_flags": "0x10",
+      "instance_start": 8,
+      "instance_size": 16,
+      "instance_methods": [
+        {
+          "selector": "resetIdlerLimit",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x10022db98",
+          "implementation_file_offset": 2284440
+        },
+        {
+          "selector": "sendEvent:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1001f1f8c",
+          "implementation_file_offset": 2039692
+        },
+        {
+          "selector": "sendAction:to:from:",
+          "encoding": "B40@0:8:16@24@32",
+          "implementation_address": "0x1002a6f50",
+          "implementation_file_offset": 2781008
+        },
+        {
+          "selector": "terminate:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1002a714c",
+          "implementation_file_offset": 2781516
+        },
+        {
+          "selector": "isSandboxed",
+          "encoding": "B16@0:8",
+          "implementation_address": "0x101328c9c",
+          "implementation_file_offset": 20090012
+        },
+        {
+          "selector": "showHelp:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x101328ce8",
+          "implementation_file_offset": 20090088
+        },
+        {
+          "selector": "lastEventTimeStamp",
+          "encoding": "d16@0:8",
+          "implementation_address": "0x101328d10",
+          "implementation_file_offset": 20090128
+        }
+      ],
+      "class_methods": []
+    },
+    {
+      "name": "XLDocumentController",
+      "class_address": "0x103110c28",
+      "superclass_pointer_before_binding": "0x0",
+      "ro_flags": "0x10",
+      "instance_start": 56,
+      "instance_size": 88,
+      "instance_methods": [
+        {
+          "selector": "defaultType",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x10132a55c",
+          "implementation_file_offset": 20096348
+        },
+        {
+          "selector": "init",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x100014358",
+          "implementation_file_offset": 82776
+        },
+        {
+          "selector": "dealloc",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x10132a568",
+          "implementation_file_offset": 20096360
+        },
+        {
+          "selector": "pendingDocumentInCreation",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x10010faf0",
+          "implementation_file_offset": 1112816
+        },
+        {
+          "selector": "typeForContentsOfURL:error:",
+          "encoding": "@32@0:8@16^@24",
+          "implementation_address": "0x1001101ac",
+          "implementation_file_offset": 1114540
+        },
+        {
+          "selector": "openUntitledDocumentAndDisplay:error:",
+          "encoding": "@28@0:8B16^@20",
+          "implementation_address": "0x10132a5f8",
+          "implementation_file_offset": 20096504
+        },
+        {
+          "selector": "openDocumentWithContentsOfURL:display:completionHandler:",
+          "encoding": "v36@0:8@16B24@?28",
+          "implementation_address": "0x10132a648",
+          "implementation_file_offset": 20096584
+        },
+        {
+          "selector": "saveDocument:ofType:toUrl:withCompletion:",
+          "encoding": "v48@0:8@16@24@32@?40",
+          "implementation_address": "0x10132a818",
+          "implementation_file_offset": 20097048
+        },
+        {
+          "selector": "makeDocumentWithContentsOfURL:ofType:error:",
+          "encoding": "@40@0:8@16@24^@32",
+          "implementation_address": "0x10132aa50",
+          "implementation_file_offset": 20097616
+        },
+        {
+          "selector": "runModalOpenPanel:forTypes:",
+          "encoding": "q32@0:8@16@24",
+          "implementation_address": "0x10132ac38",
+          "implementation_file_offset": 20098104
+        },
+        {
+          "selector": "workbookDocumentForBook:",
+          "encoding": "@24@0:8^v16",
+          "implementation_address": "0x10010f71c",
+          "implementation_file_offset": 1111836
+        },
+        {
+          "selector": "openDocumentForBook:",
+          "encoding": "@24@0:8^v16",
+          "implementation_address": "0x10010f9e4",
+          "implementation_file_offset": 1112548
+        },
+        {
+          "selector": "workbookViewDidCreate:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10010f498",
+          "implementation_file_offset": 1111192
+        },
+        {
+          "selector": "getDocTitleFromUrlIfPossible:extension:",
+          "encoding": "v32@0:8r^i16^@24",
+          "implementation_address": "0x100117de4",
+          "implementation_file_offset": 1146340
+        },
+        {
+          "selector": "workbookViewWillDestroy:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10132adb8",
+          "implementation_file_offset": 20098488
+        },
+        {
+          "selector": "workbookWindows",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x100062b0c",
+          "implementation_file_offset": 404236
+        },
+        {
+          "selector": "visibleWorkbookWindows",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1002443cc",
+          "implementation_file_offset": 2376652
+        },
+        {
+          "selector": "workbookWindowsInZOrder",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1000628a8",
+          "implementation_file_offset": 403624
+        },
+        {
+          "selector": "addDocument:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10010fd1c",
+          "implementation_file_offset": 1113372
+        },
+        {
+          "selector": "removeDocument:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10132b004",
+          "implementation_file_offset": 20099076
+        },
+        {
+          "selector": "openDocumentWithInfo:asMode:completionHandler:",
+          "encoding": "v36@0:8@16i24@?28",
+          "implementation_address": "0x10132b038",
+          "implementation_file_offset": 20099128
+        },
+        {
+          "selector": "stopBackgroundSave",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x10132b174",
+          "implementation_file_offset": 20099444
+        },
+        {
+          "selector": "closeCurrentDocument",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x10132b178",
+          "implementation_file_offset": 20099448
+        },
+        {
+          "selector": "createDocumentFromTemplateWithURL:title:properties:",
+          "encoding": "v40@0:8@16@24@32",
+          "implementation_address": "0x10132b1f8",
+          "implementation_file_offset": 20099576
+        },
+        {
+          "selector": "newDocument:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10022ebcc",
+          "implementation_file_offset": 2288588
+        },
+        {
+          "selector": "createDocumentIfNoneOpen",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x10132b2b0",
+          "implementation_file_offset": 20099760
+        },
+        {
+          "selector": "delegate",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x10010fdf0",
+          "implementation_file_offset": 1113584
+        },
+        {
+          "selector": "setDelegate:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1001bdeb4",
+          "implementation_file_offset": 1826484
+        },
+        {
+          "selector": "setPendingDocumentInCreation:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10132b318",
+          "implementation_file_offset": 20099864
+        },
+        {
+          "selector": "templateTitle",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x10132b328",
+          "implementation_file_offset": 20099880
+        },
+        {
+          "selector": "setTemplateTitle:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10132b338",
+          "implementation_file_offset": 20099896
+        },
+        {
+          "selector": "templateId",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x10132b344",
+          "implementation_file_offset": 20099908
+        },
+        {
+          "selector": "setTemplateId:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10132b354",
+          "implementation_file_offset": 20099924
+        }
+      ],
+      "class_methods": []
+    },
+    {
+      "name": "XLAppDelegate",
+      "class_address": "0x103113ce8",
+      "superclass_pointer_before_binding": "0x0",
+      "ro_flags": "0x10",
+      "instance_start": 8,
+      "instance_size": 104,
+      "instance_methods": [
+        {
+          "selector": "fileOpenQueue",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1001fe688",
+          "implementation_file_offset": 2090632
+        },
+        {
+          "selector": "EnqueueOpenRequest:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014104b4",
+          "implementation_file_offset": 21038260
+        },
+        {
+          "selector": "handleOpenFileQueue",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1001fe5d0",
+          "implementation_file_offset": 2090448
+        },
+        {
+          "selector": "initAppleEvents",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x100064078",
+          "implementation_file_offset": 409720
+        },
+        {
+          "selector": "cleanupAppleEvents",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1014104e8",
+          "implementation_file_offset": 21038312
+        },
+        {
+          "selector": "setAppleEventDescripor:fromDesc:",
+          "encoding": "v32@0:8@16^{AEDesc=I^^{OpaqueAEDataStorageType}}24",
+          "implementation_address": "0x1014105e0",
+          "implementation_file_offset": 21038560
+        },
+        {
+          "selector": "handleAEEmbd:withReplyEvent:",
+          "encoding": "v32@0:8@16@24",
+          "implementation_address": "0x1014106c0",
+          "implementation_file_offset": 21038784
+        },
+        {
+          "selector": "handleGetURLEvent:withReplyEvent:",
+          "encoding": "v32@0:8@16@24",
+          "implementation_address": "0x101410718",
+          "implementation_file_offset": 21038872
+        },
+        {
+          "selector": "handleOpenURLString:fromEvent:",
+          "encoding": "v32@0:8@16@24",
+          "implementation_address": "0x1014108b8",
+          "implementation_file_offset": 21039288
+        },
+        {
+          "selector": "handlePendingOpenRequests",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1001bdd70",
+          "implementation_file_offset": 1826160
+        },
+        {
+          "selector": "handleOpenRequest:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x101410b10",
+          "implementation_file_offset": 21039888
+        },
+        {
+          "selector": "appLaunchDone",
+          "encoding": "C16@0:8",
+          "implementation_address": "0x101410c58",
+          "implementation_file_offset": 21040216
+        },
+        {
+          "selector": "setAppPendingQuit",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x101410c6c",
+          "implementation_file_offset": 21040236
+        },
+        {
+          "selector": "customButtonCellNormalImage",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0000",
+          "implementation_file_offset": 21692416
+        },
+        {
+          "selector": "customButtonCellHoverImage",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b00ac",
+          "implementation_file_offset": 21692588
+        },
+        {
+          "selector": "customButtonCellPressedImage",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0158",
+          "implementation_file_offset": 21692760
+        },
+        {
+          "selector": "currentDocumentViewController",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0338",
+          "implementation_file_offset": 21693240
+        },
+        {
+          "selector": "dealloc",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1014b038c",
+          "implementation_file_offset": 21693324
+        },
+        {
+          "selector": "applicationWillFinishLaunching:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10001443c",
+          "implementation_file_offset": 83004
+        },
+        {
+          "selector": "titleStringForSharedDocumentIcon",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b03c0",
+          "implementation_file_offset": 21693376
+        },
+        {
+          "selector": "qatOnMidImageDark",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0404",
+          "implementation_file_offset": 21693444
+        },
+        {
+          "selector": "qatOffKnobImageDark",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0424",
+          "implementation_file_offset": 21693476
+        },
+        {
+          "selector": "qatOnKnobImageDark",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0444",
+          "implementation_file_offset": 21693508
+        },
+        {
+          "selector": "qatOnMidImageWhite",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0464",
+          "implementation_file_offset": 21693540
+        },
+        {
+          "selector": "qatOffMidImageWhite",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0484",
+          "implementation_file_offset": 21693572
+        },
+        {
+          "selector": "qatOffKnobImageWhite",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b04a4",
+          "implementation_file_offset": 21693604
+        },
+        {
+          "selector": "qatOnKnobImageWhite",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b04c4",
+          "implementation_file_offset": 21693636
+        },
+        {
+          "selector": "qatFontColorDark",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b04e4",
+          "implementation_file_offset": 21693668
+        },
+        {
+          "selector": "qatOnFontColorWhite",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0508",
+          "implementation_file_offset": 21693704
+        },
+        {
+          "selector": "qatOffFontColorWhite",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b052c",
+          "implementation_file_offset": 21693740
+        },
+        {
+          "selector": "configureDocStage",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x100023d8c",
+          "implementation_file_offset": 146828
+        },
+        {
+          "selector": "shouldExcludeUserTemplateWithFileName:",
+          "encoding": "B24@0:8@16",
+          "implementation_address": "0x1014b0550",
+          "implementation_file_offset": 21693776
+        },
+        {
+          "selector": "templatesPlaceholderThumbnail",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b0558",
+          "implementation_file_offset": 21693784
+        },
+        {
+          "selector": "blankTemplate",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x10007729c",
+          "implementation_file_offset": 488092
+        },
+        {
+          "selector": "applicationShouldOpenUntitledFile:",
+          "encoding": "B24@0:8@16",
+          "implementation_address": "0x100076894",
+          "implementation_file_offset": 485524
+        },
+        {
+          "selector": "handleScrollBarsSettingChanged",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1014b0580",
+          "implementation_file_offset": 21693824
+        },
+        {
+          "selector": "observeAppleShowScrollBarsSettingChanged:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b0598",
+          "implementation_file_offset": 21693848
+        },
+        {
+          "selector": "useMenuBar:",
+          "encoding": "v20@0:8i16",
+          "implementation_address": "0x1014b0604",
+          "implementation_file_offset": 21693956
+        },
+        {
+          "selector": "handleVBEWindowShowNotification:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b06e8",
+          "implementation_file_offset": 21694184
+        },
+        {
+          "selector": "handleVBEWindowHideNotification:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b06f8",
+          "implementation_file_offset": 21694200
+        },
+        {
+          "selector": "handleFastAccTreeCreatedNotification:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b0708",
+          "implementation_file_offset": 21694216
+        },
+        {
+          "selector": "handleWorkspaceSleepNotification:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b084c",
+          "implementation_file_offset": 21694540
+        },
+        {
+          "selector": "handleWorkspaceWakeUpNotification:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b0894",
+          "implementation_file_offset": 21694612
+        },
+        {
+          "selector": "applicationDidFinishLaunching:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10007689c",
+          "implementation_file_offset": 485532
+        },
+        {
+          "selector": "CloseInitUIIfNecessary",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1001bdc60",
+          "implementation_file_offset": 1825888
+        },
+        {
+          "selector": "XLApplicationIsReadyForUser:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1000782f0",
+          "implementation_file_offset": 492272
+        },
+        {
+          "selector": "applicationWillTerminate:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b0a34",
+          "implementation_file_offset": 21695028
+        },
+        {
+          "selector": "applicationDidHide:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b1280",
+          "implementation_file_offset": 21697152
+        },
+        {
+          "selector": "applicationDidUnhide:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b1284",
+          "implementation_file_offset": 21697156
+        },
+        {
+          "selector": "applicationDidResignActive:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1002a4df4",
+          "implementation_file_offset": 2772468
+        },
+        {
+          "selector": "applicationDidBecomeActive:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10022d548",
+          "implementation_file_offset": 2282824
+        },
+        {
+          "selector": "applicationShouldHandleReopen:hasVisibleWindows:",
+          "encoding": "B28@0:8@16B24",
+          "implementation_address": "0x1014b1288",
+          "implementation_file_offset": 21697160
+        },
+        {
+          "selector": "validateUserInterfaceItem:",
+          "encoding": "B24@0:8@16",
+          "implementation_address": "0x100112a68",
+          "implementation_file_offset": 1124968
+        },
+        {
+          "selector": "validateMenuItem:",
+          "encoding": "B24@0:8@16",
+          "implementation_address": "0x1014b12f0",
+          "implementation_file_offset": 21697264
+        },
+        {
+          "selector": "respondsToSelector:",
+          "encoding": "B24@0:8:16",
+          "implementation_address": "0x1000142b0",
+          "implementation_file_offset": 82608
+        },
+        {
+          "selector": "forwardInvocation:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b12fc",
+          "implementation_file_offset": 21697276
+        },
+        {
+          "selector": "methodSignatureForSelector:",
+          "encoding": "@24@0:8:16",
+          "implementation_address": "0x1014b1410",
+          "implementation_file_offset": 21697552
+        },
+        {
+          "selector": "controlCommandDispatcher",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b148c",
+          "implementation_file_offset": 21697676
+        },
+        {
+          "selector": "registerWnClasses",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x100023ef4",
+          "implementation_file_offset": 147188
+        },
+        {
+          "selector": "applicationDockMenu:",
+          "encoding": "@24@0:8@16",
+          "implementation_address": "0x1002a598c",
+          "implementation_file_offset": 2775436
+        },
+        {
+          "selector": "showInitUI",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1000770cc",
+          "implementation_file_offset": 487628
+        },
+        {
+          "selector": "closeInitUI",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1014b149c",
+          "implementation_file_offset": 21697692
+        },
+        {
+          "selector": "setDefaultFilePath",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1000240fc",
+          "implementation_file_offset": 147708
+        },
+        {
+          "selector": "applicationShouldTerminate:",
+          "encoding": "Q24@0:8@16",
+          "implementation_address": "0x1014b1510",
+          "implementation_file_offset": 21697808
+        },
+        {
+          "selector": "application:printFiles:withSettings:showPrintPanels:",
+          "encoding": "Q44@0:8@16@24@32B40",
+          "implementation_address": "0x1014b1564",
+          "implementation_file_offset": 21697892
+        },
+        {
+          "selector": "MenuOpenDocStage:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b16ac",
+          "implementation_file_offset": 21698220
+        },
+        {
+          "selector": "openDocStage",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1014b1718",
+          "implementation_file_offset": 21698328
+        },
+        {
+          "selector": "openDocStageToTab:withConfigFlags:",
+          "encoding": "v24@0:8i16i20",
+          "implementation_address": "0x100077290",
+          "implementation_file_offset": 488080
+        },
+        {
+          "selector": "isInDocStage",
+          "encoding": "B16@0:8",
+          "implementation_address": "0x1014b172c",
+          "implementation_file_offset": 21698348
+        },
+        {
+          "selector": "closeDocStage",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x100243658",
+          "implementation_file_offset": 2373208
+        },
+        {
+          "selector": "whatsNewWindowControllerCanShowWhatsNew:",
+          "encoding": "B24@0:8@16",
+          "implementation_address": "0x1014b1764",
+          "implementation_file_offset": 21698404
+        },
+        {
+          "selector": "whatsNewWindowControllerLearnMoreFWLink:",
+          "encoding": "@24@0:8@16",
+          "implementation_address": "0x1014b1774",
+          "implementation_file_offset": 21698420
+        },
+        {
+          "selector": "whatsNewWindowNibName",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x1014b17d8",
+          "implementation_file_offset": 21698520
+        },
+        {
+          "selector": "openModeMappingsForConfiguration:",
+          "encoding": "@24@0:8@16",
+          "implementation_address": "0x1014b17e4",
+          "implementation_file_offset": 21698532
+        },
+        {
+          "selector": "sharingManager",
+          "encoding": "@16@0:8",
+          "implementation_address": "0x10024d2b8",
+          "implementation_file_offset": 2413240
+        },
+        {
+          "selector": "fileNewMediaLib",
+          "encoding": "^{OpaqueMBUMediaLibrary=}16@0:8",
+          "implementation_address": "0x10007732c",
+          "implementation_file_offset": 488236
+        },
+        {
+          "selector": "documentWillBeAdd:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x10024364c",
+          "implementation_file_offset": 2373196
+        },
+        {
+          "selector": "saveFile:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b17f8",
+          "implementation_file_offset": 21698552
+        },
+        {
+          "selector": "saveAsFile:",
+          "encoding": "v24@0:8@16",
+          "implementation_address": "0x1014b182c",
+          "implementation_file_offset": 21698604
+        },
+        {
+          "selector": "restorePersonalMacroBook",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x100024538",
+          "implementation_file_offset": 148792
+        },
+        {
+          "selector": "initializeAppColorScheme",
+          "encoding": "v16@0:8",
+          "implementation_address": "0x1014b1840",
+          "implementation_file_offset": 21698624
+        },
+        {
+          "selector": "isApplicationActive",
+          "encoding": "B16@0:8",
+          "implementation_address": "0x1001f23d8",
+          "implementation_file_offset": 2040792
+        },
+        {
+          "selector": "setIsApplicationActive:",
+          "encoding": "v20@0:8B16",
+          "implementation_address": "0x1014b19cc",
+          "implementation_file_offset": 21699020
+        },
+        {
+          "selector": "fastAccTreeEverCreated",
+          "encoding": "B16@0:8",
+          "implementation_address": "0x1014b19dc",
+          "implementation_file_offset": 21699036
+        },
+        {
+          "selector": "setFastAccTreeEverCreated:",
+          "encoding": "v20@0:8B16",
+          "implementation_address": "0x1014b19ec",
+          "implementation_file_offset": 21699052
+        },
+        {
+          "selector": "hasJustWakenUpAfterSleep",
+          "encoding": "B16@0:8",
+          "implementation_address": "0x1014b19fc",
+          "implementation_file_offset": 21699068
+        },
+        {
+          "selector": "setHasJustWakenUpAfterSleep:",
+          "encoding": "v20@0:8B16",
+          "implementation_address": "0x1014b1a0c",
+          "implementation_file_offset": 21699084
+        },
+        {
+          "selector": "timestampForSleep",
+          "encoding": "d16@0:8",
+          "implementation_address": "0x1014b1a1c",
+          "implementation_file_offset": 21699100
+        },
+        {
+          "selector": "setTimestampForSleep:",
+          "encoding": "v24@0:8d16",
+          "implementation_address": "0x1014b1a2c",
+          "implementation_file_offset": 21699116
+        }
+      ],
+      "class_methods": [
+        {
+          "selector": "backgroundImageFromImageNames:",
+          "encoding": "@24@0:8@16",
+          "implementation_address": "0x1014b0204",
+          "implementation_file_offset": 21692932
+        },
+        {
+          "selector": "teachingUIMediaLib",
+          "encoding": "^{OpaqueMBUMediaLibrary=}16@0:8",
+          "implementation_address": "0x1014b02dc",
+          "implementation_file_offset": 21693148
+        }
+      ]
+    }
+  ]
+}

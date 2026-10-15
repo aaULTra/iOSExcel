@@ -90,8 +90,11 @@ storage compatibility problem; re-signing is not equivalent to preserving these 
 | NSWorkspace | Specific UIApplication/file APIs | Per-call behavior; no blanket success-returning stub |
 | NSTextView / NSLayoutManager / NSGraphicsContext | Purpose-built text/drawing compatibility | No direct class alias or generic UIKit rename can satisfy these contracts |
 
-No implementation is claimed for these classes yet. A diagnostics shim with a heartbeat
-is present separately. Unknown ABI signatures are never synthesized.
+No implementation is claimed for these classes yet. The limited startup/nib compatibility layer is described in STARTUP.md. Window, view,
+text and document I/O behavior remains unimplemented. Unknown ABI signatures are never
+synthesized. Native startup contract tests pass, but the real Excel executable is not
+loaded by those tests. The current iOS export report covers 12/538 AppKit names and 4/143
+classes; exported names do not establish working behavior.
 
 ## Known limits of M1
 

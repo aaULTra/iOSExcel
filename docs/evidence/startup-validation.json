@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-15",
+  "repository": "aaULTra/iOSExcel",
+  "source_commit": "65279df",
+  "workflow_run": 38820609645,
+  "conclusion": "success",
+  "python_tests": 23,
+  "native_contracts": [
+    "nib format bounds and all truncations",
+    "owner identity and outlet wiring before awakeFromNib",
+    "startup delegate callback order and idempotence",
+    "foreground/background callback state and idempotence",
+    "original XLMainMenu.nib with explicit TEST stand-ins"
+  ],
+  "ios_check": "arm64 iOS 18.0 dylib compile, ad-hoc sign/verify, export names",
+  "metadata": "143 real AppKit runtime class contracts and 3 real Excel startup class/method lists; no Office execution",
+  "excel_loaded": false,
+  "device_run_observed": false,
+  "ipa_published": false,
+  "appkit_names_exported": 12,
+  "appkit_names_required": 538,
+  "appkit_classes_exported": 4,
+  "appkit_classes_required": 143
+}

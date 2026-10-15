@@ -36,3 +36,21 @@ source or Microsoft nib resource is committed.
 
 The compatibility workflow publishes text reports only. Following the user's instruction,
 no further diagnostic or unfinished Excel IPA is to be presented as a deliverable.
+
+## Verified checkpoint (2026-10-15)
+
+Run 38820609645 at source 65279df passed native synthetic contracts, the original
+Excel startup nib with test stand-ins, foreground/background notification state/order,
+real iOS arm64 compilation, ad-hoc signature verification and expected exported symbols.
+The original Microsoft installer was independently hash/signature/notarization checked.
+Actual startup classes/method type encodings were read statically without loading Office.
+Their callbacks include applicationDidResignActive:, which is now wired by the bridge.
+
+The current shim exports 12 of the closure's 538 AppKit names and 4 of its 143 imported
+AppKit classes. This is name coverage, not 12 working API implementations. The complete
+missing list and runtime AppKit class metadata are retained in docs/evidence. No loader,
+Excel initialization, workbook rendering, activation or document milestone is claimed.
+
+The native build required an explicit macOS SDK sysroot and explicit argv nullability.
+The test launcher handles macOS Bash 3's empty-argument behavior with nounset enabled.
+These failures were fixed and the full workflow was rerun to success.
