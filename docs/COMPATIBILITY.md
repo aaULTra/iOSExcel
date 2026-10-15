@@ -99,5 +99,6 @@ Static inventory and load dependency map are complete for the extracted files wi
 parser errors. Protocol-list entries are counted, not fully decoded into protocol method
 contracts. Objective-C strings are extracted but selector callsites/types are not fully
 reconstructed. Runtime dynamic loads, signing checks and optional-feature eager init
-remain unknown. iOS SDK exported-symbol audit and device dyld checks are pending a Mac
-runner/device. Accordingly M1 is a static checkpoint, not proof of loader compatibility.
+remain unknown. The first iPhoneOS 18.5 SDK declaration audit has now completed on a Mac runner; it
+retains unresolved reexports explicitly (see ios-sdk-audit-16.55.json). Device dyld and
+ABI/behavior checks remain pending. M1 is a static checkpoint, not loader compatibility.

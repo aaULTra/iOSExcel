@@ -28,10 +28,10 @@ are included in this repository/archive.
 | Milestone | Evidence-based status |
 | --- | --- |
 | M0 — extracted, native arm64 confirmed | Complete for all three compared versions |
-| M1 — dependencies | Static recursive inventories and load graphs complete; iOS SDK symbol audit, dynamic loads and runtime contracts pending |
+| M1 — dependencies | Static inventories, load graphs and first iPhoneOS SDK declaration audit complete; dynamic/runtime contracts pending |
 | M2 — retarget main | Platform metadata changed successfully on real 16.55 main; four bytes differ in the arm64 slice; 41,983,228-byte __text unchanged |
 | Relevant embedded metadata | All 55 resolved startup images passed an in-memory platform retarget; paths/resources not yet repackaged |
-| M3–M6 — loader/shim/UIKit/Excel initialization | NOT tested for Excel; isolated UIKit probe source prepared, not compiled or run |
+| M3–M6 — loader/shim/UIKit/Excel initialization | NOT tested for Excel; isolated UIKit probe compiled successfully on macOS CI; no device run |
 | M7–M15 — desktop UI/workbooks | NOT implemented or tested |
 
 ## Deliverables
@@ -51,10 +51,25 @@ See BUILDING before running a retarget: recursively processing the entire origin
 bundle deliberately fails on Intel-only files. A main-only experiment is supported.
 Do not delete dependencies to force that check to pass.
 
-## Immediate next gate
+## Current CI and next gate
 
-Run the prepared macOS CI to cross-check inventories with Apple tools, compile the
-standalone probe and audit required symbols against the actual iPhoneOS SDK.
-The user created https://github.com/aaULTra/iOSExcel. Source is being committed through
-the GitHub connection; CI compilation, SDK audit and device milestones remain pending.
-Even a successful probe does not establish any Excel startup milestone.
+Source is committed at https://github.com/aaULTra/iOSExcel.
+Both the UIKit probe build and official-package analysis workflows have succeeded.
+The probe and libExcelShim.dylib are arm64 iOS 18.0 binaries built with SDK 18.5;
+Apple codesign verification passed. This does not prove installation or device launch.
+
+The macOS analysis verified the Microsoft installer with pkgutil and Apple's installer
+assessment, reproduced the inventory and ran a first iPhoneOS 18.5 .tbd audit. It found
+3,432 required names in parsed exports and 847 not found there; some libraries have
+unresolved private reexports/absent stubs, so these counts are NOT device absence proofs.
+No actual Excel loader/UI/activation/workbook milestone beyond M2 has been reached.
+
+Next engineering gate: choose and implement a credible AppKit startup, class/nib,
+drawing/text and legitimate activation strategy. Device testing the isolated probe can
+verify signing/lifecycle/logging only; it will not advance Excel itself to M3.
+
+Probe build: https://github.com/aaULTra/iOSExcel/actions/runs/38816769202
+
+Analysis: https://github.com/aaULTra/iOSExcel/actions/runs/38816989758
+
+No proprietary application binary or activation payload is in this repository.

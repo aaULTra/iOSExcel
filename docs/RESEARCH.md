@@ -113,9 +113,9 @@ refused an Intel-only file before creating output; this is expected and document
 Thirteen tests passed, covering malformed/truncated metadata, FAT64 extraction,
 CPU-label mismatch, archive traversal/symlinks, bounded gzip reading, exact metadata
 mutation, iOS-vs-simulator SDK target filtering, ObjC exports and SDK reexports.
-Workflow YAML, shell syntax and app plists parsed successfully. Objective-C compilation,
-Apple installer trust verification, iPhoneOS SDK audit, provisioning, installation and
-all device/runtime tests remain unperformed.
+Workflow YAML, shell syntax and app plists parsed successfully. Objective-C compilation, Apple installer trust verification and the first iPhoneOS SDK
+audit later succeeded on macOS CI (see below). Provisioning, installation and all
+device/runtime tests remain unperformed.
 
 Apple entitlement constraints checked against:
 https://developer.apple.com/documentation/xcode/accessing-app-group-containers
@@ -124,3 +124,31 @@ The former explicitly excludes `<team identifier>.<group>` app groups from iPadO
 The latter explains signing-protected keychain groups and missing-entitlement failures.
 These constrain preserving Office identity storage under a user-signed bundle; they do
 not by themselves prove every possible subscription activation design impossible.
+
+## macOS CI results
+
+Both compared legacy packages passed the corrected Apple installer assessment workflow:
+https://github.com/aaULTra/iOSExcel/actions/runs/38816989758
+The 16.55 package's SHA-256 matches the local inspection exactly. pkgutil reports a
+Microsoft Developer ID Installer signature, trusted timestamp 2021-11-14 and trusted
+notarization. The native otool/nm/lipo inventory was uploaded with analysis reports.
+
+The iPhoneOS 18.5 SDK declaration audit found 3,432 required system-symbol names and
+847 names not found in the parsed exports. Private/umbrella reexports are explicitly
+unresolved where their stubs are absent. Therefore “not found” is not a device-absence
+claim. Examples with no unresolved stub parses include 52 Security names and 32
+CoreGraphics names not present in their parsed iOS exports, including Mac keychain/ACL
+and desktop display APIs. Full results: ios-sdk-audit-16.55.json.
+
+The standalone probe compiled and passed codesign verification:
+https://github.com/aaULTra/iOSExcel/actions/runs/38816769202
+Its executable and shim are platform iOS, native arm64, minimum 18.0, SDK 18.5.
+No Microsoft image is bundled or loaded. No physical device run has been observed.
+
+## Additional supplied DMG
+
+MO_Cr2021.dmg was inspected read-only, without executing its contents. It contains one
+LTSC_2021_VL_Serializer.pkg inside a third-party-named HFS+ volume. That package is
+byte-identical to the earlier Microsoft_Office_LTSC_2021_VL_Serializer.pkg: 11,463,579
+bytes, SHA-256 c6f1709711270370d007c170155e054c0ebc9e09fec085effa9a8c868f4ad0e1.
+It contributes no Excel application binary and was not committed to the repository.

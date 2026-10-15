@@ -1,0 +1,79 @@
+{
+  "kind": "Standalone UIKit and diagnostics shim probe; Microsoft Excel NOT present",
+  "source_commit": "243943f2443046bb3d6530e6a50f80bdbf963bb5",
+  "workflow_run": "https://github.com/aaULTra/iOSExcel/actions/runs/38816769202",
+  "build_result": "success",
+  "device_tested": false,
+  "ipa_bytes": 16020,
+  "ipa_sha256": "bb59aa4d56b9b64f8063566c905c62c34c5167bfff02e2d4ceb9f50c3977a9c9",
+  "binaries": [
+    {
+      "path": "Payload/ExcelPortProbe.app/ExcelPortProbe",
+      "build_versions": [
+        {
+          "platform": 2,
+          "minos": "18.0.0",
+          "sdk": "18.5.0"
+        }
+      ],
+      "rpaths": [
+        "@executable_path/Frameworks"
+      ],
+      "dependencies": [
+        {
+          "kind": "load",
+          "path": "/System/Library/Frameworks/UIKit.framework/UIKit"
+        },
+        {
+          "kind": "load",
+          "path": "/System/Library/Frameworks/Foundation.framework/Foundation"
+        },
+        {
+          "kind": "load",
+          "path": "@rpath/libExcelShim.dylib"
+        },
+        {
+          "kind": "load",
+          "path": "/usr/lib/libobjc.A.dylib"
+        },
+        {
+          "kind": "load",
+          "path": "/usr/lib/libSystem.B.dylib"
+        },
+        {
+          "kind": "load",
+          "path": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
+        }
+      ]
+    },
+    {
+      "path": "Payload/ExcelPortProbe.app/Frameworks/libExcelShim.dylib",
+      "build_versions": [
+        {
+          "platform": 2,
+          "minos": "18.0.0",
+          "sdk": "18.5.0"
+        }
+      ],
+      "rpaths": [],
+      "dependencies": [
+        {
+          "kind": "load",
+          "path": "/System/Library/Frameworks/Foundation.framework/Foundation"
+        },
+        {
+          "kind": "load",
+          "path": "/usr/lib/libobjc.A.dylib"
+        },
+        {
+          "kind": "load",
+          "path": "/usr/lib/libSystem.B.dylib"
+        },
+        {
+          "kind": "load",
+          "path": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
+        }
+      ]
+    }
+  ]
+}

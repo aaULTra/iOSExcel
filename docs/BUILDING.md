@@ -29,7 +29,7 @@ the installer certificate, extracts without installation and uploads ONLY report
 Microsoft binary payloads are never committed or uploaded as CI artifacts.
 
 The user created public repository aaULTra/iOSExcel. Source and derived metadata reports
-are being committed through the connected GitHub tools. No Microsoft package or binary
+have been committed through the connected GitHub tools. No Microsoft package or binary
 is committed. The probe workflow runs on push. Analysis can also be triggered by the
 analysis pull-request event. CI execution status is recorded separately as results arrive.
 The Microsoft-containing build pipeline remains gated on the compatibility and
@@ -44,7 +44,12 @@ The analysis workflow also runs dependency_map.py and audit_sdk.py against the r
 actual iPhoneOS SDK. The latter needs PyYAML (pinned in CI), reads .tbd declarations
 and reexports, and reports unknown schemas/unresolved reexports explicitly. A declared
 symbol is NOT evidence of ABI/behavioral compatibility; an unresolved export is not
-proof the device lacks a symbol. No SDK audit result has been produced yet.
+proof the device lacks a symbol. The first iPhoneOS 18.5 SDK audit completed successfully; results are in docs/evidence/ios-sdk-audit-16.55.json.
 
 Large derived inventories/graphs in source are gzip-compressed (*.json.gz); decompress
 them before passing to tools expecting JSON. Generated CI reports remain ordinary JSON.
+
+Successful runs: probe 38816769202 and 38816839581; official-package analysis
+38816989758. The first analysis run stopped on an overly specific pkgutil output-string
+check; it was fixed to use pkgutil plus spctl installer assessment and explicit Microsoft
+signer verification. Both 16.53 and 16.55 jobs then succeeded.

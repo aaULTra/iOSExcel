@@ -1,0 +1,22 @@
+Package "Excel.pkg":
+   Status: signed by a developer certificate issued by Apple for distribution
+   Notarization: trusted by the Apple notary service
+   Signed with a trusted timestamp on: 2021-11-14 21:12:36 +0000
+   Certificate Chain:
+    1. Developer ID Installer: Microsoft Corporation (UBF8T346G9)
+       SHA256 Fingerprint:
+           6A 66 CD 33 B5 5B 9C 14 86 02 29 09 DB 7E 00 85 53 11 29 6B CE 11 
+           9F 2A 93 5C 69 BF 56 3A 79 82
+       ------------------------------------------------------------------------
+    2. Developer ID Certification Authority
+       Expires: 2027-02-01 22:12:15 +0000
+       SHA256 Fingerprint:
+           7A FC 9D 01 A6 2F 03 A2 DE 96 37 93 6D 4A FE 68 09 0D 2D E1 8D 03 
+           F2 9C 88 CF B0 B1 BA 63 58 7F
+       ------------------------------------------------------------------------
+    3. Apple Root CA
+       Expires: 2035-02-09 21:40:36 +0000
+       SHA256 Fingerprint:
+           B0 B1 73 0E CB C7 FF 45 05 14 2C 49 F1 29 5E 6E DA 6B CA ED 7E 2C 
+           68 C5 BE 91 B5 A1 10 01 F0 24
+

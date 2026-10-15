@@ -1,0 +1,43 @@
+{
+  "workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38816989758",
+  "source_commit": "44850e0d71fd65622f96f3061940198ec5ffee1c",
+  "result": "success",
+  "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk",
+  "system_libraries_audited": 70,
+  "symbols_found_in_parsed_ios_exports": 3432,
+  "symbols_not_found_in_parsed_exports": 847,
+  "libraries_with_unresolved_reexports_or_absent_stubs": 15,
+  "scope_note": "Declarations only. Unfound symbols are candidates for further audit, not proof of device absence.",
+  "dependency_summary": {
+    "version": "16.55",
+    "macho_files": 212,
+    "arm64_files": 184,
+    "startup_closure_files": 55,
+    "closure_unresolved_bundled": 1,
+    "closure_appkit_symbols": 538,
+    "all_appkit_symbols": 545,
+    "closure_appkit_classes": 143,
+    "main_imports": 6560,
+    "main_dylibs": 74,
+    "main_selectors": 6465,
+    "main_objc_classes": 285,
+    "main_objc_protocols": 86,
+    "main_build": [
+      {
+        "platform": 1,
+        "minos": "11.0.0",
+        "sdk": "11.3.0"
+      }
+    ],
+    "main_arm64_bytes": 53770512,
+    "nib_files": 401,
+    "nested_apps": [
+      "Contents/SharedSupport/Microsoft Error Reporting.app",
+      "Contents/SharedSupport/Microsoft.Mashup.Container.app"
+    ],
+    "xpc_bundles": [],
+    "closure_non_arm64": []
+  },
+  "package_sha256": "07b150dba0a31e08b87394d266b61db3030ce897d8415e0505c3b29150c35f39",
+  "inventory_parser_errors": []
+}
