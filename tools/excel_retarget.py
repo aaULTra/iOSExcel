@@ -12,8 +12,43 @@ def ver(s):
  if not 1<=len(v)<=3 or not 0<=v[0]<=65535 or any(not 0<=x<=255 for x in v[1:]):raise ValueError('invalid version')
  v+= [0]*(3-len(v));return v[0]<<16|v[1]<<8|v[2]
 
+def rewrite_load_paths(raw, mapping):
+ """Change path strings in-place without changing command order or library ordinals.
+
+ Kept separate from platform retargeting so native loader contracts can run on macOS.
+ This never deduplicates dependencies, grows commands or edits link-edit payloads.
+ """
+ if not isinstance(mapping,dict) or any(not isinstance(k,str) or not isinstance(v,str) for k,v in mapping.items()):
+  raise ValueError('path mapping must contain string keys and values')
+ d=bytearray(arm64(raw));events=[];paths=[]
+ for c,o,n in commands(d):
+  if c not in DYLIBS and c not in (0xd,0x8000001c):continue
+  no=unpack('<I',d,o+8)[0]
+  if not (12 if c==0x8000001c else 24)<=no<n:raise ValueError('invalid path offset')
+  old=string(d,o+no,o+n);new=mapping.get(old,old)
+  if new!=old:
+   if not new or '\0' in new:raise ValueError('empty path or NUL in replacement')
+   b=new.encode()+b'\0'
+   if len(b)>n-no:raise ValueError('replacement exceeds load command capacity')
+   d[o+no:o+n]=b+b'\0'*(n-no-len(b));events.append({'offset':o+no,'length':n-no,'field':'path','before':old,'after':new})
+  if c in DYLIBS:paths.append(new)
+ if len(set(paths))!=len(paths):raise ValueError('duplicate dylib paths require ordinal remapping: unsupported')
+ commands(d)
+ verify_changes(arm64(raw),d,events)
+ return bytes(d),events
+
+def verify_changes(before,after,events):
+ if len(before)!=len(after):raise ValueError('unexpected slice size change')
+ restored=bytearray(after)
+ for event in events:
+  offset,length=event['offset'],event['length']
+  if offset<32 or length<=0 or offset+length>len(before):raise ValueError('invalid modification window')
+  restored[offset:offset+length]=before[offset:offset+length]
+ if restored!=before:raise ValueError('unexpected modification outside logged fields')
+
 def retarget(raw,minos='18.0',sdk='18.0',mapping=None):
- d=bytearray(arm64(raw));cs=commands(d);events=[];seen=0;paths=[]
+ original=arm64(raw);out,events=rewrite_load_paths(original,{} if mapping is None else mapping)
+ d=bytearray(out);cs=commands(d);seen=0
  for c,o,n in cs:
   if c==0x2c and unpack('<I',d,o+16)[0]:raise ValueError('encrypted image: unsupported')
   if c in (0x24,0x25,0x2f,0x30):raise ValueError('legacy platform command: unsupported')
@@ -21,21 +56,9 @@ def retarget(raw,minos='18.0',sdk='18.0',mapping=None):
    pl,mi,sd,nt=unpack('<4I',d,o+8)
    if n!=24+8*nt or pl!=1:raise ValueError('expected macOS LC_BUILD_VERSION')
    struct.pack_into('<3I',d,o+8,2,ver(minos),ver(sdk));seen+=1
-   events.append({'offset':o+8,'field':'LC_BUILD_VERSION','before':[pl,mi,sd],'after':[2,ver(minos),ver(sdk)]})
-  if c in DYLIBS or c in (0xd,0x8000001c):
-   no=unpack('<I',d,o+8)[0]
-   if not (12 if c==0x8000001c else 24)<=no<n:raise ValueError('invalid path offset')
-   old=string(d,o+no,o+n);new=(mapping or {}).get(old,old)
-   if new!=old:
-    if '\0' in new:raise ValueError('NUL in replacement')
-    b=new.encode()+b'\0'
-    if len(b)>n-no:raise ValueError('replacement exceeds load command capacity')
-    d[o+no:o+n]=b+b'\0'*(n-no-len(b));events.append({'offset':o+no,'field':'path','before':old,'after':new})
-   if c in DYLIBS:paths.append(new)
+   events.append({'offset':o+8,'length':12,'field':'LC_BUILD_VERSION','before':[pl,mi,sd],'after':[2,ver(minos),ver(sdk)]})
  if seen!=1:raise ValueError('expected one build version command')
- if len(set(paths))!=len(paths):raise ValueError('duplicate dylib paths require ordinal remapping: unsupported')
- # Validate unchanged file layout and every byte outside explicit modifications.
- commands(d)
+ commands(d);verify_changes(original,d,events)
  return bytes(d),events
 
 def tree(src,dst,minos,sdk,mapping):
