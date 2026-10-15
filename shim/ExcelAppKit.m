@@ -155,7 +155,7 @@ BOOL ExcelShimStartDesktopApplication(NSURL *contents, NSError **error) {
 }
 @end
 #endif
-int NSApplicationMain(int argc, const char *argv[]) {
+int NSApplicationMain(int argc, const char * const *argv) {
     EXRequireMainThread(); ExcelShimInitialize();
 #if TARGET_OS_IOS
     static BOOL entered=NO;

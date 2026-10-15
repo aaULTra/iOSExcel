@@ -34,5 +34,5 @@ FOUNDATION_EXPORT NSString *const NSApplicationWillResignActiveNotification;
 // Contents contains the ORIGINAL Info.plist and Resources; it is not the iOS bundle.
 FOUNDATION_EXPORT BOOL ExcelShimStartDesktopApplication(NSURL *contents, NSError **error);
 // Shim for Excel's measured LC_MAIN tail-call. It starts UIKit once; no main re-entry.
-FOUNDATION_EXPORT int NSApplicationMain(int argc, const char *argv[]);
+FOUNDATION_EXPORT int NSApplicationMain(int argc, const char * _Nullable const * _Nonnull argv);
 NS_ASSUME_NONNULL_END
