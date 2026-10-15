@@ -4,12 +4,20 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/analyze.yml"
-      - "tools/**"
+      - "tools/macho.py"
+      - "tools/analyze_excel.py"
+      - "tools/extract_pkg.py"
+      - "tools/dependency_map.py"
+      - "tools/audit_sdk.py"
   workflow_dispatch:
   pull_request:
     paths:
       - ".github/workflows/analyze.yml"
-      - "tools/**"
+      - "tools/macho.py"
+      - "tools/analyze_excel.py"
+      - "tools/extract_pkg.py"
+      - "tools/dependency_map.py"
+      - "tools/audit_sdk.py"
 permissions:
   contents: read
 jobs:

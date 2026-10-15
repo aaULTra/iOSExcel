@@ -174,13 +174,6 @@ NSDictionary *EXNibParse(NSData *data, NSError **error) {
     } else {
         EXNibFail([@"Unimplemented archived class: " stringByAppendingString:name]);
     }
-    if (!object) EXNibFail(error.localizedDescription ?: [@"Unimplemented archived class: " stringByAppendingString:name]);
-        self.cache[key]=object;
-        if (![object respondsToSelector:@selector(initWithCoder:)]) EXNibFail([@"Class has no initWithCoder: " stringByAppendingString:name]);
-        EXNibDecoder *decoder=[EXNibDecoder new]; decoder.context=self; decoder.index=index;
-        // Factory-created instances are already initialized; invoking init again is unsafe.
-        EXNibFail(@"General NSCoding class construction is not enabled for this startup decoder");
-    }
     if (!object) EXNibFail([@"Failed to decode nib class: " stringByAppendingString:name]);
     self.cache[key]=object; [self.decoding removeObject:key]; return object;
 }
