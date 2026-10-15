@@ -5,7 +5,8 @@ mkdir -p build/compatibility
 python3 tests/nib_fixture.py build/compatibility/Synthetic.app/Contents
 CLANG="$(xcrun --find clang)"
 COMMON=(-fobjc-arc -fmodules -Wall -Wextra -Werror -Wno-unused-parameter -Ishim)
-"$CLANG" "${COMMON[@]}" -DEXCELSHIM_CONTRACT_TEST=1 \
+MACSDK="$(xcrun --sdk macosx --show-sdk-path)"
+"$CLANG" "${COMMON[@]}" -isysroot "$MACSDK" -DEXCELSHIM_CONTRACT_TEST=1 \
   shim/ExcelNibArchive.m shim/ExcelAppKit.m shim/ExcelShim.m tests/native_nib_tests.m \
   -framework Foundation -o build/compatibility/native-nib-tests
 build/compatibility/native-nib-tests build/compatibility/Synthetic.app/Contents "${@}"

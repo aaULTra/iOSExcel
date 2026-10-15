@@ -5,6 +5,7 @@ on:
     paths:
       - 'shim/**'
       - 'tools/nib_archive.py'
+      - 'tools/appkit_contracts.m'
       - 'tools/test_compatibility.sh'
       - 'tests/**'
       - '.github/workflows/compatibility.yml'
@@ -48,7 +49,7 @@ jobs:
           names=sorted(s[len('_OBJC_CLASS_$_'):] for s in graph['closure_appkit_symbols'] if s.startswith('_OBJC_CLASS_$_'))
           Path('private/appkit-classes.json').write_text(json.dumps(names))
           PY2
-          xcrun clang -fobjc-arc -fmodules -Wall -Wextra -Werror tools/appkit_contracts.m -framework AppKit -o private/appkit-contracts
+          xcrun --sdk macosx clang -isysroot "$(xcrun --sdk macosx --show-sdk-path)" -fobjc-arc -fmodules -Wall -Wextra -Werror tools/appkit_contracts.m -framework AppKit -o private/appkit-contracts
           private/appkit-contracts private/appkit-classes.json reports/appkit-contracts.json
       - name: Native decoder, startup contracts and iOS bridge compile
         run: |
