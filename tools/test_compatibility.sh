@@ -9,7 +9,11 @@ MACSDK="$(xcrun --sdk macosx --show-sdk-path)"
 "$CLANG" "${COMMON[@]}" -isysroot "$MACSDK" -DEXCELSHIM_CONTRACT_TEST=1 \
   shim/ExcelNibArchive.m shim/ExcelAppKit.m shim/ExcelShim.m tests/native_nib_tests.m \
   -framework Foundation -o build/compatibility/native-nib-tests
-build/compatibility/native-nib-tests build/compatibility/Synthetic.app/Contents "${@}"
+if [ "$#" -gt 0 ]; then
+  build/compatibility/native-nib-tests build/compatibility/Synthetic.app/Contents "$@"
+else
+  build/compatibility/native-nib-tests build/compatibility/Synthetic.app/Contents
+fi
 SDK="$(xcrun --sdk iphoneos --show-sdk-path)"
 # Compile the actual iOS bridge as a dylib; this is an internal check, not an IPA release.
 "$CLANG" "${COMMON[@]}" -target arm64-apple-ios18.0 -isysroot "$SDK" \

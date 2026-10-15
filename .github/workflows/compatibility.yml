@@ -6,6 +6,7 @@ on:
       - 'shim/**'
       - 'tools/nib_archive.py'
       - 'tools/appkit_contracts.m'
+      - 'tools/shim_coverage.py'
       - 'tools/test_compatibility.sh'
       - 'tests/**'
       - '.github/workflows/compatibility.yml'
@@ -26,6 +27,7 @@ jobs:
           mkdir -p reports
           bash tools/test_compatibility.sh 2>&1 | tee reports/synthetic-startup-contracts.txt
           cp build/compatibility/exports.txt reports/ios-exports.txt
+          python3 tools/shim_coverage.py docs/evidence/dependencies-16.55.json.gz reports/ios-exports.txt reports/shim-coverage.json
       - name: Download official Excel 16.55 and verify identity
         run: |
           set -euo pipefail
