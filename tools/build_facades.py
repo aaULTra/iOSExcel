@@ -9,6 +9,8 @@ from excel_retarget import ver
 
 
 def build_one(shim, output, install_name, required_version, platform):
+    if output.exists() or output.resolve() == shim.resolve():
+        raise ValueError('Facade output must be new and distinct from the input shim')
     sdk_name = 'iphoneos' if platform == 'ios' else 'macosx'
     sdk = subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path'], text=True).strip()
     clang = subprocess.check_output(['xcrun', '--find', 'clang'], text=True).strip()

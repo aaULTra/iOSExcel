@@ -33,6 +33,7 @@ def main():
     subprocess.run(compiler + [str(root/'tests/loader/client.c'),
                               str(originals/'OriginalAppKit.dylib'), str(originals/'OriginalCocoa.dylib'),
                               '-Xlinker', '-rpath', '-Xlinker', '@executable_path', '-o', str(client)], check=True)
+    print('Baseline: original fixture libraries', flush=True)
     subprocess.run([str(client)], check=True)
     original = client.read_bytes()
     before = inspect(original)
@@ -62,6 +63,7 @@ def main():
     shutil.rmtree(originals)
     # With originals absent this succeeds only if the rewritten two-level bindings work.
     subprocess.run([str(client)], check=True)
+    print('PASS: dyld resolved both preserved library ordinals through distinct facades into one shared implementation after original libraries were removed.', flush=True)
     report = {'native_fixture_passed': True, 'original_libraries_removed_before_final_run': True,
               'binding_ordinals_preserved': bindings, 'text_and_linkedit_unchanged_before_signing': True,
               'modifications': events, 'facades': facades, 'excel_executed': False}

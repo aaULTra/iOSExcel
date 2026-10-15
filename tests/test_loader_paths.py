@@ -52,6 +52,47 @@ class LoaderPathTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'outside logged fields'):
             verify_changes(old, changed, [])
 
+class LoaderPlanSafetyTest(unittest.TestCase):
+    def test_external_and_parent_paths_are_refused(self):
+        import tempfile
+        from loader_plan import source_path
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)/'source'
+            root.mkdir()
+            outside = Path(directory)/'outside'
+            outside.write_bytes(b'original')
+            (root/'link').symlink_to(outside)
+            for name in ['../outside', str(outside), 'link']:
+                with self.assertRaises(ValueError):
+                    source_path(root, name)
+            self.assertEqual(outside.read_bytes(), b'original')
+
+    def test_inventory_hash_mismatch_is_refused(self):
+        import tempfile
+        from loader_plan import plan
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root/'Main').write_bytes(fixture())
+            inventory = {'binaries': [{'path': 'Main', 'sha256': '0'*64}]}
+            graph = {'main': 'Main', 'startup_closure': ['Main']}
+            with self.assertRaisesRegex(ValueError, 'differs from recorded inventory'):
+                plan(root, inventory, graph)
+
+    def test_changed_source_never_publishes_partial_stage(self):
+        import tempfile
+        from loader_plan import stage
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)/'source'
+            root.mkdir()
+            (root/'Main').write_bytes(fixture())
+            output = Path(directory)/'output'
+            result = {'images': [{'path': 'Main', 'input_sha256': '0'*64}]}
+            with self.assertRaisesRegex(ValueError, 'Source changed'):
+                stage(root, output, result)
+            self.assertFalse(output.exists())
+            self.assertEqual((root/'Main').read_bytes(), fixture())
+            self.assertEqual(sorted(p.name for p in Path(directory).iterdir()), ['source'])
+
 
 if __name__ == '__main__':
     unittest.main()
