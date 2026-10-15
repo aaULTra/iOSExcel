@@ -1,6 +1,12 @@
 name: Test tools and build UIKit probe
 on:
   push:
+    paths:
+      - ".github/workflows/probe.yml"
+      - "app/**"
+      - "shim/**"
+      - "tools/**"
+      - "tests/**"
   pull_request:
   workflow_dispatch:
 permissions:

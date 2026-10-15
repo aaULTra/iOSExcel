@@ -1,5 +1,10 @@
 name: Analyze official Excel packages (no Microsoft artifacts uploaded)
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/analyze.yml"
+      - "tools/**"
   workflow_dispatch:
   pull_request:
     paths:
