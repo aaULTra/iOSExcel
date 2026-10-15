@@ -1,7 +1,7 @@
 # ExcelPort research
 
-**Exact status (2026-10-15): real Excel binaries extracted and statically analyzed;
-M2 metadata experiment passed; Microsoft Excel has NOT launched on iPadOS.
+**Exact status (2026-10-16): real Excel binaries extracted and statically analyzed;
+M2 startup-image retargeting/redirection checks passed; Microsoft Excel has NOT launched on iPadOS.
 No runnable Excel IPA exists.**
 
 Target: Microsoft Excel for Mac **16.55 (21111400)**, official Universal installer.
@@ -30,7 +30,7 @@ are included in this repository/archive.
 | M0 — extracted, native arm64 confirmed | Complete for all three compared versions |
 | M1 — dependencies | Static inventories, load graphs and first iPhoneOS SDK declaration audit complete; dynamic/runtime contracts pending |
 | M2 — retarget main | Platform metadata changed successfully on real 16.55 main; four bytes differ in the arm64 slice; 41,983,228-byte __text unchanged |
-| Relevant embedded metadata | All 55 resolved startup images passed an in-memory platform retarget; paths/resources not yet repackaged |
+| Relevant embedded binaries | All 55 startup images hash-verified and staged with iOS metadata plus 68 AppKit/Cocoa path changes; code and link-edit bytes unchanged; not an app |
 | M3–M6 — loader/shim/UIKit/Excel initialization | NOT tested for Excel; isolated UIKit probe compiled successfully on macOS CI; no device run |
 | M7–M15 — desktop UI/workbooks | NOT implemented or tested |
 
@@ -39,6 +39,7 @@ are included in this repository/archive.
 - `docs/COMPATIBILITY.md`: version comparison, dependency map, blockers and feasibility.
 - `docs/RESEARCH.md`: official sources, current CyPort findings and activation evidence.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
+- `docs/LOADER.md`: distinct forwarding dylibs, native two-level binding proof and exact limits.
 - `docs/BUILDING.md`, `docs/DEBUGGING.md`: reproducibility and first-failure procedure.
 - `docs/evidence/`: actual binary metadata, imports, Objective-C strings, original
   entitlements, graph, installer hashes and retarget verification. Metadata only.
@@ -80,3 +81,9 @@ No proprietary application binary or activation payload is in this repository.
 
 Release policy: publish no further diagnostic/unfinished IPAs. A working Excel release
 requires verified real desktop Excel opening, editing, calculating and saving .xlsx files.
+
+Latest loader validation: https://github.com/aaULTra/iOSExcel/actions/runs/38823800651
+
+All 30 Python tests pass. Native dyld binding, actual 55-image staging, iOS forwarding
+library builds and original startup contracts passed. No Excel loader/device milestone
+is claimed by those checks.

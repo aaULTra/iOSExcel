@@ -24,3 +24,12 @@ Implement known signatures and semantics, log, and raise on unknown behavior.
 A future workbook validation must include an untouched fixture, edits of strings and
 numbers, cross-sheet formula recalculation, save, reopen in desktop Excel, and comparison
 of expected cell values, formulas, styles and archive integrity. A visible grid is not M13.
+
+## AppKit/Cocoa redirection checks
+
+When diagnosing loader bindings, retain the distinct ExcelAppKit.dylib and
+ExcelCocoa.dylib identities. Do not merge them into one load command or introduce
+flat-namespace lookup to hide missing exports. Both reexport libExcelShim.dylib.
+The known-good native binding fixture and full vendor modification plan live under
+docs/evidence. A successful fixture run proves only that forwarding topology with our
+own code; it is not evidence that any particular Excel import or initializer succeeds.

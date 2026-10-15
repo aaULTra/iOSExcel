@@ -152,3 +152,19 @@ LTSC_2021_VL_Serializer.pkg inside a third-party-named HFS+ volume. That package
 byte-identical to the earlier Microsoft_Office_LTSC_2021_VL_Serializer.pkg: 11,463,579
 bytes, SHA-256 c6f1709711270370d007c170155e054c0ebc9e09fec085effa9a8c868f4ad0e1.
 It contributes no Excel application binary and was not committed to the repository.
+
+## Loader redirection experiment (2026-10-16 London)
+
+Actual source measurements: 24/55 startup images load both AppKit and Cocoa; 68 load-path
+strings in total reference those two frameworks. AppKit's recorded compatibility
+requirement is 45.0.0, Cocoa's 1.0.0. The implemented two-facade topology preserves all
+original dependency indices and the complete binding payloads. A native dyld fixture
+with independent imports and removed original libraries passed, and the corresponding
+iOS forwarding dylibs compiled and passed signature/identity/version checks.
+The local and Mac reports for the 55 actual images were identical.
+
+Apple's ld64 manual documents two-level namespace, reexport_library and dylib versions:
+https://github.com/apple-oss-distributions/ld64/blob/main/doc/man/man1/ld-classic.1
+Apple's own Ruby reexport packaging uses the same forwarding-library linker mechanism:
+https://github.com/apple-oss-distributions/ruby/blob/main/reexport.sh
+This is evidence for the mechanism, not evidence of Excel API compatibility.

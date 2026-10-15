@@ -1,7 +1,8 @@
 # Architecture and feasibility gates
 
 Current implementation: installer extraction, recursive static Mach-O inventory,
-conservative copied-tree metadata retargeting, an observed-format startup nib decoder,
+hash-verified startup-closure retargeting with distinct AppKit/Cocoa forwarding dylibs,
+an observed-format startup nib decoder,
 limited AppKit startup classes and a UIKit entry bridge. Native contract tests and
 arm64 iOS compilation/signature checks pass. Actual Excel execution remains untested.
 
@@ -57,3 +58,11 @@ Cocoa window shell. Excel's native controls, Office UI frameworks, text layout,
 AppKit subclass behavior, nib archives, accessibility and document lifecycle can require
 substantial AppKit semantics. Optional printing/cloud features may be postponed only
 after distinguishing eager-load requirements from optional runtime branches.
+
+## Preserving dependency identities
+
+AppKit and Cocoa are redirected to distinct forwarding dylibs rather than collapsing
+their load commands into one dependency. Both reexport the same shim, preserving the
+existing two-level library indices and leaving binding payloads unchanged. The native
+loader fixture verifies this topology with original C code. See LOADER.md for exact
+measurements and the explicit boundary between loader plumbing and API compatibility.

@@ -1,0 +1,19 @@
+{
+  "date_london": "2026-10-16",
+  "source_commit": "9cc9e5d20d12c3a5749e469b9d457fc345b3df78",
+  "workflow_run": 38823800651,
+  "conclusion": "success",
+  "python_tests": 30,
+  "actual_excel_images_staged": 55,
+  "images_loading_both_desktop_frameworks": 24,
+  "desktop_load_path_changes": 68,
+  "text_and_linkedit_bytes_unchanged": true,
+  "linux_macos_plans_identical": true,
+  "native_fixture_with_original_libraries_removed": "passed",
+  "ios_arm64_forwarding_dylibs": "compiled, identity/version/reexport checked, signed and verified",
+  "new_desktop_API_implementations": 0,
+  "excel_executed": false,
+  "device_run_observed": false,
+  "ipa_produced": false,
+  "milestone": "M2 binary preparation only; M3 not reached"
+}

@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-10-15",
+  "as_of": "2026-10-16",
   "target": "Microsoft Excel for Mac 16.55 (21111400)",
   "M0": "complete",
   "M1": "Static inventory, dependency graphs and first iPhoneOS SDK declaration audit complete; dynamic/runtime contracts pending",
-  "M2": "metadata experiment passed on real executable and 55-image closure; not a loader test",
+  "M2": "Actual 55-image closure hash-verified and staged with iOS metadata and 68 distinct AppKit/Cocoa path rewrites; code and link-edit bytes unchanged. Native fixture binding and iOS facade builds passed. Excel not executed.",
   "M3_to_M15": "not reached",
   "assessment": "Not practical as a thin CyPort-style port; major open-ended compatibility research required",
   "excel_ipa_exists": false,
@@ -12,7 +12,7 @@
   "github_repository_created": true,
   "github_actions_run": true,
   "legitimate_ipados_activation_path_established": false,
-  "tests_passed": 23,
+  "tests_passed": 30,
   "github_repository": "aaULTra/iOSExcel",
   "probe_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38816769202",
   "analysis_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38816989758",
@@ -23,5 +23,7 @@
   "appkit_names_exported": 12,
   "appkit_names_required": 538,
   "appkit_classes_exported": 4,
-  "appkit_classes_required": 143
+  "appkit_classes_required": 143,
+  "loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38823800651",
+  "loader_facades": "Distinct ExcelAppKit.dylib and ExcelCocoa.dylib reexport libExcelShim.dylib; preserve dependency indices; add no missing APIs"
 }

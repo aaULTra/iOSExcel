@@ -62,3 +62,22 @@ It uploads reports only. Successful startup runs are 38820211943 and 38820609645
 `tools/objc_startup.py` independently inspects selected real class/method metadata;
 `tools/shim_coverage.py` compares the current dylib names with the actual startup imports.
 Neither tool claims a working implementation merely because a name is exported.
+
+## Actual startup binary preparation (not an app)
+
+```
+python3 tools/loader_plan.py 'private/extracted/Microsoft Excel.app' --inventory docs/evidence/excel-16.55.json.gz --graph docs/evidence/dependencies-16.55.json.gz --report private/loader-plan.json --output-binaries private/retargeted-images
+```
+
+Unlike processing every optional/helper binary in the bundle, this selects the measured
+startup closure and verifies each source hash before output. It stages 55 thin arm64
+binaries with platform metadata and distinct AppKit/Cocoa imports. No resources, complete
+app, provisioning or IPA is synthesized. The untouched original bundle remains the
+source of resources for later integration. Full-directory retargeting still rejects
+Intel-only inputs rather than guessing which components can be discarded.
+
+The compatibility workflow also runs `tools/test_loader.py` (native dyld binding with
+our own C code), stages the real closure, and calls `tools/build_facades.py` to build
+and verify iOS forwarding dylibs against the actual compiled shim. Only reports are
+uploaded. Numeric facade versions meet the measured load requirements; missing API
+implementations remain missing.

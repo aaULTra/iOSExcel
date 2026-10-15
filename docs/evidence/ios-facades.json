@@ -1,0 +1,27 @@
+{
+  "facades": [
+    {
+      "install_name": "@rpath/ExcelAppKit.dylib",
+      "required_compatibility_version": "45.0.0",
+      "reexports": [
+        "@rpath/libExcelShim.dylib"
+      ],
+      "platform": 2,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    },
+    {
+      "install_name": "@rpath/ExcelCocoa.dylib",
+      "required_compatibility_version": "1.0.0",
+      "reexports": [
+        "@rpath/libExcelShim.dylib"
+      ],
+      "platform": 2,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    }
+  ],
+  "excel_executed": false,
+  "loader_ready": false,
+  "release_ready": false
+}

@@ -1,0 +1,58 @@
+{
+  "native_fixture_passed": true,
+  "original_libraries_removed_before_final_run": true,
+  "binding_ordinals_preserved": [
+    {
+      "symbol": "_EXLoaderAppKitValue",
+      "ordinal": 1,
+      "before": "@rpath/original-desktop-frameworks/OriginalAppKit.dylib",
+      "after": "@rpath/ExcelAppKit.dylib"
+    },
+    {
+      "symbol": "_EXLoaderCocoaValue",
+      "ordinal": 2,
+      "before": "@rpath/original-desktop-frameworks/OriginalCocoa.dylib",
+      "after": "@rpath/ExcelCocoa.dylib"
+    }
+  ],
+  "text_and_linkedit_unchanged_before_signing": true,
+  "modifications": [
+    {
+      "offset": 1336,
+      "length": 56,
+      "field": "path",
+      "before": "@rpath/original-desktop-frameworks/OriginalAppKit.dylib",
+      "after": "@rpath/ExcelAppKit.dylib"
+    },
+    {
+      "offset": 1416,
+      "length": 56,
+      "field": "path",
+      "before": "@rpath/original-desktop-frameworks/OriginalCocoa.dylib",
+      "after": "@rpath/ExcelCocoa.dylib"
+    }
+  ],
+  "facades": [
+    {
+      "install_name": "@rpath/ExcelAppKit.dylib",
+      "required_compatibility_version": "45.0",
+      "reexports": [
+        "@rpath/libFixtureShim.dylib"
+      ],
+      "platform": 1,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    },
+    {
+      "install_name": "@rpath/ExcelCocoa.dylib",
+      "required_compatibility_version": "1.0",
+      "reexports": [
+        "@rpath/libFixtureShim.dylib"
+      ],
+      "platform": 1,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    }
+  ],
+  "excel_executed": false
+}

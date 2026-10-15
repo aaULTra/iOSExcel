@@ -1,0 +1,2102 @@
+{
+  "status": "Binary-only redirection experiment; signatures stale; not a runnable Excel bundle",
+  "image_count": 55,
+  "images_loading_both_facades": [
+    "Contents/Frameworks/ADAL4.framework/Versions/A/ADAL4",
+    "Contents/Frameworks/Gfx.framework/Versions/A/Gfx",
+    "Contents/Frameworks/Hlink.framework/Versions/A/Hlink",
+    "Contents/Frameworks/MSRightsManagement.framework/Versions/A/MSRightsManagement",
+    "Contents/Frameworks/MicrosoftCredui.framework/Versions/A/MicrosoftCredui",
+    "Contents/Frameworks/MicrosoftFBA.framework/Versions/A/MicrosoftFBA",
+    "Contents/Frameworks/MicrosoftFontLibrary.framework/Versions/A/MicrosoftFontLibrary",
+    "Contents/Frameworks/MicrosoftRichEdit.framework/Versions/A/MicrosoftRichEdit",
+    "Contents/Frameworks/MsoCF.framework/Versions/A/MsoCF",
+    "Contents/Frameworks/OfficeArt.framework/Versions/A/OfficeArt",
+    "Contents/Frameworks/Oimg.framework/Versions/A/Oimg",
+    "Contents/Frameworks/ProofingUI.framework/Versions/A/ProofingUI",
+    "Contents/Frameworks/SmartArt.framework/Versions/A/SmartArt",
+    "Contents/Frameworks/Visual Basic for Applications.framework/Versions/A/Visual Basic for Applications",
+    "Contents/Frameworks/WLMGraphicsDevice.framework/Versions/A/WLMGraphicsDevice",
+    "Contents/Frameworks/WLMUser.framework/Versions/A/WLMUser",
+    "Contents/Frameworks/mbuinstrument.framework/Versions/A/mbuinstrument",
+    "Contents/Frameworks/merp.framework/Versions/A/merp",
+    "Contents/Frameworks/molc.framework/Versions/A/molc",
+    "Contents/Frameworks/mso20.framework/Versions/A/mso20",
+    "Contents/Frameworks/mso30.framework/Versions/A/mso30",
+    "Contents/Frameworks/mso40ui.framework/Versions/A/mso40ui",
+    "Contents/Frameworks/mso99.framework/Versions/A/mso99",
+    "Contents/MacOS/Microsoft Excel"
+  ],
+  "redirects": {
+    "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit": "@rpath/ExcelAppKit.dylib",
+    "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa": "@rpath/ExcelCocoa.dylib"
+  },
+  "facades": [
+    {
+      "original": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+      "install_name": "@rpath/ExcelAppKit.dylib",
+      "required_compatibility_version": "45.0.0",
+      "version_scope": "Loader numeric requirement only; no API compatibility claim"
+    },
+    {
+      "original": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+      "install_name": "@rpath/ExcelCocoa.dylib",
+      "required_compatibility_version": "1.0.0",
+      "version_scope": "Loader numeric requirement only; no API compatibility claim"
+    }
+  ],
+  "minos": "18.0",
+  "sdk": "18.0",
+  "images": [
+    {
+      "path": "Contents/Frameworks/ADAL4.framework/Versions/A/ADAL4",
+      "input_sha256": "8a708dfc53d2aeeeecac78e7500929a3ec3427786159647b416d3e25092be87c",
+      "arm64_before_sha256": "70c94f0ec264ae402114cd544cc9b2bc988be3fc352c74969c72618847282921",
+      "arm64_after_sha256": "54a8ed60c67a920dd1d952bc76fcece904ce6fabcfc109aac6b4d0a84862d63d",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "6460b2af56861a7291357387a67ae410c7b509df92757a172c5878e9b3bf19a4",
+        "__LINKEDIT": "783dcf97e24b52b681fb774d17f7e5704c70e16cb21de5f6999b73876ba0b7e9"
+      },
+      "modifications": [
+        {
+          "offset": 3112,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3200,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3048,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/COMBase.framework/Versions/A/COMBase",
+      "input_sha256": "2e9ef153c91f29deb164076b2aa9cdf456eb2135f827e99c01f387bf5192bf91",
+      "arm64_before_sha256": "4bf0aeb4ec461d35446c2baabe6d957e49ab8a39132ff5b120c4062ca330e0ae",
+      "arm64_after_sha256": "d0b5e31026a780d66b90a07159738052efc89dcd05ab6f362ef75db13df103c2",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "27d5e91162484457a9bdd5e93dbb2a712a9a182aba661383a3c97e0f51e8b16e",
+        "__LINKEDIT": "0970ab9cb1e03a8da3e44c92fee46e4152a4244d36c536dbbe7dedbd723e7c4a"
+      },
+      "modifications": [
+        {
+          "offset": 2600,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2256,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Chart.framework/Versions/A/Chart",
+      "input_sha256": "0eeb11e118aa7a32c0b78d94edc8beb39462cfdb54fbaf1159914dae0c109e64",
+      "arm64_before_sha256": "fb5e832f6d1405e402f119df6729a683531d0e53c6d05feba3be5fa280bf9a83",
+      "arm64_after_sha256": "ae1c762f440f4d60e540f6a4a3fe4feb21bd87b4cba0646e1afc8f02d92596be",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "75446dd618b5bb9c8bb7f20287c5922c3d22340083260e4207399c61d26f395b",
+        "__LINKEDIT": "5487416c360ec4b4a34e278151032cd94293588c33d3913b4d3b1eaa2679e9a0"
+      },
+      "modifications": [
+        {
+          "offset": 4232,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3128,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/CocoaUI.framework/Versions/A/CocoaUI",
+      "input_sha256": "b54be8a4fddcbe0c8a4850b57b7ccc5b27b61eff98a8b4dede048809f555d317",
+      "arm64_before_sha256": "1b471bae885940e93bd8eb78e1758b59450c66c95a0851d3616acee58ead24cd",
+      "arm64_after_sha256": "cf85ec4d96be0d7122775205a2d766fad05dfc9fba4daa684efcdf55d10cc073",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "599a02600e4255e022fdd3c7baa745b22957d4286c0bc7a24574a96699c993a5",
+        "__LINKEDIT": "9bd5bcf8872498c4711001a8d96e4543429318b920ce65d8a8a69be028a8c131"
+      },
+      "modifications": [
+        {
+          "offset": 4456,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3696,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/FluentUI.framework/Versions/A/FluentUI",
+      "input_sha256": "b194721a1e51525a11782d9007cb736955b8a86937e79ca8712c42bff241cffe",
+      "arm64_before_sha256": "249c330a705eb1a5ddbdb0807b76457681c629fafe18699fd0e1edd9c1ba9771",
+      "arm64_after_sha256": "411e03ecd742840ed77227d4bc343649c4ecd7a6351d8e8e748de10069aa34e0",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "c6d6659d5f13d263f8aecd8001aa687677a5f9448edd711a3d9a77b6cff7295f",
+        "__LINKEDIT": "c8c53f4e2dbd7f24bf14ad32eb0563295ffcbee57442c325cee60fa16aa08f0d"
+      },
+      "modifications": [
+        {
+          "offset": 3408,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3136,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Forms.framework/Versions/A/Forms",
+      "input_sha256": "2c6f60f50c57bb58079862400a377b10242e3afa479b1eba3ea714a45c6f73da",
+      "arm64_before_sha256": "c7988457fdb88ef69f21e6aa8e0897ade3fe48e02978c6115a540db0ce239289",
+      "arm64_after_sha256": "a4c0056b15b553bb57ab34668d963f06b18da2190ed8d739353dbe6a3e9a5819",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "0a4a83cb774bfeec2f7677b3a1ffdbb02229182d3bbbaa234b718d37ba186d6e",
+        "__LINKEDIT": "8191cd5eb195f7749a9517ab6645040aae0ee19e98425e0f677db3f41d4bc797"
+      },
+      "modifications": [
+        {
+          "offset": 3408,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2568,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Gfx.framework/Versions/A/Gfx",
+      "input_sha256": "3413e8509216859d3c5ddf40838a0ed87ea5a6d25ab401cd7322046bbac48085",
+      "arm64_before_sha256": "863298453f703d0e0fe155582d57265348c3e78de0faa5acfac2827d61871360",
+      "arm64_after_sha256": "b68343b2e3a805c3709570818bb2db94981df90dca184567dbf9c9645a9eb3bb",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "b19af2dd618b5d11fa7fdcc46a17a316dbe46de3e0631d4e58050d0a6d0ba0ff",
+        "__LINKEDIT": "4bc8a190ec0306dd6f3f87d1317fe0fcf26000550f460ff0b0bdf6ece26e71e7"
+      },
+      "modifications": [
+        {
+          "offset": 4112,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 5232,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3128,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Hlink.framework/Versions/A/Hlink",
+      "input_sha256": "7aeb5f4a8edfc886e276a1861ad502bc465c9d8586ddd1f800f163ebec782799",
+      "arm64_before_sha256": "36526913593021b5723e8af3af509b70e477a35fa4078ae0e98f705c46282d7d",
+      "arm64_after_sha256": "0522e5d28520bd90848024238296ef34421bbd8ebc66403269cd7a37df06afc5",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "5f22319c6bf973ed078e01a17d0e0ee3ff8863f909a1d4b46fe5c64834b95c7b",
+        "__LINKEDIT": "f1a8589c2be57d89eaf054ac74bc5c41861e495e357452743f8a7d76d8341ac4"
+      },
+      "modifications": [
+        {
+          "offset": 3384,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3728,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2968,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MSRightsManagement.framework/Versions/A/MSRightsManagement",
+      "input_sha256": "dc4ad7f18af50b6ef432b8b4f41ebdee4896ed5f2ef51b3532b23c42d2246e3e",
+      "arm64_before_sha256": "7184394eaeabee5e8d9cf2cfecc1dfdb0ba575cd3d8099204b1fc96f1c636746",
+      "arm64_after_sha256": "05b2fd39ce1b080affab0cdf892647ae2d8dd176347541f8bd6fb837d359d71a",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "77261fd2a5269874fcec735ac1ad82dcf7266aeba1592fb2fd442fc6c0a7e7c2",
+        "__LINKEDIT": "cdff87f2ac107dd4cee5e2a17059f29ffd2751c9d223e835e7782678085e3c8e"
+      },
+      "modifications": [
+        {
+          "offset": 3464,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3744,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3080,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            720896
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MSXML.framework/Versions/A/MSXML",
+      "input_sha256": "a80844bfa48aa8e5f808725f945a790b37f520a3b59d5ef9dc0fa4521960155d",
+      "arm64_before_sha256": "bd0546f24026ab81af8a127ee7741705d3345295e5869af4f7fe4626a827403b",
+      "arm64_after_sha256": "91e66989dc1f1b5e73208e3dadc59848e8a8da6fb105e9700c800124f619dea4",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "8eee7db896f2e28d91981fc360dde7edaaa44f964fa98cf4eaf0320e520115e0",
+        "__LINKEDIT": "a0bf583534a5fb81bbb663d71a6d00919ef379457bdcb5ef0b295657028919c7"
+      },
+      "modifications": [
+        {
+          "offset": 2728,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2248,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MetEx.framework/Versions/A/MetEx",
+      "input_sha256": "9f3622091d1339ee8cda549eed0d7109f2ba932b94672435b3e146a176279629",
+      "arm64_before_sha256": "db9e2950e656f3eb4630361a88c8d5791b440b7a221e2a7dc4f017285bfa999b",
+      "arm64_after_sha256": "b0bca78c0e9d477dc8d2b328fba301ea073064fd9bf6134399113a1fde50f632",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "c2c08eda48f989b4d7b5c21da3cd928b63a26f4e04ab043a7851c5670d824b45",
+        "__LINKEDIT": "0a703980bd50ac6690c7c81aa4a8764600c6ad029fd8f5e7796e7f722a8eda6f"
+      },
+      "modifications": [
+        {
+          "offset": 2304,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2168,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftCSI.framework/Versions/A/MicrosoftCSI",
+      "input_sha256": "0ca40033c99f632c8de1d603a5a95d80a701dc51997fbc5bc4d83791f3b777fc",
+      "arm64_before_sha256": "2a652698b29d82f35f07fa8da7024be32b392eabfb9f2514ab4508536cd551ec",
+      "arm64_after_sha256": "588fa7c375a794263f0a21a87caa302492b416978c3c193a4e1e39b6894a0d14",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "184e2245839c427c89eca84653e18c6c8df8759b3d418ff1b8bf94d96a7d6cad",
+        "__LINKEDIT": "40dd5f12de6892590a20adf8d1dfb984a39cf6cda939bc502c946173bb735705"
+      },
+      "modifications": [
+        {
+          "offset": 2904,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftCloudServices.framework/Versions/A/MicrosoftCloudServices",
+      "input_sha256": "5b44150ef4be7d354a4642da1b40060b44151cb4b35a4e0e3bc4ee72a74f4bf3",
+      "arm64_before_sha256": "8464c00525e59fef6761870921690ec0c673efdde578d1919b39e4ef92eb80a2",
+      "arm64_after_sha256": "ae2c84ec8b937aa85314a39dcae36dd4f4d92c95bbd3768706a61eb52a1c03c3",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "735b25f0fdcc3094a63861bc3cb18377e7d69459c646a31685d233fbc3990def",
+        "__LINKEDIT": "0ede30867a389c68756de5bafecc193a901185c42b8fd2f4fcd9ff6095242dfd"
+      },
+      "modifications": [
+        {
+          "offset": 2208,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftCredui.framework/Versions/A/MicrosoftCredui",
+      "input_sha256": "21234cd9d9417ea74843d7d8ef3daf5a8a4bc1fa313b6889ef7c4c9f65ab3264",
+      "arm64_before_sha256": "8610f68c7f43af7fe17c43cbab158e7b7aebc12d2902516fe73f2140b8e7465a",
+      "arm64_after_sha256": "cd74cda79fb0cee32587b100dfb47863251d7e698af3c0be5b6f07550df46ca5",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "6f21d7bcf5feabb118bda2c7db7228d7be3c1bfed456309a2f912f5dc19f2a69",
+        "__LINKEDIT": "6922233d808fc5ea258d192cb32fe68f9e943e992deb2ff5c8bbce5198915be0"
+      },
+      "modifications": [
+        {
+          "offset": 3360,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3968,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3072,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftFBA.framework/Versions/A/MicrosoftFBA",
+      "input_sha256": "228cd165872804ea2521d0365c016d01be9f7ccef32d5997e7a83e4cf5f90b10",
+      "arm64_before_sha256": "06240f2932800b390ec60e4fb9b1245369e88e26e7a91f34e676b964cda60d55",
+      "arm64_after_sha256": "4dc633c832ccd82250b8099a18142510d8e7d921fdd962f806e9b325b054426f",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "4652221d894dd992e3ccb7d124f1a671223ff1027c105e233ad3f98ee8ccaed1",
+        "__LINKEDIT": "e116e72c8ffb9da0650b67bc163ab42e15c681816c959ef1019f9c37d723750c"
+      },
+      "modifications": [
+        {
+          "offset": 3288,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3664,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2984,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftFontLibrary.framework/Versions/A/MicrosoftFontLibrary",
+      "input_sha256": "c72f2059cad03efc45f7eba6027d6dd57aa769fd69d5c1a86dde23ee2e25fc4e",
+      "arm64_before_sha256": "4857a343cd24e32379f7a6a80e8b805fe488acc5d4431da3ae8472532596cbd1",
+      "arm64_after_sha256": "ede734e0dbe969419ca620610dde8b94f430728917cc19e61f54d8bf231bf163",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "47eb19b6f83ba3364542657ec57f1f83581b72aee0ccb2fabab5108c75dd813b",
+        "__LINKEDIT": "9fb332a1ee97c76fe5614a3248282aca21e7c0c12e2a8b2561095378c3de8146"
+      },
+      "modifications": [
+        {
+          "offset": 3280,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3472,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3000,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftIvy.framework/Versions/A/MicrosoftIvy",
+      "input_sha256": "ffea7b3d98269d935aa7b241054229857a20806d55c6d09e3a871ae70ada398b",
+      "arm64_before_sha256": "55e08f26fe9862e3726f61663403c5e20a14db91a44a144bf17aa1102c745fc6",
+      "arm64_after_sha256": "3a52e52e38ad7b52969323595d0af53e31ed6a138e4e98d66db09e254fca3f8e",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "d38ba5568bb681bb661bd270833d4e124b3fa8e715b00ef7aba47c8503f1ab87",
+        "__LINKEDIT": "684aac47dc46478c484166d31724b455927a9c7f693a3a2b9e9ef9c27e8d3a50"
+      },
+      "modifications": [
+        {
+          "offset": 2464,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2184,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftPTLS.framework/Versions/A/MicrosoftPTLS",
+      "input_sha256": "48ebe097b93454bb51e1a2dd192a502f9b2c1c3db53c9b233995a2eccc41e808",
+      "arm64_before_sha256": "f1a667698143a460ef6cda57a7c27ce7700739ea35f0fbd27dfeb303dc5d9bc2",
+      "arm64_after_sha256": "5a5b9d564ac2ea67cdbff02e34499f953b599b92f67a17b7ceaf9a6cab763a01",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "1a43bfd31dcbb01b2b9fa0e2d4033f316bff79e61552e227bcb56d544cef281f",
+        "__LINKEDIT": "97c9d59d86200ddb423f52f75ef58d95daaf253f3c31f9e2e01c25f4787712af"
+      },
+      "modifications": [
+        {
+          "offset": 1624,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftPTLS7.framework/Versions/A/MicrosoftPTLS7",
+      "input_sha256": "9e401d96dfbf85dc65a8b2218bb9c849c130f59a016e34d77d39068b2fc891d9",
+      "arm64_before_sha256": "dfcf951c0a85803fd3def251d33c5f6d6cfe792ec6b3b6f0242d5b2efb57d921",
+      "arm64_after_sha256": "7824ed94aea273dc1268414deff7566d84f8291c9712c5b838d5d3fd9a0634ec",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "17edf62667c13d716ae8916d493d88f0d80e56f34b0b0bf0687203578c1df6b4",
+        "__LINKEDIT": "f6eb7fb33cb95c3d334e831564e94a70e33c4705cfbbad2d7b335014092cb04d"
+      },
+      "modifications": [
+        {
+          "offset": 1712,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftProofing.framework/Versions/A/MicrosoftProofing",
+      "input_sha256": "a6f0ceb3a858f5e075d3c836e1b7ef60188f0ef56a5b53ea2ca22f39a48a4a0c",
+      "arm64_before_sha256": "6dc2bf0e13815961c65ffcdfd95539a1e857bc20de518267407e0d2776a0fe0f",
+      "arm64_after_sha256": "c04c87a3c119c0f24f38462a9a857c9e65bc578b527d7019e879c42efdfff07e",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "f9e42ff25b74dcb1afed28249ec2ad2532fb3fd3400bfa7ed467a4eeb99607aa",
+        "__LINKEDIT": "38f84ae735d0364d6e351c200be30b0605d96d1520cabc001e8ff58b2cbf9224"
+      },
+      "modifications": [
+        {
+          "offset": 2688,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2272,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftRichEdit.framework/Versions/A/MicrosoftRichEdit",
+      "input_sha256": "b747cdd4dd780aa69354ce5d16bcc12a5a565b1518c41b2c736bc4bd5c2f0fbd",
+      "arm64_before_sha256": "c00192666a61b4cbe0f47e58e86d9acb22ea56766b7479c076cadf4e66ff22dc",
+      "arm64_after_sha256": "ad9ef141cd61048a56afac063118497206968ba5ca80e6565f5cdb04946caffa",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "04119ac87c6fe6655db63313934f6e5c92c4aebbe3bb3b202a04e1563f25c42e",
+        "__LINKEDIT": "97703d65a6a357c0466f913125a62c07c7171cbe7b86ff027f574da994a42729"
+      },
+      "modifications": [
+        {
+          "offset": 3192,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3864,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2192,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MicrosoftWebServices.framework/Versions/A/MicrosoftWebServices",
+      "input_sha256": "d15c3516f5fe1c9072ad29a57db860d560f10547481b1ca861a8486e971350d1",
+      "arm64_before_sha256": "0053d8103cf2678f2d81f7d885abc9100ef0c099432bc33cfd182f4e90e96f8d",
+      "arm64_after_sha256": "8383d643fba9ca5dc44b9101147c23e26af194d95952788fa23618be8005a085",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "b4888cec5556f1dbccdbbc7256ed92d8e13d02e2edb67dbc1945eb26f5bfe52e",
+        "__LINKEDIT": "a9ae2d2745871502f9f5dfd261fe20826a385bc7f764d29cb108418a49510e7b"
+      },
+      "modifications": [
+        {
+          "offset": 2280,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/MsoCF.framework/Versions/A/MsoCF",
+      "input_sha256": "9c440afec45398c730879bffa8824ee8028b0b5bd953519f98dd28fa8ff28448",
+      "arm64_before_sha256": "bd67e9c6ea73d20d002d8f57d67027da6984dfc43f1c1243531d4ec4485492fa",
+      "arm64_after_sha256": "943a13846a10f2d73f87b7933f211744cf80f2f616e01dec16ec14f91efb1a1e",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "6bb78a6076ab9fd5115f41d86530d8c658d187daf8cea527a30ce35872fca08c",
+        "__LINKEDIT": "0812af6950832c6809792eb8868071a93af57445ded74f9c9ce1c24cc1d460d0"
+      },
+      "modifications": [
+        {
+          "offset": 3768,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 4032,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3048,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/OLE.framework/Versions/A/OLE",
+      "input_sha256": "b74dd172a2e4ab46727c3fc20a285d3ce6228350e52ae9570fdd564b0e1f7e07",
+      "arm64_before_sha256": "50596a5d42e6d572c11de8d6450dd807a906fe4f0ec527f3016123bd2e78745a",
+      "arm64_after_sha256": "54a8c1c43be307cc4f52b147d16e98587d1b09402a085891f5afbb9c4f92a28b",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "e4cc3f98579bce35cf951fa0c86d220997478c85eb67e5cd782201bc169a9023",
+        "__LINKEDIT": "889b624c895ff6971b697fd9023823bfa50b733884983194b5867670313e4f43"
+      },
+      "modifications": [
+        {
+          "offset": 3472,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3048,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/OLEAutomation.framework/Versions/A/OLEAutomation",
+      "input_sha256": "ba680fc71a387ebb54ea0b7bd8fa893bb4c2634608da79a259ef9feb18b5f60b",
+      "arm64_before_sha256": "c055fa1a13aed9f26e18123e1f8707b48a24e2efb40c6887caa21c88c6aea3f9",
+      "arm64_after_sha256": "3d0e86b28a5e4a4d49dd8bff4659aeca761dd207dc67b4b5eb7899ab11251fd5",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "6dfc3e5057599c8433148867987fe86c69527cf43d6b1c1610a167fe6fd11e0e",
+        "__LINKEDIT": "ef365f9633228d63ebfde2ab3195053d24e205e5bc8834ea82e59265d043a134"
+      },
+      "modifications": [
+        {
+          "offset": 2680,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2264,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/OcsClient.framework/Versions/A/OcsClient",
+      "input_sha256": "3174325b25a2251afe9556772266aad76fda4e41f2ec8f25176ac3b6e3bb7810",
+      "arm64_before_sha256": "cd4cac0152373fd0f6c142e8a14fc5fb2613cc4ecbab64e51c44bc7899feddcc",
+      "arm64_after_sha256": "fe2a7404799c41ef2c1fdf2641f5636d4a904e0d828f36b81f2387dde879bed9",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "807a54c7e77042ebc8a0ec86590dcf111dd356885f7f1c03039f9f2a21bf2e10",
+        "__LINKEDIT": "9a9ec0f37594c06d796552d89b3a4e8a816d5492fb54a2354a35e2d9492ab49c"
+      },
+      "modifications": [
+        {
+          "offset": 2656,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2176,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/OfficeArt.framework/Versions/A/OfficeArt",
+      "input_sha256": "1db79f4dabc84337b23f994cf377cf4843940d09f8c12b0afe84781d69933001",
+      "arm64_before_sha256": "cbee2710c85ff3deecbff3390797bf2a6e0db8cf0c165f8567b2687fa244343f",
+      "arm64_after_sha256": "78dea6c9b5df9a6cea6e13a890ffb1a8998e4de2b9d904669ee3f73419294fb5",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "6260023941f67f4afc06d9d02bfdcbfb8b4fd1ebd918c51245dce34c2059d907",
+        "__LINKEDIT": "a080df495593d0f12b396da462a6faebbcd2e7603199b7f91875b91f52da40ba"
+      },
+      "modifications": [
+        {
+          "offset": 5168,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 6456,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3296,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Oimg.framework/Versions/A/Oimg",
+      "input_sha256": "cda4973e7e931ca4df1cb1f940882b938f2046fe32cb45c2c63542b91f423011",
+      "arm64_before_sha256": "574aedd788ff0981bebbf90fe635092b318d21575a3fa52bcca23dd9f79ecc41",
+      "arm64_after_sha256": "cc033521178011b025d7aa2885214655d5e9f510ee92101071433a85baa88974",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "d7e9e97117ede2a6c5926fbcdc1bf1421dcdaaf0e67d50a6b616ff6a2763541d",
+        "__LINKEDIT": "fec45bc65a5e48b78c4dbb88b030e234a1fa550e7911a2ae12dcf918518774c9"
+      },
+      "modifications": [
+        {
+          "offset": 3480,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3920,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2968,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/ProofingUI.framework/Versions/A/ProofingUI",
+      "input_sha256": "c246653d5e35f97b7d5e27813facd4ff514d45278b30ef157ce791a242c243ab",
+      "arm64_before_sha256": "9553c454da3287fd7ffc91378fde1f9b672cc53dd287378311c0e4293df549ae",
+      "arm64_after_sha256": "1b32076cf7f1e71e6178cc8b9bc52efcc32a56ead013b7e70a9fc97dea514629",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "152a0dfd88291dd138964e951d505b44a97115539f8c74bc249cae56a807cab1",
+        "__LINKEDIT": "a16f343dac79265ade3f0b0fc60ad92c5dbdf2f3890907977cc4bc9a937f1d2b"
+      },
+      "modifications": [
+        {
+          "offset": 3296,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3808,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2744,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/SAExt.framework/Versions/A/SAExt",
+      "input_sha256": "80c927f0e48acd6bab377576e69c10d1ce8d040f62e1095eeaf71727df477a9a",
+      "arm64_before_sha256": "dc93f23cac4f43544de08d95187dc298168852dbd8a2ad1d4e0f37d44527da8c",
+      "arm64_after_sha256": "d5ef32220cb504220d4705e0c015bbf14b03977466bb57506989f0f259540b68",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "80bb792e9263ffd094e298c3cf9a299b0f91a6c5f5a728e3c4640a5e2f626dd9",
+        "__LINKEDIT": "b737b7188dae48802d0c95420aedc06024fc544a45c57473012d504038d77b83"
+      },
+      "modifications": [
+        {
+          "offset": 2168,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/SmartArt.framework/Versions/A/SmartArt",
+      "input_sha256": "88aafe50cc353604aeab02b28df48c05a00ecf42df8c11f0cb2a4b589051d635",
+      "arm64_before_sha256": "14e70517777ab5be36c1b2d780891196bfba00ee8ff809bb984089f075386111",
+      "arm64_after_sha256": "d976b3f8ecd28f582a018917c4e7f4b76b2e729f8d050958173bdd79dd44d94c",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "8cd50758f5c226d7533d74e39f8255b55bcf6478674e4d89ce9b6633899dc8a0",
+        "__LINKEDIT": "c16a35dbab5d4fcb99d717accd737e1cb0c080458e5ee586f45bbc5263899df9"
+      },
+      "modifications": [
+        {
+          "offset": 4440,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 4872,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3216,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Uniscribe.framework/Versions/A/Uniscribe",
+      "input_sha256": "4b1bd6c3df6f89968f2ed780803692379d6e564326ef9388d10c7ac9bc8e0710",
+      "arm64_before_sha256": "30b6a9e99e874113a480619cdee470359bc3ce09602ba9e07cb91548d270f0f0",
+      "arm64_after_sha256": "472eb6d7640328a62dd9b6882e084555ff6b53d0498c3240b3873472ec2a1ef2",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "bf9e53551e4e935e2a2a2750b12566a66342549019b82cc9b1f65bb34633a812",
+        "__LINKEDIT": "af812613ba4918a09ce8f5c05a088f0706e331a4ed5e85dbbd3f7ed9873ca7eb"
+      },
+      "modifications": [
+        {
+          "offset": 2568,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2256,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Visual Basic for Applications.framework/Versions/A/Visual Basic for Applications",
+      "input_sha256": "3dc445be7aa70f7c319f37454c045461878d4ff2577637a84abc2b8823ff7f2c",
+      "arm64_before_sha256": "158bbe6a677d8e3f9fda70df2cc6170bfd0dd43e87e3cbac1db830c8853b28d7",
+      "arm64_after_sha256": "e1d534d3fad0f21c883c1fe5abba723b963e38e3b0d86d7820a78d0cdf770eda",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "0905d14ac0766f484c45060380ba2caf3a8cb497459983737b149501d2f81102",
+        "__LINKEDIT": "fdb3201f3143fd92e0b043e374aedd89cfd4fdbcefbdb432562277ea75b67aa7"
+      },
+      "modifications": [
+        {
+          "offset": 3768,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 4512,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2856,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/WLMGraphicsDevice.framework/Versions/A/WLMGraphicsDevice",
+      "input_sha256": "9bda3b2f182b14a8e8a5cbbda3bce3e3864a0dab879398c4e12bc7c979c43b6b",
+      "arm64_before_sha256": "1b8e30dc833fea468bd411f0a9d768217643fbff583166e344656931f02d82f4",
+      "arm64_after_sha256": "da3a3bf7612a3947a85093994f9d1c379c2516736857bfd893c6acaf86704351",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "2f882daff4eea9b3ab2b1f8cdbb9a6a051d05267c4fa5d3ede1ad475dd9cdd05",
+        "__LINKEDIT": "596db4ff4c80adb18c310a8bf3e4d8d7b3a3d5368ffc14481f0455b5eab3c5ef"
+      },
+      "modifications": [
+        {
+          "offset": 3440,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3704,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2992,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/WLMKernel.framework/Versions/A/WLMKernel",
+      "input_sha256": "1b89dad8ac0c3faad465b0f36a8acb24137a3ae7f07db4358f71d2fcb1271dd4",
+      "arm64_before_sha256": "75b6da3404fa76b8bc6e958a2ff780fe833c71e41c7c4bb97549321228166ede",
+      "arm64_after_sha256": "50bf9f0841c3af4599cc9c17993057687d0ab1b70ce593fa8e3e80d14af3e5ec",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "8b55a163d5dddec8365d56751fa248b3582c144a019d17d8f9ed4b0ed62387c6",
+        "__LINKEDIT": "4db05083c886cf9a439e1e2ea265950d7210c238e9910258ed1bb31b3c079971"
+      },
+      "modifications": [
+        {
+          "offset": 3408,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3056,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/WLMUser.framework/Versions/A/WLMUser",
+      "input_sha256": "3ccb73c27b8891aa4ef659237b1d317e848fd7f71ef01e986922e793d385d63c",
+      "arm64_before_sha256": "e6efd4f1fd9fefe99f1e6addff7e3f9e2fdb6162e72da15b9fe9e44f5d0c5e9b",
+      "arm64_after_sha256": "09fad19a28083b1ed73ba7b8cfced382ed6d53b8c6fdccf5a53fc51e352ba2d3",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "b5757784f9a745b670b0a04201689ee41e2102b6718e610e9d8e53cdf19062b4",
+        "__LINKEDIT": "29e1a9748f4a1f702b564b45134b118404e128734b4f0768d8277dd4f7301505"
+      },
+      "modifications": [
+        {
+          "offset": 3576,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 4160,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3056,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/WinCrypto.framework/Versions/A/WinCrypto",
+      "input_sha256": "ee11a97df9f6b5feb358fbbdee97e750feb7a5053fce9e2bd12092b255938699",
+      "arm64_before_sha256": "2e7d4f77f98157d5c5dc59f2c1939c9504d5869aaad4cd299f97791cd5509d8f",
+      "arm64_after_sha256": "72d0c52143d4e2116c1c8f23ccb07ce1d46e332e25b7e262a069c6935507acb2",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "3c53a19803d934e524a9570fa7f80726e88cd276cc1b4275af26c7a84f3ac8c5",
+        "__LINKEDIT": "f016a821a43cfd17e384435388f960d583a332d4fd33f57ac60cf7369be118c4"
+      },
+      "modifications": [
+        {
+          "offset": 2256,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/XPG.framework/Versions/A/XPG",
+      "input_sha256": "7e6d8a2501618068335941ab494aa6d444a0df9936f94167c903f110862bfaa2",
+      "arm64_before_sha256": "3d7d6502c56ebeee28af68a0355389a4298aef90323976dabb4b48821017a227",
+      "arm64_after_sha256": "53dd8d95664b818b74730b2911e8be41eb5e7ccc6b2d669235c563f47c7a6375",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "86f0473f22d54e6e9888311055dd6431956648f1c57c4d186dd7f4d1c5cabbb0",
+        "__LINKEDIT": "09eb0512c4b9c2cf79ac02c44d0af10a164decfdc5a303ab6eb5e0bb5896913f"
+      },
+      "modifications": [
+        {
+          "offset": 3040,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2728,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/Xmllite.framework/Versions/A/Xmllite",
+      "input_sha256": "d2d362000568a725ca0df4b37c25f0553324a3c5ec0f15299f5c3b1aa19fbe36",
+      "arm64_before_sha256": "d15f4f0103552634e564101610d99d68a7d6f24277a5574e8e9644cfe174d2bb",
+      "arm64_after_sha256": "69690aa5b6269eb88e5b8ee2bd16e32384f1be086f91e0f15e4f568869fcd144",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "cb084c41aaf956f09e22c9781f9f9634eb4417e94d6eb990bdf3649ee6db0de6",
+        "__LINKEDIT": "078a6474303b12b5cf9e9823b107b71054d7e7391bce0ba84c1f1de230df6697"
+      },
+      "modifications": [
+        {
+          "offset": 2392,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2176,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/dwrite10.framework/Versions/A/dwrite10",
+      "input_sha256": "ec1a47a2de53e57d0335a38be8bd8fc1689922df82aabf0f342fe769234d60a3",
+      "arm64_before_sha256": "9165412d29dff783c4b6365d771515548e481aed325bf643e6ff07733a26aaf6",
+      "arm64_after_sha256": "8aaebf36d524fa3df8007d535c3b53fc52a5f699fe29211113585db50c14e6dd",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "e495aef8298a0f3db58839d998a0ccc4608ed9a0b6fc3ecc2a1518c31ddfed1b",
+        "__LINKEDIT": "8f1f8cc4b59fea4f5b6ca6b178fd358c03fc845cf7b822546980c200ff22c115"
+      },
+      "modifications": [
+        {
+          "offset": 2256,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/libmbupdx2009.dylib",
+      "input_sha256": "aafb81464d51eebc53847667856f6473541613a4af65e55abf0219ba3d2f0471",
+      "arm64_before_sha256": "2b8cc1aec4b3d6b13d4cea3e227331cf4ddc45cb3685841f95f5a21c7bd1a329",
+      "arm64_after_sha256": "c56b0b4b6c85ebed4aa0e1b7c143eaa560e7527831b0655d6b94c11ce0452199",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "379b41f1da3f2aa769c25d43a91d0266bd1fe4964dedb6124be31fb92ea9f01f",
+        "__LINKEDIT": "7fd7d3c96b70c6e35745c6b3ce8d76ae1f31c5286b5d9f1932d59b874156ed81"
+      },
+      "modifications": [
+        {
+          "offset": 2456,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2240,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/libmsix.dylib",
+      "input_sha256": "ff042ffc72cf31e3ed369e7bd6557ba217ff3565be127ff9093104739d176744",
+      "arm64_before_sha256": "07145a6c70b26fea0ddf16b863d4d1fce3bcab8df07ff371e7451a22a35a5da8",
+      "arm64_after_sha256": "14b8de89e5cab5948b05a59ba919159438d151761bc76fa1d6c0cc6e8af7d85a",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "458019c21f6ae853f86b62ce65141887d232130bd83f8a2299751d72c40e58c5",
+        "__LINKEDIT": "e4a795fcaf4102898701055dd1efd0908d0c99c0b9d1e8d5890c651d792844e6"
+      },
+      "modifications": [
+        {
+          "offset": 2712,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721152
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mbuinstrument.framework/Versions/A/mbuinstrument",
+      "input_sha256": "52ce1e5d690128c217de6310e711f115703a01f8df64f8e9f5b54c29360dd99f",
+      "arm64_before_sha256": "bafa0d9025197cb4cc543d0965f0ca58b29e31f4672f8128dcd778a9032c36f7",
+      "arm64_after_sha256": "6d329535dd615535368fef93fb81c813818ba8ebcfae8c6985f3ce593c529a3c",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "868f7714daa5bb9a8a9657e47f2f710d42532cee1d269cabbdec62577f19a89e",
+        "__LINKEDIT": "6314aa9a5935b5ff58280172df114e32a440fa639c9d7e3eb35045d2bfd85ba1"
+      },
+      "modifications": [
+        {
+          "offset": 3688,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 4376,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3624,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mbukernel.framework/Versions/A/mbukernel",
+      "input_sha256": "87f23d9aef045ac5b86c5d217841c8fbede1f3d5d24b0173790521e6d2ad3b26",
+      "arm64_before_sha256": "857155c2a79a071f1b265e8af7806b72dfd06d3a76a69957e118471f8c2206c0",
+      "arm64_after_sha256": "1cc53fcf712a76fab16a97e47cb5b27fd8fd93e99804436cc5bd83830ada2ee5",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "fc2ae52202dcf712428c7352c402b960eeb9c7d7f478057500db9d4bb10edc37",
+        "__LINKEDIT": "1e2d635fbab6cfc95c9da724fa579fdc160e8dec99a2fd9e95ff85f99e448435"
+      },
+      "modifications": [
+        {
+          "offset": 3200,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3056,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mbulocale.framework/Versions/A/mbulocale",
+      "input_sha256": "af96259ffa2af74b8c496bf7ce1ff6b028971d84d4af05a2b26160ce58d2593f",
+      "arm64_before_sha256": "898e6f4e90eb4f8405f7176dd606a2407a1e411c7d24b8911edb203f98c1ab8b",
+      "arm64_after_sha256": "05dba65f1dabef67cb859fe2bc5eb163b43baf9d8741eeb4a010b9aa0e0b48a6",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "6902432fcef6730b4a9d8cc6f18ca4aa661243441ae7bf48d863fff53a4584a5",
+        "__LINKEDIT": "8205ebd0ee2fe0b6b5decb4151b7ec274dc164fc0b5561eb6da56631a59b07a8"
+      },
+      "modifications": [
+        {
+          "offset": 1936,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/merp.framework/Versions/A/merp",
+      "input_sha256": "526b82bfb2158386372af2baa79a7ea8cf7115520a248537118437053c86e2ef",
+      "arm64_before_sha256": "15e677e8ec1895584d54f92e1106ebc6e04a0bb9228b5befdb745a537126295b",
+      "arm64_after_sha256": "34ee94bbd4521ea1b1ce2595a1a515dc7dcf5bbc403b8e1b75088bbad1dead74",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "6b168403357640a051d02c268d6068b06455e692e060fe65c79f5539a6daa1a9",
+        "__LINKEDIT": "cc052246a01d849c7fb9e2dc3eda816f4dc3752dad85a0c80f02c4a431e299da"
+      },
+      "modifications": [
+        {
+          "offset": 3216,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 3768,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2888,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/molc.framework/Versions/A/molc",
+      "input_sha256": "27157288472eac57be02ad0a6efe62718eb23651b61cc0dcc14c9b90a976b7b3",
+      "arm64_before_sha256": "5fb1927774f3307398d202c40384914793d8621b8c6838cffb490f818fc4fafc",
+      "arm64_after_sha256": "fea05a7a677ade547373a3feb52da39063651d9f2ec20c5314f3f2928ce92e33",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "58474fc551a49e3c5331982a7cc41af67d2ce611c383dc90b9a097deb522c7f6",
+        "__LINKEDIT": "94523f029cba62a51857dfc3a1d24e41c378808eb2afb65b86658733c2fd95a9"
+      },
+      "modifications": [
+        {
+          "offset": 3496,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3584,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 2968,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mso20.framework/Versions/A/mso20",
+      "input_sha256": "eaa840cb2b4ef88d001a9205574eb10effbbf09e3bd06d2ad53a93215a65db3e",
+      "arm64_before_sha256": "248e585be4a83a1da0a4f88c5c00dfddd487669b855fd64fb1a5ce1e13591cbb",
+      "arm64_after_sha256": "924d00aa5eb93768932cbe04ec14a1fd3dc744311ae4ba9b36e370ab45a2c33a",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "8d8d5fff7bd56fcc9663f5c5f4d52e3395579449b339a96d0563299fd440e602",
+        "__LINKEDIT": "6cd7fabf48c0b7b790cd9ebe4a774d31d4ff424ff1fd416f1cef60116e223689"
+      },
+      "modifications": [
+        {
+          "offset": 3768,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 5064,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3208,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mso30.framework/Versions/A/mso30",
+      "input_sha256": "cf3401ab27ea92e3e08f28c7cba9777b56e18cb7f17b9b0aa283a5be1672f16e",
+      "arm64_before_sha256": "8f97bc0bb5e09366d07512867e9c1ff4b72794fda2a34509b5e65ac4df16fb12",
+      "arm64_after_sha256": "dd6112a52930fc26b95f8fd13b54571f9e651721c7203a8f011c396a9cd6c884",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "4a07f4f1dba8ebe451308d888dc337a04cd5942df0f79765e4df70bb4e68a83c",
+        "__LINKEDIT": "2d7f945cffee0407a9b3134aa063b1e9caab0adb2ff1a647edf08bd230ae39f3"
+      },
+      "modifications": [
+        {
+          "offset": 4520,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 6120,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3368,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mso40ui.framework/Versions/A/mso40ui",
+      "input_sha256": "2afc256e8886bee0252bfb6f45d0617433c49ecfcb73a9328393467133e8d30c",
+      "arm64_before_sha256": "8ef59f80cbf6ff3c425a3ee7a39fb08a84a6462600b29fcf225c601e9741b7ba",
+      "arm64_after_sha256": "703ba5879a7de0097b03af107cfe844d6b29d5e387a20966da98d362af27d30b",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "c1ddde983146e24bf9f7b67d1c73f65be54f57812704acc9c7356099f499083d",
+        "__LINKEDIT": "9388c707ecac904c6927d3f519b4e91ba76210a8974999ccbda8281096b8188c"
+      },
+      "modifications": [
+        {
+          "offset": 5184,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 6904,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 4096,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/mso99.framework/Versions/A/mso99",
+      "input_sha256": "e6bdadcd0c06e794d4fb5d70921be3f65a4469e0b87bae165c148490fffc8ad2",
+      "arm64_before_sha256": "57b84798821de4f02275bb631f06d7e3303932d519b2e3fd67116fb668336340",
+      "arm64_after_sha256": "5626ddbda42219dc9c584a26cb23552164ad969f0e7106e4816a6e27a3d3bff9",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "d4260df87f8d98d9c335f9fc3921ada23673255b2689ac8c3cc3a3d1e822533f",
+        "__LINKEDIT": "361aa9abceacbc19d292718e13a108eb1fec18a7482f1788b9be5e891236a982"
+      },
+      "modifications": [
+        {
+          "offset": 6672,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 9080,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 4248,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/osf.framework/Versions/A/osf",
+      "input_sha256": "c51bbd262b82fca749ddc4dd22b8411b02fc4c4dabae2429637c4ba3ffbaa967",
+      "arm64_before_sha256": "f9778fbebf9afc5021b9fafacd64a72bf8fee224a6b6b03564124c0c56d3a17c",
+      "arm64_after_sha256": "4e456462d5ab205b246205029096ad9f2c9a60d6c6db5d840e6960646d3b2f99",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "766de85b51c091734bb10ea85d0acf9cbc1b88c650e4869e528e3063cca91f71",
+        "__LINKEDIT": "51ecb73fc3896e72dc85aade343e6a023f875a79b2a6aee1b2a2fc13d3b21d2d"
+      },
+      "modifications": [
+        {
+          "offset": 4392,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3288,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/osfstorage2.framework/Versions/A/osfstorage2",
+      "input_sha256": "817081eb4e3688b3dca44be8d84baf194b6c8c8dc748152db71e88e20435e3fe",
+      "arm64_before_sha256": "86283fb79f8a53fcc12a588e92426823729791afebf95c8d7011c8098bb92679",
+      "arm64_after_sha256": "2209df07909c662841cf00ddb32ba2ccdc95e9c0bdfdbdb19d9ee2537e90eb91",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "be58b9af8b9382bc78cb41e1e0c6ffd730ab44469d734ca535b6e927a6861d12",
+        "__LINKEDIT": "5c0632d333a176ea15d07c92fefdfd759a32e87eb42245a25325f1237cef7287"
+      },
+      "modifications": [
+        {
+          "offset": 3784,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 2824,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/Frameworks/rpcrt4.framework/Versions/A/rpcrt4",
+      "input_sha256": "c35a2e634de6302982dfd619713d3009d367adbdd4f9b4cedec74b609118ae20",
+      "arm64_before_sha256": "99f5bff3f8c2192bb59ae824d437c4f27bcd3781730586b10904246b70c694f5",
+      "arm64_after_sha256": "97e51686667b9eca8c9c93d5bcd6182488bf3521c20ac5ea69b603eca3944145",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "7ddd92cff6404a2c485fb7202dc841e87c5f649610a869fdb43637718c270281",
+        "__LINKEDIT": "b8887c842d8f35ed3623b5e6bca84e8b5331392479efc6762db5d155748d51c0"
+      },
+      "modifications": [
+        {
+          "offset": 2256,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Contents/MacOS/Microsoft Excel",
+      "input_sha256": "09fcf75a0770c4b778af2bee5a5c9c15e87d9c56f3c645d14390ca5df13e2fca",
+      "arm64_before_sha256": "2b43fddda3a80b825088b7e5ee18b8dd35b378852ed0c074ba1c7ab5b1985954",
+      "arm64_after_sha256": "6d8873c2ca243d4930d35e942a948a9d434a126525bf2895ee9c0b658443674d",
+      "payload_hashes_unchanged": {
+        "__TEXT,__text": "5384ec952c06ba20afaae3e3961a896069228c0f6cc974387331cdacf44df240",
+        "__LINKEDIT": "7e4c4c7dd13a49253d22ecf0bc3e8ed1f53353c97a40244d7f582f976e4ddccc"
+      },
+      "modifications": [
+        {
+          "offset": 6552,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+          "after": "@rpath/ExcelCocoa.dylib"
+        },
+        {
+          "offset": 8648,
+          "length": 64,
+          "field": "path",
+          "before": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+          "after": "@rpath/ExcelAppKit.dylib"
+        },
+        {
+          "offset": 3408,
+          "length": 12,
+          "field": "LC_BUILD_VERSION",
+          "before": [
+            1,
+            720896,
+            721664
+          ],
+          "after": [
+            2,
+            1179648,
+            1179648
+          ]
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "from": "Contents/Frameworks/mso99.framework/Versions/A/mso99",
+      "kind": "weak",
+      "path": "@rpath/MsgrLibClient.framework/Versions/A/MsgrLibClient",
+      "target": null,
+      "category": "unresolved"
+    }
+  ],
+  "remaining_system_libraries": [
+    "/System/Library/Frameworks/AVFoundation.framework/Versions/A/AVFoundation",
+    "/System/Library/Frameworks/AVKit.framework/Versions/A/AVKit",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+    "/System/Library/Frameworks/AddressBook.framework/Versions/A/AddressBook",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+    "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+    "/System/Library/Frameworks/AuthenticationServices.framework/Versions/A/AuthenticationServices",
+    "/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork",
+    "/System/Library/Frameworks/Contacts.framework/Versions/A/Contacts",
+    "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+    "/System/Library/Frameworks/CoreData.framework/Versions/A/CoreData",
+    "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+    "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+    "/System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage",
+    "/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+    "/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText",
+    "/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo",
+    "/System/Library/Frameworks/CoreWLAN.framework/Versions/A/CoreWLAN",
+    "/System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration",
+    "/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling",
+    "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+    "/System/Library/Frameworks/GSS.framework/Versions/A/GSS",
+    "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO",
+    "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/JavaScriptCore",
+    "/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos",
+    "/System/Library/Frameworks/MediaAccessibility.framework/Versions/A/MediaAccessibility",
+    "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/MetalPerformanceShaders",
+    "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS",
+    "/System/Library/Frameworks/Network.framework/Versions/A/Network",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+    "/System/Library/Frameworks/Quartz.framework/Versions/A/Quartz",
+    "/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore",
+    "/System/Library/Frameworks/QuickLook.framework/Versions/A/QuickLook",
+    "/System/Library/Frameworks/ScriptingBridge.framework/Versions/A/ScriptingBridge",
+    "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+    "/System/Library/Frameworks/SecurityInterface.framework/Versions/A/SecurityInterface",
+    "/System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement",
+    "/System/Library/Frameworks/SpriteKit.framework/Versions/A/SpriteKit",
+    "/System/Library/Frameworks/StoreKit.framework/Versions/A/StoreKit",
+    "/System/Library/Frameworks/SwiftUI.framework/Versions/A/SwiftUI",
+    "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+    "/System/Library/Frameworks/UserNotifications.framework/Versions/A/UserNotifications",
+    "/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit",
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libcompression.dylib",
+    "/usr/lib/libcurl.4.dylib",
+    "/usr/lib/libiconv.2.dylib",
+    "/usr/lib/libnetwork.dylib",
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/libresolv.9.dylib",
+    "/usr/lib/libsqlite3.dylib",
+    "/usr/lib/libxml2.2.dylib",
+    "/usr/lib/libz.1.dylib",
+    "/usr/lib/swift/libswiftAppKit.dylib",
+    "/usr/lib/swift/libswiftCloudKit.dylib",
+    "/usr/lib/swift/libswiftCore.dylib",
+    "/usr/lib/swift/libswiftCoreData.dylib",
+    "/usr/lib/swift/libswiftCoreFoundation.dylib",
+    "/usr/lib/swift/libswiftCoreGraphics.dylib",
+    "/usr/lib/swift/libswiftCoreImage.dylib",
+    "/usr/lib/swift/libswiftCoreLocation.dylib",
+    "/usr/lib/swift/libswiftDarwin.dylib",
+    "/usr/lib/swift/libswiftDispatch.dylib",
+    "/usr/lib/swift/libswiftFoundation.dylib",
+    "/usr/lib/swift/libswiftIOKit.dylib",
+    "/usr/lib/swift/libswiftMetal.dylib",
+    "/usr/lib/swift/libswiftObjectiveC.dylib",
+    "/usr/lib/swift/libswiftQuartzCore.dylib",
+    "/usr/lib/swift/libswiftUniformTypeIdentifiers.dylib",
+    "/usr/lib/swift/libswiftXPC.dylib",
+    "/usr/lib/swift/libswiftos.dylib"
+  ],
+  "excel_executed": false,
+  "loader_ready": false,
+  "release_ready": false
+}
