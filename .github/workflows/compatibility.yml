@@ -15,6 +15,7 @@ on:
       - 'tools/test_compatibility.sh'
       - 'tools/test_screen.sh'
       - 'tests/**'
+      - '!tests/simulator_screen_app.m'
       - '.github/workflows/compatibility.yml'
   workflow_dispatch:
 concurrency:
