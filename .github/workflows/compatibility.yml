@@ -14,6 +14,7 @@ on:
       - 'tools/test_loader.py'
       - 'tools/test_compatibility.sh'
       - 'tools/test_screen.sh'
+      - 'tools/test_view.sh'
       - 'tests/**'
       - '!tests/simulator_screen_app.m'
       - '.github/workflows/compatibility.yml'
@@ -36,6 +37,8 @@ jobs:
           cp build/compatibility/exports.txt reports/ios-exports.txt
           bash tools/test_screen.sh 2>&1 | tee reports/native-screen-contracts.txt
           cp build/screen/native-report.json reports/native-screen-contracts.json
+          bash tools/test_view.sh 2>&1 | tee reports/native-view-contracts.txt
+          cp build/view/native-report.json reports/native-view-contracts.json
           python3 tools/shim_coverage.py docs/evidence/dependencies-16.55.json.gz reports/ios-exports.txt reports/shim-coverage.json
       - name: Exercise actual dyld two-level binding using original native fixtures
         run: |
