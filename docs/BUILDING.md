@@ -92,3 +92,13 @@ creates an isolated available iPad simulator, and runs the production entry brid
 synthetic desktop classes/nib. It uploads JSON/log reports, never an app or IPA. Microsoft
 binaries and account interaction are absent from that test. The script removes its own
 simulator after completing or failing; it does not touch a physical iPad.
+
+## View contracts
+
+`bash tools/test_view.sh` compiles native model tests and checks 32 method encodings
+against captured arm64 AppKit metadata. The full compatibility workflow now includes
+ExcelView.m in the signed iOS shim and runs these contracts. The internal simulator
+host additionally checks NSView/UIView hierarchy agreement, flipped/scaled placement,
+actual CoreGraphics drawing callbacks and four positive/negative pixel samples. Its
+snapshot is sampled internally; only JSON/log reports are uploaded. No Excel code or
+unfinished app/IPA is supplied by these tests.

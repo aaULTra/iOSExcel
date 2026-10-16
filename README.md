@@ -41,6 +41,7 @@ are included in this repository/archive.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
 - `docs/LOADER.md`: distinct forwarding dylibs, native two-level binding proof and exact limits.
 - `docs/SCREEN.md`: partial scene-backed NSScreen geometry and its validation boundary.
+- `docs/VIEW.md`: typed NSView hierarchy, drawing bridge, pixel tests and explicit limits.
 - `docs/BUILDING.md`, `docs/DEBUGGING.md`: reproducibility and first-failure procedure.
 - `docs/evidence/`: actual binary metadata, imports, Objective-C strings, original
   entitlements, graph, installer hashes and retarget verification. Metadata only.
@@ -60,22 +61,26 @@ Source: https://github.com/aaULTra/iOSExcel
 All 30 Python tests pass. Native startup/nib/delegate contracts, two-level dyld binding,
 actual 55-image retargeting, iOS forwarding-library builds and signature checks pass.
 The original XLMainMenu archive is checked with explicit test stand-ins, without loading
-Excel. Nine NSScreen method encodings match captured real arm64 AppKit contracts.
+Excel. Nine NSScreen and 32 NSView method encodings match captured arm64 AppKit contracts.
+The partial NSView model preserves NSResponder inheritance, hierarchy ownership and
+flipped/scaled coordinates, with a separate UIView projection and typed drawing bridge.
 
-The production UIKit entry bridge and scene-backed NSScreen adapter also passed an
+The production UIKit entry bridge and scene/view adapters also passed an
 internal iPad Pro 11-inch (M4) Simulator run on 26.2. It exercised a real key window,
-UIKit safe areas, scene scale and a controlled window-bounds change using synthetic
-desktop classes/nib. It contains no Microsoft code and is not physical-iPad validation.
-See docs/SCREEN.md for exact scope and unsupported behavior.
+UIKit safe areas, scene scale, window-bounds changes and synthetic view drawing. Four
+pixel samples verify flipped/unflipped draw placement; hierarchy, scaled coordinates,
+visibility, z-order and removal checks pass. The host uses synthetic desktop classes/nib
+and contains no Microsoft code. It is not physical-iPad or Excel UI validation.
+See docs/SCREEN.md and docs/VIEW.md for exact scope and unsupported behavior.
 
-Current exact export coverage is 14/538 required AppKit names and 5/143 imported classes.
+Current exact export coverage is 16/538 required AppKit names and 6/143 imported classes.
 These include partial implementations; exported names are not working API guarantees.
-Remaining class/API behavior, framework/resource integration, UI/text/document rendering
+Remaining class/API behavior, framework/resource integration, real Excel UI/text/document rendering
 and legitimate activation still block real Excel loader and workbook milestones.
 
-Native screen/startup/loader checks: https://github.com/aaULTra/iOSExcel/actions/runs/38980441518
+Native view/screen/startup/loader checks: https://github.com/aaULTra/iOSExcel/actions/runs/38982725023
 
-UIKit bridge/screen simulator check: https://github.com/aaULTra/iOSExcel/actions/runs/38980441619
+UIKit bridge/screen/view simulator check: https://github.com/aaULTra/iOSExcel/actions/runs/38982725046
 
 Official package/SDK analysis: https://github.com/aaULTra/iOSExcel/actions/runs/38816989758
 

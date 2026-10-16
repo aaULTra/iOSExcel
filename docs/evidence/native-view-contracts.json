@@ -1,0 +1,148 @@
+{
+  "abi_methods_verified" : [
+    {
+      "encoding" : "v24@0:8@16",
+      "selector" : "addSubview:"
+    },
+    {
+      "encoding" : "{CGRect={CGPoint=dd}{CGSize=dd}}16@0:8",
+      "selector" : "bounds"
+    },
+    {
+      "encoding" : "{CGPoint=dd}40@0:8{CGPoint=dd}16@32",
+      "selector" : "convertPoint:fromView:"
+    },
+    {
+      "encoding" : "{CGPoint=dd}40@0:8{CGPoint=dd}16@32",
+      "selector" : "convertPoint:toView:"
+    },
+    {
+      "encoding" : "{CGRect={CGPoint=dd}{CGSize=dd}}56@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16@48",
+      "selector" : "convertRect:fromView:"
+    },
+    {
+      "encoding" : "{CGRect={CGPoint=dd}{CGSize=dd}}56@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16@48",
+      "selector" : "convertRect:toView:"
+    },
+    {
+      "encoding" : "v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+      "selector" : "drawRect:"
+    },
+    {
+      "encoding" : "{CGRect={CGPoint=dd}{CGSize=dd}}16@0:8",
+      "selector" : "frame"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "selector" : "init"
+    },
+    {
+      "encoding" : "@48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+      "selector" : "initWithFrame:"
+    },
+    {
+      "encoding" : "B24@0:8@16",
+      "selector" : "isDescendantOf:"
+    },
+    {
+      "encoding" : "B16@0:8",
+      "selector" : "isFlipped"
+    },
+    {
+      "encoding" : "B16@0:8",
+      "selector" : "isHidden"
+    },
+    {
+      "encoding" : "v16@0:8",
+      "selector" : "layout"
+    },
+    {
+      "encoding" : "v16@0:8",
+      "selector" : "layoutSubtreeIfNeeded"
+    },
+    {
+      "encoding" : "B16@0:8",
+      "selector" : "needsDisplay"
+    },
+    {
+      "encoding" : "B16@0:8",
+      "selector" : "needsLayout"
+    },
+    {
+      "encoding" : "v16@0:8",
+      "selector" : "removeFromSuperview"
+    },
+    {
+      "encoding" : "v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+      "selector" : "setBounds:"
+    },
+    {
+      "encoding" : "v32@0:8{CGPoint=dd}16",
+      "selector" : "setBoundsOrigin:"
+    },
+    {
+      "encoding" : "v32@0:8{CGSize=dd}16",
+      "selector" : "setBoundsSize:"
+    },
+    {
+      "encoding" : "v48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+      "selector" : "setFrame:"
+    },
+    {
+      "encoding" : "v32@0:8{CGPoint=dd}16",
+      "selector" : "setFrameOrigin:"
+    },
+    {
+      "encoding" : "v32@0:8{CGSize=dd}16",
+      "selector" : "setFrameSize:"
+    },
+    {
+      "encoding" : "v20@0:8B16",
+      "selector" : "setHidden:"
+    },
+    {
+      "encoding" : "v20@0:8B16",
+      "selector" : "setNeedsDisplay:"
+    },
+    {
+      "encoding" : "v20@0:8B16",
+      "selector" : "setNeedsLayout:"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "selector" : "subviews"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "selector" : "superview"
+    },
+    {
+      "encoding" : "v16@0:8",
+      "selector" : "viewDidMoveToSuperview"
+    },
+    {
+      "encoding" : "v24@0:8@16",
+      "selector" : "viewWillMoveToSuperview:"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "selector" : "window"
+    }
+  ],
+  "checks" : [
+    "hierarchy and responder ownership",
+    "flipped\/scaled\/nested coordinate transforms",
+    "point\/rect round trips",
+    "bounds scaling on resize",
+    "z-order without duplication",
+    "cycle rejection",
+    "unrelated\/window conversion rejection",
+    "invalid\/zero geometry rejection",
+    "move callbacks",
+    "layout invalidation",
+    "visibility\/display flags",
+    "ARC ownership release"
+  ],
+  "passed" : true,
+  "scope" : "Native model geometry\/hierarchy only; not UIKit drawing or Excel"
+}

@@ -43,3 +43,12 @@ ID with a log message; investigate the real caller if it requires those missing 
 The internal simulator result is written to Documents/screen-simulator-result.json;
 the workflow uploads it as a report, plus process/shim logs on failure. These logs prove
 only the adapter/bridge behavior with synthetic desktop code, not any Excel milestone.
+
+## View projection
+
+NSView logs cycles, invalid/overflowing geometry, unrelated roots and unfinished
+window-coordinate conversions before raising. Its UIKit projection preserves the
+legacy selected target's clipping default and adapts drawRect: coordinates explicitly.
+The view_contracts object in the internal simulator report records actual draw callback
+counts and pixel assertions. Passing those synthetic checks is not an Excel UI run.
+The native model report checks hierarchy lifetime and 32 exact method encodings.

@@ -191,3 +191,24 @@ resources. The workspace measured 834 x 1210 points at scale 2, and a controlled
 change refreshed the same screen object to 625.5 x 1028.5 points. Real Stage Manager,
 rotation, external displays and physical-iPad execution were not tested. The host's
 initial Rect helper name collision with MacTypes was fixed before the successful run.
+
+## Partial NSView bridge (2026-10-17 London)
+
+Thirteen real startup images import NSView. All 32 implemented method names occur in
+global selector strings, without receiver-specific attribution. The native compiled
+signatures matched captured arm64 AppKit metadata. Model tests passed hierarchy and
+responder ownership, mixed flipped/scaled/nested coordinates, round trips, frame/bounds
+resizing, lifecycle/layout, invalid input, overflow and lifetime release.
+
+An iPad Pro 11-inch (M4) Simulator on 26.2 invoked actual UIKit draw callbacks on two
+synthetic NSView subclasses. Four red-pixel assertions confirmed the lower-left and
+upper-left drawing conventions; placement/scaling agreed with UIView coordinates and
+visibility/z-order/removal passed. No Microsoft code executed. Window association,
+constraints, archives, input and full AppKit drawing/text remain unresolved.
+
+Apple documents the bottom-left default and nil-view/window coordinate conventions:
+https://developer.apple.com/documentation/appkit/nsview/isflipped
+https://developer.apple.com/documentation/appkit/nsview/convert(_:to:)-6u9ir
+Apple also documents the clipping default change after macOS 13. The selected old
+Excel target uses explicit clipping in its projection to preserve the older baseline:
+https://developer.apple.com/documentation/appkit/nsview/clipstobounds

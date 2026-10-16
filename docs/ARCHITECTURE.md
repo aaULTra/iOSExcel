@@ -75,3 +75,14 @@ origin; UIKit safe areas and point-to-backing scale are adapted explicitly. No p
 DPI or CG display identifier is invented. Native method encodings match captured AppKit
 contracts. This partial class adds no NSWindow/NSView/text/document rendering support.
 See SCREEN.md for the test boundaries and unsupported screen functionality.
+
+## Typed view projection
+
+The partial NSView layer keeps NSResponder inheritance and its own model hierarchy;
+UIView is a projection rather than a class alias. Strong child ownership and weak
+parent/responder references avoid cycles. Frame/bounds transformations account for
+mixed coordinate origins and scaling. UIKit dispatches typed drawRect: calls with an
+adapted CoreGraphics context; opposite origins are verified with pixel samples.
+No compatibility NSWindow is associated yet. Window conversion, constraints, view
+archives, input routing and full AppKit rendering remain separate unresolved layers.
+See VIEW.md for the implementation and proof boundary.

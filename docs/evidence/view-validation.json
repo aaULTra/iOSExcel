@@ -1,0 +1,31 @@
+{
+  "date_london": "2026-10-17",
+  "source_commit": "c49197d20bae5005838e10b25fe5c69f5d382605",
+  "native_workflow_run": 38982725023,
+  "simulator_workflow_run": 38982725046,
+  "conclusion": "success",
+  "python_tests": 30,
+  "view_abi_signatures_verified": 32,
+  "actual_startup_NSView_importers": 13,
+  "appkit_names_exported": 16,
+  "appkit_names_required": 538,
+  "appkit_classes_exported": 6,
+  "appkit_classes_required": 143,
+  "simulator_device": "iPad Pro 11-inch (M4)",
+  "simulator_runtime": "26.2",
+  "synthetic_drawing_callbacks": {
+    "unflipped": 1,
+    "flipped": 1
+  },
+  "positive_negative_pixel_assertions": 4,
+  "unsupported": [
+    "NSWindow association and view/window coordinate conversion",
+    "NSView archives/constraints/autoresizing",
+    "NSEvent/keyboard/IME/hit testing",
+    "Full AppKit drawing/text semantics"
+  ],
+  "excel_executed": false,
+  "physical_device_test": false,
+  "ipa_published": false,
+  "excel_milestone": "M3 not reached"
+}

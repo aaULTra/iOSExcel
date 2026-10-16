@@ -2,10 +2,10 @@
   "scope": "Excel 16.55 resolved arm64 startup closure, AppKit imports only",
   "meaning": "Exact exported names only. Does not validate ABI, behavior, initialization or device execution.",
   "required_count": 538,
-  "exported_name_count": 14,
-  "missing_count": 524,
+  "exported_name_count": 16,
+  "missing_count": 522,
   "required_class_count": 143,
-  "exported_class_count": 5,
+  "exported_class_count": 6,
   "exported_names": [
     "_NSApp",
     "_NSApplicationDidBecomeActiveNotification",
@@ -19,8 +19,10 @@
     "_OBJC_CLASS_$_NSFontManager",
     "_OBJC_CLASS_$_NSResponder",
     "_OBJC_CLASS_$_NSScreen",
+    "_OBJC_CLASS_$_NSView",
     "_OBJC_METACLASS_$_NSApplication",
-    "_OBJC_METACLASS_$_NSDocumentController"
+    "_OBJC_METACLASS_$_NSDocumentController",
+    "_OBJC_METACLASS_$_NSView"
   ],
   "missing_names": [
     "_NSAccessibilityActionDescription",
@@ -469,7 +471,6 @@
     "_OBJC_CLASS_$_NSTouchBar",
     "_OBJC_CLASS_$_NSTouchBarItem",
     "_OBJC_CLASS_$_NSTrackingArea",
-    "_OBJC_CLASS_$_NSView",
     "_OBJC_CLASS_$_NSViewAnimation",
     "_OBJC_CLASS_$_NSViewController",
     "_OBJC_CLASS_$_NSVisualEffectView",
@@ -543,7 +544,6 @@
     "_OBJC_METACLASS_$_NSTextView",
     "_OBJC_METACLASS_$_NSTokenField",
     "_OBJC_METACLASS_$_NSTouchBarItem",
-    "_OBJC_METACLASS_$_NSView",
     "_OBJC_METACLASS_$_NSViewController",
     "_OBJC_METACLASS_$_NSWindow",
     "_OBJC_METACLASS_$_NSWindowController"
