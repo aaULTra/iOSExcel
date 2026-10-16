@@ -1,0 +1,43 @@
+name: Attempt real Excel loader on iPad Simulator
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/run_excel_loader.py'
+      - '.github/workflows/real-loader.yml'
+  workflow_dispatch:
+concurrency:
+  group: real-excel-loader-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  loader:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download official Excel and verify Microsoft identity
+        run: |
+          set -euo pipefail
+          mkdir -p private reports
+          curl --fail --silent --show-error --location --retry 2 --max-time 900 'https://officecdn.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_Excel_16.55.21111400_Updater.pkg' -o private/Excel.pkg
+          echo '07b150dba0a31e08b87394d266b61db3030ce897d8415e0505c3b29150c35f39  private/Excel.pkg' | shasum -a 256 --check
+          pkgutil --check-signature private/Excel.pkg > reports/package-signature.txt
+          spctl --assess --type install --verbose=2 private/Excel.pkg
+          python3 - <<'PY'
+          from pathlib import Path
+          if 'Developer ID Installer: Microsoft Corporation (UBF8T346G9)' not in Path('reports/package-signature.txt').read_text():
+              raise SystemExit('Unexpected installer signer')
+          PY
+      - name: Extract without running installer scripts
+        run: python3 tools/extract_pkg.py private/Excel.pkg private/extracted
+      - name: Attempt original executable through simulator dyld and retain first failure
+        run: python3 tools/run_excel_loader.py 'private/extracted/Microsoft Excel.app'
+      - name: Upload diagnostic reports only, never Microsoft binaries or an unfinished IPA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-Excel-loader-reports
+          path: reports/
+          retention-days: 7

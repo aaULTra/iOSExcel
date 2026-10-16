@@ -46,7 +46,8 @@ def verify_changes(before,after,events):
   restored[offset:offset+length]=before[offset:offset+length]
  if restored!=before:raise ValueError('unexpected modification outside logged fields')
 
-def retarget(raw,minos='18.0',sdk='18.0',mapping=None):
+def retarget(raw,minos='18.0',sdk='18.0',mapping=None,platform=2):
+ if platform not in (2,7):raise ValueError('target must be iOS or iOS Simulator')
  original=arm64(raw);out,events=rewrite_load_paths(original,{} if mapping is None else mapping)
  d=bytearray(out);cs=commands(d);seen=0
  for c,o,n in cs:
@@ -55,8 +56,8 @@ def retarget(raw,minos='18.0',sdk='18.0',mapping=None):
   if c==0x32:
    pl,mi,sd,nt=unpack('<4I',d,o+8)
    if n!=24+8*nt or pl!=1:raise ValueError('expected macOS LC_BUILD_VERSION')
-   struct.pack_into('<3I',d,o+8,2,ver(minos),ver(sdk));seen+=1
-   events.append({'offset':o+8,'length':12,'field':'LC_BUILD_VERSION','before':[pl,mi,sd],'after':[2,ver(minos),ver(sdk)]})
+   struct.pack_into('<3I',d,o+8,platform,ver(minos),ver(sdk));seen+=1
+   events.append({'offset':o+8,'length':12,'field':'LC_BUILD_VERSION','before':[pl,mi,sd],'after':[platform,ver(minos),ver(sdk)]})
  if seen!=1:raise ValueError('expected one build version command')
  commands(d);verify_changes(original,d,events)
  return bytes(d),events

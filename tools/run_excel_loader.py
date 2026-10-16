@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+"""Internal real-Excel dyld experiment. No vendor payload or IPA is published.
+
+Simulator platform 7 is deliberately separate from device platform 2. This runs
+the original MH_EXECUTE through simctl spawn, not dlopen(MH_EXECUTE), and does
+not claim installed-app lifecycle, activation, or device compatibility.
+"""
+import argparse
+import json
+import os
+import signal
+import subprocess
+import time
+from pathlib import Path
+
+from build_facades import build_one
+from loader_plan import load_json, plan, stage
+
+
+def output(*args):
+    return subprocess.check_output(list(map(str, args)), text=True).strip()
+
+
+def run(*args):
+    subprocess.run(list(map(str, args)), check=True)
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('app', type=Path)
+    args = ap.parse_args()
+    root = Path(__file__).resolve().parents[1]
+    reports = root/'reports'
+    reports.mkdir(exist_ok=True)
+    destination = root/'private/real-loader'
+    result = plan(args.app, load_json(root/'docs/evidence/excel-16.55.json.gz'),
+                  load_json(root/'docs/evidence/dependencies-16.55.json.gz'), platform=7)
+    stage(args.app, destination, result)
+    (reports/'real-loader-transform.json').write_text(json.dumps(result, indent=2)+'\n')
+    frameworks = destination/'Contents/Frameworks'
+    sdk = output('xcrun', '--sdk', 'iphonesimulator', '--show-sdk-path')
+    shim = frameworks/'libExcelShim.dylib'
+    sources = ['ExcelNibArchive.m', 'ExcelAppKit.m', 'ExcelShim.m', 'ExcelScreen.m', 'ExcelView.m']
+    run('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
+        '-fobjc-arc', '-fmodules', '-Wall', '-Wextra', '-Werror', '-Wno-unused-parameter',
+        '-I'+str(root/'shim'), '-dynamiclib', *[root/'shim'/s for s in sources],
+        '-framework', 'UIKit', '-framework', 'Foundation', '-framework', 'CoreGraphics',
+        '-install_name', '@rpath/libExcelShim.dylib', '-o', shim)
+    run('codesign', '--force', '--sign', '-', shim)
+    for facade in result['facades']:
+        build_one(shim, frameworks/Path(facade['install_name']).name,
+                  facade['install_name'], facade['required_compatibility_version'], 'simulator')
+    # Only the verified startup closure is executable. No installer scripts,
+    # privileged helpers, authentication or activation workarounds are run.
+    for image in result['images']:
+        binary = destination/image['path']
+        run('codesign', '--force', '--sign', '-', binary)
+        run('codesign', '--verify', '--strict', binary)
+    devices = json.loads(output('xcrun', 'simctl', 'list', 'devices', 'available', '--json'))['devices']
+    candidates = []
+    for runtime, items in devices.items():
+        if 'iOS-' not in runtime:
+            continue
+        version = tuple(int(v) for v in runtime.rsplit('iOS-', 1)[1].split('-'))
+        if version[0] < 18:
+            continue
+        for device in items:
+            if 'iPad' in device['name'] and device.get('isAvailable'):
+                candidates.append((runtime, device, version))
+    if not candidates:
+        raise RuntimeError('No iPad simulator runtime installed')
+    candidates.sort(key=lambda x: ('M4' not in x[1]['name'], 'Pro' not in x[1]['name'], tuple(-v for v in x[2])))
+    runtime, template, _ = candidates[0]
+    device_type = template.get('deviceTypeIdentifier')
+    if not device_type:
+        types = json.loads(output('xcrun', 'simctl', 'list', 'devicetypes', '--json'))['devicetypes']
+        device_type = next(t['identifier'] for t in types if t['name'] == template['name'])
+    udid = output('xcrun', 'simctl', 'create', 'RealExcelLoader-'+os.environ.get('GITHUB_RUN_ID', 'local'), device_type, runtime)
+    report = {'experiment': 'Original Excel MH_EXECUTE with original 54-image Microsoft closure',
+              'platform': 'iOS Simulator (7), not an iPadOS device build',
+              'device': template['name'], 'runtime': runtime, 'source_sha': os.environ.get('GITHUB_SHA'),
+              'microsoft_entrypoint_confirmed': False, 'excel_initialised': False,
+              'activation_verified': False, 'release_ready': False}
+    print('Launching real Excel loader on', template['name'], runtime, flush=True)
+    try:
+        run('xcrun', 'simctl', 'boot', udid)
+        subprocess.run(['xcrun', 'simctl', 'bootstatus', udid, '-b'], check=True, timeout=240)
+        executable = destination/'Contents/MacOS/Microsoft Excel'
+        env = dict(os.environ)
+        env['SIMCTL_CHILD_DYLD_PRINT_LIBRARIES'] = '1'
+        env['SIMCTL_CHILD_DYLD_PRINT_RPATHS'] = '1'
+        started = time.monotonic()
+        with (reports/'real-loader.stdout.log').open('w') as stdout, (reports/'real-loader.stderr.log').open('w') as stderr:
+            process = subprocess.Popen(['xcrun', 'simctl', 'spawn', udid, str(executable)],
+                                       env=env, stdout=stdout, stderr=stderr, start_new_session=True)
+            try:
+                report['returncode'] = process.wait(timeout=60)
+                report['timed_out'] = False
+            except subprocess.TimeoutExpired:
+                os.killpg(process.pid, signal.SIGTERM)
+                process.wait(timeout=10)
+                report['returncode'] = process.returncode
+                report['timed_out'] = True
+        report['elapsed_seconds'] = round(time.monotonic()-started, 2)
+        stderr = (reports/'real-loader.stderr.log').read_text(errors='replace')
+        report['dyld_failure_present'] = any(s in stderr for s in ('Library not loaded:', 'Symbol not found:', 'incompatible platform', 'incompatible architecture'))
+        report['status'] = 'Loader failure captured' if report['dyld_failure_present'] else 'Inspect logs; no Excel startup success inferred'
+        print(stderr[-16000:], flush=True)
+        try:
+            logs = output('xcrun', 'simctl', 'spawn', udid, 'log', 'show', '--last', '2m', '--style', 'compact', '--predicate', 'process == "Microsoft Excel"')
+            (reports/'real-loader-unified.log').write_text(logs[-1000000:])
+        except subprocess.CalledProcessError as error:
+            report['secondary_log_error'] = str(error)
+    finally:
+        (reports/'real-loader-result.json').write_text(json.dumps(report, indent=2)+'\n')
+        print(json.dumps(report, indent=2), flush=True)
+        subprocess.run(['xcrun', 'simctl', 'shutdown', udid], check=False)
+        subprocess.run(['xcrun', 'simctl', 'delete', udid], check=False)
+
+
+if __name__ == '__main__':
+    main()

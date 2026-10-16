@@ -62,7 +62,7 @@ def payload_hashes(data):
     return hashes
 
 
-def plan(root, inventory, graph, minos='18.0', sdk='18.0'):
+def plan(root, inventory, graph, minos='18.0', sdk='18.0', platform=2):
     nodes = {b['path']: b for b in inventory['binaries']}
     closure = graph['startup_closure']
     if len(closure) != len(set(closure)) or graph['main'] not in closure:
@@ -91,7 +91,7 @@ def plan(root, inventory, graph, minos='18.0', sdk='18.0'):
             raise ValueError('Dependency graph differs from binary: ' + name)
         if set(REDIRECTS).issubset(paths):
             both.append(name)
-        after, events = retarget(raw, minos, sdk, REDIRECTS)
+        after, events = retarget(raw, minos, sdk, REDIRECTS, platform=platform)
         before_hashes, after_hashes = payload_hashes(before), payload_hashes(after)
         if before_hashes != after_hashes:
             raise ValueError('Executable or link-edit payload changed: ' + name)
@@ -105,7 +105,7 @@ def plan(root, inventory, graph, minos='18.0', sdk='18.0'):
                          'required_compatibility_version': version(value),
                          'version_scope': 'Loader numeric requirement only; no API compatibility claim'}
                         for old, value in requirements.items()],
-            'minos': minos, 'sdk': sdk, 'images': images,
+            'minos': minos, 'sdk': sdk, 'platform': platform, 'images': images,
             'unresolved': [edge for edge in graph['unresolved'] if edge['from'] in closure], 'remaining_system_libraries': sorted({edge['path']
                 for name in closure for edge in graph['graph'][name]
                 if edge['category'] == 'system' and edge['path'] not in REDIRECTS}),
@@ -125,7 +125,7 @@ def stage(root, destination, result):
             raw = source.read_bytes()
             if sha(raw) != image['input_sha256']:
                 raise ValueError('Source changed after validation')
-            changed, _ = retarget(raw, result['minos'], result['sdk'], result['redirects'])
+            changed, _ = retarget(raw, result['minos'], result['sdk'], result['redirects'], platform=result.get('platform', 2))
             if sha(changed) != image['arm64_after_sha256']:
                 raise ValueError('Non-deterministic retarget result')
             target = output / image['path']

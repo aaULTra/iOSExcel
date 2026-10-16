@@ -11,10 +11,12 @@ from excel_retarget import ver
 def build_one(shim, output, install_name, required_version, platform):
     if output.exists() or output.resolve() == shim.resolve():
         raise ValueError('Facade output must be new and distinct from the input shim')
-    sdk_name = 'iphoneos' if platform == 'ios' else 'macosx'
+    if platform not in ('ios', 'simulator', 'macos'):
+        raise ValueError('Unsupported facade platform')
+    sdk_name = {'ios': 'iphoneos', 'simulator': 'iphonesimulator', 'macos': 'macosx'}[platform]
     sdk = subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path'], text=True).strip()
     clang = subprocess.check_output(['xcrun', '--find', 'clang'], text=True).strip()
-    target = 'arm64-apple-ios18.0' if platform == 'ios' else 'arm64-apple-macos11.0'
+    target = {'ios': 'arm64-apple-ios18.0', 'simulator': 'arm64-apple-ios18.0-simulator', 'macos': 'arm64-apple-macos11.0'}[platform]
     output.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run([clang, '-target', target, '-isysroot', sdk, '-Wall', '-Wextra', '-Werror',
                     '-dynamiclib', '-x', 'c', '-', '-install_name', install_name,
@@ -26,7 +28,7 @@ def build_one(shim, output, install_name, required_version, platform):
     subprocess.run(['codesign', '--verify', '--strict', str(output)], check=True)
     metadata = inspect(output.read_bytes())
     shim_metadata = inspect(shim.read_bytes())
-    expected_platform = 2 if platform == 'ios' else 1
+    expected_platform = {'ios': 2, 'simulator': 7, 'macos': 1}[platform]
     if metadata.get('install_name') != install_name or metadata['build_versions'][0]['platform'] != expected_platform:
         raise ValueError('Unexpected facade identity or platform')
     reexports = [d['path'] for d in metadata['dylibs'] if d['kind'] == 'reexport']

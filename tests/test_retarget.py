@@ -13,6 +13,12 @@ class RetargetTest(unittest.TestCase):
   old=fixture();new,log=retarget(old)
   self.assertEqual(new[56:],old[56:]);self.assertEqual(struct.unpack_from('<I',new,40)[0],2)
   self.assertEqual(new[:40],old[:40]);self.assertEqual(new[52:],old[52:]);self.assertEqual(len(log),1)
+ def test_simulator_is_explicit(self):
+  old=fixture();new,log=retarget(old,platform=7)
+  self.assertEqual(struct.unpack_from('<I',new,40)[0],7)
+  self.assertEqual(new[56:],old[56:])
+  self.assertEqual(log[0]['after'][0],7)
+  with self.assertRaises(ValueError):retarget(old,platform=6)
  def test_truncated(self):
   for n in range(56):
    with self.assertRaises((ValueError,struct.error)):retarget(fixture()[:n])
