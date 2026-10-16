@@ -1,6 +1,7 @@
 #import "ExcelAppKit.h"
 #import "ExcelNibArchive.h"
 #import "ExcelShim.h"
+#import "ExcelScreen.h"
 #import <TargetConditionals.h>
 #import <objc/message.h>
 #if TARGET_OS_IOS
@@ -139,8 +140,10 @@ BOOL ExcelShimStartDesktopApplication(NSURL *contents, NSError **error) {
     self.window=[[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
     self.window.rootViewController=[UIViewController new];
     self.window.rootViewController.view.backgroundColor=UIColor.systemBackgroundColor; [self.window makeKeyAndVisible];
+    ExcelShimAttachScreenToWindow(self.window);
 }
 - (void)sceneDidBecomeActive:(UIScene *)scene {
+    ExcelShimAttachScreenToWindow(self.window);
     ExcelShimSetApplicationActive(YES); static BOOL started=NO;
     if (started) return;
     started=YES;
