@@ -5,6 +5,7 @@ on:
     paths:
       - 'shim/**'
       - 'tests/simulator_screen_app.m'
+      - 'tests/simulator_view_contracts.*'
       - 'tests/nib_fixture.py'
       - 'tools/test_screen_simulator.py'
       - '.github/workflows/screen.yml'

@@ -167,7 +167,7 @@ static void ValidRect(CGRect r) {
 #if TARGET_OS_IOS
 - (EXNativeView *)ex_compatNativeView {
     EXViewMain(); if (!_native) {
-        _native=[[EXNativeView alloc] initWithFrame:CGRectZero]; _native.owner=self; _native.opaque=NO; _native.backgroundColor=UIColor.clearColor; _native.contentMode=UIViewContentModeRedraw;
+        _native=[[EXNativeView alloc] initWithFrame:CGRectZero]; _native.owner=self; _native.opaque=NO; _native.clipsToBounds=YES; _native.backgroundColor=UIColor.clearColor; _native.contentMode=UIViewContentModeRedraw;
         for (NSView *child in self.subviews) [_native addSubview:[child ex_compatNativeView]];
     }
     return _native;

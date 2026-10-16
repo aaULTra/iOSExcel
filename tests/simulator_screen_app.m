@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #import "ExcelAppKit.h"
 #import "ExcelScreen.h"
+#import "simulator_view_contracts.h"
 static BOOL WillLaunch,DidLaunch,Started;
 static void Check(BOOL condition,NSString *reason) { if (!condition) @throw [NSException exceptionWithName:@"ScreenSimulatorFailure" reason:reason userInfo:nil]; }
 static NSArray *EXScreenRectValues(CGRect rect) { return @[@(rect.origin.x),@(rect.origin.y),@(rect.size.width),@(rect.size.height)]; }
@@ -51,7 +52,8 @@ static void RunTests(void) {
         Check(CGRectEqualToRect(screen.visibleFrame,ExpectedVisible(window)),@"Safe area must refresh after UIKit bounds change");
         window.bounds=originalBounds; window.rootViewController.additionalSafeAreaInsets=UIEdgeInsetsZero;
         [window setNeedsLayout]; [window layoutIfNeeded];
-        Finish(@{@"passed":@YES,@"scope":@"iPad Simulator, real UIKit + production entry bridge, synthetic desktop classes/nib; NO Excel loaded",@"system_version":UIDevice.currentDevice.systemVersion,@"initial_workspace":EXScreenRectValues(initial),@"inset_visible_frame":EXScreenRectValues(insetVisible),@"resized_workspace":EXScreenRectValues(resized),@"scene_scale":@(scale),@"checks":@[@"UIKit lifecycle and synthetic desktop startup",@"key scene window",@"scene-backed scale",@"safe areas",@"backing round-trip",@"live UIKit bounds change",@"stable screen identity"],@"excel_executed":@NO,@"physical_device_test":@NO},0);
+        NSDictionary *viewContracts=EXRunUIKitViewContracts(window);
+        Finish(@{@"view_contracts":viewContracts,@"passed":@YES,@"scope":@"iPad Simulator, real UIKit + production entry bridge, synthetic desktop classes/nib; NO Excel loaded",@"system_version":UIDevice.currentDevice.systemVersion,@"initial_workspace":EXScreenRectValues(initial),@"inset_visible_frame":EXScreenRectValues(insetVisible),@"resized_workspace":EXScreenRectValues(resized),@"scene_scale":@(scale),@"checks":@[@"UIKit lifecycle and synthetic desktop startup",@"key scene window",@"scene-backed scale",@"safe areas",@"backing round-trip",@"live UIKit bounds change",@"stable screen identity"],@"excel_executed":@NO,@"physical_device_test":@NO},0);
     } @catch(NSException *exception) { Finish(@{@"passed":@NO,@"exception":exception.name,@"reason":exception.reason?:@"Unknown"},1); }
 }
 @interface EXTestApplication : NSApplication @end
