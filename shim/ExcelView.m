@@ -15,7 +15,11 @@ static void EXViewFail(NSString *reason) {
 static void EXViewMain(void) { if (!NSThread.isMainThread) EXViewFail(@"View access requires the main thread"); }
 static BOOL FinitePoint(CGPoint p) { return isfinite(p.x)&&isfinite(p.y); }
 static void ValidRect(CGRect r) {
-    if (!FinitePoint(r.origin)||!isfinite(r.size.width)||!isfinite(r.size.height)||r.size.width<0||r.size.height<0) EXViewFail(@"Non-finite or negative view rectangle");
+    if (!FinitePoint(r.origin)||!isfinite(r.size.width)||!isfinite(r.size.height)||r.size.width<0||r.size.height<0||!isfinite(CGRectGetMaxX(r))||!isfinite(CGRectGetMaxY(r))) EXViewFail(@"Non-finite or negative view rectangle");
+}
+static void ValidPair(CGRect frame,CGRect bounds) {
+    ValidRect(frame); ValidRect(bounds);
+    if ((bounds.size.width>0 && !isfinite(frame.size.width/bounds.size.width)) || (bounds.size.height>0 && !isfinite(frame.size.height/bounds.size.height))) EXViewFail(@"View scaling overflow");
 }
 @interface NSView () {
     CGRect _frame,_bounds;
@@ -39,16 +43,23 @@ static void ValidRect(CGRect r) {
     if (self) { _frame=frame; _bounds=CGRectMake(0,0,frame.size.width,frame.size.height); _children=[NSMutableArray array]; _needsDisplay=YES; }
     return self;
 }
+- (void)dealloc {
+#if TARGET_OS_IOS
+    UIView *native=_native;
+    if (NSThread.isMainThread) [native removeFromSuperview];
+    else if (native) dispatch_async(dispatch_get_main_queue(),^{ [native removeFromSuperview]; });
+#endif
+}
 - (CGRect)frame { EXViewMain(); return _frame; }
 - (CGRect)bounds { EXViewMain(); return _bounds; }
 - (void)setFrame:(CGRect)frame {
     EXViewMain(); ValidRect(frame); CGRect bounds=_bounds;
     bounds.size.width=_frame.size.width>0?_bounds.size.width*(frame.size.width/_frame.size.width):frame.size.width;
     bounds.size.height=_frame.size.height>0?_bounds.size.height*(frame.size.height/_frame.size.height):frame.size.height;
-    ValidRect(bounds); _frame=frame; _bounds=bounds;
+    ValidPair(frame,bounds); _frame=frame; _bounds=bounds;
     [self ex_compatSyncNative]; self.needsDisplay=YES; self.needsLayout=YES;
 }
-- (void)setBounds:(CGRect)bounds { EXViewMain(); ValidRect(bounds); _bounds=bounds; [self ex_compatSyncNative]; self.needsDisplay=YES; self.needsLayout=YES; }
+- (void)setBounds:(CGRect)bounds { EXViewMain(); ValidPair(_frame,bounds); _bounds=bounds; [self ex_compatSyncNative]; self.needsDisplay=YES; self.needsLayout=YES; }
 - (void)setFrameOrigin:(CGPoint)origin { CGRect frame=self.frame; frame.origin=origin; self.frame=frame; }
 - (void)setFrameSize:(CGSize)size { CGRect frame=self.frame; frame.size=size; self.frame=frame; }
 - (void)setBoundsOrigin:(CGPoint)origin { CGRect bounds=self.bounds; bounds.origin=origin; self.bounds=bounds; }
@@ -155,6 +166,8 @@ static void ValidRect(CGRect r) {
             CGRect pb=_parent?_parent.bounds:parent.bounds;
             CGFloat x=_parent?f.origin.x-pb.origin.x:pb.origin.x+f.origin.x;
             CGFloat y=_parent?(_parent.isFlipped?f.origin.y-pb.origin.y:CGRectGetMaxY(pb)-CGRectGetMaxY(f)):CGRectGetMaxY(pb)-CGRectGetMaxY(f);
+            if (!FinitePoint(CGPointMake(x,y)) || !FinitePoint(CGPointMake(x+f.size.width/2,y+f.size.height/2))) EXViewFail(@"UIKit view projection overflow");
+            ValidPair(f,b);
             _native.transform=CGAffineTransformIdentity; _native.bounds=CGRectMake(0,0,b.size.width,b.size.height);
             _native.center=CGPointMake(x+f.size.width/2,y+f.size.height/2);
             _native.transform=CGAffineTransformMakeScale(b.size.width?f.size.width/b.size.width:1,b.size.height?f.size.height/b.size.height:1);

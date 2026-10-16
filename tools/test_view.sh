@@ -3,7 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p build/view
 python3 - <<'PY'
-import gzip,json,re
+import gzip,json
 from pathlib import Path
 metadata=json.loads(gzip.decompress(Path('docs/evidence/appkit-contracts-macos-15.json.gz').read_bytes()))
 cls=next(c for c in metadata['classes'] if c['name']=='NSView')

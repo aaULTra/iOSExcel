@@ -1,6 +1,7 @@
 #import "ExcelView.h"
 #import <objc/runtime.h>
 #include <math.h>
+#include <float.h>
 static void Check(BOOL value,NSString *reason) { if (!value) @throw [NSException exceptionWithName:@"ViewTestFailure" reason:reason userInfo:nil]; }
 static void Throws(void (^block)(void)) { BOOL raised=NO; @try { block(); } @catch(NSException *exception) { raised=YES; } Check(raised,@"Expected predictable rejection"); }
 @interface EXFlippedContractView : NSView @end
@@ -42,6 +43,8 @@ int main(int argc,const char **argv) {
     NSView *unrelated=[[NSView alloc] initWithFrame:CGRectMake(0,0,1,1)];
     Throws(^{(void)[child convertPoint:CGPointZero toView:unrelated];}); Throws(^{(void)[child convertPoint:CGPointZero toView:nil];});
     Throws(^{child.frame=CGRectMake(NAN,0,1,1);}); Throws(^{child.bounds=CGRectMake(0,0,-1,1);});
+    Throws(^{child.frame=CGRectMake(DBL_MAX,0,DBL_MAX,1);});
+    Throws(^{child.bounds=CGRectMake(0,0,DBL_MIN,1);});
     NSView *zero=[NSView new]; [root addSubview:zero]; Throws(^{(void)[zero convertPoint:CGPointZero toView:root];}); [zero removeFromSuperview];
     EXLayoutContractView *layout=[[EXLayoutContractView alloc] initWithFrame:CGRectMake(0,0,5,5)]; [root addSubview:layout];
     Check(layout.moves.count==2,@"Move callbacks must fire in order");
