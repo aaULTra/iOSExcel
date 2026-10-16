@@ -1,0 +1,63 @@
+{
+  "abi_methods_verified" : [
+    {
+      "encoding" : "d16@0:8",
+      "kind" : "instance_methods",
+      "selector" : "backingScaleFactor"
+    },
+    {
+      "encoding" : "{CGRect={CGPoint=dd}{CGSize=dd}}48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+      "kind" : "instance_methods",
+      "selector" : "convertRectFromBacking:"
+    },
+    {
+      "encoding" : "{CGRect={CGPoint=dd}{CGSize=dd}}48@0:8{CGRect={CGPoint=dd}{CGSize=dd}}16",
+      "kind" : "instance_methods",
+      "selector" : "convertRectToBacking:"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "kind" : "instance_methods",
+      "selector" : "deviceDescription"
+    },
+    {
+      "encoding" : "{CGRect={CGPoint=dd}{CGSize=dd}}16@0:8",
+      "kind" : "instance_methods",
+      "selector" : "frame"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "kind" : "instance_methods",
+      "selector" : "localizedName"
+    },
+    {
+      "encoding" : "{CGRect={CGPoint=dd}{CGSize=dd}}16@0:8",
+      "kind" : "instance_methods",
+      "selector" : "visibleFrame"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "kind" : "class_methods",
+      "selector" : "mainScreen"
+    },
+    {
+      "encoding" : "@16@0:8",
+      "kind" : "class_methods",
+      "selector" : "screens"
+    }
+  ],
+  "checks" : [
+    "absent scene",
+    "stable identity",
+    "safe-area vertical conversion",
+    "fractional backing scale round-trip",
+    "Objective-C struct return",
+    "live resize",
+    "no invented hardware identity",
+    "invalid metrics and overflow",
+    "disconnected scene",
+    "main-thread enforcement"
+  ],
+  "passed" : true,
+  "scope" : "Synthetic geometry provider on native arm64 macOS; not UIKit or Excel execution"
+}

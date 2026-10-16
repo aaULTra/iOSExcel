@@ -76,11 +76,11 @@ that the `<teamID>.<group>` Mac app-group format is unsupported on iPadOS and ke
 access groups are protected by signing/provisioning. This is an additional real auth/
 storage compatibility problem; re-signing is not equivalent to preserving these grants.
 
-## Mapping candidates — not implemented compatibility claims
+## Mapping candidates and partial implementations
 
 | macOS API | Candidate iPad implementation | Required semantics before use |
 | --- | --- | --- |
-| NSScreen | UIScreen / UIWindowScene | Coordinate origin, points/backing scale, screen changes |
+| NSScreen (partial) | Attached UIWindow workspace / UIWindowScene.screen | Point/scale/safe-area mappings and nine ABI signatures tested; physical-display topology and screen notifications remain unsupported |
 | NSWindow / NSView | Compatibility objects owning UIWindow / UIView | Class hierarchy, responder chain, drawing, invalidation, layout and nib decoding |
 | NSEvent | Keyboard/pointer/touch bridge | Event ordering, focus, modifiers, text input/IME and selection |
 | NSOpenPanel / NSSavePanel | UIDocumentPickerViewController and coordinated file access/export | Modal/completion contracts, security scope, atomic save and reopen |
@@ -90,10 +90,11 @@ storage compatibility problem; re-signing is not equivalent to preserving these 
 | NSWorkspace | Specific UIApplication/file APIs | Per-call behavior; no blanket success-returning stub |
 | NSTextView / NSLayoutManager / NSGraphicsContext | Purpose-built text/drawing compatibility | No direct class alias or generic UIKit rename can satisfy these contracts |
 
-No implementation is claimed for these classes yet. The limited startup/nib compatibility layer is described in STARTUP.md. Window, view,
+The partial NSScreen workspace adapter is described in SCREEN.md; the limited
+startup/nib compatibility layer is described in STARTUP.md. Window, view,
 text and document I/O behavior remains unimplemented. Unknown ABI signatures are never
 synthesized. Native startup contract tests pass, but the real Excel executable is not
-loaded by those tests. The current iOS export report covers 12/538 AppKit names and 4/143
+loaded by those tests. The current iOS export report covers 14/538 AppKit names and 5/143
 classes; exported names do not establish working behavior.
 
 ## Known limits of M1

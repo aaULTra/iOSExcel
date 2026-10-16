@@ -81,3 +81,14 @@ our own C code), stages the real closure, and calls `tools/build_facades.py` to 
 and verify iOS forwarding dylibs against the actual compiled shim. Only reports are
 uploaded. Numeric facade versions meet the measured load requirements; missing API
 implementations remain missing.
+
+## Screen contracts
+
+`bash tools/test_screen.sh` builds native geometry/failure tests and compares nine method
+encodings against captured arm64 AppKit metadata. The compatibility workflow runs this
+before downloading Microsoft resources and includes ExcelScreen.m in the signed iOS
+shim. `tools/test_screen_simulator.py` separately builds an internal simulator-only app,
+creates an isolated available iPad simulator, and runs the production entry bridge with
+synthetic desktop classes/nib. It uploads JSON/log reports, never an app or IPA. Microsoft
+binaries and account interaction are absent from that test. The script removes its own
+simulator after completing or failing; it does not touch a physical iPad.

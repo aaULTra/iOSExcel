@@ -46,8 +46,9 @@ The original Microsoft installer was independently hash/signature/notarization c
 Actual startup classes/method type encodings were read statically without loading Office.
 Their callbacks include applicationDidResignActive:, which is now wired by the bridge.
 
-The current shim exports 12 of the closure's 538 AppKit names and 4 of its 143 imported
-AppKit classes. This is name coverage, not 12 working API implementations. The complete
+At that checkpoint the shim exported 12 of the closure's 538 AppKit names and 4 of
+its 143 imported AppKit classes. The later NSScreen adapter raises current coverage to
+14 names and 5 classes; see SCREEN.md. These are name counts, not working API guarantees. The complete
 missing list and runtime AppKit class metadata are retained in docs/evidence. No loader,
 Excel initialization, workbook rendering, activation or document milestone is claimed.
 

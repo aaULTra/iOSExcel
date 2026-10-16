@@ -1,6 +1,6 @@
 # ExcelPort research
 
-**Exact status (2026-10-16): real Excel binaries extracted and statically analyzed;
+**Exact status (2026-10-17): real Excel binaries extracted and statically analyzed;
 M2 startup-image retargeting/redirection checks passed; Microsoft Excel has NOT launched on iPadOS.
 No runnable Excel IPA exists.**
 
@@ -31,7 +31,7 @@ are included in this repository/archive.
 | M1 — dependencies | Static inventories, load graphs and first iPhoneOS SDK declaration audit complete; dynamic/runtime contracts pending |
 | M2 — retarget main | Platform metadata changed successfully on real 16.55 main; four bytes differ in the arm64 slice; 41,983,228-byte __text unchanged |
 | Relevant embedded binaries | All 55 startup images hash-verified and staged with iOS metadata plus 68 AppKit/Cocoa path changes; code and link-edit bytes unchanged; not an app |
-| M3–M6 — loader/shim/UIKit/Excel initialization | NOT tested for Excel; isolated UIKit probe compiled successfully on macOS CI; no device run |
+| M3–M6 — loader/shim/UIKit/Excel initialization | NOT reached for Excel; production UIKit bridge tested with synthetic desktop classes/nib on iPad Simulator; no physical-device run |
 | M7–M15 — desktop UI/workbooks | NOT implemented or tested |
 
 ## Deliverables
@@ -40,6 +40,7 @@ are included in this repository/archive.
 - `docs/RESEARCH.md`: official sources, current CyPort findings and activation evidence.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
 - `docs/LOADER.md`: distinct forwarding dylibs, native two-level binding proof and exact limits.
+- `docs/SCREEN.md`: partial scene-backed NSScreen geometry and its validation boundary.
 - `docs/BUILDING.md`, `docs/DEBUGGING.md`: reproducibility and first-failure procedure.
 - `docs/evidence/`: actual binary metadata, imports, Objective-C strings, original
   entitlements, graph, installer hashes and retarget verification. Metadata only.
@@ -54,36 +55,35 @@ Do not delete dependencies to force that check to pass.
 
 ## Current CI and next gate
 
-Source is committed at https://github.com/aaULTra/iOSExcel.
-Both the UIKit probe build and official-package analysis workflows have succeeded.
-The probe and libExcelShim.dylib are arm64 iOS 18.0 binaries built with SDK 18.5;
-Apple codesign verification passed. This does not prove installation or device launch.
+Source: https://github.com/aaULTra/iOSExcel
 
-The macOS analysis verified the Microsoft installer with pkgutil and Apple's installer
-assessment, reproduced the inventory and ran a first iPhoneOS 18.5 .tbd audit. It found
-3,432 required names in parsed exports and 847 not found there; some libraries have
-unresolved private reexports/absent stubs, so these counts are NOT device absence proofs.
-No actual Excel loader/UI/activation/workbook milestone beyond M2 has been reached.
+All 30 Python tests pass. Native startup/nib/delegate contracts, two-level dyld binding,
+actual 55-image retargeting, iOS forwarding-library builds and signature checks pass.
+The original XLMainMenu archive is checked with explicit test stand-ins, without loading
+Excel. Nine NSScreen method encodings match captured real arm64 AppKit contracts.
 
-Current work implements the observed startup nib, application/delegate wiring and UIKit
-entry bridge; see docs/STARTUP.md. Native bounds, nib wiring, delegate callback and
-iOS compile/signature checks now pass, including the actual XLMainMenu archive with
-explicit test stand-ins. Excel itself was not loaded. The current export report shows
-12/538 required AppKit names and 4/143 required classes present; this is name coverage,
-not working behavior. Remaining class/API contracts, drawing/text, resource lookup and
-legitimate activation still block an Excel loader or workbook milestone.
+The production UIKit entry bridge and scene-backed NSScreen adapter also passed an
+internal iPad Pro 11-inch (M4) Simulator run on 26.2. It exercised a real key window,
+UIKit safe areas, scene scale and a controlled window-bounds change using synthetic
+desktop classes/nib. It contains no Microsoft code and is not physical-iPad validation.
+See docs/SCREEN.md for exact scope and unsupported behavior.
 
-Probe build: https://github.com/aaULTra/iOSExcel/actions/runs/38816769202
+Current exact export coverage is 14/538 required AppKit names and 5/143 imported classes.
+These include partial implementations; exported names are not working API guarantees.
+Remaining class/API behavior, framework/resource integration, UI/text/document rendering
+and legitimate activation still block real Excel loader and workbook milestones.
 
-Analysis: https://github.com/aaULTra/iOSExcel/actions/runs/38816989758
+Native screen/startup/loader checks: https://github.com/aaULTra/iOSExcel/actions/runs/38980441518
 
-No proprietary application binary or activation payload is in this repository.
+UIKit bridge/screen simulator check: https://github.com/aaULTra/iOSExcel/actions/runs/38980441619
 
-Release policy: publish no further diagnostic/unfinished IPAs. A working Excel release
-requires verified real desktop Excel opening, editing, calculating and saving .xlsx files.
+Official package/SDK analysis: https://github.com/aaULTra/iOSExcel/actions/runs/38816989758
 
-Latest loader validation: https://github.com/aaULTra/iOSExcel/actions/runs/38823800651
+The first iPhoneOS 18.5 SDK declaration audit found 3,432 required names in parsed
+exports and 847 not found there. Some private reexports/absent stubs remain unresolved;
+these counts do not prove device availability or absence. No actual Excel milestone
+beyond M2 has been reached and no working Excel IPA exists.
 
-All 30 Python tests pass. Native dyld binding, actual 55-image staging, iOS forwarding
-library builds and original startup contracts passed. No Excel loader/device milestone
-is claimed by those checks.
+Release policy: publish no diagnostic/unfinished IPAs. A working Excel release requires
+verified real desktop Excel opening, editing, calculating and saving ordinary .xlsx files.
+No Microsoft binary payload, activation data or signing credentials are in this repository.

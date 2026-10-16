@@ -33,3 +33,13 @@ flat-namespace lookup to hide missing exports. Both reexport libExcelShim.dylib.
 The known-good native binding fixture and full vendor modification plan live under
 docs/evidence. A successful fixture run proves only that forwarding topology with our
 own code; it is not evidence that any particular Excel import or initializer succeeds.
+
+## Screen adapter
+
+NSScreen logs invalid bounds/scale, conversion overflow, detached scenes and background
+thread access before raising a predictable exception. It returns no screen before a
+UIKit scene is attached. deviceDescription deliberately omits physical DPI and display
+ID with a log message; investigate the real caller if it requires those missing values.
+The internal simulator result is written to Documents/screen-simulator-result.json;
+the workflow uploads it as a report, plus process/shim logs on failure. These logs prove
+only the adapter/bridge behavior with synthetic desktop code, not any Excel milestone.

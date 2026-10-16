@@ -1,0 +1,28 @@
+{
+  "date_london": "2026-10-17",
+  "source_commit": "b0afc140421a73803058279458c6b62a4c0a7b2d",
+  "native_workflow_run": 38980441518,
+  "simulator_workflow_run": 38980441619,
+  "conclusion": "success",
+  "python_tests": 30,
+  "native_abi_method_signatures_verified": 9,
+  "startup_images_importing_NSScreen": 17,
+  "appkit_names_exported": 14,
+  "appkit_names_required": 538,
+  "appkit_classes_exported": 5,
+  "appkit_classes_required": 143,
+  "simulator_device": "iPad Pro 11-inch (M4)",
+  "simulator_system_version": "26.2",
+  "simulator_scope": "Production UIKit entry bridge and NSScreen backend; synthetic desktop principal/nib/delegate; no Microsoft code",
+  "unsupported": [
+    "Physical display enumeration and DPI/CG display identity",
+    "Screen-change notifications",
+    "Spaces, color-space and depth APIs",
+    "Multi-monitor topology",
+    "Actual Excel UI/text/document behavior"
+  ],
+  "excel_executed": false,
+  "physical_device_test": false,
+  "ipa_published": false,
+  "excel_milestone": "M3 not reached"
+}

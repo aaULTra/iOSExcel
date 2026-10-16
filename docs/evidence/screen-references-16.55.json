@@ -1,0 +1,38 @@
+{
+  "target": "Excel 16.55",
+  "required_class_symbol": "_OBJC_CLASS_$_NSScreen",
+  "startup_importer_count": 17,
+  "startup_importers": [
+    "Contents/Frameworks/ADAL4.framework/Versions/A/ADAL4",
+    "Contents/Frameworks/CocoaUI.framework/Versions/A/CocoaUI",
+    "Contents/Frameworks/Gfx.framework/Versions/A/Gfx",
+    "Contents/Frameworks/MicrosoftFontLibrary.framework/Versions/A/MicrosoftFontLibrary",
+    "Contents/Frameworks/MicrosoftRichEdit.framework/Versions/A/MicrosoftRichEdit",
+    "Contents/Frameworks/OLE.framework/Versions/A/OLE",
+    "Contents/Frameworks/OfficeArt.framework/Versions/A/OfficeArt",
+    "Contents/Frameworks/SmartArt.framework/Versions/A/SmartArt",
+    "Contents/Frameworks/WLMUser.framework/Versions/A/WLMUser",
+    "Contents/Frameworks/merp.framework/Versions/A/merp",
+    "Contents/Frameworks/mso20.framework/Versions/A/mso20",
+    "Contents/Frameworks/mso30.framework/Versions/A/mso30",
+    "Contents/Frameworks/mso40ui.framework/Versions/A/mso40ui",
+    "Contents/Frameworks/mso99.framework/Versions/A/mso99",
+    "Contents/Frameworks/osf.framework/Versions/A/osf",
+    "Contents/Frameworks/osfstorage2.framework/Versions/A/osfstorage2",
+    "Contents/MacOS/Microsoft Excel"
+  ],
+  "matching_global_selector_names": [
+    "screens",
+    "mainScreen",
+    "frame",
+    "visibleFrame",
+    "backingScaleFactor",
+    "deviceDescription",
+    "convertRectToBacking:",
+    "convertRectFromBacking:",
+    "localizedName"
+  ],
+  "selector_scope": "Global method-name strings, not receiver-specific callsite attribution. Presence does not prove each method is sent to NSScreen.",
+  "selected_abi_source": "appkit-contracts-macos-15.json.gz",
+  "excel_executed": false
+}

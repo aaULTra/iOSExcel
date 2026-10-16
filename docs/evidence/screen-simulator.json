@@ -1,0 +1,37 @@
+{
+  "checks": [
+    "UIKit lifecycle and synthetic desktop startup",
+    "key scene window",
+    "scene-backed scale",
+    "safe areas",
+    "backing round-trip",
+    "live UIKit bounds change",
+    "stable screen identity"
+  ],
+  "excel_executed": false,
+  "initial_workspace": [
+    0,
+    0,
+    834,
+    1210
+  ],
+  "inset_visible_frame": [
+    7,
+    42,
+    814,
+    1125
+  ],
+  "passed": true,
+  "physical_device_test": false,
+  "resized_workspace": [
+    0,
+    0,
+    625.5,
+    1028.5
+  ],
+  "scene_scale": 2,
+  "scope": "iPad Simulator, real UIKit + production entry bridge, synthetic desktop classes/nib; NO Excel loaded",
+  "system_version": "26.2",
+  "simulator_device": "iPad Pro 11-inch (M4)",
+  "runtime_identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+}

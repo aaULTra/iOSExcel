@@ -168,3 +168,26 @@ https://github.com/apple-oss-distributions/ld64/blob/main/doc/man/man1/ld-classi
 Apple's own Ruby reexport packaging uses the same forwarding-library linker mechanism:
 https://github.com/apple-oss-distributions/ruby/blob/main/reexport.sh
 This is evidence for the mechanism, not evidence of Excel API compatibility.
+
+## Partial NSScreen adapter (2026-10-17 London)
+
+The actual 16.55 metadata identifies NSScreen class imports in Excel main and 16 other
+startup images. Candidate method-name strings are present in the closure; their global
+presence is not receiver-specific attribution. The adapter implements nine public
+class/instance signatures selected from captured arm64 AppKit runtime contracts.
+Native tests passed geometry, asymmetric safe areas, resize, backing scale, Objective-C
+struct returns, invalid inputs, detachment and thread enforcement. All nine compiled
+method encodings matched exactly. The signed iOS shim export audit now finds 14/538
+required AppKit names and 5/143 required classes; these remain name-coverage counts.
+
+The UIKit backend uses the attached window/scene, not UIScreen.mainScreen or fabricated
+physical display IDs/DPI. A separate simulator workflow exercises the production entry
+bridge with synthetic desktop resources. No Microsoft execution or device milestone
+is inferred from these checks. See SCREEN.md and the saved native/reference reports.
+
+The simulator check subsequently passed on an iPad Pro 11-inch (M4), runtime 26.2,
+using the production entry bridge and UIKit window metrics with synthetic desktop
+resources. The workspace measured 834 x 1210 points at scale 2, and a controlled bounds
+change refreshed the same screen object to 625.5 x 1028.5 points. Real Stage Manager,
+rotation, external displays and physical-iPad execution were not tested. The host's
+initial Rect helper name collision with MacTypes was fixed before the successful run.

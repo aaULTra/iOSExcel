@@ -43,7 +43,7 @@ No Microsoft binary payload is committed or uploaded as a CI artifact.
 ## What this does not establish
 
 This is an M2 binary preparation checkpoint, not M3. Excel has not loaded or executed.
-The current shim still exports only 12/538 required AppKit names and 4/143 classes.
+The current shim still exports only 14/538 required AppKit names and 5/143 classes.
 The remaining framework paths and symbols, class behavior, initializers, resource
 identity, UI, text, document access and legitimate activation remain unresolved.
 The original framework hierarchy/rpaths are retained in the binary-only experiment.

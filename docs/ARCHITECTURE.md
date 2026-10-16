@@ -66,3 +66,12 @@ their load commands into one dependency. Both reexport the same shim, preserving
 existing two-level library indices and leaving binding payloads unchanged. The native
 loader fixture verifies this topology with original C code. See LOADER.md for exact
 measurements and the explicit boundary between loader plumbing and API compatibility.
+
+## Scene workspace geometry
+
+The scene entry bridge attaches NSScreen to its actual UIWindow before desktop nib
+initialization. Screen coordinates expose that application workspace with a bottom-left
+origin; UIKit safe areas and point-to-backing scale are adapted explicitly. No physical
+DPI or CG display identifier is invented. Native method encodings match captured AppKit
+contracts. This partial class adds no NSWindow/NSView/text/document rendering support.
+See SCREEN.md for the test boundaries and unsupported screen functionality.
