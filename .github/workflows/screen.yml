@@ -1,0 +1,31 @@
+name: Run UIKit screen adapter on iPad Simulator
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'shim/**'
+      - 'tests/simulator_screen_app.m'
+      - 'tests/nib_fixture.py'
+      - 'tools/test_screen_simulator.py'
+      - '.github/workflows/screen.yml'
+  workflow_dispatch:
+concurrency:
+  group: screen-simulator-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  screen:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and run production UIKit bridge and screen adapter with synthetic desktop resources
+        run: python3 tools/test_screen_simulator.py
+      - name: Upload reports only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iPad-screen-adapter-reports
+          path: reports/
+          retention-days: 7
