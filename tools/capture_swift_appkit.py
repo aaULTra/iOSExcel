@@ -25,8 +25,10 @@ def main():
     sil = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-silgen', str(root/'tools/swift_appkit_probe.swift'))
     ir = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-ir', str(root/'tools/swift_appkit_probe.swift'))
     force_lines = [line.strip() for line in ir.splitlines() if '_swift_FORCE_LOAD_$_swiftAppKit' in line]
-    if not any('external global i1' in line for line in force_lines):
-        raise RuntimeError('Unexpected compiler force-load declaration; refuse native data read')
+    (out/'swift-force-load-ir.json').write_text(json.dumps({'references': force_lines, 'scope': 'Own compiler probe LLVM references, no Apple implementation'}, indent=2)+'\n')
+    if not any(line.startswith('declare ') and 'void ' in line and '()' in line for line in force_lines):
+        print('FORCE_LOAD_REFERENCE_LINES', json.dumps(force_lines), flush=True)
+        raise RuntimeError('Unexpected compiler force-load function declaration')
     refs = []
     for symbol in symbols:
         mangled = symbol.removeprefix('_')

@@ -25,6 +25,11 @@ def main():
             '-fobjc-arc', '-Wall', '-Wextra', '-Werror', '-I'+str(root/'shim'),
             '-I'+str(source), '-c', str(path), '-o', str(obj))
         objects.append(str(obj))
+    marker = build/'force-load.o'
+    run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayForce',
+        '-module-link-name', 'swiftAppKit', '-Xfrontend', '-autolink-force-load',
+        '-emit-object', str(source/'ForceLoad.swift'), '-o', str(marker))
+    objects.append(str(marker))
     library = build/'libExcelSwiftAppKit.dylib'
     run('xcrun', 'swiftc', *target, '-module-name', 'AppKit', '-module-link-name', 'ExcelSwiftAppKit', '-I', str(source),
         '-emit-library', '-emit-module', '-emit-module-path', str(build/'AppKit.swiftmodule'),
@@ -45,11 +50,11 @@ def main():
     for key in ('index_path_samples', 'index_path_layout', 'rect_layout', 'operation_layout'):
         if original[key] != actual[key]:
             raise RuntimeError('Native comparison failed: '+key)
-    if original['force_load_marker_byte'] != 0:
-        raise RuntimeError('Prototype marker differs from native marker')
+    if not original['force_load_function_found']:
+        raise RuntimeError('Native marker function lookup failed')
     (reports/'swift-overlay-validation.json').write_text(json.dumps({
         'exact_required_exports_checked':required, 'native_index_path_cases_checked':5,
-        'native_layouts_match':True, 'native_force_marker_byte':original['force_load_marker_byte'],
+        'native_layouts_match':True, 'force_marker_emitted_by_swift_compiler':True,
         'drawing_implemented':False, 'ios_cross_abi_checked':False,
         'microsoft_executed':False}, indent=2)+'\n')
     print('Exact exports and five native getter cases matched; no iOS or drawing compatibility inferred')
