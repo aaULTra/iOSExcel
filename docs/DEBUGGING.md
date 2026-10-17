@@ -80,3 +80,13 @@ The next standalone audit (39021497623) passed that compilation but hit its
 separate 60-second CoreSimulator device-enumeration limit. The device-list
 timeout is now 120 seconds, matching the already-tested real loader harness.
 This was before any Simulator API call or Microsoft process in that audit.
+
+## Swift drawing failures
+
+The isolated Swift overlay logs `SWIFT_OVERLAY_DRAW` with the exact rectangle and
+operation before drawing. Only finite geometry with explicit copy/sourceOver is
+currently attempted. Missing current CGContext, nonfinite geometry or unmeasured
+operations call the logged abort path. Do not replace these with success stubs.
+The drawing workflow retains native and candidate pixel/state records; compare the
+first mismatching case before changing behavior. The valid-context offscreen probe
+and the missing-context ABI probe deliberately test different outcomes.

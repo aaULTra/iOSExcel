@@ -30,7 +30,7 @@ def build_overlay(root, build, platform, required_version="0.0.0", test_context=
     library = build/'libExcelSwiftAppKit.dylib'
     run('xcrun', 'swiftc', *target, '-module-name', 'AppKit', '-module-link-name', 'ExcelSwiftAppKit', '-I', str(source),
         '-emit-library', '-emit-module', '-emit-module-path', str(build/'AppKit.swiftmodule'),
-        str(source/'AppKit.swift'), *objects, '-o', str(library),
+        str(source/'AppKit.swift'), *objects, *(['-framework', 'UIKit'] if platform != 'macos' else []), '-o', str(library),
         '-Xlinker', '-install_name', '-Xlinker', '@rpath/libExcelSwiftAppKit.dylib',
         '-Xlinker', '-compatibility_version', '-Xlinker', required_version,
         '-Xlinker', '-current_version', '-Xlinker', required_version)

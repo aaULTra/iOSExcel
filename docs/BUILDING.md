@@ -117,3 +117,15 @@ Reports include real dyld stdout/stderr, per-field transformation records, runti
 probe results and a status JSON. Only reports are uploaded. This is not an installed
 application or device build and no IPA is created. See REAL_LOADER.md for observed
 failures and what this experiment can establish.
+
+## Swift overlay drawing checkpoint
+
+The Swift overlay remains an isolated experiment and is not redirected into Office.
+`swift-drawing-contracts.yml` captures genuine Mac pixels, then runs
+`python3 tools/capture_swift_appkit.py` and
+`python3 tools/test_swift_overlay_drawing.py`. The latter requires exact agreement
+for all 96 pixel/state records on a Mac test-context backend and a native iOS
+Simulator caller using UIGraphicsPushContext/UIGraphicsGetCurrentContext. Failure
+keeps the captured outputs for inspection. The test does not launch Excel or create
+an IPA. The Mac-only context setter is compiled only with the explicit test macro;
+the iOS implementation uses UIKit's current context.
