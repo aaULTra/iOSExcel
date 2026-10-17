@@ -30,7 +30,7 @@ are included in this repository/archive.
 | M0 — extracted, native arm64 confirmed | Complete for all three compared versions |
 | M1 — dependencies | Static inventories, load graphs and first iPhoneOS SDK declaration audit complete; dynamic/runtime contracts pending |
 | M2 — retarget main | Platform metadata changed successfully on real 16.55 main; four bytes differ in the arm64 slice; 41,983,228-byte __text unchanged |
-| Relevant embedded binaries | All 55 startup images hash-verified; 74 facade path changes and verified Apple path normalization; code/link-edit bytes unchanged before re-signing; not an app |
+| Relevant embedded binaries | All 55 startup images hash-verified; 75 facade path changes verified in device-target binary preparation; Simulator system path normalization verified separately; code/link-edit bytes unchanged before re-signing; not an app |
 | M3–M6 — loader/shim/UIKit/Excel initialization | NOT reached for Excel; production UIKit bridge tested with synthetic desktop classes/nib on iPad Simulator; no physical-device run |
 | M7–M15 — desktop UI/workbooks | NOT implemented or tested |
 
@@ -39,6 +39,7 @@ are included in this repository/archive.
 - `docs/COMPATIBILITY.md`: version comparison, dependency map, blockers and feasibility.
 - `docs/RESEARCH.md`: official sources, current CyPort findings and activation evidence.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
+- `docs/KERBEROS.md`: genuine provider/OID ABI tests and forwarding that advanced the real loader to NetFS.
 - `docs/OPTIONAL_FRAMEWORKS.md`: guarded single-framework diagnostics experiment; no blanket dependency removal.
 - `docs/APPLICATION_SERVICES.md`: typed partial C compatibility, verified against native Apple rectangle behavior.
 - `docs/LOADER.md`: distinct forwarding dylibs, native two-level binding proof and exact limits.
@@ -62,8 +63,8 @@ The current priority is an internal **real Excel executable loader attempt**, us
 the original Microsoft startup closure on iPad Simulator. This is separate from
 the synthetic UI tests below. See docs/REAL_LOADER.md for the exact method and
 limits. Verified framework path repairs and the typed ApplicationServices facade advanced
-the actual loader to Kerberos.framework after a guarded optional ExceptionHandling experiment. The real main, 38 Microsoft dylibs
-and two compatibility facades mapped; its entry point was not reached; no successful Excel initialization is established.
+the actual loader past Kerberos.framework to NetFS.framework after genuine provider/OID validation and a guarded optional ExceptionHandling experiment. The real main, 38 Microsoft dylibs
+and three compatibility facades mapped; its entry point was not reached; no successful Excel initialization is established.
 
 Source: https://github.com/aaULTra/iOSExcel
 

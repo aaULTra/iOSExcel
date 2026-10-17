@@ -53,7 +53,11 @@ The next real loader attempt adds the distinct ExcelKerberos.dylib facade and
 repeats the OID and genuine ownership gate on that exact Simulator before Excel
 can spawn. No empty provider, generic successful stub or account bypass is used.
 See docs/evidence/kerberos-audit.json and kerberos-*-contracts/compatibility JSON.
-Actual Excel passage beyond this dependency is still pending.
+Actual Excel loader run 39019181596 (a06c46fb61f244836f4396d56df0242bd6b0dfee)
+passed the repeated same-runtime gate and advanced to the missing NetFS framework.
+39 vendor images and three owned facades mapped, exit 134; Microsoft entry remains
+unconfirmed. See docs/evidence/kerberos-same-runtime-gate.json and
+real-loader-after-kerberos.json.
 
 Primary interface references:
 https://developer.apple.com/documentation/gss

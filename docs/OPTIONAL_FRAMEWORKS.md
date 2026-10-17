@@ -1,4 +1,4 @@
-# ExceptionHandling optional-load experiment
+# Explicit zero-import optional-load experiments
 
 This policy is explicitly limited to the previously observed real loader failure:
 `ExceptionHandling.framework`. It is not a blanket rule for missing frameworks.
@@ -29,10 +29,12 @@ Flat lookup prevents the experiment; unknown/threaded/chained formats fail safel
 All changes are limited to the logged four-byte command-kind field, with bytewise
 verification that the rest of the image is identical before re-signing.
 
-The runtime driver additionally requires the exact single-framework policy,
+The runtime driver additionally requires an explicit per-framework allowlist,
 recorded failure/preflight evidence, zero recorded imports/selectors, and a failed
 canonical preflight in the current Simulator. Other frameworks are rejected by
 the policy validator until separately investigated and intentionally implemented.
+NetFS was added separately after the evidence below; it does not inherit a
+blanket optional status merely because a framework is absent.
 
 Unit safety tests cover a binding absent from the ordinary symbol table, ordinary
 symbol use without a bind stream, flat lookup, malformed/unknown opcodes, stream
@@ -50,3 +52,14 @@ Primary references:
 https://developer.apple.com/documentation/exceptionhandling/
 https://github.com/apple-oss-distributions/xnu/blob/main/EXTERNAL_HEADERS/mach-o/loader.h
 https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/dlopen_preflight.3.html
+
+## NetFS experiment, not yet run
+
+The actual first failure in 39019181596 is NetFS after the genuine Kerberos bridge.
+Only main loads it; there are zero attributed imports and no NetFS undefined names
+anywhere in the measured startup closure, including under other framework ordinals.
+The canonical runtime preflight is false. No network mounting or authentication
+API is replaced. Actual current undefined/bind tables must independently pass the
+same zero-use guard before changing only LC_LOAD_DYLIB to LC_LOAD_WEAK_DYLIB.
+NetFS-specific initialization and dynamic string lookups remain unproven.
+Failure evidence is docs/evidence/real-loader-after-kerberos.json.

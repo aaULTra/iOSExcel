@@ -57,11 +57,23 @@ Sources for the forwarding approach and two-level/version semantics:
 https://github.com/apple-oss-distributions/ld64/blob/main/doc/man/man1/ld-classic.1
 https://github.com/apple-oss-distributions/ruby/blob/main/reexport.sh
 
-## ApplicationServices extension pending validation
+## ApplicationServices extension verified at the loader boundary
 
 The actual loader subsequently stopped on ApplicationServices. The redirection map
 now has a third distinct facade, ExcelApplicationServices.dylib, backed by the
 measured typed partial C layer. This adds six framework path rewrites to the
 original 68 AppKit/Cocoa changes. The historical native fixture remains a proof of
-the original two-facade topology. New real-image facade version/signature checks
-and an actual loader retry are pending; see APPLICATION_SERVICES.md.
+the original two-facade topology. Real-image facade version/signature checks passed, and its load was observed in
+38987517689; native Apple geometry and C ABI tests passed in 38988363451.
+This establishes partial API contracts and loader identity, not printing, clipboard
+or Excel initialization; see APPLICATION_SERVICES.md.
+
+## Fourth facade: genuine Kerberos forwarding
+
+ExcelKerberos.dylib adds the one strong Kerberos load to the explicit map, retaining
+its original two-level index. It forwards to the shared shim, whose four wrappers
+call actual Apple functions and whose legacy OID data object references the genuine
+GSS descriptor. Native and M4 Simulator 26.2 contracts passed before integration.
+The private-provider dependency and actual runtime gate are described in KERBEROS.md;
+the real loader passed this dependency in 39019181596 and stopped at NetFS. This is not a zero-import optional
+load and does not use the ExceptionHandling policy.

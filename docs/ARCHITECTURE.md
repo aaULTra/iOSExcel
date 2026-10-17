@@ -1,10 +1,11 @@
 # Architecture and feasibility gates
 
 Current implementation: installer extraction, recursive static Mach-O inventory,
-hash-verified startup-closure retargeting with distinct AppKit/Cocoa forwarding dylibs,
+hash-verified startup-closure retargeting with distinct AppKit/Cocoa/ApplicationServices/Kerberos forwarding dylibs,
 an observed-format startup nib decoder,
 limited AppKit startup classes and a UIKit entry bridge. Native contract tests and
-arm64 iOS compilation/signature checks pass. Actual Excel execution remains untested.
+arm64 iOS compilation/signature checks pass. Real Microsoft images have been passed
+to Simulator dyld; Microsoft entry and application initialization remain unreached.
 
 ## Intended runtime (conditional, unproven)
 
@@ -97,3 +98,19 @@ diagnostic gate, separate from registering an installed UIKit application and it
 resource/scene lifecycle. See REAL_LOADER.md for actual observed failures. Only
 an explicit entry marker or stronger execution evidence may advance the startup
 milestone; mapped-image traces alone cannot.
+
+## Genuine Kerberos forwarding experiment
+
+The legacy Kerberos facade is separate from canonical GSS and preserves its original
+import ordinal. Four simple pointer/integer C signatures were compiled against the
+actual Mac declarations. The adapter resolves Apple's real implementations through
+GSS, validates a common system image and current platform, and retains its library
+handle for the lifetime of native contexts. It exports the legacy OID pointer using
+the genuine public GSS descriptor. No context, realm, identity, permission or
+authentication result is fabricated. Missing providers produce explicit errors.
+
+Native and M4 iPad Simulator 26.2 ownership/data contracts passed in 39018956591.
+These functions are supplied by private Heimdal implementation details, so this
+remains version-sensitive experimental compatibility. The real loader driver repeats
+those tests on its exact runtime before launching Microsoft code. Domain SSO,
+Microsoft login and legitimate activation remain unverified. See KERBEROS.md.

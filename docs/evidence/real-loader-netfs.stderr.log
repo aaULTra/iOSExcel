@@ -1,0 +1,53 @@
+dyld[7706]: <A5ABAFED-6FA7-3D9A-B981-5D5DBF959411> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/MacOS/Microsoft Excel
+dyld[7706]: <9C5AB581-3852-377A-84A4-6E071267525E> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/ADAL4.framework/Versions/A/ADAL4
+dyld[7706]: <0C5B53AF-ED9C-3266-A069-071CBB18BC3F> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/Chart.framework/Versions/A/Chart
+dyld[7706]: <29905300-294B-3BAA-9657-E3BA898ABF04> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/CocoaUI.framework/Versions/A/CocoaUI
+dyld[7706]: <5C2379ED-2C8A-31EB-B823-080B77BF486B> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/COMBase.framework/Versions/A/COMBase
+dyld[7706]: <46C1431F-D604-3282-8977-03AFFEF3A148> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftCredui.framework/Versions/A/MicrosoftCredui
+dyld[7706]: <E97864A3-1033-37D0-AF6A-90CE0C38DE90> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftCSI.framework/Versions/A/MicrosoftCSI
+dyld[7706]: <9C67FB61-E8B6-3A7C-9C4A-FF1988D68014> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/dwrite10.framework/Versions/A/dwrite10
+dyld[7706]: <0F7B02E9-FF02-3EF7-8184-ED5A48E3D447> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftFBA.framework/Versions/A/MicrosoftFBA
+dyld[7706]: <B0B05007-6D94-334A-9441-A535696E4635> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/FluentUI.framework/Versions/A/FluentUI
+dyld[7706]: <9D0BF690-64D3-3F81-960E-B457015D60BA> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/Forms.framework/Versions/A/Forms
+dyld[7706]: <36536B96-A360-3712-B138-D53DAA459436> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/Gfx.framework/Versions/A/Gfx
+dyld[7706]: <0B79119F-602F-3BB6-80AB-51F25F1D5E7E> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/Hlink.framework/Versions/A/Hlink
+dyld[7706]: <8D2BB47D-B366-3FF9-887F-5598153AA74C> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/SmartArt.framework/Versions/A/SmartArt
+dyld[7706]: <B11B9803-54C1-3D80-89DE-A494B882FC69> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftIvy.framework/Versions/A/MicrosoftIvy
+dyld[7706]: <AB54BA54-22CA-367B-AABA-C4BC2AB09D08> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftFontLibrary.framework/Versions/A/MicrosoftFontLibrary
+dyld[7706]: <9184B046-2101-38BF-B651-BB41D83B2921> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/mbuinstrument.framework/Versions/A/mbuinstrument
+dyld[7706]: <96595D67-92A8-3C17-8685-3268251B819B> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/mbukernel.framework/Versions/A/mbukernel
+dyld[7706]: <9EAEBEAC-0E60-3DC2-BBBE-35EA72BAFF56> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/mbulocale.framework/Versions/A/mbulocale
+dyld[7706]: <A4B18566-BA70-38E5-9523-5BFE40BBB209> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/merp.framework/Versions/A/merp
+dyld[7706]: <329099AC-3344-3203-AD16-7A41D1A00DFA> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MetEx.framework/Versions/A/MetEx
+dyld[7706]: <4CF57BD1-8C72-3F8D-B0C7-03ED090E8CA3> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/SAExt.framework/Versions/A/SAExt
+dyld[7706]: <B4508323-0CB2-3A99-9B64-D3F63D0A438F> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/mso20.framework/Versions/A/mso20
+dyld[7706]: <CF56488B-8F85-3FB0-9A32-587DA6D5F27B> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/mso30.framework/Versions/A/mso30
+dyld[7706]: <9811027F-517E-3F6C-829F-4E5EC655B9E3> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/mso40ui.framework/Versions/A/mso40ui
+dyld[7706]: <0DBDB707-0A74-3F63-AC1F-62A2CBB8981A> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/mso99.framework/Versions/A/mso99
+dyld[7706]: <62E530ED-CF7C-3A01-9BED-C307CC101BAB> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MsoCF.framework/Versions/A/MsoCF
+dyld[7706]: <23256E97-156C-36BB-8924-ED87F21C341F> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MSXML.framework/Versions/A/MSXML
+dyld[7706]: <69AB2B2A-B292-370B-8FA3-BCDAFB4B7EE6> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/OfficeArt.framework/Versions/A/OfficeArt
+dyld[7706]: <7656816F-7703-3809-A085-856EDCF1E6AA> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/OcsClient.framework/Versions/A/OcsClient
+dyld[7706]: <04026C69-E292-3233-B2CB-C6E7D1F86C17> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/OLE.framework/Versions/A/OLE
+dyld[7706]: <FFAA1C90-51A7-3179-A7C2-FBC30FDDFFAC> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/osf.framework/Versions/A/osf
+dyld[7706]: <5432C899-269C-3B46-A023-8FAC08F102C8> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/osfstorage2.framework/Versions/A/osfstorage2
+dyld[7706]: <8FBF6FCD-C794-30E8-A8B7-824492EF9A03> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/libmsix.dylib
+dyld[7706]: <408C1A3B-CA01-329F-A07E-3693289EF200> /Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Security.framework/Security
+dyld[7706]: <CC30BF10-3B63-30E9-B1F6-6008B44127B9> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/ProofingUI.framework/Versions/A/ProofingUI
+dyld[7706]: <8B4342C3-57AE-3A6A-814D-27DFC9DBBDF9> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftPTLS.framework/Versions/A/MicrosoftPTLS
+dyld[7706]: <75C63941-130D-3200-8BA7-898245DA56A3> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftPTLS7.framework/Versions/A/MicrosoftPTLS7
+dyld[7706]: <AE362FB7-0998-3462-8075-FCA231023BF5> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftRichEdit.framework/Versions/A/MicrosoftRichEdit
+dyld[7706]: <FE3C0210-6D08-3F85-8891-C39C87A002AB> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/MicrosoftWebServices.framework/Versions/A/MicrosoftWebServices
+dyld[7706]: <6369EA1B-B2DB-348F-A443-E6337A416948> /Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Accelerate.framework/Accelerate
+dyld[7706]: <617C793D-0EEB-3399-943B-DCAF39B39BB2> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/ExcelApplicationServices.dylib
+dyld[7706]: <56334C03-2E44-38F9-ACA5-4CB7326C101E> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/ExcelCocoa.dylib
+dyld[7706]: <03A22137-61A7-3668-98BB-3938A4C0FE6C> /Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/GSS.framework/GSS
+dyld[7706]: <79E72B83-2384-3A91-8EE7-4315E85E9A91> /Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/IOKit.framework/IOKit
+dyld[7706]: <0ED6EFCF-6A91-3C3A-845A-7B6AA4832FB6> /Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore
+dyld[7706]: <D303742A-27E0-3AC5-8780-F76755A143DF> /Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/usr/lib/libiconv.2.dylib
+dyld[7706]: <B7FBF958-E3E2-3C5A-909C-691A9223FC5D> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/Frameworks/ExcelKerberos.dylib
+dyld[7706]: <7CB84044-8AC2-3FA3-8001-0BA9BD4DDFE0> /Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/usr/lib/libz.1.dylib
+dyld[7706]: Library not loaded: /System/Library/Frameworks/NetFS.framework/Versions/A/NetFS
+  Referenced from: <A5ABAFED-6FA7-3D9A-B981-5D5DBF959411> /Users/runner/work/iOSExcel/iOSExcel/private/real-loader/Contents/MacOS/Microsoft Excel
+  Reason: tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS' (no such file), '/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS' (no such file, not in dyld cache), '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS' (no such file)
+Child process terminated with signal 6: Abort trap

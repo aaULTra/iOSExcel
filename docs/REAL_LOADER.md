@@ -160,3 +160,23 @@ these names against SDK-backed GSS in an isolated iPad Simulator process.
 It records provider image/platform provenance and never invokes those APIs,
 passes credentials or runs Excel. Missing names and macro aliases remain
 explicit; finding exports alone would not prove ABI or behavior compatibility.
+
+## Genuine Kerberos forwarding passed; NetFS is the next failure
+
+Run 39019181596 (a06c46fb61f244836f4396d56df0242bd6b0dfee), M4 iPad
+Simulator 26.2, passed its repeated legacy OID and genuine context/realm ownership
+gate before Microsoft was spawned. All four actual Apple function providers were
+in the same platform-7 Heimdal image. The actual loader advanced to NetFS and
+aborted (134), with 39 Microsoft images and three owned facades mapped.
+Microsoft entry, Excel initialization and activation remain unconfirmed.
+Native iOS binary-preparation run 39019181618 independently verified all 55 images,
+75 facade path changes and four facade numeric identities/signatures (Kerberos
+requires 5.0.0). These are binary checks, not physical-device execution.
+
+Only main directly links NetFS. The measured closure has no attributed NetFS
+imports and no NetFS-named undefined symbol under any other dependency. Its
+canonical counterpart preflight failed on that same runtime. The next experiment
+adds exactly NetFS to the explicit optional-load policy. Actual symbol/bind
+tables must still prove zero use before its single load command can be weakened.
+Dynamic lookup and missing initialization effects remain unknown; this does not
+prove local file operations or provide network mounts. See OPTIONAL_FRAMEWORKS.md.

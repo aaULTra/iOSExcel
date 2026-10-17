@@ -217,20 +217,29 @@ def main():
         result['optional_load_modifications'] = []
         if args.optional_frameworks:
             policy = json.loads(args.optional_frameworks.read_text())
-            allowed = '/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling'
+            allowed = {
+                '/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling':
+                    ('defaultExceptionHandler','setExceptionHandlingMask:','setExceptionHangingMask:'),
+                '/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS': (),
+            }
             selected = set()
             for entry in policy:
                 original = entry['original']
-                if original != allowed or original in selected or not entry.get('observed_failure_run') or not entry.get('absence_preflight_run'):
+                if original not in allowed or original in selected or not entry.get('observed_failure_run') or not entry.get('absence_preflight_run'):
                     raise ValueError('Optional framework needs its own explicit evidence-based policy')
                 if graph['system_imports'].get(original):
                     raise ValueError('Optional framework has recorded direct imports')
-                if any(name in graph['closure_objc_selectors'] for name in ('defaultExceptionHandler','setExceptionHandlingMask:','setExceptionHangingMask:')):
-                    raise ValueError('Recorded exception-monitoring selectors require investigation')
+                if any(name in graph['closure_objc_selectors'] for name in allowed[original]):
+                    raise ValueError('Recorded optional-framework selectors require investigation')
+                if '/NetFS.framework/' in original:
+                    inventory = load_json(root/'docs/evidence/excel-16.55.json.gz')
+                    if any('NetFS' in symbol['name'] for binary in inventory['binaries']
+                           if binary['path'] in graph['startup_closure'] for symbol in binary['undefined']):
+                        raise ValueError('NetFS names imported through another library require investigation')
                 canonical = re.sub(r'/Versions/[^/]+', '', original)
                 evidence = groups.get(canonical)
                 if not evidence or evidence.get('preflight') != 0:
-                    raise ValueError('Optional diagnostics experiment requires same-runtime failed counterpart preflight')
+                    raise ValueError('Optional load experiment requires same-runtime failed counterpart preflight')
                 selected.add(original)
             for image in result['images']:
                 binary = destination/image['path']

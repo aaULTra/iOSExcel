@@ -6,5 +6,13 @@
     "purpose": "Optional Objective-C exception monitoring/debugging; not Foundation exceptions or C++ unwinding",
     "conditions": "Only Excel main links it; no recorded imports or related selectors; same-runtime counterpart preflight must fail; actual undefined and classic bind tables must prove zero use",
     "scope": "Internal startup experiment. Framework initialization/dynamic use remains unproven; no app or workbook success inferred. Licensing and authentication unchanged."
+  },
+  {
+    "original": "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS",
+    "observed_failure_run": 39019181596,
+    "absence_preflight_run": 39019181596,
+    "purpose": "Investigate an unused direct NetFS link; no network mount or authentication result is implemented",
+    "conditions": "Only main links it; zero recorded direct imports and no NetFS undefined names anywhere in startup closure. Same-runtime canonical preflight must fail; actual undefined and all classic bind tables must prove zero use.",
+    "scope": "Single-dependency startup experiment after Kerberos forwarding passed. Dynamic lookup and framework initialization remain unproven. No claim about local files or network shares; licensing and authentication unchanged."
   }
 ]

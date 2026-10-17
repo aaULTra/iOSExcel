@@ -1,0 +1,1114 @@
+{
+  "experiment": "Original Excel MH_EXECUTE with original 54-image Microsoft closure",
+  "platform": "iOS Simulator (7), not an iPadOS device build",
+  "device": "iPad Pro 11-inch (M4)",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "source_sha": "a06c46fb61f244836f4396d56df0242bd6b0dfee",
+  "microsoft_entrypoint_confirmed": false,
+  "excel_initialised": false,
+  "activation_verified": false,
+  "release_ready": false,
+  "runtime_symbol_audits": [
+    {
+      "original": "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+      "target": "/System/Library/Frameworks/Security.framework/Security",
+      "runtime_loaded": true,
+      "required_count": 183,
+      "found_count": 131,
+      "missing": [
+        "SecACLCopyContents",
+        "SecACLSetContents",
+        "SecAccessCopyMatchingACLList",
+        "SecAccessCreate",
+        "SecCertificateCopyPublicKey$LEGACYMAC",
+        "SecDecryptTransformCreate",
+        "SecEncryptTransformCreate",
+        "SecIdentityCopyPreferred",
+        "SecItemExport",
+        "SecItemImport",
+        "SecKeyCreateFromData",
+        "SecKeyGenerateSymmetric",
+        "SecKeychainAddGenericPassword",
+        "SecKeychainCopyDefault",
+        "SecKeychainCreate",
+        "SecKeychainFindGenericPassword",
+        "SecKeychainFindInternetPassword",
+        "SecKeychainGetStatus",
+        "SecKeychainItemCopyAttributesAndData",
+        "SecKeychainItemCopyContent",
+        "SecKeychainItemDelete",
+        "SecKeychainItemFreeAttributesAndData",
+        "SecKeychainItemFreeContent",
+        "SecKeychainItemModifyAttributesAndData",
+        "SecKeychainOpen",
+        "SecSignTransformCreate",
+        "SecTransformExecute",
+        "SecTransformSetAttribute",
+        "SecTrustedApplicationCreateFromPath",
+        "SecTrustedApplicationCreateFromRequirement",
+        "SecVerifyTransformCreate",
+        "kSecACLAuthorizationDecrypt",
+        "kSecAttrAccess",
+        "kSecAttrKeyType3DES",
+        "kSecAttrKeyTypeAES",
+        "kSecAttrKeyTypeDES",
+        "kSecAttrKeyTypeRC2",
+        "kSecAttrKeyTypeRC4",
+        "kSecAttrRounds",
+        "kSecDigestLengthAttribute",
+        "kSecDigestMD2",
+        "kSecDigestSHA1",
+        "kSecDigestSHA2",
+        "kSecDigestTypeAttribute",
+        "kSecInputIsAttributeName",
+        "kSecInputIsDigest",
+        "kSecModeCBCKey",
+        "kSecModeECBKey",
+        "kSecPaddingKey",
+        "kSecPaddingOAEPKey",
+        "kSecPaddingPKCS1Key",
+        "kSecTransformInputAttributeName"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Security.framework/Security",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/AVFoundation.framework/Versions/A/AVFoundation",
+      "target": "/System/Library/Frameworks/AVFoundation.framework/AVFoundation",
+      "runtime_loaded": true,
+      "required_count": 10,
+      "found_count": 10,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/AVFoundation.framework/AVFoundation",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/AVKit.framework/Versions/A/AVKit",
+      "target": "/System/Library/Frameworks/AVKit.framework/AVKit",
+      "runtime_loaded": true,
+      "required_count": 1,
+      "found_count": 0,
+      "missing": [
+        "OBJC_CLASS_$_AVPlayerView"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/AVKit.framework/AVKit",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+      "target": "/System/Library/Frameworks/Accelerate.framework/Accelerate",
+      "runtime_loaded": true,
+      "required_count": 10,
+      "found_count": 7,
+      "missing": [
+        "vU128FullMultiply",
+        "vU256Add",
+        "vU256Divide"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Accelerate.framework/Accelerate",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/AddressBook.framework/Versions/A/AddressBook",
+      "target": "/System/Library/Frameworks/AddressBook.framework/AddressBook",
+      "runtime_loaded": true,
+      "required_count": 2,
+      "found_count": 0,
+      "missing": [
+        "OBJC_CLASS_$_ABAddressBook",
+        "OBJC_CLASS_$_ABPerson"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/AddressBook.framework/AddressBook",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+      "target": "/System/Library/Frameworks/AppKit.framework/AppKit",
+      "runtime_loaded": false,
+      "required_count": 538,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+      "target": "/System/Library/Frameworks/ApplicationServices.framework/ApplicationServices",
+      "runtime_loaded": false,
+      "required_count": 40,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+      "target": "/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox",
+      "runtime_loaded": true,
+      "required_count": 13,
+      "found_count": 13,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/AuthenticationServices.framework/Versions/A/AuthenticationServices",
+      "target": "/System/Library/Frameworks/AuthenticationServices.framework/AuthenticationServices",
+      "runtime_loaded": true,
+      "required_count": 7,
+      "found_count": 7,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/AuthenticationServices.framework/AuthenticationServices",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork",
+      "target": "/System/Library/Frameworks/CFNetwork.framework/CFNetwork",
+      "runtime_loaded": true,
+      "required_count": 75,
+      "found_count": 75,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CFNetwork.framework/CFNetwork",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa",
+      "target": "/System/Library/Frameworks/Cocoa.framework/Cocoa",
+      "runtime_loaded": false,
+      "required_count": 0,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/Contacts.framework/Versions/A/Contacts",
+      "target": "/System/Library/Frameworks/Contacts.framework/Contacts",
+      "runtime_loaded": true,
+      "required_count": 1,
+      "found_count": 1,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Contacts.framework/Contacts",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+      "target": "/System/Library/Frameworks/CoreAudio.framework/CoreAudio",
+      "runtime_loaded": true,
+      "required_count": 4,
+      "found_count": 4,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreAudio.framework/CoreAudio",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreData.framework/Versions/A/CoreData",
+      "target": "/System/Library/Frameworks/CoreData.framework/CoreData",
+      "runtime_loaded": true,
+      "required_count": 9,
+      "found_count": 9,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreData.framework/CoreData",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+      "target": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+      "runtime_loaded": true,
+      "required_count": 530,
+      "found_count": 528,
+      "missing": [
+        "CFURLCreateBookmarkDataFromAliasRecord",
+        "CFXMLCreateStringByEscapingEntities"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+      "target": "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics",
+      "runtime_loaded": true,
+      "required_count": 283,
+      "found_count": 251,
+      "missing": [
+        "CGAssociateMouseAndMouseCursorPosition",
+        "CGDisplayBounds",
+        "CGDisplayCopyColorSpace",
+        "CGDisplayCopyDisplayMode",
+        "CGDisplayGetDrawingContext",
+        "CGDisplayModeCopyPixelEncoding",
+        "CGDisplayModeRelease",
+        "CGDisplayRegisterReconfigurationCallback",
+        "CGEventCreate",
+        "CGEventCreateKeyboardEvent",
+        "CGEventGetLocation",
+        "CGEventPost",
+        "CGEventSourceButtonState",
+        "CGEventSourceFlagsState",
+        "CGEventSourceKeyState",
+        "CGGetActiveDisplayList",
+        "CGGetDisplaysWithPoint",
+        "CGGetDisplaysWithRect",
+        "CGMainDisplayID",
+        "CGPSConverterConvert",
+        "CGPSConverterCreate",
+        "CGWarpMouseCursorPosition",
+        "CGWindowLevelForKey",
+        "CGWindowListCopyWindowInfo",
+        "CGWindowListCreateImage",
+        "CGWindowListCreateImageFromArray",
+        "kCGWindowAlpha",
+        "kCGWindowBounds",
+        "kCGWindowNumber",
+        "kCGWindowOwnerName",
+        "kCGWindowOwnerPID",
+        "kCGWindowSharingState"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage",
+      "target": "/System/Library/Frameworks/CoreImage.framework/CoreImage",
+      "runtime_loaded": true,
+      "required_count": 51,
+      "found_count": 51,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreImage.framework/CoreImage",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia",
+      "target": "/System/Library/Frameworks/CoreMedia.framework/CoreMedia",
+      "runtime_loaded": true,
+      "required_count": 4,
+      "found_count": 4,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreMedia.framework/CoreMedia",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+      "target": "/System/Library/Frameworks/CoreServices.framework/CoreServices",
+      "runtime_loaded": true,
+      "required_count": 86,
+      "found_count": 44,
+      "missing": [
+        "AECheckIsRecord",
+        "AECoerceDesc",
+        "AECountItems",
+        "AECreateAppleEvent",
+        "AECreateDesc",
+        "AECreateList",
+        "AEDeleteParam",
+        "AEDisposeDesc",
+        "AEDuplicateDesc",
+        "AEGetAttributePtr",
+        "AEGetDescData",
+        "AEGetDescDataSize",
+        "AEGetNthDesc",
+        "AEGetNthPtr",
+        "AEGetParamDesc",
+        "AEGetParamPtr",
+        "AEGetSpecialHandler",
+        "AEInitializeDesc",
+        "AEInstallSpecialHandler",
+        "AEObjectInit",
+        "AEPutDesc",
+        "AEPutParamDesc",
+        "AEPutParamPtr",
+        "AEPutPtr",
+        "AERemoveSpecialHandler",
+        "AESendMessage",
+        "CSIdentityGetUUID",
+        "CSIdentityQueryCreateForCurrentUser",
+        "CreateObjSpecifier",
+        "LSCopyAllHandlersForURLScheme",
+        "LSCopyApplicationURLsForBundleIdentifier",
+        "LSCopyApplicationURLsForURL",
+        "LSCopyDefaultApplicationURLForURL",
+        "LSCopyDefaultHandlerForURLScheme",
+        "LSCopyItemInfoForURL",
+        "LSOpenCFURLRef",
+        "UCConvertCFAbsoluteTimeToLongDateTime",
+        "UCConvertLongDateTimeToCFAbsoluteTime",
+        "UTCreateStringForOSType",
+        "UTGetOSTypeFromString",
+        "kUTTagClassNSPboardType",
+        "kUTTagClassOSType"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreServices.framework/CoreServices",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText",
+      "target": "/System/Library/Frameworks/CoreText.framework/CoreText",
+      "runtime_loaded": true,
+      "required_count": 128,
+      "found_count": 127,
+      "missing": [
+        "OBJC_CLASS_$_NSFontCollection"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreText.framework/CoreText",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo",
+      "target": "/System/Library/Frameworks/CoreVideo.framework/CoreVideo",
+      "runtime_loaded": true,
+      "required_count": 13,
+      "found_count": 3,
+      "missing": [
+        "CVDisplayLinkCreateWithActiveCGDisplays",
+        "CVDisplayLinkCreateWithCGDisplay",
+        "CVDisplayLinkGetCurrentTime",
+        "CVDisplayLinkGetNominalOutputVideoRefreshPeriod",
+        "CVDisplayLinkIsRunning",
+        "CVDisplayLinkRelease",
+        "CVDisplayLinkSetOutputCallback",
+        "CVDisplayLinkSetOutputHandler",
+        "CVDisplayLinkStart",
+        "CVDisplayLinkStop"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreVideo.framework/CoreVideo",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/CoreWLAN.framework/Versions/A/CoreWLAN",
+      "target": "/System/Library/Frameworks/CoreWLAN.framework/CoreWLAN",
+      "runtime_loaded": false,
+      "required_count": 0,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration",
+      "target": "/System/Library/Frameworks/DiskArbitration.framework/DiskArbitration",
+      "runtime_loaded": false,
+      "required_count": 4,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling",
+      "target": "/System/Library/Frameworks/ExceptionHandling.framework/ExceptionHandling",
+      "runtime_loaded": false,
+      "required_count": 0,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+      "target": "/System/Library/Frameworks/Foundation.framework/Foundation",
+      "runtime_loaded": true,
+      "required_count": 188,
+      "found_count": 177,
+      "missing": [
+        "NSAppleScriptErrorBriefMessage",
+        "NSAppleScriptErrorMessage",
+        "NSAppleScriptErrorNumber",
+        "NSFileTypeForHFSTypeCode",
+        "NSUserNotificationDefaultSoundName",
+        "OBJC_CLASS_$_NSAppleEventDescriptor",
+        "OBJC_CLASS_$_NSAppleEventManager",
+        "OBJC_CLASS_$_NSAppleScript",
+        "OBJC_CLASS_$_NSUserAppleScriptTask",
+        "OBJC_CLASS_$_NSUserNotification",
+        "OBJC_CLASS_$_NSUserNotificationCenter"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Foundation.framework/Foundation",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/GSS.framework/Versions/A/GSS",
+      "target": "/System/Library/Frameworks/GSS.framework/GSS",
+      "runtime_loaded": true,
+      "required_count": 27,
+      "found_count": 27,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/GSS.framework/GSS",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+      "target": "/System/Library/Frameworks/IOKit.framework/IOKit",
+      "runtime_loaded": true,
+      "required_count": 25,
+      "found_count": 25,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO",
+      "target": "/System/Library/Frameworks/ImageIO.framework/ImageIO",
+      "runtime_loaded": true,
+      "required_count": 36,
+      "found_count": 36,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/ImageIO.framework/ImageIO",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/JavaScriptCore",
+      "target": "/System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore",
+      "runtime_loaded": true,
+      "required_count": 56,
+      "found_count": 56,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos",
+      "target": "/System/Library/Frameworks/Kerberos.framework/Kerberos",
+      "runtime_loaded": false,
+      "required_count": 5,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/MediaAccessibility.framework/Versions/A/MediaAccessibility",
+      "target": "/System/Library/Frameworks/MediaAccessibility.framework/MediaAccessibility",
+      "runtime_loaded": true,
+      "required_count": 7,
+      "found_count": 7,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/MediaAccessibility.framework/MediaAccessibility",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+      "target": "/System/Library/Frameworks/Metal.framework/Metal",
+      "runtime_loaded": true,
+      "required_count": 10,
+      "found_count": 10,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Metal.framework/Metal",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/MetalPerformanceShaders",
+      "target": "/System/Library/Frameworks/MetalPerformanceShaders.framework/MetalPerformanceShaders",
+      "runtime_loaded": true,
+      "required_count": 5,
+      "found_count": 5,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/MetalPerformanceShaders.framework/MetalPerformanceShaders",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS",
+      "target": "/System/Library/Frameworks/NetFS.framework/NetFS",
+      "runtime_loaded": false,
+      "required_count": 0,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/Network.framework/Versions/A/Network",
+      "target": "/System/Library/Frameworks/Network.framework/Network",
+      "runtime_loaded": true,
+      "required_count": 0,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Network.framework/Network",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+      "target": "/System/Library/Frameworks/OpenGL.framework/OpenGL",
+      "runtime_loaded": false,
+      "required_count": 84,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/Quartz.framework/Versions/A/Quartz",
+      "target": "/System/Library/Frameworks/Quartz.framework/Quartz",
+      "runtime_loaded": false,
+      "required_count": 0,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore",
+      "target": "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
+      "runtime_loaded": true,
+      "required_count": 48,
+      "found_count": 48,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/QuickLook.framework/Versions/A/QuickLook",
+      "target": "/System/Library/Frameworks/QuickLook.framework/QuickLook",
+      "runtime_loaded": true,
+      "required_count": 1,
+      "found_count": 0,
+      "missing": [
+        "QLThumbnailImageCreate"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/QuickLook.framework/QuickLook",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/ScriptingBridge.framework/Versions/A/ScriptingBridge",
+      "target": "/System/Library/Frameworks/ScriptingBridge.framework/ScriptingBridge",
+      "runtime_loaded": false,
+      "required_count": 1,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/SecurityInterface.framework/Versions/A/SecurityInterface",
+      "target": "/System/Library/Frameworks/SecurityInterface.framework/SecurityInterface",
+      "runtime_loaded": false,
+      "required_count": 2,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement",
+      "target": "/System/Library/Frameworks/ServiceManagement.framework/ServiceManagement",
+      "runtime_loaded": false,
+      "required_count": 2,
+      "found_count": 0,
+      "missing": [],
+      "load_error": [
+        "0"
+      ],
+      "images": [],
+      "mapping_permitted": false,
+      "link_preflight": 0,
+      "symbols_queried": false,
+      "scope": "SDK-absent preflight only"
+    },
+    {
+      "original": "/System/Library/Frameworks/SpriteKit.framework/Versions/A/SpriteKit",
+      "target": "/System/Library/Frameworks/SpriteKit.framework/SpriteKit",
+      "runtime_loaded": true,
+      "required_count": 7,
+      "found_count": 7,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/SpriteKit.framework/SpriteKit",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/StoreKit.framework/Versions/A/StoreKit",
+      "target": "/System/Library/Frameworks/StoreKit.framework/StoreKit",
+      "runtime_loaded": true,
+      "required_count": 4,
+      "found_count": 4,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/StoreKit.framework/StoreKit",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/SwiftUI.framework/Versions/A/SwiftUI",
+      "target": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+      "runtime_loaded": true,
+      "required_count": 97,
+      "found_count": 93,
+      "missing": [
+        "$s7SwiftUI19NSHostingControllerC8rootViewACyxGx_tcfc",
+        "$s7SwiftUI19NSHostingControllerCMn",
+        "$s7SwiftUI5ColorVyACSo7NSColorCcfC",
+        "$s7SwiftUI5ImageV02nsC0ACSo7NSImageC_tcfC"
+      ],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/SwiftUI.framework/SwiftUI",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+      "target": "/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration",
+      "runtime_loaded": true,
+      "required_count": 10,
+      "found_count": 10,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/UserNotifications.framework/Versions/A/UserNotifications",
+      "target": "/System/Library/Frameworks/UserNotifications.framework/UserNotifications",
+      "runtime_loaded": true,
+      "required_count": 8,
+      "found_count": 8,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/UserNotifications.framework/UserNotifications",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    },
+    {
+      "original": "/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit",
+      "target": "/System/Library/Frameworks/WebKit.framework/WebKit",
+      "runtime_loaded": true,
+      "required_count": 22,
+      "found_count": 22,
+      "missing": [],
+      "load_error": [],
+      "images": [
+        {
+          "path": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/WebKit.framework/WebKit",
+          "platform": 7
+        }
+      ],
+      "mapping_permitted": true,
+      "link_preflight": null,
+      "symbols_queried": true,
+      "scope": "Runtime export lookup only; no API behavior, device availability or ABI guarantee"
+    }
+  ],
+  "kerberos_forwarding_contracts": {
+    "returned_realm_list_freed": true,
+    "context_allocated_and_freed": true,
+    "realm_lookup_status": 0,
+    "provider": {
+      "expected_platform": 7,
+      "functions": [
+        {
+          "symbol": "krb5_init_context",
+          "provider": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+          "found": true,
+          "platform": 7
+        },
+        {
+          "symbol": "krb5_free_context",
+          "provider": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+          "found": true,
+          "platform": 7
+        },
+        {
+          "symbol": "krb5_get_host_realm",
+          "provider": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+          "found": true,
+          "platform": 7
+        },
+        {
+          "symbol": "krb5_free_host_realm",
+          "provider": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+          "found": true,
+          "platform": 7
+        }
+      ],
+      "scope": "Private Apple implementation reached through public GSS; version-sensitive experimental ABI. No authentication or activation success implied.",
+      "ready": true
+    },
+    "oid_base64": "KoZIhvcSAQIBAQ==",
+    "authentication_attempted": false,
+    "excel_executed": false,
+    "credentials_used": false,
+    "oid_length": 10,
+    "oid_struct_size": 16,
+    "realm_list_returned": true,
+    "oid_elements_offset": 8
+  },
+  "returncode": 134,
+  "timed_out": false,
+  "elapsed_seconds": 3.0,
+  "mapped_microsoft_image_count": 39,
+  "mapped_compatibility_image_count": 3,
+  "first_failure": {
+    "kind": "library_not_loaded",
+    "name": "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS"
+  },
+  "dyld_failure_present": true,
+  "status": "Loader failure captured"
+}
