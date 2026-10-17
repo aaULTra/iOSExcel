@@ -3,7 +3,7 @@
   "platform": "iOS Simulator (7), not an iPadOS device build",
   "device": "iPad Pro 11-inch (M4)",
   "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
-  "source_sha": "9d578f1ce94ee83eaaffef2f9c3504bed749f71f",
+  "source_sha": "96ab66967d2dacb358e76321a8d9947cbc284974",
   "microsoft_entrypoint_confirmed": false,
   "excel_initialised": false,
   "activation_verified": false,
@@ -535,12 +535,15 @@
   ],
   "returncode": 134,
   "timed_out": false,
-  "elapsed_seconds": 3.51,
+  "elapsed_seconds": 5.32,
   "mapped_microsoft_image_count": 39,
   "first_failure": {
     "kind": "library_not_loaded",
-    "name": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices"
+    "name": "/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling"
   },
   "dyld_failure_present": true,
-  "status": "Loader failure captured"
+  "status": "Loader failure captured",
+  "original_report_count_included_compatibility_facades": 41,
+  "mapped_compatibility_image_count": 2,
+  "classification_note": "Corrected using exact recorded vendor closure paths, not the shared Contents prefix"
 }

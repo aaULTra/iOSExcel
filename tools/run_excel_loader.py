@@ -50,13 +50,19 @@ def main():
     result['sdk_counterparts_absent'] = []
     # The same Versions-path failure was observed for Security and Accelerate.
     # Normalize this class of path only where both SDK and runtime checks pass.
-    for old in result['remaining_system_libraries']:
+    original_system_names = {edge['path'] for node in graph['startup_closure']
+                             for edge in graph['graph'][node] if edge['category'] == 'system'}
+    for old in sorted(original_system_names):
         new = re.sub(r'/Versions/[^/]+', '', old)
         if old in known or old == new or not old.startswith('/System/Library/Frameworks/'):
             continue
         stub = sdk_stub(sdk, new)
         if not stub.is_file():
             result['sdk_counterparts_absent'].append({'original': old, 'candidate': new})
+            # Preflight only: do not run unsupported or host-macOS framework
+            # initializers in the probe. Never automatically substitute these.
+            path_entries.append({'original': old, 'target': new, 'map_eligible': False,
+                                 'scope': 'SDK-absent counterpart presence audit only; no path substitution'})
             continue
         path_entries.append({'original': old, 'target': new, 'observed_failure_run': 38985243018,
                              'scope': 'Same verified versioned-path normalization; runtime load must pass'})
@@ -66,7 +72,7 @@ def main():
         old, new = entry['original'], entry['target']
         if not old.startswith('/System/Library/Frameworks/') or not new.startswith('/System/Library/Frameworks/') or '..' in Path(new).parts:
             raise ValueError('Unexpected system library path mapping')
-        if not entry.get('observed_failure_run') or not sdk_stub(sdk, new).is_file():
+        if entry.get('map_eligible', True) and (not entry.get('observed_failure_run') or not sdk_stub(sdk, new).is_file()):
             raise ValueError('Counterpart needs failure evidence and an SDK declaration')
     result['system_path_modifications'] = []
     (reports/'real-loader-transform.json').write_text(json.dumps(result, indent=2)+'\n')
@@ -118,7 +124,7 @@ def main():
         manifest = destination/'system-probes.tsv'
         lines = []
         for entry in path_entries:
-            lines.append('LIB\t'+entry['target'])
+            lines.append(('LIB\t' if entry.get('map_eligible', True) else 'PREFLIGHT\t')+entry['target'])
             names = [name.removeprefix('_') for name in graph['system_imports'].get(entry['original'], [])]
             if any(any(c in value for c in '\t\r\n') for value in [entry['target'], *names]):
                 raise ValueError('Unexpected control characters in probe inputs')
@@ -141,11 +147,15 @@ def main():
         current = None
         for line in checked.stdout.splitlines():
             row = line.split('\t')
-            if row[0] in ('LIBRARY_LOADED', 'LIBRARY_FAILED') and len(row) >= 2:
+            if row[0] in ('LIBRARY_LOADED', 'LIBRARY_FAILED', 'LIBRARY_PREFLIGHT') and len(row) >= 2:
                 if row[1] in groups:
                     raise ValueError('Duplicate runtime library result')
-                current = {'loaded': row[0] == 'LIBRARY_LOADED', 'found': [], 'missing': [], 'error': row[2:]}
+                current = {'loaded': row[0] == 'LIBRARY_LOADED', 'found': [], 'missing': [], 'error': row[2:], 'images': []}
+                if row[0] == 'LIBRARY_PREFLIGHT':
+                    current['preflight'] = int(row[2])
                 groups[row[1]] = current
+            elif current is not None and row[0] == 'IMAGE' and len(row) == 3:
+                current['images'].append({'path': row[1], 'platform': int(row[2])})
             elif current is not None and row[0] in ('FOUND', 'MISSING') and len(row) >= 2:
                 current['found' if row[0] == 'FOUND' else 'missing'].append(row[1])
             else:
@@ -162,11 +172,14 @@ def main():
                     raise ValueError('Incomplete runtime symbol audit')
                 if entry.get('probe_symbol') and entry['probe_symbol'] not in audited['found']:
                     raise ValueError('Previously confirmed counterpart export disappeared')
-                mapping[entry['original']] = entry['target']
+                if entry.get('map_eligible', True):
+                    mapping[entry['original']] = entry['target']
             report['runtime_symbol_audits'].append({'original': entry['original'], 'target': entry['target'],
                 'runtime_loaded': audited['loaded'], 'required_count': len(names),
                 'found_count': len(audited['found']), 'missing': audited['missing'], 'load_error': audited['error'],
-                'scope': 'Runtime export lookup only; no API behavior, device availability or ABI guarantee'})
+                'images': audited['images'], 'mapping_permitted': entry.get('map_eligible', True),
+                'link_preflight': audited.get('preflight'), 'symbols_queried': audited['loaded'],
+                'scope': 'SDK-absent preflight only' if not entry.get('map_eligible', True) else 'Runtime export lookup only; no API behavior, device availability or ABI guarantee'})
         result['system_path_modifications'] = []
         result['verified_system_path_mapping'] = mapping
         for image in result['images']:
@@ -201,7 +214,9 @@ def main():
         report['elapsed_seconds'] = round(time.monotonic()-started, 2)
         stderr = (reports/'real-loader.stderr.log').read_text(errors='replace')
         mapped = re.findall(r'^dyld\[\d+\]: <[^>]+> (.+)$', stderr, re.MULTILINE)
-        report['mapped_microsoft_image_count'] = sum(path.startswith(str(destination)+'/Contents/') for path in mapped)
+        vendor_paths = {str(destination/image['path']) for image in result['images']}
+        report['mapped_microsoft_image_count'] = sum(path in vendor_paths for path in mapped)
+        report['mapped_compatibility_image_count'] = sum(path.startswith(str(destination)+'/Contents/') and path not in vendor_paths for path in mapped)
         missing_library = re.search(r'^dyld\[\d+\]: Library not loaded: (.+)$', stderr, re.MULTILINE)
         missing_symbol = re.search(r'(?:Symbol not found:|symbol not found[^:]*:)\s*(\S+)', stderr)
         if missing_library:

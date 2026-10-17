@@ -109,3 +109,34 @@ actual Mac SDK declaration capture is the next implementation gate. No Microsoft
 entry/initialization, UIKit lifecycle, activation or workbook milestone is claimed.
 Evidence: real-loader-latest.json, real-loader-paths.stderr.log and the compressed
 real-loader-path-transform.json.gz.
+
+## ApplicationServices mapped; ExceptionHandling is next
+
+Run 38987517689 at 96ab66967d2dacb358e76321a8d9947cbc284974 mapped
+ExcelApplicationServices.dylib and ExcelCocoa.dylib, then aborted on the original
+versioned ExceptionHandling path. The facades' dependency shim had not yet been
+observed initialized; no Microsoft entry or API execution is claimed. The new
+ApplicationServices numeric compatibility requirement was measured as 1.0.0.
+Its six redirects brought the base facade path changes to 74.
+
+The original diagnostic counter used a shared Contents prefix and incorrectly
+counted the two owned facades as Microsoft images (41). Classification against
+the exact recorded vendor closure yields 39 Microsoft images and two owned
+facades; the latest report records this correction and preserves the raw report.
+The counter now uses exact closure membership.
+
+Before deciding the next missing-framework treatment, SDK-absent canonical paths
+are also checked with dlopen_preflight. This checks link compatibility without
+loading initializers, does not query exports, and never causes automatic path
+substitution. A positive preflight can still require further provenance/ABI
+investigation, particularly on Simulator where host-macOS images must not be
+mistaken for iPadOS frameworks. Successfully loaded SDK-backed images additionally
+record their actual dyld path and Mach-O platform.
+
+ExceptionHandling has zero direct undefined-symbol imports in the measured
+Microsoft closure; that alone does not prove its initialization or dynamic lookup
+is unnecessary. Apple's reference describes optional Objective-C exception
+monitoring via NSExceptionHandler. No exception framework has been removed or
+replaced on this evidence yet.
+https://developer.apple.com/documentation/exceptionhandling/
+https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/dlopen_preflight.3.html

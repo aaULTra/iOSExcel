@@ -30,7 +30,7 @@ are included in this repository/archive.
 | M0 — extracted, native arm64 confirmed | Complete for all three compared versions |
 | M1 — dependencies | Static inventories, load graphs and first iPhoneOS SDK declaration audit complete; dynamic/runtime contracts pending |
 | M2 — retarget main | Platform metadata changed successfully on real 16.55 main; four bytes differ in the arm64 slice; 41,983,228-byte __text unchanged |
-| Relevant embedded binaries | All 55 startup images hash-verified and staged with iOS metadata plus 68 AppKit/Cocoa path changes; code and link-edit bytes unchanged; not an app |
+| Relevant embedded binaries | All 55 startup images hash-verified; 74 facade path changes and verified Apple path normalization; code/link-edit bytes unchanged before re-signing; not an app |
 | M3–M6 — loader/shim/UIKit/Excel initialization | NOT reached for Excel; production UIKit bridge tested with synthetic desktop classes/nib on iPad Simulator; no physical-device run |
 | M7–M15 — desktop UI/workbooks | NOT implemented or tested |
 
@@ -60,9 +60,9 @@ Do not delete dependencies to force that check to pass.
 The current priority is an internal **real Excel executable loader attempt**, using
 the original Microsoft startup closure on iPad Simulator. This is separate from
 the synthetic UI tests below. See docs/REAL_LOADER.md for the exact method and
-limits. Verified framework path repairs advanced the actual loader to its first missing
-compatibility library: ApplicationServices, with 40 imported names. The real main
-and 38 Microsoft dylibs mapped; its entry point was not reached; no successful Excel initialization is established.
+limits. Verified framework path repairs and the typed ApplicationServices facade advanced
+the actual loader to ExceptionHandling.framework. The real main, 38 Microsoft dylibs
+and two compatibility facades mapped; its entry point was not reached; no successful Excel initialization is established.
 
 Source: https://github.com/aaULTra/iOSExcel
 

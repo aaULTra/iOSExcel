@@ -16,7 +16,7 @@ an explicit compatibility typedef rather than assuming a mobile typedef matches.
 
 | Required group | Count | Behavior |
 | --- | ---: | --- |
-| HIShape | 3 | Create rectangle-backed CGPaths, intersect paths, query emptiness; only compatibility-created path objects supported |
+| HIShape | 3 | Create rectangle-backed CGPaths, intersect rectangular integer regions, query emptiness; revised fractional rule under native validation |
 | Core Printing | 27 | Log unsupported operations; return measured kPMNotImplemented (-30873), clear outputs; printer-ID query returns NULL |
 | Carbon Pasteboard | 8 | Operations return unimpErr (-4) and clear outputs; synchronization raises because flags cannot encode an unsupported error |
 | Universal Access zoom | 2 | Mac zoom feature explicitly disabled (logged false); focus-change logs and returns unimpErr; no iPad accessibility-status query claimed |
@@ -69,3 +69,18 @@ now standardizes region bounds on both sides, while still comparing emptiness
 and every tested intersection. Raw HIShapeGetBounds representation compatibility
 is explicitly not claimed. Both baseline/result geometry reports are now retained
 even when a comparison fails. This test correction does not alter the shim.
+
+A subsequent comparison (38987659745) exposed an actual semantic difference:
+Apple rounded the fractional rectangle intersection to integer region bounds
+[2,-2,4,6], while exact CGPath intersection retained fractional bounds. The new
+implementation restricts intersection to rectangular regions and tests integral
+region conversion against a larger Apple baseline including subpixel disjointness,
+containment and equal shapes. This revision is pending validation; broader path
+intersection behavior is not claimed.
+
+The real executable run 38987517689 passed the ApplicationServices facade load
+and reached ExceptionHandling as its next loader failure. The Microsoft entry
+point was not reached, so no C operation was exercised by Excel. The original
+report's count 41 accidentally included two compatibility facades under Contents;
+exact vendor-closure classification gives 39 vendor images plus two owned facades.
+The raw report and correction are both retained.

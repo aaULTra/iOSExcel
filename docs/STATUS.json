@@ -3,7 +3,7 @@
   "target": "Microsoft Excel for Mac 16.55 (21111400)",
   "M0": "complete",
   "M1": "Static inventory, dependency graphs and first iPhoneOS SDK declaration audit complete; dynamic/runtime contracts pending",
-  "M2": "Actual 55-image closure hash-verified and staged with iOS metadata and 68 distinct AppKit/Cocoa path rewrites; code and link-edit bytes unchanged. Native fixture binding and iOS facade builds passed. Excel not executed.",
+  "M2": "Actual 55-image closure hash-verified; 74 distinct AppKit/Cocoa/ApplicationServices facade path rewrites plus runtime-verified system path normalization. Code and link-edit payload unchanged before re-signing. Three facade identity/version checks passed in the real loader experiment. Microsoft entry not reached.",
   "M3_to_M15": "not reached",
   "assessment": "Not practical as a thin CyPort-style port; major open-ended compatibility research required",
   "excel_ipa_exists": false,
@@ -34,7 +34,7 @@
   "view_compatibility": "Partial NSResponder-based NSView model plus UIView projection: native hierarchy/geometry/lifetime tests, 32 exact ABI contracts and synthetic UIKit drawing/pixel/hierarchy tests passed. No NSWindow or Excel execution.",
   "view_native_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725023",
   "view_simulator_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725046",
-  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38986113826",
-  "real_loader_investigation": "Verified same-runtime Apple framework path normalization passed. Actual main and 38 Microsoft dylibs mapped, then abort on ApplicationServices; 40 imports need typed compatibility. Microsoft entry not reached.",
-  "application_services": "Source for 40 imports: three CoreGraphics shape operations; explicit disabled printing, pasteboard and Mac zoom behavior. Invalid assumed UIKit zoom status mapping caught by compiler and replaced with logged feature-disabled false. Native comparison and real loader retry pending."
+  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38987517689",
+  "real_loader_investigation": "Actual loader advanced past ApplicationServices: 39 exact vendor images plus two compatibility facades mapped, then abort on ExceptionHandling. Original count 41 included own facades; classification corrected against exact vendor closure. Microsoft entry not reached.",
+  "application_services": "40 measured C interfaces compiled against actual Mac declarations and for iOS arm64; 17 compatibility type encodings passed. Facade maps in actual Excel loader. Disabled printing/pasteboard/Mac-zoom behavior explicit. Native HIShape fractional-intersection mismatch under correction and expanded Apple baseline comparison."
 }

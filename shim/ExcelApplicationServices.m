@@ -13,9 +13,16 @@ static CGPathRef EXShapePath(HIShapeRef shape) {
     return (CGPathRef)shape;
 }
 HIShapeRef HIShapeCreateIntersection(HIShapeRef inShape1, HIShapeRef inShape2) {
-    CGPathRef a = EXShapePath(inShape1), b = EXShapePath(inShape2);
-    if (@available(iOS 16.0, macOS 13.0, *)) return (HIShapeRef)CGPathCreateCopyByIntersectingPath(a, b, false);
-    EXServiceFault(@"HIShapeCreateIntersection: required CoreGraphics path operation unavailable");
+    CGPathRef a=EXShapePath(inShape1), b=EXShapePath(inShape2);
+    if (CGPathIsEmpty(a) || CGPathIsEmpty(b)) return (HIShapeRef)CGPathCreateMutable();
+    CGRect ra=CGRectZero, rb=CGRectZero;
+    if (!CGPathIsRect(a,&ra) || !CGPathIsRect(b,&rb)) EXServiceFault(@"HIShapeCreateIntersection: nonrectangular regions are not implemented");
+    // Native HIShape intersections quantize fractional rectangle regions. This
+    // rule is tested against Apple's implementation, not inferred from CGPath.
+    ra=CGRectIntegral(ra); rb=CGRectIntegral(rb);
+    CGRect overlap=CGRectIntersection(ra,rb);
+    if (CGRectIsNull(overlap) || CGRectIsEmpty(overlap)) return (HIShapeRef)CGPathCreateMutable();
+    return HIShapeCreateWithRect(&overlap);
 }
 
 HIShapeRef HIShapeCreateWithRect(const CGRect * inRect) {
