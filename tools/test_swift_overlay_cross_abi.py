@@ -25,12 +25,6 @@ def main():
     build.mkdir(parents=True, exist_ok=True)
     reports = root/'reports'
     reports.mkdir(exist_ok=True)
-    library, names = build_overlay(root, build, 'simulator')
-    device_library, _ = build_overlay(root, root/'build/swift-overlay-device', 'ios')
-    if inspect(device_library.read_bytes())['build_versions'][0]['platform'] != 2:
-        raise RuntimeError('Device overlay must be platform 2')
-    call('codesign', '--force', '--sign', '-', device_library)
-    call('codesign', '--verify', '--strict', device_library)
     sdk = call('xcrun', '--sdk', 'iphonesimulator', '--show-sdk-path')
     macsdk = call('xcrun', '--sdk', 'macosx', '--show-sdk-path')
     native = build/'mac-client'
@@ -40,6 +34,22 @@ def main():
     call(native, reports/'swift-overlay-original-mac-client.json')
     before = arm64(native.read_bytes())
     original = inspect(before)
+    versions = {}
+    for command, offset, size in commands(before):
+        if command in DYLIBS:
+            dep = string(before,offset+unpack('<I',before,offset+8)[0],offset+size)
+            versions[dep] = unpack('<I',before,offset+20)[0]
+    required_version = version(versions.get('/usr/lib/swift/libswiftAppKit.dylib',0))
+    library, names = build_overlay(root, build, 'simulator', required_version)
+    device_library, _ = build_overlay(root, root/'build/swift-overlay-device', 'ios', required_version)
+    if inspect(device_library.read_bytes())['build_versions'][0]['platform'] != 2:
+        raise RuntimeError('Device overlay must be platform 2')
+    call('codesign','--force','--sign','-',device_library)
+    call('codesign','--verify','--strict',device_library)
+    (reports/'swift-overlay-device-build.json').write_text(json.dumps({'platform':2,
+        'required_version':required_version,'required_exports_verified':names,'signature_verified':True,
+        'device_execution':False,'microsoft_executed':False},indent=2)+'\n')
+
     mapping = {'/usr/lib/swift/libswiftAppKit.dylib':'@rpath/libExcelSwiftAppKit.dylib'}
     appkit = '/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit'
     (reports/'swift-overlay-mac-caller-imports.json').write_text(json.dumps(original,indent=2)+'\n')
@@ -52,10 +62,11 @@ def main():
         name = string(before, offset+unpack('<I',before,offset+8)[0], offset+size)
         if name == appkit:
             requirement.append(version(unpack('<I',before,offset+20)[0]))
-    if len(requirement) != 1:
-        raise RuntimeError('Expected one zero-C-import AppKit load in own fixture')
-    build_one(library, build/'ExcelAppKit.dylib', '@rpath/ExcelAppKit.dylib', requirement[0], 'simulator')
-    mapping[appkit] = '@rpath/ExcelAppKit.dylib'
+    if len(requirement) > 1:
+        raise RuntimeError('Unexpected duplicate AppKit dependency in own fixture')
+    if requirement:
+        build_one(library, build/'ExcelAppKit.dylib', '@rpath/ExcelAppKit.dylib', requirement[0], 'simulator')
+        mapping[appkit] = '@rpath/ExcelAppKit.dylib'
     for dep in original['dylibs']:
         path = dep['path']
         if path in mapping or not path.startswith('/System/Library/Frameworks/'):

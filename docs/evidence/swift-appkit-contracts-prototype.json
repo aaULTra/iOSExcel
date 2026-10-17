@@ -1,0 +1,202 @@
+{
+  "scope": "Actual Mac compiler lowering and valid two-component IndexPath behavior only. No iOS compatibility, rendering or Excel startup proven.",
+  "failure": {
+    "kind": "library_not_loaded",
+    "name": "/usr/lib/swift/libswiftAppKit.dylib"
+  },
+  "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+  "compiler": "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)\nTarget: arm64-apple-macosx15.0",
+  "symbols": [
+    {
+      "symbol": "_$s10Foundation9IndexPathV6AppKitE4itemSivg",
+      "demangled": "(extension in AppKit):Foundation.IndexPath.item.getter : Swift.Int",
+      "compiler_reference_lines": [
+        "%2 = function_ref @$s10Foundation9IndexPathV6AppKitE4itemSivg : $@convention(method) (@in_guaranteed IndexPath) -> Int // user: %3",
+        "sil [available 10.9] @$s10Foundation9IndexPathV6AppKitE4itemSivg : $@convention(method) (@in_guaranteed IndexPath) -> Int"
+      ]
+    },
+    {
+      "symbol": "_$sSo6CGRectV6AppKitE4fill5usingySo22NSCompositingOperationV_tF",
+      "demangled": "(extension in AppKit):__C.CGRect.fill(using: __C.NSCompositingOperation) -> ()",
+      "compiler_reference_lines": [
+        "%4 = function_ref @$sSo6CGRectV6AppKitE4fill5usingySo22NSCompositingOperationV_tF : $@convention(method) (NSCompositingOperation, CGRect) -> () // user: %5",
+        "sil [available 10.9] @$sSo6CGRectV6AppKitE4fill5usingySo22NSCompositingOperationV_tF : $@convention(method) (NSCompositingOperation, CGRect) -> ()"
+      ]
+    },
+    {
+      "symbol": "__swift_FORCE_LOAD_$_swiftAppKit",
+      "demangled": "_swift_FORCE_LOAD_$_swiftAppKit",
+      "compiler_reference_lines": []
+    }
+  ],
+  "force_load_compiler_ir": [],
+  "explicit_compiler_anchor_ir": [
+    "@\"_swift_FORCE_LOAD_$_swiftAppKit\" = common global i1 false"
+  ],
+  "office_marker_imports": [
+    {
+      "path": "Contents/Frameworks/CocoaUI.framework/Versions/A/CocoaUI",
+      "weak": true
+    },
+    {
+      "path": "Contents/Frameworks/FluentUI.framework/Versions/A/FluentUI",
+      "weak": true
+    },
+    {
+      "path": "Contents/Frameworks/mso40ui.framework/Versions/A/mso40ui",
+      "weak": true
+    },
+    {
+      "path": "Contents/Frameworks/mso99.framework/Versions/A/mso99",
+      "weak": true
+    }
+  ],
+  "operation_declarations": [
+    {
+      "kind": "EnumDecl",
+      "type": null,
+      "underlying_type": {
+        "desugaredQualType": "unsigned long",
+        "qualType": "NSUInteger",
+        "typeAliasDeclId": "0x134578f60"
+      },
+      "constants": []
+    },
+    {
+      "kind": "TypedefDecl",
+      "type": {
+        "qualType": "enum NSCompositingOperation"
+      },
+      "underlying_type": null,
+      "constants": []
+    },
+    {
+      "kind": "EnumDecl",
+      "type": null,
+      "underlying_type": {
+        "desugaredQualType": "unsigned long",
+        "qualType": "NSUInteger",
+        "typeAliasDeclId": "0x134578f60"
+      },
+      "constants": [
+        {
+          "name": "NSCompositingOperationClear",
+          "value": 0
+        },
+        {
+          "name": "NSCompositingOperationCopy",
+          "value": 1
+        },
+        {
+          "name": "NSCompositingOperationSourceOver",
+          "value": 2
+        },
+        {
+          "name": "NSCompositingOperationSourceIn",
+          "value": 3
+        },
+        {
+          "name": "NSCompositingOperationSourceOut",
+          "value": 4
+        },
+        {
+          "name": "NSCompositingOperationSourceAtop",
+          "value": 5
+        },
+        {
+          "name": "NSCompositingOperationDestinationOver",
+          "value": 6
+        },
+        {
+          "name": "NSCompositingOperationDestinationIn",
+          "value": 7
+        },
+        {
+          "name": "NSCompositingOperationDestinationOut",
+          "value": 8
+        },
+        {
+          "name": "NSCompositingOperationDestinationAtop",
+          "value": 9
+        },
+        {
+          "name": "NSCompositingOperationXOR",
+          "value": 10
+        },
+        {
+          "name": "NSCompositingOperationPlusDarker",
+          "value": 11
+        },
+        {
+          "name": "NSCompositingOperationHighlight",
+          "value": 12
+        },
+        {
+          "name": "NSCompositingOperationPlusLighter",
+          "value": 13
+        },
+        {
+          "name": "NSCompositingOperationMultiply",
+          "value": 14
+        },
+        {
+          "name": "NSCompositingOperationScreen",
+          "value": 15
+        },
+        {
+          "name": "NSCompositingOperationOverlay",
+          "value": 16
+        },
+        {
+          "name": "NSCompositingOperationDarken",
+          "value": 17
+        },
+        {
+          "name": "NSCompositingOperationLighten",
+          "value": 18
+        },
+        {
+          "name": "NSCompositingOperationColorDodge",
+          "value": 19
+        },
+        {
+          "name": "NSCompositingOperationColorBurn",
+          "value": 20
+        },
+        {
+          "name": "NSCompositingOperationSoftLight",
+          "value": 21
+        },
+        {
+          "name": "NSCompositingOperationHardLight",
+          "value": 22
+        },
+        {
+          "name": "NSCompositingOperationDifference",
+          "value": 23
+        },
+        {
+          "name": "NSCompositingOperationExclusion",
+          "value": 24
+        },
+        {
+          "name": "NSCompositingOperationHue",
+          "value": 25
+        },
+        {
+          "name": "NSCompositingOperationSaturation",
+          "value": 26
+        },
+        {
+          "name": "NSCompositingOperationColor",
+          "value": 27
+        },
+        {
+          "name": "NSCompositingOperationLuminosity",
+          "value": 28
+        }
+      ]
+    }
+  ],
+  "overlay_implemented": false
+}

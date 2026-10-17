@@ -1,0 +1,56 @@
+{
+  "drawing_executed" : false,
+  "excel_executed" : false,
+  "index_path_layout" : [
+    17,
+    24,
+    8
+  ],
+  "index_path_samples" : [
+    {
+      "indexes" : [
+        0,
+        0
+      ],
+      "item" : 0
+    },
+    {
+      "indexes" : [
+        2,
+        7
+      ],
+      "item" : 7
+    },
+    {
+      "indexes" : [
+        11,
+        23
+      ],
+      "item" : 23
+    },
+    {
+      "indexes" : [
+        1000,
+        999999
+      ],
+      "item" : 999999
+    },
+    {
+      "indexes" : [
+        0,
+        9223372036854775807
+      ],
+      "item" : 9223372036854775807
+    }
+  ],
+  "operation_layout" : [
+    8,
+    8,
+    8
+  ],
+  "rect_layout" : [
+    32,
+    32,
+    8
+  ]
+}

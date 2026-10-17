@@ -9,7 +9,7 @@ def run(*args, **kwargs):
     return subprocess.check_output(args, text=True, timeout=180, **kwargs)
 
 
-def build_overlay(root, build, platform):
+def build_overlay(root, build, platform, required_version="0.0.0"):
     build.mkdir(parents=True, exist_ok=True)
     source = root/'experiments/swift-appkit'
     sdk_name, triple = {'macos':('macosx','arm64-apple-macos11.0'), 'simulator':('iphonesimulator','arm64-apple-ios18.0-simulator'), 'ios':('iphoneos','arm64-apple-ios18.0')}[platform]
@@ -31,7 +31,9 @@ def build_overlay(root, build, platform):
     run('xcrun', 'swiftc', *target, '-module-name', 'AppKit', '-module-link-name', 'ExcelSwiftAppKit', '-I', str(source),
         '-emit-library', '-emit-module', '-emit-module-path', str(build/'AppKit.swiftmodule'),
         str(source/'AppKit.swift'), *objects, '-o', str(library),
-        '-Xlinker', '-install_name', '-Xlinker', '@rpath/libExcelSwiftAppKit.dylib')
+        '-Xlinker', '-install_name', '-Xlinker', '@rpath/libExcelSwiftAppKit.dylib',
+        '-Xlinker', '-compatibility_version', '-Xlinker', required_version,
+        '-Xlinker', '-current_version', '-Xlinker', required_version)
     export_types = {line.split()[-1]:line.split()[-2] for line in run('nm', '-gU', str(library)).splitlines() if len(line.split()) >= 2}
     exports = set(export_types)
     baseline = json.loads((root/'reports/swift-appkit-contracts.json').read_text())

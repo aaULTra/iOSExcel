@@ -1,0 +1,13 @@
+{
+  "exact_required_exports_checked": [
+    "_$s10Foundation9IndexPathV6AppKitE4itemSivg",
+    "_$sSo6CGRectV6AppKitE4fill5usingySo22NSCompositingOperationV_tF",
+    "__swift_FORCE_LOAD_$_swiftAppKit"
+  ],
+  "native_index_path_cases_checked": 5,
+  "native_layouts_match": true,
+  "force_marker_emitted_by_swift_compiler": true,
+  "drawing_implemented": false,
+  "ios_cross_abi_checked": false,
+  "microsoft_executed": false
+}
