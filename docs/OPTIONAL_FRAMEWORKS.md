@@ -53,7 +53,7 @@ https://developer.apple.com/documentation/exceptionhandling/
 https://github.com/apple-oss-distributions/xnu/blob/main/EXTERNAL_HEADERS/mach-o/loader.h
 https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/dlopen_preflight.3.html
 
-## NetFS experiment, not yet run
+## NetFS experiment passed its loader boundary
 
 The actual first failure in 39019181596 is NetFS after the genuine Kerberos bridge.
 Only main loads it; there are zero attributed imports and no NetFS undefined names
@@ -63,3 +63,19 @@ API is replaced. Actual current undefined/bind tables must independently pass th
 same zero-use guard before changing only LC_LOAD_DYLIB to LC_LOAD_WEAK_DYLIB.
 NetFS-specific initialization and dynamic string lookups remain unproven.
 Failure evidence is docs/evidence/real-loader-after-kerberos.json.
+
+Run 39019976780 (23dcdeb08a46024e4f83d8714d6657fd091f402b) passed the
+actual zero-bind guards and advanced to Quartz.framework. Only the main NetFS
+load-command kind changed; no file API or account operation was stubbed.
+See docs/evidence/optional-loads-after-netfs.json.
+
+## Exact Quartz umbrella experiment, pending
+
+Only main loads the missing Quartz.framework umbrella. No import is attributed
+to that exact library, and its canonical counterpart preflight failed on the same
+M4 Simulator 26.2 in 39019976780. This is distinct from QuartzCore, CoreGraphics,
+Swift QuartzCore and Microsoft's C++ Quartz renderer symbols, all of which remain
+untouched. Symbol substrings alone are not framework attribution. The next
+experiment applies the same actual zero-use bind guard to only this new observed
+load; no API implementations, drawing results, or graphics success are fabricated.
+Initialization and dynamic lookup effects still require later runtime evidence.

@@ -180,3 +180,14 @@ adds exactly NetFS to the explicit optional-load policy. Actual symbol/bind
 tables must still prove zero use before its single load command can be weakened.
 Dynamic lookup and missing initialization effects remain unknown; this does not
 prove local file operations or provide network mounts. See OPTIONAL_FRAMEWORKS.md.
+
+## NetFS guard passed; next failure is the Quartz umbrella
+
+Run 39019976780 (23dcdeb08a46024e4f83d8714d6657fd091f402b) passed the
+NetFS zero-use guard on actual main symbol/binding tables. It changed only that
+load command kind, retaining its original path/version/ordinal. The real loader
+advanced to Quartz.framework and aborted (134), still before Microsoft entry.
+Counts remain 39 Microsoft images and three owned facades. The genuine Kerberos
+gate passed again on that same Simulator. No local or network workbook operation
+is proven by this. The next exact Quartz umbrella zero-import experiment retains
+all CoreGraphics/QuartzCore and Microsoft renderer imports; see OPTIONAL_FRAMEWORKS.md.

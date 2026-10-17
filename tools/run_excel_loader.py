@@ -221,6 +221,7 @@ def main():
                 '/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling':
                     ('defaultExceptionHandler','setExceptionHandlingMask:','setExceptionHangingMask:'),
                 '/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS': (),
+                '/System/Library/Frameworks/Quartz.framework/Versions/A/Quartz': (),
             }
             selected = set()
             for entry in policy:

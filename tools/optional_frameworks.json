@@ -14,5 +14,13 @@
     "purpose": "Investigate an unused direct NetFS link; no network mount or authentication result is implemented",
     "conditions": "Only main links it; zero recorded direct imports and no NetFS undefined names anywhere in startup closure. Same-runtime canonical preflight must fail; actual undefined and all classic bind tables must prove zero use.",
     "scope": "Single-dependency startup experiment after Kerberos forwarding passed. Dynamic lookup and framework initialization remain unproven. No claim about local files or network shares; licensing and authentication unchanged."
+  },
+  {
+    "original": "/System/Library/Frameworks/Quartz.framework/Versions/A/Quartz",
+    "observed_failure_run": 39019976780,
+    "absence_preflight_run": 39019976780,
+    "purpose": "Investigate unused direct Quartz umbrella load; retain all real CoreGraphics, QuartzCore, Swift QuartzCore and Microsoft Quartz renderer dependencies",
+    "conditions": "Only main links this exact umbrella; no imports attributed to it. Same-runtime canonical preflight must fail and actual undefined/classic bind tables must independently prove zero use.",
+    "scope": "One observed dependency experiment after NetFS guard passed. Quartz words in Microsoft C++ renderer names are not this framework and remain untouched. Initialization and dynamic lookup effects remain unproven; no graphics or workbook success claimed."
   }
 ]

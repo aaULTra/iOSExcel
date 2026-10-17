@@ -39,7 +39,7 @@ are included in this repository/archive.
 - `docs/COMPATIBILITY.md`: version comparison, dependency map, blockers and feasibility.
 - `docs/RESEARCH.md`: official sources, current CyPort findings and activation evidence.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
-- `docs/KERBEROS.md`: genuine provider/OID ABI tests and forwarding that advanced the real loader to NetFS.
+- `docs/KERBEROS.md`: genuine provider/OID ABI tests and forwarding that passed in the real loader; current failure is Quartz after the NetFS experiment.
 - `docs/OPTIONAL_FRAMEWORKS.md`: guarded single-framework diagnostics experiment; no blanket dependency removal.
 - `docs/APPLICATION_SERVICES.md`: typed partial C compatibility, verified against native Apple rectangle behavior.
 - `docs/LOADER.md`: distinct forwarding dylibs, native two-level binding proof and exact limits.
@@ -63,7 +63,7 @@ The current priority is an internal **real Excel executable loader attempt**, us
 the original Microsoft startup closure on iPad Simulator. This is separate from
 the synthetic UI tests below. See docs/REAL_LOADER.md for the exact method and
 limits. Verified framework path repairs and the typed ApplicationServices facade advanced
-the actual loader past Kerberos.framework to NetFS.framework after genuine provider/OID validation and a guarded optional ExceptionHandling experiment. The real main, 38 Microsoft dylibs
+the actual loader past Kerberos.framework to Quartz.framework after genuine provider/OID validation and guarded zero-use ExceptionHandling/NetFS experiments. The real main, 38 Microsoft dylibs
 and three compatibility facades mapped; its entry point was not reached; no successful Excel initialization is established.
 
 Source: https://github.com/aaULTra/iOSExcel

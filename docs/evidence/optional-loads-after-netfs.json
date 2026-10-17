@@ -1,0 +1,27 @@
+[
+  {
+    "path": "Contents/MacOS/Microsoft Excel",
+    "events": [
+      {
+        "offset": 6616,
+        "length": 4,
+        "field": "optional LC_LOAD_WEAK_DYLIB",
+        "path": "/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling",
+        "before": 12,
+        "after": 2147483672,
+        "undefined_symbol_imports": 0,
+        "binding_sites": 0
+      },
+      {
+        "offset": 7200,
+        "length": 4,
+        "field": "optional LC_LOAD_WEAK_DYLIB",
+        "path": "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS",
+        "before": 12,
+        "after": 2147483672,
+        "undefined_symbol_imports": 0,
+        "binding_sites": 0
+      }
+    ]
+  }
+]
