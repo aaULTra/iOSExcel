@@ -87,3 +87,25 @@ This consolidates the same path repair while retaining full two-level import
 indices and per-field modification logs. A single probe process avoids paying
 the first cold process-launch cost separately for each framework. Every API
 reported missing remains unimplemented; normalization is not API compatibility.
+
+## Consistent path normalization passed
+
+Run 38986113826 (9d578f1ce94ee83eaaffef2f9c3504bed749f71f), same M4 iPad
+Simulator/runtime: all 35 SDK-matched canonical framework paths loaded in the
+batch probe. Runtime lookup found 1,800 of 1,961 queried symbol names; 161 were
+missing. This is an export lookup on Simulator only, not a device or behavior
+guarantee. 309 path fields were rewritten across the actual hash-verified closure.
+The transform remains byte-checked outside logged fields before re-signing.
+
+The real loader again mapped 39 Microsoft images, then aborted (134) on
+ApplicationServices.framework. Its canonical counterpart was absent from the
+SDK and therefore was not substituted or fabricated. Eleven such absent SDK
+counterparts are listed in the transform evidence; absence from this SDK alone
+is not a proof of absence from every device runtime.
+
+The first remaining required compatibility library is now ApplicationServices,
+with 40 imported names (printing, pasteboard, shape and zoom operations). Their
+actual Mac SDK declaration capture is the next implementation gate. No Microsoft
+entry/initialization, UIKit lifecycle, activation or workbook milestone is claimed.
+Evidence: real-loader-latest.json, real-loader-paths.stderr.log and the compressed
+real-loader-path-transform.json.gz.

@@ -1,0 +1,25 @@
+name: Capture actual SDK contracts for first loader failure
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/capture_loader_contracts.py'
+      - 'docs/evidence/real-loader-latest.json'
+      - '.github/workflows/contracts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: macos-15
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read actual Apple SDK declarations without executing Office
+        run: python3 tools/capture_loader_contracts.py --result docs/evidence/real-loader-latest.json --graph docs/evidence/dependencies-16.55.json.gz --output reports/first-failure-contracts.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: first-failure-SDK-contracts
+          path: reports/
+          retention-days: 7
