@@ -34,8 +34,8 @@
   "view_compatibility": "Partial NSResponder-based NSView model plus UIView projection: native hierarchy/geometry/lifetime tests, 32 exact ABI contracts and synthetic UIKit drawing/pixel/hierarchy tests passed. No NSWindow or Excel execution.",
   "view_native_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725023",
   "view_simulator_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725046",
-  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/39019976780",
-  "real_loader_investigation": "Actual NetFS zero-use/bind guards passed, changing only the main load-command kind; real loader advanced to Quartz.framework. 39 Microsoft images and three owned facades mapped, exit 134; Microsoft entry not reached. Exact Quartz umbrella has zero attributed imports and same-runtime failed preflight; separate optional-load experiment prepared. Microsoft renderer symbols mentioning Quartz and genuine QuartzCore remain unchanged.",
+  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/39020471588",
+  "real_loader_investigation": "Quartz exact-umbrella zero-bind guard passed; actual loader advanced to ScriptingBridge.framework. It imports SBApplication, so optional-load weakening is forbidden. 39 Microsoft images and three owned facades mapped, exit 134. Microsoft entry remains unreached. Mac public interface/native method ABI capture prepared before any class implementation.",
   "application_services": "Native Apple comparison passed for 16 rectangles and 16 intersections; 17 C ABI encodings matched; all 40 definitions compiled against Mac declarations and for iOS. Facade load observed in real Excel loader. Printing/pasteboard/Mac zoom remain explicitly disabled. Excel entry not reached.",
   "kerberos_audit": "Native and M4 Simulator 26.2 ownership/OID ABI contracts passed in 39018956591; repeated gate passed within real loader run 39019181596. All four actual providers are same platform-7 Heimdal image, reached through GSS. Private ABI remains version-sensitive; credentials, authentication and activation untested."
 }

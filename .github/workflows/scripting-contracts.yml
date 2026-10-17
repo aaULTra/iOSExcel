@@ -1,0 +1,30 @@
+name: Capture native ScriptingBridge class ABI
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/capture_loader_contracts.py'
+      - 'tools/scripting_bridge_values.m'
+      - 'docs/evidence/real-loader-latest.json'
+      - '.github/workflows/scripting-contracts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: macos-15
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture current failure declarations from the actual public Mac SDK
+        run: python3 tools/capture_loader_contracts.py --result docs/evidence/real-loader-latest.json --graph docs/evidence/dependencies-16.55.json.gz --output reports/first-failure-contracts.json
+      - name: Read actual ScriptingBridge method encodings without sending events
+        run: |
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-deprecated-declarations tools/scripting_bridge_values.m -framework Foundation -framework ScriptingBridge -o /tmp/excelport-scripting-values
+          /tmp/excelport-scripting-values reports/scripting-bridge-values.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scripting-bridge-contracts
+          path: reports/
+          retention-days: 7

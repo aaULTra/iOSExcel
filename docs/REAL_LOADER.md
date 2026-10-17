@@ -191,3 +191,16 @@ Counts remain 39 Microsoft images and three owned facades. The genuine Kerberos
 gate passed again on that same Simulator. No local or network workbook operation
 is proven by this. The next exact Quartz umbrella zero-import experiment retains
 all CoreGraphics/QuartzCore and Microsoft renderer imports; see OPTIONAL_FRAMEWORKS.md.
+
+## Quartz guard passed; ScriptingBridge has a real class import
+
+Run 39020471588 (3610f8e3bf29dadf8f1dcfb2ad13c5cfba813cd8) passed the
+actual Quartz-umbrella zero-bind guard and aborted (134) on ScriptingBridge,
+still before Microsoft entry. Counts remain 39 vendor images and three owned
+facades; no workbook, application initialization or activation claim follows.
+The measured ScriptingBridge import is `_OBJC_CLASS_$_SBApplication`, so this
+framework cannot use optional-load weakening. The next work captures actual
+Mac interface declarations, hierarchy and native method encodings without
+creating automation targets or sending Apple events. The shared SDK capture
+tool now understands ObjCInterfaceDecl, rather than incorrectly treating this
+class symbol as a C identifier. No ScriptingBridge compatibility is implemented yet.

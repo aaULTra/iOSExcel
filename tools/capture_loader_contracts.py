@@ -47,7 +47,8 @@ def main():
             result['required_names'] = required
             source = f'#import <{framework}/{framework}.h>\n'
             for symbol in required:
-                identifier = symbol.removeprefix('_')
+                objc_class = symbol.startswith('_OBJC_CLASS_$_')
+                identifier = symbol.removeprefix('_OBJC_CLASS_$_') if objc_class else symbol.removeprefix('_')
                 if not re.fullmatch('[A-Za-z_][A-Za-z0-9_]*', identifier):
                     result['unresolved'].append({'name': symbol, 'reason': 'Not a C identifier'})
                     continue
@@ -60,12 +61,23 @@ def main():
                     continue
                 found = False
                 for node in declarations(compiled.stdout):
-                    if node.get('name') != identifier or node.get('kind') not in ('FunctionDecl', 'VarDecl', 'EnumConstantDecl'):
+                    kinds = ('ObjCInterfaceDecl',) if objc_class else ('FunctionDecl', 'VarDecl', 'EnumConstantDecl')
+                    if node.get('name') != identifier or node.get('kind') not in kinds:
                         continue
-                    result['declarations'].append({'name': identifier, 'kind': node['kind'],
+                    if objc_class and not node.get('super') and not node.get('inner'):
+                        continue
+                    item = {'name': identifier, 'kind': node['kind'],
                         'type': node.get('type'), 'location': node.get('loc'),
                         'parameters': [{'name': p.get('name'), 'type': p.get('type')}
-                                       for p in node.get('inner', []) if p.get('kind') == 'ParmVarDecl']})
+                                       for p in node.get('inner', []) if p.get('kind') == 'ParmVarDecl']}
+                    if objc_class:
+                        item['superclass'] = node.get('super', {}).get('name')
+                        item['protocols'] = [p.get('name') for p in node.get('protocols', [])]
+                        item['methods'] = [{'selector': m.get('name'), 'instance': m.get('instance'),
+                            'return_type': m.get('returnType'), 'variadic': m.get('variadic', False),
+                            'parameters': [p.get('type') for p in m.get('inner', []) if p.get('kind') == 'ParmVarDecl']}
+                            for m in node.get('inner', []) if m.get('kind') == 'ObjCMethodDecl']
+                    result['declarations'].append(item)
                     found = True
                 if not found:
                     result['unresolved'].append({'name': symbol, 'reason': 'No matching declaration from the public umbrella header'})

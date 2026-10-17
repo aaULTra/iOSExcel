@@ -69,7 +69,7 @@ actual zero-bind guards and advanced to Quartz.framework. Only the main NetFS
 load-command kind changed; no file API or account operation was stubbed.
 See docs/evidence/optional-loads-after-netfs.json.
 
-## Exact Quartz umbrella experiment, pending
+## Exact Quartz umbrella experiment passed its loader boundary
 
 Only main loads the missing Quartz.framework umbrella. No import is attributed
 to that exact library, and its canonical counterpart preflight failed on the same
@@ -79,3 +79,9 @@ untouched. Symbol substrings alone are not framework attribution. The next
 experiment applies the same actual zero-use bind guard to only this new observed
 load; no API implementations, drawing results, or graphics success are fabricated.
 Initialization and dynamic lookup effects still require later runtime evidence.
+
+Run 39020471588 (3610f8e3bf29dadf8f1dcfb2ad13c5cfba813cd8) passed the
+actual Quartz zero-use guard and advanced to ScriptingBridge.framework. Its one
+load-command kind changed, preserving genuine graphics and vendor renderer code.
+See docs/evidence/optional-loads-after-quartz.json. The next framework imports
+SBApplication and is explicitly ineligible for this zero-reference policy.
