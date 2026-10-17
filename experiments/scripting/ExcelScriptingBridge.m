@@ -12,7 +12,7 @@ static void Unavailable(NSString *operation) {
 @end
 
 @implementation SBApplication
-- (instancetype)init { Unavailable(@"SBApplication init"); return nil; }
+- (instancetype)init { Unavailable(@"SBApplication init"); return [super init]; }
 + (instancetype)currentApplication { Unavailable(@"currentApplication"); return nil; }
 + (instancetype)applicationWithBundleIdentifier:(NSString *)identifier {
     (void)identifier;
