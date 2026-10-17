@@ -6,6 +6,7 @@
 #import "ExcelScreen.h"
 #import "ExcelScriptingBridge.h"
 #import "ExcelSecurityInterface.h"
+#import "ExcelServiceManagement.h"
 #import <objc/runtime.h>
 #import "simulator_view_contracts.h"
 static BOOL WillLaunch,DidLaunch,Started;
@@ -62,6 +63,13 @@ static void RunTests(void) {
               SecurityGuardStops(^{ (void)[SFCertificateTrustPanel sharedCertificateTrustPanel]; }) &&
               SecurityGuardStops(^{ (void)[SFChooseIdentityPanel sharedChooseIdentityPanel]; }),
               @"Unavailable security dialogs must raise, not return a trust decision or identity");
+        Check(kSMDomainUserLaunchd && CFGetTypeID(kSMDomainUserLaunchd)==CFStringGetTypeID() &&
+              CFEqual(kSMDomainUserLaunchd,CFSTR("kSMDomainUserLaunchd")),
+              @"ServiceManagement user-domain constant must match the captured native CFString value");
+        Check(!SMCopyAllJobDictionaries(kSMDomainUserLaunchd) &&
+              !SMCopyAllJobDictionaries(CFSTR("com.excelport.invalid-domain")) &&
+              !SMCopyAllJobDictionaries(NULL),
+              @"Unavailable job enumeration must report NULL error without a fabricated job list");
         UIWindow *window=nil;
         for (UIScene *scene in UIApplication.sharedApplication.connectedScenes)
             if ([scene isKindOfClass:UIWindowScene.class] && ((UIWindowScene *)scene).keyWindow) { window=((UIWindowScene *)scene).keyWindow; break; }
@@ -90,7 +98,7 @@ static void RunTests(void) {
         window.bounds=originalBounds; window.rootViewController.additionalSafeAreaInsets=UIEdgeInsetsZero;
         [window setNeedsLayout]; [window layoutIfNeeded];
         NSDictionary *viewContracts=EXRunUIKitViewContracts(window);
-        Finish(@{@"view_contracts":viewContracts,@"passed":@YES,@"scope":@"iPad Simulator, real UIKit + production entry bridge, synthetic desktop classes/nib; NO Excel loaded",@"system_version":UIDevice.currentDevice.systemVersion,@"initial_workspace":EXScreenRectValues(initial),@"inset_visible_frame":EXScreenRectValues(insetVisible),@"resized_workspace":EXScreenRectValues(resized),@"scene_scale":@(scale),@"checks":@[@"UIKit lifecycle and synthetic desktop startup",@"key scene window",@"compatibility class image provenance",@"security dialog factories and allocation rejected",@"scene-backed scale",@"safe areas",@"backing round-trip",@"live UIKit bounds change",@"stable screen identity"],@"excel_executed":@NO,@"physical_device_test":@NO},0);
+        Finish(@{@"view_contracts":viewContracts,@"passed":@YES,@"scope":@"iPad Simulator, real UIKit + production entry bridge, synthetic desktop classes/nib; NO Excel loaded",@"system_version":UIDevice.currentDevice.systemVersion,@"initial_workspace":EXScreenRectValues(initial),@"inset_visible_frame":EXScreenRectValues(insetVisible),@"resized_workspace":EXScreenRectValues(resized),@"scene_scale":@(scale),@"checks":@[@"UIKit lifecycle and synthetic desktop startup",@"key scene window",@"compatibility class image provenance",@"security dialog factories and allocation rejected",@"service constant and explicit enumeration errors",@"scene-backed scale",@"safe areas",@"backing round-trip",@"live UIKit bounds change",@"stable screen identity"],@"excel_executed":@NO,@"physical_device_test":@NO},0);
     } @catch(NSException *exception) { Finish(@{@"passed":@NO,@"exception":exception.name,@"reason":exception.reason?:@"Unknown"},1); }
 }
 @interface EXTestApplication : NSApplication @end

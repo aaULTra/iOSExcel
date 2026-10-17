@@ -18,6 +18,7 @@ REDIRECTS = {
     '/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa': '@rpath/ExcelCocoa.dylib',
     '/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices': '@rpath/ExcelApplicationServices.dylib',
     '/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos': '@rpath/ExcelKerberos.dylib',
+    '/System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement': '@rpath/ExcelServiceManagement.dylib',
     '/System/Library/Frameworks/SecurityInterface.framework/Versions/A/SecurityInterface': '@rpath/ExcelSecurityInterface.dylib',
     '/System/Library/Frameworks/ScriptingBridge.framework/Versions/A/ScriptingBridge': '@rpath/ExcelScriptingBridge.dylib',
 }

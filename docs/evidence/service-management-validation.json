@@ -1,0 +1,8 @@
+{
+  "constant_value_and_ABI_match": true,
+  "compiled_against_actual_Mac_declarations": true,
+  "null_failure_cases_checked": 3,
+  "no_jobs_or_services_fabricated": true,
+  "authentication_attempted": false,
+  "excel_executed": false
+}

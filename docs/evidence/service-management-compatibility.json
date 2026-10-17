@@ -1,0 +1,10 @@
+{
+  "domain_pointer_bytes" : 8,
+  "helpers_invoked" : false,
+  "function_pointer_encoding" : "^?",
+  "jobs_enumerated" : false,
+  "domain_declaration_encoding" : "r^{__CFString=}",
+  "user_domain" : "kSMDomainUserLaunchd",
+  "excel_executed" : false,
+  "authentication_attempted" : false
+}
