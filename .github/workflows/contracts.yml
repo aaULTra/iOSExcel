@@ -5,6 +5,8 @@ on:
     paths:
       - 'tools/capture_loader_contracts.py'
       - 'tools/audit_kerberos.py'
+      - 'shim/ExcelKerberos.*'
+      - 'tests/kerberos_contracts.m'
       - 'tools/application_services_values.m'
       - 'docs/evidence/real-loader-latest.json'
       - '.github/workflows/contracts.yml'

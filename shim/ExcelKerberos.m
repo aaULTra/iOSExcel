@@ -20,6 +20,7 @@ static NSDictionary *providerReport;
 
 static uint32_t Platform(const void *base) {
     const struct mach_header_64 *h = base;
+    if (h) ExcelShimLog([NSString stringWithFormat:@"Kerberos provider header magic=%x cpu=%x commands=%u bytes=%u", h->magic, h->cputype, h->ncmds, h->sizeofcmds]);
     if (!h || h->magic != MH_MAGIC_64 || h->cputype != CPU_TYPE_ARM64 || h->sizeofcmds > 1024*1024) return 0;
     const unsigned char *cursor = (const unsigned char *)(h+1), *end = cursor+h->sizeofcmds;
     uint32_t platform = 0;
@@ -28,9 +29,12 @@ static uint32_t Platform(const void *base) {
         const struct load_command *c = (const struct load_command *)cursor;
         if (c->cmdsize < sizeof(*c) || c->cmdsize > (size_t)(end-cursor)) return 0;
         if (c->cmd == LC_BUILD_VERSION && c->cmdsize >= sizeof(struct build_version_command)) {
+            ExcelShimLog([NSString stringWithFormat:@"Kerberos provider LC_BUILD_VERSION platform=%u", ((const struct build_version_command *)c)->platform]);
             if (platform) return 0;
             platform = ((const struct build_version_command *)c)->platform;
         }
+        if (c->cmd == LC_VERSION_MIN_MACOSX || c->cmd == LC_VERSION_MIN_IPHONEOS)
+            ExcelShimLog([NSString stringWithFormat:@"Kerberos provider legacy version command=%x", c->cmd]);
         cursor += c->cmdsize;
     }
     return platform;
