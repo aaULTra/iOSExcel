@@ -103,7 +103,7 @@ def main():
                 *common, '-framework', 'GSS', '-Wl,-export_dynamic', ROOT/'tests/kerberos_contracts.m',
                 ROOT/'shim/ExcelKerberos.m', ROOT/'shim/ExcelShim.m', '-o', binary, timeout=180)
         command('codesign', '--force', '--sign', '-', binary)
-        devices = json.loads(command('xcrun', 'simctl', 'list', 'devices', 'available', '--json'))['devices']
+        devices = json.loads(command('xcrun', 'simctl', 'list', 'devices', 'available', '--json', timeout=120))['devices']
         candidates = [(runtime, device) for runtime, items in devices.items() if 'iOS-' in runtime
                       for device in items if 'iPad' in device['name'] and device.get('isAvailable')]
         candidates.sort(key=lambda x: ('M4' not in x[1]['name'], 'Pro' not in x[1]['name'],

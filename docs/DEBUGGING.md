@@ -75,3 +75,8 @@ Objective-C helper with a 60-second compile limit; no API result or Excel regres
 was established. The audit now builds that helper before Simulator boot and permits
 a bounded 180 seconds for this cold compilation. Runtime calls retain their own
 time limits. Actual Excel runs independently repeated the provider gate successfully.
+
+The next standalone audit (39021497623) passed that compilation but hit its
+separate 60-second CoreSimulator device-enumeration limit. The device-list
+timeout is now 120 seconds, matching the already-tested real loader harness.
+This was before any Simulator API call or Microsoft process in that audit.
