@@ -1,0 +1,70 @@
+{
+  "checks": [
+    "UIKit lifecycle and synthetic desktop startup",
+    "key scene window",
+    "compatibility class image provenance",
+    "security dialog factories and allocation rejected",
+    "scene-backed scale",
+    "safe areas",
+    "backing round-trip",
+    "live UIKit bounds change",
+    "stable screen identity"
+  ],
+  "excel_executed": false,
+  "initial_workspace": [
+    0,
+    0,
+    834,
+    1210
+  ],
+  "inset_visible_frame": [
+    7,
+    42,
+    814,
+    1125
+  ],
+  "passed": true,
+  "physical_device_test": false,
+  "resized_workspace": [
+    0,
+    0,
+    625.5,
+    1028.5
+  ],
+  "scene_scale": 2,
+  "scope": "iPad Simulator, real UIKit + production entry bridge, synthetic desktop classes/nib; NO Excel loaded",
+  "system_version": "26.2",
+  "view_contracts": {
+    "checks": [
+      "desktop class hierarchy",
+      "UIKit hierarchy mirror",
+      "bottom-left frame placement",
+      "actual typed drawRect dispatch",
+      "flipped/unflipped pixel locations",
+      "scaled bounds and UIView conversion",
+      "hidden state",
+      "z-order",
+      "removal and responder detach"
+    ],
+    "excel_executed": false,
+    "flipped_draw_calls": 1,
+    "flipped_native_frame": [
+      100,
+      80,
+      80,
+      60
+    ],
+    "normal_draw_calls": 1,
+    "passed": true,
+    "red_pixel_checks": 4,
+    "scope": "Synthetic NSView subclasses backed by actual UIKit; no Excel code/UI",
+    "unflipped_native_frame": [
+      10,
+      80,
+      80,
+      60
+    ]
+  },
+  "simulator_device": "iPad Pro 11-inch (M4)",
+  "runtime_identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+}

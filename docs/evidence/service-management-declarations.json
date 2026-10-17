@@ -1,0 +1,63 @@
+{
+  "scope": "Actual Mac SDK interface declarations; no runtime behavior guarantee",
+  "first_failure": {
+    "kind": "library_not_loaded",
+    "name": "/System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement"
+  },
+  "declarations": [
+    {
+      "name": "SMCopyAllJobDictionaries",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "CFArrayRef (CFStringRef)"
+      },
+      "location": {
+        "offset": 3451,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ServiceManagement.framework/Headers/ServiceManagement.h",
+        "line": 113,
+        "col": 1,
+        "tokLen": 24,
+        "includedFrom": {
+          "file": "<stdin>"
+        }
+      },
+      "parameters": [
+        {
+          "name": "domain",
+          "type": {
+            "desugaredQualType": "const struct __CFString *",
+            "qualType": "CFStringRef",
+            "typeAliasDeclId": "0x128710508"
+          }
+        }
+      ]
+    },
+    {
+      "name": "kSMDomainUserLaunchd",
+      "kind": "VarDecl",
+      "type": {
+        "desugaredQualType": "const struct __CFString *const",
+        "qualType": "const CFStringRef",
+        "typeAliasDeclId": "0x1487edd08"
+      },
+      "location": {
+        "offset": 1466,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ServiceManagement.framework/Headers/ServiceManagement.h",
+        "line": 56,
+        "col": 19,
+        "tokLen": 20,
+        "includedFrom": {
+          "file": "<stdin>"
+        }
+      },
+      "parameters": []
+    }
+  ],
+  "unresolved": [],
+  "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+  "required_names": [
+    "_SMCopyAllJobDictionaries",
+    "_kSMDomainUserLaunchd"
+  ],
+  "status": "Interface capture complete; unresolved declarations remain explicit"
+}
