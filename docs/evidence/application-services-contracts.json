@@ -1,0 +1,1410 @@
+{
+  "scope": "Actual Mac SDK interface declarations; no runtime behavior guarantee",
+  "first_failure": {
+    "kind": "library_not_loaded",
+    "name": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices"
+  },
+  "declarations": [
+    {
+      "name": "HIShapeCreateIntersection",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "HIShapeRef (HIShapeRef, HIShapeRef)"
+      },
+      "location": {
+        "offset": 10194,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIShape.h",
+        "line": 348,
+        "col": 1,
+        "tokLen": 25,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inShape1",
+          "type": {
+            "desugaredQualType": "const struct __HIShape *",
+            "qualType": "HIShapeRef",
+            "typeAliasDeclId": "0x1200d0238"
+          }
+        },
+        {
+          "name": "inShape2",
+          "type": {
+            "desugaredQualType": "const struct __HIShape *",
+            "qualType": "HIShapeRef",
+            "typeAliasDeclId": "0x1200d0238"
+          }
+        }
+      ]
+    },
+    {
+      "name": "HIShapeCreateWithRect",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "HIShapeRef (const CGRect *)"
+      },
+      "location": {
+        "offset": 8365,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIShape.h",
+        "line": 284,
+        "col": 1,
+        "tokLen": 21,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inRect",
+          "type": {
+            "qualType": "const CGRect *"
+          }
+        }
+      ]
+    },
+    {
+      "name": "HIShapeIsEmpty",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "Boolean (HIShapeRef)"
+      },
+      "location": {
+        "offset": 14086,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIShape.h",
+        "line": 488,
+        "col": 1,
+        "tokLen": 14,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inShape",
+          "type": {
+            "desugaredQualType": "const struct __HIShape *",
+            "qualType": "HIShapeRef",
+            "typeAliasDeclId": "0x130430238"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMCreatePageFormat",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPageFormat  _Nullable * _Nonnull)"
+      },
+      "location": {
+        "offset": 24508,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 760,
+        "col": 1,
+        "tokLen": 18,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "pageFormat",
+          "type": {
+            "desugaredQualType": "PMPageFormat  _Nullable *",
+            "qualType": "PMPageFormat  _Nullable * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMCreatePrintSettings",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSettings  _Nullable * _Nonnull)"
+      },
+      "location": {
+        "offset": 36603,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 1181,
+        "col": 1,
+        "tokLen": 21,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "PMPrintSettings  _Nullable *",
+            "qualType": "PMPrintSettings  _Nullable * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMCreateSession",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession  _Nullable * _Nonnull)"
+      },
+      "location": {
+        "offset": 3629,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 137,
+        "col": 1,
+        "tokLen": 15,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "PMPrintSession  _Nullable *",
+            "qualType": "PMPrintSession  _Nullable * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMGetAdjustedPageRect",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPageFormat _Nonnull, PMRect * _Nonnull)"
+      },
+      "location": {
+        "offset": 29042,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 912,
+        "col": 1,
+        "tokLen": 21,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "pageFormat",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPageFormat *",
+            "qualType": "PMPageFormat _Nonnull",
+            "typeAliasDeclId": "0x1304e2cc8"
+          }
+        },
+        {
+          "name": "pageRect",
+          "type": {
+            "desugaredQualType": "PMRect *",
+            "qualType": "PMRect * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMGetAdjustedPaperRect",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPageFormat _Nonnull, PMRect * _Nonnull)"
+      },
+      "location": {
+        "offset": 29514,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 930,
+        "col": 1,
+        "tokLen": 22,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "pageFormat",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPageFormat *",
+            "qualType": "PMPageFormat _Nonnull",
+            "typeAliasDeclId": "0x14080acc8"
+          }
+        },
+        {
+          "name": "paperRect",
+          "type": {
+            "desugaredQualType": "PMRect *",
+            "qualType": "PMRect * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMGetCollate",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSettings _Nonnull, Boolean * _Nonnull)"
+      },
+      "location": {
+        "offset": 40415,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 1308,
+        "col": 1,
+        "tokLen": 12,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x12023aae8"
+          }
+        },
+        {
+          "name": "collate",
+          "type": {
+            "desugaredQualType": "Boolean *",
+            "qualType": "Boolean * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMGetCopies",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSettings _Nonnull, UInt32 * _Nonnull)"
+      },
+      "location": {
+        "offset": 40874,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 1326,
+        "col": 1,
+        "tokLen": 11,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x141072ae8"
+          }
+        },
+        {
+          "name": "copies",
+          "type": {
+            "desugaredQualType": "UInt32 *",
+            "qualType": "UInt32 * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMGetFirstPage",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSettings _Nonnull, UInt32 * _Nonnull)"
+      },
+      "location": {
+        "offset": 41851,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 1362,
+        "col": 1,
+        "tokLen": 14,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x130caaae8"
+          }
+        },
+        {
+          "name": "first",
+          "type": {
+            "desugaredQualType": "UInt32 *",
+            "qualType": "UInt32 * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMGetLastPage",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSettings _Nonnull, UInt32 * _Nonnull)"
+      },
+      "location": {
+        "offset": 42313,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 1380,
+        "col": 1,
+        "tokLen": 13,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x128682ae8"
+          }
+        },
+        {
+          "name": "last",
+          "type": {
+            "desugaredQualType": "UInt32 *",
+            "qualType": "UInt32 * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMGetOrientation",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPageFormat _Nonnull, PMOrientation * _Nonnull)"
+      },
+      "location": {
+        "offset": 29982,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 948,
+        "col": 1,
+        "tokLen": 16,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "pageFormat",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPageFormat *",
+            "qualType": "PMPageFormat _Nonnull",
+            "typeAliasDeclId": "0x1506a2cc8"
+          }
+        },
+        {
+          "name": "orientation",
+          "type": {
+            "desugaredQualType": "PMOrientation *",
+            "qualType": "PMOrientation * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMPrintSettingsSetJobName",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSettings _Nonnull, CFStringRef _Nonnull)"
+      },
+      "location": {
+        "offset": 48229,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 1593,
+        "col": 1,
+        "tokLen": 25,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x140c92ae8"
+          }
+        },
+        {
+          "name": "name",
+          "type": {
+            "desugaredQualType": "const struct __CFString *",
+            "qualType": "CFStringRef _Nonnull",
+            "typeAliasDeclId": "0x13b426538"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMPrinterGetID",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "CFStringRef  _Nullable (PMPrinter _Nonnull)"
+      },
+      "location": {
+        "offset": 61680,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 2015,
+        "col": 1,
+        "tokLen": 14,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printer",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrinter *",
+            "qualType": "PMPrinter _Nonnull",
+            "typeAliasDeclId": "0x140893088"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMPrinterGetOutputResolution",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrinter _Nonnull, PMPrintSettings _Nonnull, PMResolution * _Nonnull)"
+      },
+      "location": {
+        "offset": 66846,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 2178,
+        "col": 10,
+        "tokLen": 28,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printer",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrinter *",
+            "qualType": "PMPrinter _Nonnull",
+            "typeAliasDeclId": "0x1210bb088"
+          }
+        },
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x1210baae8"
+          }
+        },
+        {
+          "name": "resolutionP",
+          "type": {
+            "desugaredQualType": "PMResolution *",
+            "qualType": "PMResolution * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMRelease",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMObject _Nullable)"
+      },
+      "location": {
+        "offset": 2964,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 111,
+        "col": 1,
+        "tokLen": 9,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "object",
+          "type": {
+            "desugaredQualType": "const void *",
+            "qualType": "PMObject _Nullable",
+            "typeAliasDeclId": "0x140c92928"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMRetain",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMObject _Nullable)"
+      },
+      "location": {
+        "offset": 1629,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 74,
+        "col": 1,
+        "tokLen": 8,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "object",
+          "type": {
+            "desugaredQualType": "const void *",
+            "qualType": "PMObject _Nullable",
+            "typeAliasDeclId": "0x1590f2928"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionBeginCGDocumentNoDialog",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, PMPrintSettings _Nonnull, PMPageFormat _Nonnull)"
+      },
+      "location": {
+        "offset": 5690,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 203,
+        "col": 1,
+        "tokLen": 32,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x130c92ea8"
+          }
+        },
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x130c92ae8"
+          }
+        },
+        {
+          "name": "pageFormat",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPageFormat *",
+            "qualType": "PMPageFormat _Nonnull",
+            "typeAliasDeclId": "0x130c92cc8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionBeginPageNoDialog",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, PMPageFormat _Nullable, const PMRect * _Nullable)"
+      },
+      "location": {
+        "offset": 6998,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 245,
+        "col": 1,
+        "tokLen": 26,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x12814aea8"
+          }
+        },
+        {
+          "name": "pageFormat",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPageFormat *",
+            "qualType": "PMPageFormat _Nullable",
+            "typeAliasDeclId": "0x12814acc8"
+          }
+        },
+        {
+          "name": "pageFrame",
+          "type": {
+            "desugaredQualType": "const PMRect *",
+            "qualType": "const PMRect * _Nullable"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionDefaultPageFormat",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, PMPageFormat _Nonnull)"
+      },
+      "location": {
+        "offset": 24962,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 775,
+        "col": 1,
+        "tokLen": 26,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x130e72ea8"
+          }
+        },
+        {
+          "name": "pageFormat",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPageFormat *",
+            "qualType": "PMPageFormat _Nonnull",
+            "typeAliasDeclId": "0x130e72cc8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionDefaultPrintSettings",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, PMPrintSettings _Nonnull)"
+      },
+      "location": {
+        "offset": 37072,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 1197,
+        "col": 1,
+        "tokLen": 29,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x138c92ea8"
+          }
+        },
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x138c92ae8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionEndDocumentNoDialog",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull)"
+      },
+      "location": {
+        "offset": 6223,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 222,
+        "col": 1,
+        "tokLen": 28,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x158c92ea8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionEndPageNoDialog",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull)"
+      },
+      "location": {
+        "offset": 7858,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 271,
+        "col": 1,
+        "tokLen": 24,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x12090aea8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionError",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull)"
+      },
+      "location": {
+        "offset": 4077,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 153,
+        "col": 1,
+        "tokLen": 14,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x128c92ea8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionGetCGGraphicsContext",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, CGContextRef  _Nullable * _Nonnull)"
+      },
+      "location": {
+        "offset": 9002,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 307,
+        "col": 1,
+        "tokLen": 29,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x1405baea8"
+          }
+        },
+        {
+          "name": "context",
+          "type": {
+            "desugaredQualType": "CGContextRef  _Nullable *",
+            "qualType": "CGContextRef  _Nullable * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionGetCurrentPrinter",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, PMPrinter  _Nullable * _Nonnull)"
+      },
+      "location": {
+        "offset": 22126,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 676,
+        "col": 1,
+        "tokLen": 26,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x1301faea8"
+          }
+        },
+        {
+          "name": "currentPrinter",
+          "type": {
+            "desugaredQualType": "PMPrinter  _Nullable *",
+            "qualType": "PMPrinter  _Nullable * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionGetDestinationType",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, PMPrintSettings _Nonnull, PMDestinationType * _Nonnull)"
+      },
+      "location": {
+        "offset": 10961,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 363,
+        "col": 1,
+        "tokLen": 27,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x138c92ea8"
+          }
+        },
+        {
+          "name": "printSettings",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSettings *",
+            "qualType": "PMPrintSettings _Nonnull",
+            "typeAliasDeclId": "0x138c92ae8"
+          }
+        },
+        {
+          "name": "destTypeP",
+          "type": {
+            "desugaredQualType": "PMDestinationType *",
+            "qualType": "PMDestinationType * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionSetError",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, OSStatus)"
+      },
+      "location": {
+        "offset": 4505,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 169,
+        "col": 1,
+        "tokLen": 17,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x12047aea8"
+          }
+        },
+        {
+          "name": "printError",
+          "type": {
+            "desugaredQualType": "int",
+            "qualType": "OSStatus",
+            "typeAliasDeclId": "0x129c11ee8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PMSessionValidatePageFormat",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PMPrintSession _Nonnull, PMPageFormat _Nonnull, Boolean * _Nullable)"
+      },
+      "location": {
+        "offset": 25450,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PMCore.h",
+        "line": 792,
+        "col": 1,
+        "tokLen": 27,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Headers/PrintCore.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "printSession",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPrintSession *",
+            "qualType": "PMPrintSession _Nonnull",
+            "typeAliasDeclId": "0x140c1aea8"
+          }
+        },
+        {
+          "name": "pageFormat",
+          "type": {
+            "desugaredQualType": "struct OpaquePMPageFormat *",
+            "qualType": "PMPageFormat _Nonnull",
+            "typeAliasDeclId": "0x140c1acc8"
+          }
+        },
+        {
+          "name": "changed",
+          "type": {
+            "desugaredQualType": "Boolean *",
+            "qualType": "Boolean * _Nullable"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PasteboardClear",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PasteboardRef _Nonnull)"
+      },
+      "location": {
+        "offset": 16306,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/Pasteboard.h",
+        "line": 426,
+        "col": 1,
+        "tokLen": 15,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inPasteboard",
+          "type": {
+            "desugaredQualType": "struct OpaquePasteboardRef *",
+            "qualType": "PasteboardRef _Nonnull",
+            "typeAliasDeclId": "0x1480e0338"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PasteboardCopyItemFlavorData",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PasteboardRef _Nonnull, PasteboardItemID _Nonnull, CFStringRef _Nonnull, CF_RETURNS_RETAINED CFDataRef  _Nullable *)"
+      },
+      "location": {
+        "offset": 22570,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/Pasteboard.h",
+        "line": 645,
+        "col": 1,
+        "tokLen": 28,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inPasteboard",
+          "type": {
+            "desugaredQualType": "struct OpaquePasteboardRef *",
+            "qualType": "PasteboardRef _Nonnull",
+            "typeAliasDeclId": "0x1304f8338"
+          }
+        },
+        {
+          "name": "inItem",
+          "type": {
+            "desugaredQualType": "void *",
+            "qualType": "PasteboardItemID _Nonnull",
+            "typeAliasDeclId": "0x1304f83c0"
+          }
+        },
+        {
+          "name": "inFlavorType",
+          "type": {
+            "desugaredQualType": "const struct __CFString *",
+            "qualType": "CFStringRef _Nonnull",
+            "typeAliasDeclId": "0x159c26538"
+          }
+        },
+        {
+          "name": "outData",
+          "type": {
+            "desugaredQualType": "CFDataRef  _Nullable *",
+            "qualType": "CF_RETURNS_RETAINED CFDataRef  _Nullable *"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PasteboardCopyItemFlavors",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PasteboardRef _Nonnull, PasteboardItemID _Nonnull, CF_RETURNS_RETAINED CFArrayRef  _Nullable *)"
+      },
+      "location": {
+        "offset": 20170,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/Pasteboard.h",
+        "line": 563,
+        "col": 1,
+        "tokLen": 25,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inPasteboard",
+          "type": {
+            "desugaredQualType": "struct OpaquePasteboardRef *",
+            "qualType": "PasteboardRef _Nonnull",
+            "typeAliasDeclId": "0x1388b8338"
+          }
+        },
+        {
+          "name": "inItem",
+          "type": {
+            "desugaredQualType": "void *",
+            "qualType": "PasteboardItemID _Nonnull",
+            "typeAliasDeclId": "0x1388b83c0"
+          }
+        },
+        {
+          "name": "outFlavorTypes",
+          "type": {
+            "desugaredQualType": "CFArrayRef  _Nullable *",
+            "qualType": "CF_RETURNS_RETAINED CFArrayRef  _Nullable *"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PasteboardCreate",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (CFStringRef _Nullable, CF_RETURNS_RETAINED PasteboardRef  _Nullable *)"
+      },
+      "location": {
+        "offset": 14141,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/Pasteboard.h",
+        "line": 362,
+        "col": 1,
+        "tokLen": 16,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inName",
+          "type": {
+            "desugaredQualType": "const struct __CFString *",
+            "qualType": "CFStringRef _Nullable",
+            "typeAliasDeclId": "0x149c26538"
+          }
+        },
+        {
+          "name": "outPasteboard",
+          "type": {
+            "desugaredQualType": "PasteboardRef  _Nullable *",
+            "qualType": "CF_RETURNS_RETAINED PasteboardRef  _Nullable *"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PasteboardGetItemCount",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PasteboardRef _Nonnull, ItemCount * _Nonnull)"
+      },
+      "location": {
+        "offset": 18087,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/Pasteboard.h",
+        "line": 490,
+        "col": 1,
+        "tokLen": 22,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inPasteboard",
+          "type": {
+            "desugaredQualType": "struct OpaquePasteboardRef *",
+            "qualType": "PasteboardRef _Nonnull",
+            "typeAliasDeclId": "0x138010338"
+          }
+        },
+        {
+          "name": "outItemCount",
+          "type": {
+            "desugaredQualType": "ItemCount *",
+            "qualType": "ItemCount * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PasteboardGetItemIdentifier",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PasteboardRef _Nonnull, CFIndex, PasteboardItemID  _Nullable * _Nonnull)"
+      },
+      "location": {
+        "offset": 19031,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/Pasteboard.h",
+        "line": 525,
+        "col": 1,
+        "tokLen": 27,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inPasteboard",
+          "type": {
+            "desugaredQualType": "struct OpaquePasteboardRef *",
+            "qualType": "PasteboardRef _Nonnull",
+            "typeAliasDeclId": "0x1300e0338"
+          }
+        },
+        {
+          "name": "inIndex",
+          "type": {
+            "desugaredQualType": "long",
+            "qualType": "CFIndex",
+            "typeAliasDeclId": "0x140426228"
+          }
+        },
+        {
+          "name": "outItem",
+          "type": {
+            "desugaredQualType": "PasteboardItemID  _Nullable *",
+            "qualType": "PasteboardItemID  _Nullable * _Nonnull"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PasteboardPutItemFlavor",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (PasteboardRef _Nonnull, PasteboardItemID _Nonnull, CFStringRef _Nonnull, CFDataRef _Nullable, PasteboardFlavorFlags)"
+      },
+      "location": {
+        "offset": 24966,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/Pasteboard.h",
+        "line": 705,
+        "col": 1,
+        "tokLen": 23,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inPasteboard",
+          "type": {
+            "desugaredQualType": "struct OpaquePasteboardRef *",
+            "qualType": "PasteboardRef _Nonnull",
+            "typeAliasDeclId": "0x138210338"
+          }
+        },
+        {
+          "name": "inItem",
+          "type": {
+            "desugaredQualType": "void *",
+            "qualType": "PasteboardItemID _Nonnull",
+            "typeAliasDeclId": "0x1382103c0"
+          }
+        },
+        {
+          "name": "inFlavorType",
+          "type": {
+            "desugaredQualType": "const struct __CFString *",
+            "qualType": "CFStringRef _Nonnull",
+            "typeAliasDeclId": "0x146426538"
+          }
+        },
+        {
+          "name": "inData",
+          "type": {
+            "desugaredQualType": "const struct __CFData *",
+            "qualType": "CFDataRef _Nullable",
+            "typeAliasDeclId": "0x14638f258"
+          }
+        },
+        {
+          "name": "inFlags",
+          "type": {
+            "desugaredQualType": "enum PasteboardFlavorFlags",
+            "qualType": "PasteboardFlavorFlags",
+            "typeAliasDeclId": "0x1382110e8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PasteboardSynchronize",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "PasteboardSyncFlags (PasteboardRef _Nonnull)"
+      },
+      "location": {
+        "offset": 15313,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/Pasteboard.h",
+        "line": 395,
+        "col": 1,
+        "tokLen": 21,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inPasteboard",
+          "type": {
+            "desugaredQualType": "struct OpaquePasteboardRef *",
+            "qualType": "PasteboardRef _Nonnull",
+            "typeAliasDeclId": "0x1380e8338"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UAZoomChangeFocus",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "OSStatus (const CGRect *, const CGRect *, UAZoomChangeFocusType)"
+      },
+      "location": {
+        "offset": 5324,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/UniversalAccess.h",
+        "line": 169,
+        "col": 1,
+        "tokLen": 17,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": "inRect",
+          "type": {
+            "qualType": "const CGRect *"
+          }
+        },
+        {
+          "name": "inHighlightRect",
+          "type": {
+            "qualType": "const CGRect *"
+          }
+        },
+        {
+          "name": "inType",
+          "type": {
+            "desugaredQualType": "unsigned int",
+            "qualType": "UAZoomChangeFocusType",
+            "typeAliasDeclId": "0x12899a008"
+          }
+        }
+      ]
+    },
+    {
+      "name": "UAZoomEnabled",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "Boolean (void)"
+      },
+      "location": {
+        "offset": 2900,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/UniversalAccess.h",
+        "line": 113,
+        "col": 1,
+        "tokLen": 13,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ApplicationServices.framework/Frameworks/HIServices.framework/Headers/HIServices.h"
+        }
+      },
+      "parameters": []
+    }
+  ],
+  "unresolved": [],
+  "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+  "required_names": [
+    "_HIShapeCreateIntersection",
+    "_HIShapeCreateWithRect",
+    "_HIShapeIsEmpty",
+    "_PMCreatePageFormat",
+    "_PMCreatePrintSettings",
+    "_PMCreateSession",
+    "_PMGetAdjustedPageRect",
+    "_PMGetAdjustedPaperRect",
+    "_PMGetCollate",
+    "_PMGetCopies",
+    "_PMGetFirstPage",
+    "_PMGetLastPage",
+    "_PMGetOrientation",
+    "_PMPrintSettingsSetJobName",
+    "_PMPrinterGetID",
+    "_PMPrinterGetOutputResolution",
+    "_PMRelease",
+    "_PMRetain",
+    "_PMSessionBeginCGDocumentNoDialog",
+    "_PMSessionBeginPageNoDialog",
+    "_PMSessionDefaultPageFormat",
+    "_PMSessionDefaultPrintSettings",
+    "_PMSessionEndDocumentNoDialog",
+    "_PMSessionEndPageNoDialog",
+    "_PMSessionError",
+    "_PMSessionGetCGGraphicsContext",
+    "_PMSessionGetCurrentPrinter",
+    "_PMSessionGetDestinationType",
+    "_PMSessionSetError",
+    "_PMSessionValidatePageFormat",
+    "_PasteboardClear",
+    "_PasteboardCopyItemFlavorData",
+    "_PasteboardCopyItemFlavors",
+    "_PasteboardCreate",
+    "_PasteboardGetItemCount",
+    "_PasteboardGetItemIdentifier",
+    "_PasteboardPutItemFlavor",
+    "_PasteboardSynchronize",
+    "_UAZoomChangeFocus",
+    "_UAZoomEnabled"
+  ],
+  "status": "Interface capture complete; unresolved declarations remain explicit"
+}
