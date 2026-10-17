@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'tools/service_management_values.m'
+      - 'experiments/service/**'
       - '.github/workflows/service-management-contracts.yml'
   workflow_dispatch:
 permissions:
@@ -20,6 +21,19 @@ jobs:
           python3 tools/capture_loader_contracts.py --result docs/evidence/real-loader-latest.json --graph docs/evidence/dependencies-16.55.json.gz --output reports/service-management-declarations.json
           xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-deprecated-declarations tools/service_management_values.m -framework Foundation -framework ServiceManagement -o /tmp/excelport-service-values
           /tmp/excelport-service-values reports/service-management-values.json
+      - name: Compile failure adapter against actual Mac declarations and compare constant ABI
+        run: |
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-deprecated-declarations -Ishim -DEXCELSHIM_SERVICE_NATIVE_DECLARATIONS=1 -c experiments/service/ExcelServiceManagement.m -o /tmp/excelport-service-declarations.o
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Ishim -Iexperiments/service -DEXCELSHIM_SERVICE_CONTRACT=1 tools/service_management_values.m experiments/service/ExcelServiceManagement.m shim/ExcelShim.m -framework Foundation -o /tmp/excelport-service-compat
+          /tmp/excelport-service-compat reports/service-management-compatibility.json
+          python3 - <<'PYTHON'
+          import json
+          from pathlib import Path
+          native=json.loads(Path('reports/service-management-values.json').read_text())
+          compat=json.loads(Path('reports/service-management-compatibility.json').read_text())
+          assert native==compat,(native,compat)
+          Path('reports/service-management-validation.json').write_text(json.dumps({'constant_value_and_ABI_match':True,'compiled_against_actual_Mac_declarations':True,'null_failure_cases_checked':3,'no_jobs_or_services_fabricated':True,'authentication_attempted':False,'excel_executed':False},indent=2)+'\n')
+          PYTHON
       - uses: actions/upload-artifact@v4
         if: always()
         with:

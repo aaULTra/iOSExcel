@@ -1,10 +1,19 @@
 // Metadata/value capture only. Do not enumerate launchd jobs or invoke helpers.
 #import <Foundation/Foundation.h>
+#ifdef EXCELSHIM_SERVICE_CONTRACT
+#import "ExcelServiceManagement.h"
+#else
 #import <ServiceManagement/ServiceManagement.h>
+#endif
 int main(int argc, char **argv) { @autoreleasepool {
     if (argc != 2 || !kSMDomainUserLaunchd || CFGetTypeID(kSMDomainUserLaunchd)!=CFStringGetTypeID()) return 2;
     CFArrayRef (*contract)(CFStringRef) = SMCopyAllJobDictionaries;
     if (!contract) return 3;
+#ifdef EXCELSHIM_SERVICE_CONTRACT
+    if (SMCopyAllJobDictionaries(kSMDomainUserLaunchd) ||
+        SMCopyAllJobDictionaries(CFSTR("com.excelport.invalid-domain")) ||
+        SMCopyAllJobDictionaries(NULL)) return 5;
+#endif
     NSDictionary *report=@{@"user_domain":(__bridge NSString *)kSMDomainUserLaunchd,
         @"domain_declaration_encoding":@(@encode(__typeof__(kSMDomainUserLaunchd))),
         @"function_pointer_encoding":@(@encode(__typeof__(contract))),
