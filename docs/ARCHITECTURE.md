@@ -1,7 +1,7 @@
 # Architecture and feasibility gates
 
 Current implementation: installer extraction, recursive static Mach-O inventory,
-hash-verified startup-closure retargeting with distinct AppKit/Cocoa/ApplicationServices/Kerberos forwarding dylibs,
+hash-verified startup-closure retargeting with distinct AppKit/Cocoa/ApplicationServices/Kerberos/ScriptingBridge/SecurityInterface forwarding dylibs,
 an observed-format startup nib decoder,
 limited AppKit startup classes and a UIKit entry bridge. Native contract tests and
 arm64 iOS compilation/signature checks pass. Real Microsoft images have been passed
@@ -114,3 +114,9 @@ These functions are supplied by private Heimdal implementation details, so this
 remains version-sensitive experimental compatibility. The real loader driver repeats
 those tests on its exact runtime before launching Microsoft code. Domain SSO,
 Microsoft login and legitimate activation remain unverified. See KERBEROS.md.
+
+## Automation and security boundaries
+
+The ScriptingBridge adapter implements the measured SBApplication -> SBObject hierarchy, but returns nil from all three supported target factories and both constructors. It sends no Apple events and creates no running-app identity. Native method/hierarchy contracts and real UIKit integration passed. Actual loader run 39021819752 passed the dependency; this says nothing about Office message-send behavior.
+
+The SecurityInterface diagnostic preserves five measured class relationships through NSWindow/NSPanel. NSWindow allocation and all shared security-panel factories always log and raise ExcelShimUnimplemented. There is no compatible desktop window instance or trust/identity UI. No security result is substituted. Native guards passed before integration. The separate UIKit test verifies class image provenance and rejection behavior inside a real UIKit host. See SECURITY_INTERFACE.md for actual run evidence and limits.

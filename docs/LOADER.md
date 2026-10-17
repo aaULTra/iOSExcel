@@ -77,3 +77,9 @@ GSS descriptor. Native and M4 Simulator 26.2 contracts passed before integration
 The private-provider dependency and actual runtime gate are described in KERBEROS.md;
 the real loader passed this dependency in 39019181596 and stopped at NetFS. This is not a zero-import optional
 load and does not use the ExceptionHandling policy.
+
+## Fifth and sixth forwarding identities
+
+ExcelScriptingBridge.dylib preserves the real SBApplication import and forwards to the explicitly unavailable automation layer. Actual loader 39021819752 passed this dependency, mapping all 55 Microsoft images and six owned images before failing at SecurityInterface. Device-target preparation 39021819832 verified 77 path changes and five facade identities.
+
+ExcelSecurityInterface.dylib is a sixth forwarding identity for the actual two imported certificate/identity panel classes. Native metadata/guard run 39022498941 passed five superclass relationships, factory/allocation ABI encodings and explicit rejection of panel creation. Actual loader 39022585600 passed the SecurityInterface load boundary and stopped at ServiceManagement. UIKit run 39022585578 passed class image provenance and all rejection checks; this is a fail-closed diagnostic gate, not security UI or a usable desktop window implementation.

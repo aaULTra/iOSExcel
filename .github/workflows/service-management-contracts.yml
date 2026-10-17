@@ -1,0 +1,28 @@
+name: Capture native service management contract
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/service_management_values.m'
+      - '.github/workflows/service-management-contracts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: macos-15
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture SDK declarations and native domain value without enumerating jobs
+        run: |
+          mkdir -p reports
+          python3 tools/capture_loader_contracts.py --result docs/evidence/real-loader-latest.json --graph docs/evidence/dependencies-16.55.json.gz --output reports/service-management-declarations.json
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-deprecated-declarations tools/service_management_values.m -framework Foundation -framework ServiceManagement -o /tmp/excelport-service-values
+          /tmp/excelport-service-values reports/service-management-values.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: service-management-contracts
+          path: reports/
+          retention-days: 7

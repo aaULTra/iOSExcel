@@ -1,0 +1,67 @@
+{
+  "facades": [
+    {
+      "install_name": "@rpath/ExcelAppKit.dylib",
+      "required_compatibility_version": "45.0.0",
+      "reexports": [
+        "@rpath/libExcelShim.dylib"
+      ],
+      "platform": 2,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    },
+    {
+      "install_name": "@rpath/ExcelCocoa.dylib",
+      "required_compatibility_version": "1.0.0",
+      "reexports": [
+        "@rpath/libExcelShim.dylib"
+      ],
+      "platform": 2,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    },
+    {
+      "install_name": "@rpath/ExcelApplicationServices.dylib",
+      "required_compatibility_version": "1.0.0",
+      "reexports": [
+        "@rpath/libExcelShim.dylib"
+      ],
+      "platform": 2,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    },
+    {
+      "install_name": "@rpath/ExcelKerberos.dylib",
+      "required_compatibility_version": "5.0.0",
+      "reexports": [
+        "@rpath/libExcelShim.dylib"
+      ],
+      "platform": 2,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    },
+    {
+      "install_name": "@rpath/ExcelSecurityInterface.dylib",
+      "required_compatibility_version": "1.0.0",
+      "reexports": [
+        "@rpath/libExcelShim.dylib"
+      ],
+      "platform": 2,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    },
+    {
+      "install_name": "@rpath/ExcelScriptingBridge.dylib",
+      "required_compatibility_version": "1.0.0",
+      "reexports": [
+        "@rpath/libExcelShim.dylib"
+      ],
+      "platform": 2,
+      "signed_and_verified": true,
+      "does_not_implement_missing_APIs": true
+    }
+  ],
+  "excel_executed": false,
+  "loader_ready": false,
+  "release_ready": false
+}
