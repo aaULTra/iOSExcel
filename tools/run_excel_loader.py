@@ -14,6 +14,7 @@ import time
 from pathlib import Path
 
 from build_facades import build_one
+from excel_retarget import rewrite_load_paths
 from loader_plan import load_json, plan, stage
 
 
@@ -28,6 +29,7 @@ def run(*args):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('app', type=Path)
+    ap.add_argument('--system-path-map', type=Path)
     args = ap.parse_args()
     root = Path(__file__).resolve().parents[1]
     reports = root/'reports'
@@ -36,9 +38,32 @@ def main():
     result = plan(args.app, load_json(root/'docs/evidence/excel-16.55.json.gz'),
                   load_json(root/'docs/evidence/dependencies-16.55.json.gz'), platform=7)
     stage(args.app, destination, result)
+    path_entries = json.loads(args.system_path_map.read_text()) if args.system_path_map else []
+    mapping = {}
+    for entry in path_entries:
+        old, new = entry['original'], entry['target']
+        if old in mapping or not old.startswith('/System/Library/Frameworks/') or not new.startswith('/System/Library/Frameworks/') or '..' in Path(new).parts:
+            raise ValueError('Unexpected system library path mapping')
+        if not entry.get('observed_failure_run') or not entry.get('probe_symbol'):
+            raise ValueError('Path mapping needs an observed failure and a runtime probe')
+        mapping[old] = new
+    result['system_path_modifications'] = []
+    for image in result['images']:
+        binary = destination/image['path']
+        changed, events = rewrite_load_paths(binary.read_bytes(), mapping)
+        if events:
+            binary.write_bytes(changed)
+            result['system_path_modifications'].append({'path': image['path'], 'events': events})
     (reports/'real-loader-transform.json').write_text(json.dumps(result, indent=2)+'\n')
     frameworks = destination/'Contents/Frameworks'
     sdk = output('xcrun', '--sdk', 'iphonesimulator', '--show-sdk-path')
+    for entry in path_entries:
+        if not Path(str(Path(sdk)/entry['target'].lstrip('/'))+'.tbd').is_file():
+            raise ValueError('Counterpart missing from Simulator SDK: '+entry['target'])
+    probe = destination/'probe-system-library'
+    run('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
+        '-Wall', '-Wextra', '-Werror', root/'tests/loader/probe_system_library.c', '-o', probe)
+    run('codesign', '--force', '--sign', '-', probe)
     shim = frameworks/'libExcelShim.dylib'
     sources = ['ExcelNibArchive.m', 'ExcelAppKit.m', 'ExcelShim.m', 'ExcelScreen.m', 'ExcelView.m']
     run('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
@@ -85,6 +110,14 @@ def main():
     try:
         run('xcrun', 'simctl', 'boot', udid)
         subprocess.run(['xcrun', 'simctl', 'bootstatus', udid, '-b'], check=True, timeout=240)
+        report['system_library_probes'] = []
+        for entry in path_entries:
+            checked = subprocess.run(['xcrun', 'simctl', 'spawn', udid, str(probe), entry['target'], entry['probe_symbol']],
+                                     text=True, capture_output=True, timeout=60)
+            report['system_library_probes'].append({'target': entry['target'], 'symbol': entry['probe_symbol'],
+                                                   'returncode': checked.returncode, 'stdout': checked.stdout, 'stderr': checked.stderr})
+            print(checked.stdout, checked.stderr, flush=True)
+            checked.check_returncode()
         executable = destination/'Contents/MacOS/Microsoft Excel'
         env = dict(os.environ)
         env['SIMCTL_CHILD_DYLD_PRINT_LIBRARIES'] = '1'

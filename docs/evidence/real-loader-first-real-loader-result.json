@@ -1,0 +1,16 @@
+{
+  "experiment": "Original Excel MH_EXECUTE with original 54-image Microsoft closure",
+  "platform": "iOS Simulator (7), not an iPadOS device build",
+  "device": "iPad Pro 11-inch (M4)",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "source_sha": "5802800806c2faf496dc9f572bf18f4e9e16dd05",
+  "microsoft_entrypoint_confirmed": false,
+  "excel_initialised": false,
+  "activation_verified": false,
+  "release_ready": false,
+  "returncode": 134,
+  "timed_out": false,
+  "elapsed_seconds": 45.46,
+  "dyld_failure_present": true,
+  "status": "Loader failure captured"
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "original": "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+    "target": "/System/Library/Frameworks/Security.framework/Security",
+    "probe_symbol": "SecItemCopyMatching",
+    "observed_failure_run": 38984254220,
+    "scope": "Path resolution only; no claim all macOS Security APIs exist or behave identically"
+  }
+]

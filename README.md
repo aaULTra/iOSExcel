@@ -56,9 +56,16 @@ Do not delete dependencies to force that check to pass.
 
 ## Current CI and next gate
 
+The current priority is an internal **real Excel executable loader attempt**, using
+the original Microsoft startup closure on iPad Simulator. This is separate from
+the synthetic UI tests below. See docs/REAL_LOADER.md for the exact method and
+limits. The first attempt mapped the real main and 33 Microsoft dylibs, then
+dyld aborted on the macOS-versioned Security.framework path. Its entry point
+was not reached; no successful Excel initialization is established.
+
 Source: https://github.com/aaULTra/iOSExcel
 
-All 30 Python tests pass. Native startup/nib/delegate contracts, two-level dyld binding,
+All 31 Python tests pass. Native startup/nib/delegate contracts, two-level dyld binding,
 actual 55-image retargeting, iOS forwarding-library builds and signature checks pass.
 The original XLMainMenu archive is checked with explicit test stand-ins, without loading
 Excel. Nine NSScreen and 32 NSView method encodings match captured arm64 AppKit contracts.

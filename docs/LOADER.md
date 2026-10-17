@@ -42,7 +42,9 @@ No Microsoft binary payload is committed or uploaded as a CI artifact.
 
 ## What this does not establish
 
-This is an M2 binary preparation checkpoint, not M3. Excel has not loaded or executed.
+This is an M2 binary preparation checkpoint, not M3. Excel has not completed loading or reached its entry point. A subsequent real
+Simulator loader attempt mapped Microsoft images and captured its first failure;
+see REAL_LOADER.md.
 The current shim still exports only 16/538 required AppKit names and 6/143 classes.
 The remaining framework paths and symbols, class behavior, initializers, resource
 identity, UI, text, document access and legitimate activation remain unresolved.

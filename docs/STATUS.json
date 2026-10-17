@@ -12,7 +12,7 @@
   "github_repository_created": true,
   "github_actions_run": true,
   "legitimate_ipados_activation_path_established": false,
-  "tests_passed": 30,
+  "tests_passed": 31,
   "github_repository": "aaULTra/iOSExcel",
   "probe_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38816769202",
   "analysis_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38816989758",
@@ -33,5 +33,7 @@
   "screen_simulator_excel_executed": false,
   "view_compatibility": "Partial NSResponder-based NSView model plus UIView projection: native hierarchy/geometry/lifetime tests, 32 exact ABI contracts and synthetic UIKit drawing/pixel/hierarchy tests passed. No NSWindow or Excel execution.",
   "view_native_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725023",
-  "view_simulator_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725046"
+  "view_simulator_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725046",
+  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38984254220",
+  "real_loader_investigation": "Original executable handed to Simulator dyld; main plus 33 Microsoft dylibs mapped, then abort 134 on macOS-versioned Security path. Microsoft entry not reached. Canonical Security counterpart runtime probe and path fix queued."
 }
