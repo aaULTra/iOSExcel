@@ -19,7 +19,7 @@ an explicit compatibility typedef rather than assuming a mobile typedef matches.
 | HIShape | 3 | Create rectangle-backed CGPaths, intersect paths, query emptiness; only compatibility-created path objects supported |
 | Core Printing | 27 | Log unsupported operations; return measured kPMNotImplemented (-30873), clear outputs; printer-ID query returns NULL |
 | Carbon Pasteboard | 8 | Operations return unimpErr (-4) and clear outputs; synchronization raises because flags cannot encode an unsupported error |
-| Universal Access zoom | 2 | UIKit zoom-enabled query; focus-change operation logs and returns unimpErr |
+| Universal Access zoom | 2 | Mac zoom feature explicitly disabled (logged false); focus-change logs and returns unimpErr; no iPad accessibility-status query claimed |
 
 No printer session, print success, clipboard data or ownership is fabricated. The
 printing and clipboard paths are deliberately unavailable, not functional adapters.
@@ -54,3 +54,8 @@ https://developer.apple.com/documentation/applicationservices/core_printing
 https://developer.apple.com/documentation/coregraphics/cgpathcreatecopybyintersectingpath
 
 Measured declarations and type/value facts are under docs/evidence/application-services-*.
+
+The first build (38987405047) caught an invalid proposed UIKit zoom-status mapping:
+UIAccessibilityIsZoomEnabled is not declared in the selected SDK. The corrected
+source explicitly disables the macOS zoom compatibility feature and logs that
+choice. It does not assert that the iPad's own accessibility zoom is disabled.

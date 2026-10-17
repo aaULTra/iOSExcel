@@ -4,6 +4,10 @@ on:
     branches: [main]
     paths:
       - 'tools/run_excel_loader.py'
+      - 'shim/**'
+      - 'tools/loader_plan.py'
+      - 'tools/excel_retarget.py'
+      - 'tools/build_facades.py'
       - 'tools/loader_system_paths.json'
       - 'tests/loader/probe_system_library.c'
       - '.github/workflows/real-loader.yml'

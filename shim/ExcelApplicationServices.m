@@ -3,9 +3,6 @@
 #import "ExcelShim.h"
 #include <math.h>
 #include <string.h>
-#if TARGET_OS_IOS
-#import <UIKit/UIKit.h>
-#endif
 static void EXUnavailable(const char *name) { ExcelShimLog([NSString stringWithFormat:@"UNAVAILABLE ApplicationServices %s; operation not performed", name]); }
 __attribute__((noreturn)) static void EXServiceFault(NSString *reason) {
     ExcelShimLog(reason);
@@ -181,9 +178,7 @@ OSStatus UAZoomChangeFocus(const CGRect * inRect, const CGRect * inHighlightRect
 }
 
 Boolean UAZoomEnabled(void) {
-    #if TARGET_OS_IOS
-    return (Boolean)UIAccessibilityIsZoomEnabled();
-#else
-    EXServiceFault(@"UAZoomEnabled: UIKit-only query on native contract host");
-#endif
+    // The macOS zoom compatibility feature is disabled. This is not a query of
+    // the iPad's accessibility settings; no verified UIKit status API is assumed.
+    EXUnavailable(__func__); return (Boolean)0;
 }

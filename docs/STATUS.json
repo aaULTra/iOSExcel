@@ -36,5 +36,5 @@
   "view_simulator_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725046",
   "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38986113826",
   "real_loader_investigation": "Verified same-runtime Apple framework path normalization passed. Actual main and 38 Microsoft dylibs mapped, then abort on ApplicationServices; 40 imports need typed compatibility. Microsoft entry not reached.",
-  "application_services": "Source added for 40 imports: three CoreGraphics shape operations, UIKit zoom query, explicit disabled-feature errors/trap for remaining printing/pasteboard/zoom-focus APIs. Actual Mac declarations and 17 typedef/error contracts captured. Native comparison and real loader retry pending."
+  "application_services": "Source for 40 imports: three CoreGraphics shape operations; explicit disabled printing, pasteboard and Mac zoom behavior. Invalid assumed UIKit zoom status mapping caught by compiler and replaced with logged feature-disabled false. Native comparison and real loader retry pending."
 }
