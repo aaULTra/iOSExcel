@@ -83,11 +83,11 @@ def main():
         '-Wall', '-Wextra', '-Werror', root/'tests/loader/probe_system_library.c', '-o', probe)
     run('codesign', '--force', '--sign', '-', probe)
     shim = frameworks/'libExcelShim.dylib'
-    sources = ['ExcelNibArchive.m', 'ExcelAppKit.m', 'ExcelShim.m', 'ExcelScreen.m', 'ExcelView.m', 'ExcelApplicationServices.m']
+    sources = ['ExcelNibArchive.m', 'ExcelAppKit.m', 'ExcelShim.m', 'ExcelScreen.m', 'ExcelView.m', 'ExcelApplicationServices.m', 'ExcelKerberos.m']
     run('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
         '-fobjc-arc', '-fmodules', '-Wall', '-Wextra', '-Werror', '-Wno-unused-parameter',
         '-I'+str(root/'shim'), '-dynamiclib', *[root/'shim'/s for s in sources],
-        '-framework', 'UIKit', '-framework', 'Foundation', '-framework', 'CoreGraphics',
+        '-framework', 'UIKit', '-framework', 'Foundation', '-framework', 'CoreGraphics', '-framework', 'GSS',
         '-install_name', '@rpath/libExcelShim.dylib', '-o', shim)
     run('codesign', '--force', '--sign', '-', shim)
     for facade in result['facades']:
@@ -181,6 +181,31 @@ def main():
                 'images': audited['images'], 'mapping_permitted': entry.get('map_eligible', True),
                 'link_preflight': audited.get('preflight'), 'symbols_queried': audited['loaded'],
                 'scope': 'SDK-absent preflight only' if not entry.get('map_eligible', True) else 'Runtime export lookup only; no API behavior, device availability or ABI guarantee'})
+        # Gate the experimental private-provider bridge on this exact runtime,
+        # before any Microsoft process starts. Only context/realm ownership is
+        # exercised; no credentials or authentication exchange is attempted.
+        contract = destination/'kerberos-contract-probe'
+        run('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
+            '-fobjc-arc', '-fmodules', '-Wall', '-Wextra', '-Werror', '-I'+str(root/'shim'),
+            root/'tests/kerberos_contracts.m', root/'shim/ExcelKerberos.m', root/'shim/ExcelShim.m',
+            '-framework', 'Foundation', '-framework', 'GSS', '-Wl,-export_dynamic', '-o', contract)
+        run('codesign', '--force', '--sign', '-', contract)
+        contract_path = reports/'kerberos-forwarding-contracts.json'
+        checked_contract = subprocess.run(['xcrun', 'simctl', 'spawn', udid, str(contract), str(contract_path)],
+                                          text=True, capture_output=True, timeout=120)
+        (reports/'kerberos-contract.stdout.log').write_text(checked_contract.stdout)
+        (reports/'kerberos-contract.stderr.log').write_text(checked_contract.stderr)
+        checked_contract.check_returncode()
+        contracts = json.loads(contract_path.read_text())
+        legacy = json.loads((root/'docs/evidence/kerberos-native-baseline.json').read_text())
+        for key in ('oid_base64', 'oid_length', 'oid_struct_size', 'oid_elements_offset'):
+            if contracts[key] != legacy[key]:
+                raise ValueError('Kerberos OID legacy ABI changed: '+key)
+        if not contracts['context_allocated_and_freed'] or not contracts['provider']['ready'] or contracts['provider']['expected_platform'] != 7:
+            raise ValueError('Kerberos forwarding contract failed on this runtime')
+        if contracts['credentials_used'] or contracts['authentication_attempted'] or contracts['excel_executed']:
+            raise ValueError('Provider test exceeds isolated no-credentials contract scope')
+        report['kerberos_forwarding_contracts'] = contracts
         result['system_path_modifications'] = []
         result['verified_system_path_mapping'] = mapping
         for image in result['images']:

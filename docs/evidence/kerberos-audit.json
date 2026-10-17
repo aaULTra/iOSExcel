@@ -1,0 +1,309 @@
+{
+  "source_sha": "fc187656004de6528ead6d857245a7d59ca8527f",
+  "names": [
+    "GSS_C_NT_USER_NAME",
+    "krb5_free_context",
+    "krb5_free_host_realm",
+    "krb5_get_host_realm",
+    "krb5_init_context"
+  ],
+  "scope": "SDK declarations, GSS exports and genuine context/realm allocation/free tests. No credentials, authentication, Office code or load substitutions.",
+  "sdk_audits": [
+    {
+      "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "target": "arm64-apple-macos11.0",
+      "headers": [
+        {
+          "framework": "Kerberos",
+          "public_umbrella_present": true,
+          "declarations": [
+            {
+              "name": "GSS_C_NT_USER_NAME",
+              "kind": "VarDecl",
+              "type": {
+                "desugaredQualType": "struct gss_OID_desc_struct *",
+                "qualType": "gss_OID",
+                "typeAliasDeclId": "0x130bcb208"
+              },
+              "parameters": []
+            },
+            {
+              "name": "krb5_free_context",
+              "kind": "FunctionDecl",
+              "type": {
+                "qualType": "void (krb5_context)"
+              },
+              "parameters": [
+                {
+                  "desugaredQualType": "struct _krb5_context *",
+                  "qualType": "krb5_context",
+                  "typeAliasDeclId": "0x13b3291b8"
+                }
+              ]
+            },
+            {
+              "name": "krb5_free_host_realm",
+              "kind": "FunctionDecl",
+              "type": {
+                "qualType": "krb5_error_code (krb5_context, char *const *)"
+              },
+              "parameters": [
+                {
+                  "desugaredQualType": "struct _krb5_context *",
+                  "qualType": "krb5_context",
+                  "typeAliasDeclId": "0x13bb291b8"
+                },
+                {
+                  "qualType": "char *const *"
+                }
+              ]
+            },
+            {
+              "name": "krb5_get_host_realm",
+              "kind": "FunctionDecl",
+              "type": {
+                "qualType": "krb5_error_code (krb5_context, const char *, char ***)"
+              },
+              "parameters": [
+                {
+                  "desugaredQualType": "struct _krb5_context *",
+                  "qualType": "krb5_context",
+                  "typeAliasDeclId": "0x124b291b8"
+                },
+                {
+                  "qualType": "const char *"
+                },
+                {
+                  "qualType": "char ***"
+                }
+              ]
+            },
+            {
+              "name": "krb5_init_context",
+              "kind": "FunctionDecl",
+              "type": {
+                "qualType": "krb5_error_code (krb5_context *)"
+              },
+              "parameters": [
+                {
+                  "qualType": "krb5_context *"
+                }
+              ]
+            }
+          ],
+          "unresolved": []
+        },
+        {
+          "framework": "GSS",
+          "public_umbrella_present": true,
+          "declarations": [],
+          "unresolved": [
+            {
+              "name": "GSS_C_NT_USER_NAME",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_free_context",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_free_host_realm",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_get_host_realm",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_init_context",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            }
+          ]
+        }
+      ],
+      "stubs": [
+        {
+          "path": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Kerberos.tbd",
+          "exists": true,
+          "name_tokens_present": [
+            "GSS_C_NT_USER_NAME",
+            "krb5_free_context",
+            "krb5_free_host_realm",
+            "krb5_get_host_realm",
+            "krb5_init_context"
+          ],
+          "scope": "Text occurrence only, not a parsed target export or runtime guarantee"
+        },
+        {
+          "path": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/GSS.framework/GSS.tbd",
+          "exists": true,
+          "name_tokens_present": [],
+          "scope": "Text occurrence only, not a parsed target export or runtime guarantee"
+        }
+      ]
+    },
+    {
+      "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk",
+      "target": "arm64-apple-ios18.0",
+      "headers": [
+        {
+          "framework": "Kerberos",
+          "public_umbrella_present": false,
+          "declarations": [],
+          "unresolved": []
+        },
+        {
+          "framework": "GSS",
+          "public_umbrella_present": true,
+          "declarations": [],
+          "unresolved": [
+            {
+              "name": "GSS_C_NT_USER_NAME",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_free_context",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_free_host_realm",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_get_host_realm",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_init_context",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            }
+          ]
+        }
+      ],
+      "stubs": [
+        {
+          "path": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/System/Library/Frameworks/Kerberos.framework/Kerberos.tbd",
+          "exists": false,
+          "name_tokens_present": [],
+          "scope": "Text occurrence only, not a parsed target export or runtime guarantee"
+        },
+        {
+          "path": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/System/Library/Frameworks/GSS.framework/GSS.tbd",
+          "exists": true,
+          "name_tokens_present": [],
+          "scope": "Text occurrence only, not a parsed target export or runtime guarantee"
+        }
+      ]
+    },
+    {
+      "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk",
+      "target": "arm64-apple-ios18.0-simulator",
+      "headers": [
+        {
+          "framework": "Kerberos",
+          "public_umbrella_present": false,
+          "declarations": [],
+          "unresolved": []
+        },
+        {
+          "framework": "GSS",
+          "public_umbrella_present": true,
+          "declarations": [],
+          "unresolved": [
+            {
+              "name": "GSS_C_NT_USER_NAME",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_free_context",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_free_host_realm",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_get_host_realm",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            },
+            {
+              "name": "krb5_init_context",
+              "reason": "No exact declaration; a macro alias requires separate analysis"
+            }
+          ]
+        }
+      ],
+      "stubs": [
+        {
+          "path": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/Kerberos.framework/Kerberos.tbd",
+          "exists": false,
+          "name_tokens_present": [],
+          "scope": "Text occurrence only, not a parsed target export or runtime guarantee"
+        },
+        {
+          "path": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/GSS.framework/GSS.tbd",
+          "exists": true,
+          "name_tokens_present": [],
+          "scope": "Text occurrence only, not a parsed target export or runtime guarantee"
+        }
+      ]
+    }
+  ],
+  "native_legacy_oid_and_function_contracts_passed": true,
+  "device": "iPad Pro 11-inch (M4)",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "runtime_lookup": [
+    "LIBRARY_LOADED\t/System/Library/Frameworks/GSS.framework/GSS",
+    "IMAGE\t/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/GSS.framework/GSS\t7",
+    "MISSING\tGSS_C_NT_USER_NAME",
+    "FOUND\tkrb5_free_context\t/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+    "FOUND\tkrb5_free_host_realm\t/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+    "FOUND\tkrb5_get_host_realm\t/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+    "FOUND\tkrb5_init_context\t/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal"
+  ],
+  "simulator_contracts": {
+    "returned_realm_list_freed": true,
+    "context_allocated_and_freed": true,
+    "realm_lookup_status": 0,
+    "provider": {
+      "expected_platform": 7,
+      "functions": [
+        {
+          "symbol": "krb5_init_context",
+          "provider": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+          "found": true,
+          "platform": 7
+        },
+        {
+          "symbol": "krb5_free_context",
+          "provider": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+          "found": true,
+          "platform": 7
+        },
+        {
+          "symbol": "krb5_get_host_realm",
+          "provider": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+          "found": true,
+          "platform": 7
+        },
+        {
+          "symbol": "krb5_free_host_realm",
+          "provider": "/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/Heimdal.framework/Heimdal",
+          "found": true,
+          "platform": 7
+        }
+      ],
+      "scope": "Private Apple implementation reached through public GSS; version-sensitive experimental ABI. No authentication or activation success implied.",
+      "ready": true
+    },
+    "oid_base64": "KoZIhvcSAQIBAQ==",
+    "authentication_attempted": false,
+    "excel_executed": false,
+    "credentials_used": false,
+    "oid_length": 10,
+    "oid_struct_size": 16,
+    "realm_list_returned": true,
+    "oid_elements_offset": 8
+  },
+  "status": "Native and Simulator forwarding contracts passed; Excel not attempted and private provider remains version-sensitive"
+}

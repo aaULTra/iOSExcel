@@ -1,0 +1,13 @@
+{
+  "excel_executed" : false,
+  "oid_elements_offset" : 8,
+  "returned_realm_list_freed" : true,
+  "oid_struct_size" : 16,
+  "credentials_used" : false,
+  "oid_base64" : "KoZIhvcSAQIBAQ==",
+  "oid_length" : 10,
+  "realm_lookup_status" : 0,
+  "realm_list_returned" : true,
+  "authentication_attempted" : false,
+  "context_allocated_and_freed" : true
+}

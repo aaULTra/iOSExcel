@@ -38,11 +38,11 @@ def main():
           'UIApplicationSceneManifest':{'UIApplicationSupportsMultipleScenes':False,'UISceneConfigurations':{}},
           'UILaunchScreen':{},'UISupportedInterfaceOrientations':['UIInterfaceOrientationPortrait','UIInterfaceOrientationLandscapeLeft','UIInterfaceOrientationLandscapeRight']}
     (app/'Info.plist').write_bytes(plistlib.dumps(info))
-    sources=['shim/ExcelNibArchive.m','shim/ExcelAppKit.m','shim/ExcelShim.m','shim/ExcelScreen.m','shim/ExcelView.m','shim/ExcelApplicationServices.m','tests/simulator_screen_app.m','tests/simulator_view_contracts.m']
+    sources=['shim/ExcelNibArchive.m','shim/ExcelAppKit.m','shim/ExcelShim.m','shim/ExcelScreen.m','shim/ExcelView.m','shim/ExcelApplicationServices.m','shim/ExcelKerberos.m','tests/simulator_screen_app.m','tests/simulator_view_contracts.m']
     run('xcrun','clang','-target','arm64-apple-ios18.0-simulator','-isysroot',sdk,
         '-fobjc-arc','-fmodules','-Wall','-Wextra','-Werror','-Wno-unused-parameter',
         '-DEXCELSHIM_CONTRACT_TEST=1','-I'+str(root/'shim'),*[root/s for s in sources],
-        '-framework','UIKit','-framework','Foundation','-framework','CoreGraphics','-o',app/'ScreenAdapterTests')
+        '-framework','UIKit','-framework','Foundation','-framework','CoreGraphics','-framework','GSS','-o',app/'ScreenAdapterTests')
     run('codesign','--force','--sign','-',app)
     devices=json.loads(output('xcrun','simctl','list','devices','available','--json'))['devices']
     candidates=[]

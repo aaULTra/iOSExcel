@@ -1,0 +1,44 @@
+{
+  "returned_realm_list_freed" : true,
+  "context_allocated_and_freed" : true,
+  "realm_lookup_status" : 0,
+  "provider" : {
+    "expected_platform" : 1,
+    "functions" : [
+      {
+        "symbol" : "krb5_init_context",
+        "provider" : "\/System\/Library\/PrivateFrameworks\/Heimdal.framework\/Versions\/A\/Heimdal",
+        "found" : true,
+        "platform" : 1
+      },
+      {
+        "symbol" : "krb5_free_context",
+        "provider" : "\/System\/Library\/PrivateFrameworks\/Heimdal.framework\/Versions\/A\/Heimdal",
+        "found" : true,
+        "platform" : 1
+      },
+      {
+        "symbol" : "krb5_get_host_realm",
+        "provider" : "\/System\/Library\/PrivateFrameworks\/Heimdal.framework\/Versions\/A\/Heimdal",
+        "found" : true,
+        "platform" : 1
+      },
+      {
+        "symbol" : "krb5_free_host_realm",
+        "provider" : "\/System\/Library\/PrivateFrameworks\/Heimdal.framework\/Versions\/A\/Heimdal",
+        "found" : true,
+        "platform" : 1
+      }
+    ],
+    "scope" : "Private Apple implementation reached through public GSS; version-sensitive experimental ABI. No authentication or activation success implied.",
+    "ready" : true
+  },
+  "oid_base64" : "KoZIhvcSAQIBAQ==",
+  "authentication_attempted" : false,
+  "excel_executed" : false,
+  "credentials_used" : false,
+  "oid_length" : 10,
+  "oid_struct_size" : 16,
+  "realm_list_returned" : true,
+  "oid_elements_offset" : 8
+}

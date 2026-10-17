@@ -12,6 +12,7 @@ on:
       - 'tools/optional_frameworks.json'
       - 'tools/loader_system_paths.json'
       - 'tests/loader/probe_system_library.c'
+      - 'tests/kerberos_contracts.m'
       - '.github/workflows/real-loader.yml'
   workflow_dispatch:
 concurrency:

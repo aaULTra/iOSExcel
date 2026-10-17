@@ -17,6 +17,7 @@ REDIRECTS = {
     '/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit': '@rpath/ExcelAppKit.dylib',
     '/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa': '@rpath/ExcelCocoa.dylib',
     '/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices': '@rpath/ExcelApplicationServices.dylib',
+    '/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos': '@rpath/ExcelKerberos.dylib',
 }
 
 

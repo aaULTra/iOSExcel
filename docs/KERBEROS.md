@@ -37,10 +37,28 @@ it is not a fabricated authentication result.
 Private implementation ABI may change on future iPadOS builds. Neither an
 export lookup nor a context ownership test proves domain SSO, Office login or
 license activation. Those remain separate unresolved runtime requirements.
-No Excel load redirection has been added until these contracts pass.
+Run 39018956591 (fc187656004de6528ead6d857245a7d59ca8527f) passed both
+native and M4 iPad Simulator 26.2 contracts. The legacy OID has 10 bytes,
+16-byte descriptor size and elements at byte offset 8. All four Simulator
+function addresses resolve to the same platform-7 runtime Heimdal image.
+Genuine contexts and localhost realm lists were allocated and freed successfully.
+No authentication or Excel code ran in those contract tests.
+
+The native guard initially rejected an actual zippered macOS(1)+Catalyst(6)
+provider. Raw header diagnostics in run 39018881927 established that exact pair;
+Apple dyld source explicitly supports it. The corrected guard recognizes that
+pair as macOS, never iOS or Simulator, and rejects other mixed platform sets.
+
+The next real loader attempt adds the distinct ExcelKerberos.dylib facade and
+repeats the OID and genuine ownership gate on that exact Simulator before Excel
+can spawn. No empty provider, generic successful stub or account bypass is used.
+See docs/evidence/kerberos-audit.json and kerberos-*-contracts/compatibility JSON.
+Actual Excel passage beyond this dependency is still pending.
 
 Primary interface references:
 https://developer.apple.com/documentation/gss
 https://developer.apple.com/documentation/gss/kerberos-implementation
 https://github.com/apple-oss-distributions/Heimdal/blob/main/lib/krb5/context.c
 https://github.com/apple-oss-distributions/Heimdal/blob/main/lib/krb5/get_host_realm.c
+
+https://github.com/apple-oss-distributions/dyld/blob/main/mach_o/UnsafeHeader.cpp
