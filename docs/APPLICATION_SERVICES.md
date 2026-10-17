@@ -59,3 +59,13 @@ The first build (38987405047) caught an invalid proposed UIKit zoom-status mappi
 UIAccessibilityIsZoomEnabled is not declared in the selected SDK. The corrected
 source explicitly disables the macOS zoom compatibility feature and logs that
 choice. It does not assert that the iPad's own accessibility zoom is disabled.
+
+Run 38987517691 verified native definitions, iOS arm64 compilation/signing and
+all 17 compatibility type encodings. It then caught a comparison boundary:
+Apple HIShapeGetBounds preserves the original negative-width/height rectangle
+representation, while the compatibility CGPath uses normalized geometry. Since
+HIShapeGetBounds is not one of the three implemented imports, the comparison
+now standardizes region bounds on both sides, while still comparing emptiness
+and every tested intersection. Raw HIShapeGetBounds representation compatibility
+is explicitly not claimed. Both baseline/result geometry reports are now retained
+even when a comparison fails. This test correction does not alter the shim.

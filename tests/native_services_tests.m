@@ -15,6 +15,9 @@ static NSArray *Bounds(HIShapeRef shape) {
 #else
     bounds = CGPathGetPathBoundingBox((CGPathRef)shape);
 #endif
+    // Only the three imported shape operations are implemented. Compare region
+    // geometry, not the raw representation of unimplemented HIShapeGetBounds.
+    bounds = CGRectStandardize(bounds);
     return @[@(bounds.origin.x), @(bounds.origin.y), @(bounds.size.width), @(bounds.size.height)];
 }
 static NSDictionary *Observe(HIShapeRef shape) {

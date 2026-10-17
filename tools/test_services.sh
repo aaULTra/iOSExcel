@@ -13,6 +13,8 @@ xcrun clang "${COMMON[@]}" tests/native_services_tests.m shim/ExcelApplicationSe
 build/services/compatibility-shapes build/services/compatibility-shapes.json
 xcrun clang "${COMMON[@]}" tests/services_type_tests.m -framework Foundation -framework CoreGraphics -o build/services/type-tests
 build/services/type-tests docs/evidence/application-services-values.json
+cp build/services/apple-shapes.json reports/apple-shapes.json
+cp build/services/compatibility-shapes.json reports/compatibility-shapes.json
 python3 - <<'PY'
 import json,math
 from pathlib import Path
