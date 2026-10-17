@@ -18,7 +18,7 @@ jobs:
       - name: Capture native hierarchy and factory ABI without opening security dialogs
         run: |
           mkdir -p reports
-          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-deprecated-declarations tools/security_interface_values.m -framework Foundation -framework SecurityInterface -o /tmp/excelport-security-native
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-deprecated-declarations tools/security_interface_values.m -framework Foundation -framework AppKit -framework SecurityInterface -o /tmp/excelport-security-native
           /tmp/excelport-security-native reports/security-interface-native.json
       - name: Verify guard hierarchy and rejected allocation without invoking security APIs
         run: |
