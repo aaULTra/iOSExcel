@@ -1,0 +1,27 @@
+name: Measure native AppKit Swift rectangle drawing
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/swift_overlay_drawing_values.swift'
+      - '.github/workflows/swift-drawing-contracts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: macos-15
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture real offscreen pixels and graphics-state behavior
+        run: |
+          mkdir -p reports
+          xcrun --sdk macosx swiftc -target arm64-apple-macos11.0 tools/swift_overlay_drawing_values.swift -o /tmp/excelport-swift-drawing
+          /tmp/excelport-swift-drawing reports/swift-overlay-native-drawing.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: swift-drawing-contracts
+          path: reports/
+          retention-days: 7
