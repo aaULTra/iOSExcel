@@ -122,3 +122,19 @@ The ScriptingBridge adapter implements the measured SBApplication -> SBObject hi
 The SecurityInterface diagnostic preserves five measured class relationships through NSWindow/NSPanel. NSWindow allocation and all shared security-panel factories always log and raise ExcelShimUnimplemented. There is no compatible desktop window instance or trust/identity UI. No security result is substituted. Native guards passed before integration. The separate UIKit test verifies class image provenance and rejection behavior inside a real UIKit host. See SECURITY_INTERFACE.md for actual run evidence and limits.
 
 The ServiceManagement adapter preserves the measured native user-domain CFString and returns NULL for unsupported job enumeration, matching the documented error convention. Native declaration compilation, constant/data ABI and three failure cases passed before integration. No jobs, helper responses or licensing state are manufactured. The exact Office caller has not yet run; a requirement for successful enumeration remains a real blocker. See SERVICE_MANAGEMENT.md.
+
+## Isolated Swift AppKit overlay checkpoint
+
+`experiments/swift-appkit` emits compiler-generated Swift symbols from an original
+module named AppKit and imports an exact-width compositing enum through a Clang
+module. Its two-component IndexPath getter and rectangle argument ABI are checked
+with own Mac-compiled code retargeted to Simulator as well as a native iOS caller.
+A separate offscreen drawing probe matches 96 native pixel/state cases for explicit
+copy/sourceOver operations. The iOS drawing backend takes UIKit's current CGContext;
+the Mac test context exists only under an explicit test macro. This does not supply
+NSGraphicsContext, windows, text rendering or a desktop application event loop.
+
+This library remains outside the actual Microsoft loader path. Production
+integration must reuse the common shim logger, derive compatibility versions from
+Office's actual load commands and verify its first real runtime failure. The
+prototype's standalone logger must not be copied into the production overlay.

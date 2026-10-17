@@ -1,0 +1,16 @@
+{
+  "native_cases": 96,
+  "mac_pixel_and_state_cases_matched": 96,
+  "ios_pixel_and_state_cases_matched": 96,
+  "operations": [
+    1,
+    2
+  ],
+  "nonfinite_or_other_operations_supported": false,
+  "device": "iPad Pro 11-inch (M4)",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "physical_device_executed": false,
+  "microsoft_executed": false,
+  "microsoft_overlay_redirected": false,
+  "scope": "Offscreen finite rectangle copy/sourceOver only; no NSGraphicsContext or desktop UI implementation"
+}

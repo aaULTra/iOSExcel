@@ -96,3 +96,34 @@ must match all native cases before this subset is considered validated. Missing
 context, nonfinite geometry and unmeasured operations log then abort. NSGraphicsContext,
 other compositing, Microsoft compiler calls and real UI remain unimplemented or
 unverified. No Microsoft load redirection has been applied.
+
+## Validated pause checkpoint
+
+Source 219af469e9ced14079ce81deb969e35f410857ad passed drawing run
+[39038256936](https://github.com/aaULTra/iOSExcel/actions/runs/39038256936) and
+cross-ABI run [39038256967](https://github.com/aaULTra/iOSExcel/actions/runs/39038256967).
+All 96 full RGBA/state records matched native AppKit exactly on both the Mac test
+context and UIKit current-context backend on M4 iOS 26.2 Simulator. The first
+comparison had found all 16 negative-size cases differed: Quartz normalized and
+painted the rectangle while native AppKit left it empty. The adapter now keeps
+nonpositive dimensions empty; the other 80 cases needed no behavior change.
+
+The same source passed native-iOS and retargeted own-Mac getter/layout tests,
+typed drawing argument preservation before the expected missing-context abort,
+and invalid-path rejection. Device platform-2 compilation/signing passed only;
+no physical-device or Microsoft execution was performed. The old cross-ABI report
+field `drawing_implemented: false` describes that no-context probe, not the separate
+valid-context pixel test. The pixel report supplies the positive drawing evidence.
+
+Evidence is preserved in docs/evidence/swift-overlay-drawing-validation.json,
+swift-overlay-{native,macos,ios}-drawing.json.gz and
+swift-overlay-checkpoint-{cross-abi,device-build}.json. Exact source, artifact IDs,
+verified ZIP hashes and failed-attempt provenance are in
+swift-checkpoint-provenance.json. Captured pixel bytes are generated probe data.
+
+Work is paused at this subsystem checkpoint. Next: link the overlay against the
+common shim logger, preserve actual Office load identity/version requirements,
+integrate it into the real Excel loader and capture the first meaningful failure.
+No Microsoft load has yet been redirected to the overlay. M3 through M15,
+workbook open/edit/calculate/save, activation and physical-device verification remain
+unreached or unproven; no working Excel IPA exists.

@@ -1,0 +1,48 @@
+{
+  "device": "iPad Pro 11-inch (M4)",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "cases": [
+    {
+      "client": "ios",
+      "mode": "values",
+      "returncode": 0,
+      "expected_behavior_verified": true
+    },
+    {
+      "client": "ios",
+      "mode": "--draw",
+      "returncode": 134,
+      "expected_behavior_verified": true
+    },
+    {
+      "client": "ios",
+      "mode": "--invalid",
+      "returncode": 134,
+      "expected_behavior_verified": true
+    },
+    {
+      "client": "mac-retargeted",
+      "mode": "values",
+      "returncode": 0,
+      "expected_behavior_verified": true
+    },
+    {
+      "client": "mac-retargeted",
+      "mode": "--draw",
+      "returncode": 134,
+      "expected_behavior_verified": true
+    },
+    {
+      "client": "mac-retargeted",
+      "mode": "--invalid",
+      "returncode": 134,
+      "expected_behavior_verified": true
+    }
+  ],
+  "five_getter_cases_per_client": true,
+  "drawing_arguments_preserved_before_explicit_abort": true,
+  "drawing_implemented": false,
+  "device_overlay_compiled_and_signed_only": true,
+  "office_compiler_abi_verified": false,
+  "microsoft_executed": false
+}

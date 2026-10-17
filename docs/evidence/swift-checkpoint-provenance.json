@@ -1,0 +1,50 @@
+{
+  "cross_abi": {
+    "run_id": 39031123869,
+    "source_sha": "053ed90c5141c36f27aff514eab7b67a99a297da",
+    "artifact_id": 12099439965,
+    "artifact_sha256": "fdae42373002dd6f9df8aa2fbacad1a0eff3466670175cd092b81be15c2217e6",
+    "results": [
+      "swift-overlay-cross-abi.json",
+      "swift-overlay-device-build.json"
+    ]
+  },
+  "native_drawing_capture": {
+    "run_id": 39031310785,
+    "source_sha": "9a3a9a41d3988960a758040101e7b33b63db8f9c",
+    "artifact_id": 12099524791,
+    "artifact_sha256": "813308c07b780260b1ea282fd94b144a7f4bb48f4acd080f9294d862e46818cc",
+    "result": "swift-overlay-native-drawing.json"
+  },
+  "drawing_validation_first_attempt": {
+    "run_id": 39038065464,
+    "source_sha": "06653288c6cf2ce2e504d368e28cde518a03f435",
+    "result": "iOS linker failed on UIGraphicsGetCurrentContext; fixed by explicit UIKit framework linkage; no pixel comparison was reached"
+  },
+  "microsoft_executed": false,
+  "device_execution": false,
+  "drawing_validation_second_attempt": {
+    "run_id": 39038164040,
+    "source_sha": "e488ae5902090aee987bcf86f6d31e918cb454f2",
+    "artifact_id": 12102947558,
+    "artifact_sha256": "a7961be81a58edced19b108b6163a2b6356eae3f8cab9c937ffb51190acc682e",
+    "result": "Mac comparison: 80/96 exact; all 16 negative-size cases painted in Quartz but empty in native AppKit. First mismatch case64. iOS not executed. Backend now skips nonpositive dimensions; rerun passed in 39038256936."
+  },
+  "validated_checkpoint": {
+    "source_sha": "219af469e9ced14079ce81deb969e35f410857ad",
+    "drawing": {
+      "run_id": 39038256936,
+      "artifact_id": 12102799247,
+      "artifact_sha256": "83bc0ab1956a977ad2a2252e6108e42fce4a9cad43cd522d5ba0100eff10d577",
+      "result": "96/96 pixel and follow-up state records matched on both Mac and iOS Simulator"
+    },
+    "cross_abi": {
+      "run_id": 39038256967,
+      "artifact_id": 12103395759,
+      "artifact_sha256": "d951beccc766a218e32d025c6e02fd34aeec011b65f715b9cbbf933a521e583d",
+      "result": "Both callers passed five getter/layout cases, argument-preserving missing-context abort and invalid-path rejection; device overlay compilation/signing only"
+    },
+    "downloaded_artifact_sha256_verified": true,
+    "paused_before_microsoft_loader_integration": true
+  }
+}

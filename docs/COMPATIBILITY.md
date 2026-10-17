@@ -107,3 +107,16 @@ reconstructed. Runtime dynamic loads, signing checks and optional-feature eager 
 remain unknown. The first iPhoneOS 18.5 SDK declaration audit has now completed on a Mac runner; it
 retains unresolved reexports explicitly (see ios-sdk-audit-16.55.json). Device dyld and
 ABI/behavior checks remain pending. M1 is a static checkpoint, not loader compatibility.
+
+## Swift overlay experiment
+
+| Surface | Validated scope | Unresolved |
+| --- | --- | --- |
+| IndexPath.item | Five two-component paths and layouts; own Mac-to-iOS and native iOS callers | Office compiler's actual calls; other path lengths reject |
+| CGRect.fill(using:) | 96 exact offscreen pixel/state cases on Mac test context and iOS UIKit context; copy/sourceOver only | Other compositing, NSGraphicsContext, real Excel rendering |
+| Swift force-load anchor | Compiler-generated Boolean link anchor; weak Office imports inventoried | No runtime behavior inferred from a link anchor |
+
+Missing context, nonfinite rectangle components and unmeasured compositing log and
+abort. The measured zero/negative-size cases leave the bitmap unchanged. Native
+AppKit's negative-size behavior differs from Quartz normalization; the adapter
+keeps those rectangles empty. No Microsoft load is redirected to this experiment.

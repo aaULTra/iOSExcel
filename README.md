@@ -4,6 +4,12 @@
 M2 startup-image retargeting/redirection checks passed; Microsoft Excel has NOT launched on iPadOS.
 No runnable Excel IPA exists.**
 
+**Current checkpoint:** isolated Swift overlay passes own Mac-to-iOS caller tests,
+and its copy/sourceOver rectangle subset matches 96 native pixel/state cases on
+both Mac and M4 iPad Simulator. It is not yet integrated into the Microsoft loader.
+Excel initialization, desktop UI, workbook operations and activation remain unproven.
+See docs/SWIFT_OVERLAY.md for scope and evidence.
+
 Target: Microsoft Excel for Mac **16.55 (21111400)**, official Universal installer.
 Compared actual 16.53, 16.55 and 16.113.4 binaries. CyPort main was inspected first at
 15b177ff16c2efc76639e1b7479a8fe7ce535f20.
