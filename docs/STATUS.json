@@ -35,5 +35,5 @@
   "view_native_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725023",
   "view_simulator_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725046",
   "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38984254220",
-  "real_loader_investigation": "Original executable handed to Simulator dyld; main plus 33 Microsoft dylibs mapped, then abort 134 on macOS-versioned Security path. Microsoft entry not reached. Canonical Security counterpart runtime probe and path fix queued."
+  "real_loader_investigation": "First actual loader attempt mapped main plus 33 Microsoft dylibs and aborted on macOS-versioned Security path. Second run timed out in standalone Security probe before Excel launch; instrumented bounded retry prepared."
 }

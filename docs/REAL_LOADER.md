@@ -54,3 +54,12 @@ The next experiment rewrites that one library identity across the closure to
 a separately compiled Simulator process must successfully dlopen that exact path
 and resolve SecItemCopyMatching from it. This validates path loading only, not all
 Excel's Security imports or licensing behavior.
+
+The second run, 38984771895 (cd366eba2e33ac41b61d9f459ef733e4af165753),
+compiled and signed the path fix, but its standalone canonical Security probe
+exceeded the original 60-second process timeout before any result was captured.
+Excel was not attempted in that run. This is an infrastructure/probe failure,
+not evidence that canonical Security is absent or that Excel advanced. The next
+run adds pre-/post-dlopen stderr markers, retains partial timeout output, allows
+a bounded 180-second probe and audits the actual required Security symbol names
+without invoking them.

@@ -8,6 +8,7 @@ not claim installed-app lifecycle, activation, or device compatibility.
 import argparse
 import json
 import os
+import re
 import signal
 import subprocess
 import time
@@ -35,8 +36,8 @@ def main():
     reports = root/'reports'
     reports.mkdir(exist_ok=True)
     destination = root/'private/real-loader'
-    result = plan(args.app, load_json(root/'docs/evidence/excel-16.55.json.gz'),
-                  load_json(root/'docs/evidence/dependencies-16.55.json.gz'), platform=7)
+    graph = load_json(root/'docs/evidence/dependencies-16.55.json.gz')
+    result = plan(args.app, load_json(root/'docs/evidence/excel-16.55.json.gz'), graph, platform=7)
     stage(args.app, destination, result)
     path_entries = json.loads(args.system_path_map.read_text()) if args.system_path_map else []
     mapping = {}
@@ -112,12 +113,37 @@ def main():
         subprocess.run(['xcrun', 'simctl', 'bootstatus', udid, '-b'], check=True, timeout=240)
         report['system_library_probes'] = []
         for entry in path_entries:
-            checked = subprocess.run(['xcrun', 'simctl', 'spawn', udid, str(probe), entry['target'], entry['probe_symbol']],
-                                     text=True, capture_output=True, timeout=60)
+            try:
+                checked = subprocess.run(['xcrun', 'simctl', 'spawn', udid, str(probe), entry['target'], entry['probe_symbol']],
+                                         text=True, capture_output=True, timeout=180)
+            except subprocess.TimeoutExpired as error:
+                def decode(value):
+                    return value.decode(errors='replace') if isinstance(value, bytes) else value or ''
+                report['status'] = 'Infrastructure/probe timeout before Excel launch; not an Excel result'
+                report['system_library_probes'].append({'target': entry['target'], 'timed_out': True,
+                    'stdout': decode(error.stdout), 'stderr': decode(error.stderr)})
+                raise
             report['system_library_probes'].append({'target': entry['target'], 'symbol': entry['probe_symbol'],
                                                    'returncode': checked.returncode, 'stdout': checked.stdout, 'stderr': checked.stderr})
             print(checked.stdout, checked.stderr, flush=True)
             checked.check_returncode()
+        report['runtime_symbol_audits'] = []
+        for entry in path_entries:
+            # dlsym accepts C names without Mach-O's leading underscore. This
+            # queries exports only; no Microsoft or Security function is called.
+            required = graph['system_imports'].get(entry['original'], [])
+            names = [s.removeprefix('_') for s in required]
+            audited = subprocess.run(['xcrun', 'simctl', 'spawn', udid, str(probe), entry['target'], '--audit', *names],
+                                     text=True, capture_output=True, timeout=120)
+            audited.check_returncode()
+            rows = [line.split('\t') for line in audited.stdout.splitlines()]
+            found = [row[1] for row in rows if len(row) == 3 and row[0] == 'FOUND']
+            missing = [row[1] for row in rows if len(row) == 2 and row[0] == 'MISSING']
+            if set(found+missing) != set(names) or len(found)+len(missing) != len(names):
+                raise ValueError('Incomplete runtime export audit')
+            report['runtime_symbol_audits'].append({'original': entry['original'], 'target': entry['target'],
+                'required_count': len(names), 'found_count': len(found), 'missing': missing,
+                'raw_output': audited.stdout, 'scope': 'Export lookup only; no API behavior or ABI guarantee'})
         executable = destination/'Contents/MacOS/Microsoft Excel'
         env = dict(os.environ)
         env['SIMCTL_CHILD_DYLD_PRINT_LIBRARIES'] = '1'
@@ -127,7 +153,7 @@ def main():
             process = subprocess.Popen(['xcrun', 'simctl', 'spawn', udid, str(executable)],
                                        env=env, stdout=stdout, stderr=stderr, start_new_session=True)
             try:
-                report['returncode'] = process.wait(timeout=60)
+                report['returncode'] = process.wait(timeout=120)
                 report['timed_out'] = False
             except subprocess.TimeoutExpired:
                 os.killpg(process.pid, signal.SIGTERM)
@@ -136,6 +162,14 @@ def main():
                 report['timed_out'] = True
         report['elapsed_seconds'] = round(time.monotonic()-started, 2)
         stderr = (reports/'real-loader.stderr.log').read_text(errors='replace')
+        mapped = re.findall(r'^dyld\[\d+\]: <[^>]+> (.+)$', stderr, re.MULTILINE)
+        report['mapped_microsoft_image_count'] = sum(path.startswith(str(destination)+'/Contents/') for path in mapped)
+        missing_library = re.search(r'^dyld\[\d+\]: Library not loaded: (.+)$', stderr, re.MULTILINE)
+        missing_symbol = re.search(r'(?:Symbol not found:|symbol not found[^:]*:)\s*(\S+)', stderr)
+        if missing_library:
+            report['first_failure'] = {'kind': 'library_not_loaded', 'name': missing_library[1]}
+        elif missing_symbol:
+            report['first_failure'] = {'kind': 'symbol_not_found', 'name': missing_symbol[1]}
         report['dyld_failure_present'] = any(s in stderr for s in ('Library not loaded:', 'Symbol not found:', 'incompatible platform', 'incompatible architecture'))
         report['status'] = 'Loader failure captured' if report['dyld_failure_present'] else 'Inspect logs; no Excel startup success inferred'
         print(stderr[-16000:], flush=True)
@@ -146,6 +180,13 @@ def main():
             report['secondary_log_error'] = str(error)
     finally:
         (reports/'real-loader-result.json').write_text(json.dumps(report, indent=2)+'\n')
+        summary = os.environ.get('GITHUB_STEP_SUMMARY')
+        if summary:
+            with open(summary, 'a') as file:
+                file.write('### Real Excel loader investigation\n\n')
+                file.write('Status: '+report.get('status', 'Infrastructure failure; inspect logs')+'\n\n')
+                file.write('First failure: `'+report.get('first_failure', {}).get('name', 'See diagnostic reports')+'`\n\n')
+                file.write('**Microsoft entry point and Excel initialization remain unconfirmed. No IPA produced.**\n')
         print(json.dumps(report, indent=2), flush=True)
         subprocess.run(['xcrun', 'simctl', 'shutdown', udid], check=False)
         subprocess.run(['xcrun', 'simctl', 'delete', udid], check=False)
