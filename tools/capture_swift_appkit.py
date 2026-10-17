@@ -23,6 +23,10 @@ def main():
     sdk = run('xcrun', '--sdk', 'macosx', '--show-sdk-path').strip()
     target = ['-sdk', sdk, '-target', 'arm64-apple-macos11.0']
     sil = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-silgen', str(root/'tools/swift_appkit_probe.swift'))
+    ir = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-ir', str(root/'tools/swift_appkit_probe.swift'))
+    force_lines = [line.strip() for line in ir.splitlines() if '_swift_FORCE_LOAD_$_swiftAppKit' in line]
+    if not any('external global i1' in line for line in force_lines):
+        raise RuntimeError('Unexpected compiler force-load declaration; refuse native data read')
     refs = []
     for symbol in symbols:
         mangled = symbol.removeprefix('_')
@@ -60,7 +64,7 @@ def main():
         executable.unlink(missing_ok=True)
     report = {'scope': 'Actual Mac compiler lowering and valid two-component IndexPath behavior only. No iOS compatibility, rendering or Excel startup proven.',
         'failure': failure, 'sdk': sdk, 'compiler': run('xcrun', 'swiftc', '--version').strip(),
-        'symbols': refs, 'operation_declarations': enum, 'overlay_implemented': False}
+        'symbols': refs, 'force_load_compiler_ir': force_lines, 'operation_declarations': enum, 'overlay_implemented': False}
     (out/'swift-appkit-contracts.json').write_text(json.dumps(report, indent=2)+'\n')
     print('Captured', len(refs), 'overlay imports; drawing and invalid-index behavior remain untested')
 

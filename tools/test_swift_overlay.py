@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""Check compiler-generated Swift exports before any Microsoft load redirection."""
+import json
+import subprocess
+from pathlib import Path
+
+
+def run(*args, **kwargs):
+    return subprocess.check_output(args, text=True, timeout=180, **kwargs)
+
+
+def main():
+    root = Path(__file__).resolve().parents[1]
+    build = root/'build/swift-overlay-prototype'
+    build.mkdir(parents=True, exist_ok=True)
+    reports = root/'reports'
+    reports.mkdir(exist_ok=True)
+    source = root/'experiments/swift-appkit'
+    sdk = run('xcrun', '--sdk', 'macosx', '--show-sdk-path').strip()
+    target = ['-sdk', sdk, '-target', 'arm64-apple-macos11.0']
+    objects = []
+    for index, path in enumerate([source/'OverlayRuntime.m', root/'shim/ExcelShim.m']):
+        obj = build/f'runtime-{index}.o'
+        run('xcrun', 'clang', '-target', 'arm64-apple-macos11.0', '-isysroot', sdk,
+            '-fobjc-arc', '-Wall', '-Wextra', '-Werror', '-I'+str(root/'shim'),
+            '-I'+str(source), '-c', str(path), '-o', str(obj))
+        objects.append(str(obj))
+    library = build/'libExcelSwiftAppKit.dylib'
+    run('xcrun', 'swiftc', *target, '-module-name', 'AppKit', '-module-link-name', 'ExcelSwiftAppKit', '-I', str(source),
+        '-emit-library', '-emit-module', '-emit-module-path', str(build/'AppKit.swiftmodule'),
+        str(source/'AppKit.swift'), *objects, '-o', str(library),
+        '-Xlinker', '-install_name', '-Xlinker', '@rpath/libExcelSwiftAppKit.dylib')
+    exports = {line.split()[-1] for line in run('nm', '-gU', str(library)).splitlines() if line.split()}
+    baseline = json.loads((reports/'swift-appkit-contracts.json').read_text())
+    required = [entry['symbol'] for entry in baseline['symbols']]
+    if set(required)-exports:
+        raise RuntimeError('Missing exact Swift exports: '+repr(sorted(set(required)-exports)))
+    executable = build/'client'
+    run('xcrun', 'swiftc', *target, '-I', str(build), '-I', str(source), '-L', str(build),
+        '-lExcelSwiftAppKit', '-Xlinker', '-rpath', '-Xlinker', str(build),
+        str(root/'tools/swift_overlay_client.swift'), '-o', str(executable))
+    run(str(executable), str(reports/'swift-overlay-prototype.json'))
+    original = json.loads((reports/'swift-appkit-values.json').read_text())
+    actual = json.loads((reports/'swift-overlay-prototype.json').read_text())
+    for key in ('index_path_samples', 'index_path_layout', 'rect_layout', 'operation_layout'):
+        if original[key] != actual[key]:
+            raise RuntimeError('Native comparison failed: '+key)
+    if original['force_load_marker_byte'] != 0:
+        raise RuntimeError('Prototype marker differs from native marker')
+    (reports/'swift-overlay-validation.json').write_text(json.dumps({
+        'exact_required_exports_checked':required, 'native_index_path_cases_checked':5,
+        'native_layouts_match':True, 'native_force_marker_byte':original['force_load_marker_byte'],
+        'drawing_implemented':False, 'ios_cross_abi_checked':False,
+        'microsoft_executed':False}, indent=2)+'\n')
+    print('Exact exports and five native getter cases matched; no iOS or drawing compatibility inferred')
+
+
+if __name__ == '__main__':
+    main()

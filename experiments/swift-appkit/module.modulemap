@@ -1,0 +1,4 @@
+module ExcelOverlayTypes {
+ header "ExcelOverlayTypes.h"
+ export *
+}

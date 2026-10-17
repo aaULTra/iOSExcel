@@ -1,9 +1,13 @@
 // Native values only. No windows, drawing, automation or Office execution.
 import Foundation
 import AppKit
+import Darwin
 let pairs = [[0,0], [2,7], [11,23], [1000,999999], [0,Int.max]]
 let rows: [[String: Any]] = pairs.map { ["indexes": $0, "item": IndexPath(indexes: $0).item] }
-let report: [String: Any] = ["index_path_samples": rows,
+guard let handle = dlopen("/usr/lib/swift/libswiftAppKit.dylib", RTLD_NOW | RTLD_LOCAL),
+      let address = dlsym(handle, "_swift_FORCE_LOAD_$_swiftAppKit") else { fatalError("Native overlay marker unavailable") }
+let marker = address.assumingMemoryBound(to: UInt8.self).pointee
+let report: [String: Any] = ["force_load_marker_byte": Int(marker), "index_path_samples": rows,
     "index_path_layout": [MemoryLayout<IndexPath>.size, MemoryLayout<IndexPath>.stride, MemoryLayout<IndexPath>.alignment],
     "rect_layout": [MemoryLayout<CGRect>.size, MemoryLayout<CGRect>.stride, MemoryLayout<CGRect>.alignment],
     "operation_layout": [MemoryLayout<NSCompositingOperation>.size, MemoryLayout<NSCompositingOperation>.stride, MemoryLayout<NSCompositingOperation>.alignment],
