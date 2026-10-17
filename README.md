@@ -39,7 +39,8 @@ are included in this repository/archive.
 - `docs/COMPATIBILITY.md`: version comparison, dependency map, blockers and feasibility.
 - `docs/RESEARCH.md`: official sources, current CyPort findings and activation evidence.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
-- `docs/APPLICATION_SERVICES.md`: typed response to the first real missing library; new validation pending.
+- `docs/OPTIONAL_FRAMEWORKS.md`: guarded single-framework diagnostics experiment; no blanket dependency removal.
+- `docs/APPLICATION_SERVICES.md`: typed partial C compatibility, verified against native Apple rectangle behavior.
 - `docs/LOADER.md`: distinct forwarding dylibs, native two-level binding proof and exact limits.
 - `docs/SCREEN.md`: partial scene-backed NSScreen geometry and its validation boundary.
 - `docs/VIEW.md`: typed NSView hierarchy, drawing bridge, pixel tests and explicit limits.
@@ -66,7 +67,7 @@ and two compatibility facades mapped; its entry point was not reached; no succes
 
 Source: https://github.com/aaULTra/iOSExcel
 
-All 31 Python tests pass. Native startup/nib/delegate contracts, two-level dyld binding,
+All 39 Python safety/regression tests pass. Native startup/nib/delegate contracts, two-level dyld binding,
 actual 55-image retargeting, iOS forwarding-library builds and signature checks pass.
 The original XLMainMenu archive is checked with explicit test stand-ins, without loading
 Excel. Nine NSScreen and 32 NSView method encodings match captured arm64 AppKit contracts.

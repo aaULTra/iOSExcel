@@ -1,0 +1,9 @@
+{
+  "native_Apple_geometry_comparison_passed": true,
+  "shape_cases": 16,
+  "intersection_cases": 16,
+  "C_type_contracts": 17,
+  "unsupported_operations_report_errors_or_raise": true,
+  "excel_executed": false,
+  "scope": "Only three shape operations and explicit disabled-feature contracts; no desktop UI, clipboard or printing functionality claimed"
+}

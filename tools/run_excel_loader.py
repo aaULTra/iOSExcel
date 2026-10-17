@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 
 from build_facades import build_one
-from excel_retarget import rewrite_load_paths
+from excel_retarget import rewrite_load_paths, weaken_unused_loads
 from loader_plan import load_json, plan, stage
 
 
@@ -36,6 +36,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('app', type=Path)
     ap.add_argument('--system-path-map', type=Path)
+    ap.add_argument('--optional-frameworks', type=Path)
     args = ap.parse_args()
     root = Path(__file__).resolve().parents[1]
     reports = root/'reports'
@@ -188,6 +189,31 @@ def main():
             if events:
                 binary.write_bytes(changed)
                 result['system_path_modifications'].append({'path': image['path'], 'events': events})
+        result['optional_load_modifications'] = []
+        if args.optional_frameworks:
+            policy = json.loads(args.optional_frameworks.read_text())
+            allowed = '/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling'
+            selected = set()
+            for entry in policy:
+                original = entry['original']
+                if original != allowed or original in selected or not entry.get('observed_failure_run') or not entry.get('absence_preflight_run'):
+                    raise ValueError('Optional framework needs its own explicit evidence-based policy')
+                if graph['system_imports'].get(original):
+                    raise ValueError('Optional framework has recorded direct imports')
+                if any(name in graph['closure_objc_selectors'] for name in ('defaultExceptionHandler','setExceptionHandlingMask:','setExceptionHangingMask:')):
+                    raise ValueError('Recorded exception-monitoring selectors require investigation')
+                canonical = re.sub(r'/Versions/[^/]+', '', original)
+                evidence = groups.get(canonical)
+                if not evidence or evidence.get('preflight') != 0:
+                    raise ValueError('Optional diagnostics experiment requires same-runtime failed counterpart preflight')
+                selected.add(original)
+            for image in result['images']:
+                binary = destination/image['path']
+                changed, events = weaken_unused_loads(binary.read_bytes(), selected)
+                if events:
+                    binary.write_bytes(changed)
+                    result['optional_load_modifications'].append({'path': image['path'], 'events': events})
+            result['optional_framework_policy'] = policy
         (reports/'real-loader-transform.json').write_text(json.dumps(result, indent=2)+'\n')
         # Only the verified startup closure is executable. No installer scripts,
         # privileged helpers, authentication or activation workarounds are run.

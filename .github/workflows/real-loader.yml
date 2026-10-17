@@ -8,6 +8,8 @@ on:
       - 'tools/loader_plan.py'
       - 'tools/excel_retarget.py'
       - 'tools/build_facades.py'
+      - 'tools/macho_bindings.py'
+      - 'tools/optional_frameworks.json'
       - 'tools/loader_system_paths.json'
       - 'tests/loader/probe_system_library.c'
       - '.github/workflows/real-loader.yml'
@@ -39,7 +41,7 @@ jobs:
       - name: Extract without running installer scripts
         run: python3 tools/extract_pkg.py private/Excel.pkg private/extracted
       - name: Attempt original executable through simulator dyld and retain first failure
-        run: python3 tools/run_excel_loader.py 'private/extracted/Microsoft Excel.app' --system-path-map tools/loader_system_paths.json
+        run: python3 tools/run_excel_loader.py 'private/extracted/Microsoft Excel.app' --system-path-map tools/loader_system_paths.json --optional-frameworks tools/optional_frameworks.json
       - name: Upload diagnostic reports only, never Microsoft binaries or an unfinished IPA
         if: always()
         uses: actions/upload-artifact@v4

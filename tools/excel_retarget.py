@@ -46,6 +46,35 @@ def verify_changes(before,after,events):
   restored[offset:offset+length]=before[offset:offset+length]
  if restored!=before:raise ValueError('unexpected modification outside logged fields')
 
+def weaken_unused_loads(raw,names):
+ """Make explicitly selected ordinary loads optional only with zero bind/import use.
+ No library is removed, no ordinal changes, and no missing function is fabricated.
+ Caller must separately justify optional behavior and verify runtime absence.
+ """
+ from macho_bindings import classic_bindings
+ if not isinstance(names,(set,list,tuple)) or any(not isinstance(n,str) or not n or '\0' in n for n in names):raise ValueError('invalid optional dependency names')
+ original=arm64(raw);d=bytearray(original);matches=[]
+ for c,o,n in commands(d):
+  if c not in DYLIBS:continue
+  path=string(d,o+unpack('<I',d,o+8)[0],o+n)
+  if path not in names:continue
+  if c!=0xc:raise ValueError('optional experiment requires ordinary LC_LOAD_DYLIB')
+  matches.append((o,path))
+ if not matches:return original,[]
+ flags=unpack('<I',d,24)[0]
+ if not flags&0x80 or flags&0x100:raise ValueError('optional experiment requires two-level namespace')
+ if sum(c==2 for c,_,_ in commands(d))!=1:raise ValueError('optional guard requires a symbol table')
+ metadata=inspect(d);bindings=classic_bindings(d)
+ if any(b['ordinal']==-2 for b in bindings):raise ValueError('flat lookup prevents proof of unused dependency')
+ events=[]
+ for o,path in matches:
+  if any(u['library']==path for u in metadata['undefined']):raise ValueError('optional dependency still has undefined symbol imports: '+path)
+  if any(b['library']==path for b in bindings):raise ValueError('optional dependency still has dyld binding sites: '+path)
+  struct.pack_into('<I',d,o,0x80000018)
+  events.append({'offset':o,'length':4,'field':'optional LC_LOAD_WEAK_DYLIB','path':path,'before':0xc,'after':0x80000018,'undefined_symbol_imports':0,'binding_sites':0})
+ commands(d);verify_changes(original,d,events)
+ return bytes(d),events
+
 def retarget(raw,minos='18.0',sdk='18.0',mapping=None,platform=2):
  if platform not in (2,7):raise ValueError('target must be iOS or iOS Simulator')
  original=arm64(raw);out,events=rewrite_load_paths(original,{} if mapping is None else mapping)

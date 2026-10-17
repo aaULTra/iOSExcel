@@ -1,0 +1,12 @@
+{
+  "source_commit": "ea11fa5aae2508d17a0f5d529d0ebefbcaa0b191",
+  "native_workflow": 38988363451,
+  "real_loader_workflow": 38988363346,
+  "native_geometry_comparison_passed": true,
+  "rectangles": 16,
+  "intersections": 16,
+  "C_type_encodings": 17,
+  "facade_load_observed": true,
+  "Microsoft_entry_reached": false,
+  "notes": "Original Apple comparison covers the rectangle-only subset; disabled-feature functions remain unavailable."
+}

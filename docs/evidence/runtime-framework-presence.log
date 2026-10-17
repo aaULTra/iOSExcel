@@ -1,0 +1,96 @@
+PROBE_START /System/Library/Frameworks/Security.framework/Security
+PROBE_DLOPEN_OK /System/Library/Frameworks/Security.framework/Security
+PROBE_START /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+PROBE_DLOPEN_OK /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+PROBE_START /System/Library/Frameworks/AVKit.framework/AVKit
+PROBE_DLOPEN_OK /System/Library/Frameworks/AVKit.framework/AVKit
+PROBE_START /System/Library/Frameworks/Accelerate.framework/Accelerate
+PROBE_DLOPEN_OK /System/Library/Frameworks/Accelerate.framework/Accelerate
+PROBE_START /System/Library/Frameworks/AddressBook.framework/AddressBook
+PROBE_DLOPEN_OK /System/Library/Frameworks/AddressBook.framework/AddressBook
+PROBE_PREFLIGHT /System/Library/Frameworks/AppKit.framework/AppKit
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/AppKit.framework/AppKit: dlopen_preflight(/System/Library/Frameworks/AppKit.framework/AppKit) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/AppKit.framework/AppKit' (no such file), '/System/Library/Frameworks/AppKit.framework/AppKit' (no such file)
+PROBE_PREFLIGHT /System/Library/Frameworks/ApplicationServices.framework/ApplicationServices
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/ApplicationServices.framework/ApplicationServices: dlopen_preflight(/System/Library/Frameworks/ApplicationServices.framework/ApplicationServices) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/ApplicationServices.framework/ApplicationServices' (no such file), '/System/Library/Frameworks/ApplicationServices.framework/ApplicationServices' (no such file)
+PROBE_START /System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+PROBE_DLOPEN_OK /System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+PROBE_START /System/Library/Frameworks/AuthenticationServices.framework/AuthenticationServices
+PROBE_DLOPEN_OK /System/Library/Frameworks/AuthenticationServices.framework/AuthenticationServices
+PROBE_START /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+PROBE_DLOPEN_OK /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+PROBE_PREFLIGHT /System/Library/Frameworks/Cocoa.framework/Cocoa
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/Cocoa.framework/Cocoa: dlopen_preflight(/System/Library/Frameworks/Cocoa.framework/Cocoa) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Cocoa.framework/Cocoa' (no such file), '/System/Library/Frameworks/Cocoa.framework/Cocoa' (no such file)
+PROBE_START /System/Library/Frameworks/Contacts.framework/Contacts
+PROBE_DLOPEN_OK /System/Library/Frameworks/Contacts.framework/Contacts
+PROBE_START /System/Library/Frameworks/CoreAudio.framework/CoreAudio
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreAudio.framework/CoreAudio
+PROBE_START /System/Library/Frameworks/CoreData.framework/CoreData
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreData.framework/CoreData
+PROBE_START /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+PROBE_START /System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+PROBE_START /System/Library/Frameworks/CoreImage.framework/CoreImage
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreImage.framework/CoreImage
+PROBE_START /System/Library/Frameworks/CoreMedia.framework/CoreMedia
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreMedia.framework/CoreMedia
+PROBE_START /System/Library/Frameworks/CoreServices.framework/CoreServices
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreServices.framework/CoreServices
+PROBE_START /System/Library/Frameworks/CoreText.framework/CoreText
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreText.framework/CoreText
+PROBE_START /System/Library/Frameworks/CoreVideo.framework/CoreVideo
+PROBE_DLOPEN_OK /System/Library/Frameworks/CoreVideo.framework/CoreVideo
+PROBE_PREFLIGHT /System/Library/Frameworks/CoreWLAN.framework/CoreWLAN
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/CoreWLAN.framework/CoreWLAN: dlopen_preflight(/System/Library/Frameworks/CoreWLAN.framework/CoreWLAN) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/CoreWLAN.framework/CoreWLAN' (no such file), '/System/Library/Frameworks/CoreWLAN.framework/CoreWLAN' (no such file)
+PROBE_PREFLIGHT /System/Library/Frameworks/DiskArbitration.framework/DiskArbitration
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/DiskArbitration.framework/DiskArbitration: dlopen_preflight(/System/Library/Frameworks/DiskArbitration.framework/DiskArbitration) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/DiskArbitration.framework/DiskArbitration' (no such file), '/System/Library/Frameworks/DiskArbitration.framework/DiskArbitration' (no such file)
+PROBE_PREFLIGHT /System/Library/Frameworks/ExceptionHandling.framework/ExceptionHandling
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/ExceptionHandling.framework/ExceptionHandling: dlopen_preflight(/System/Library/Frameworks/ExceptionHandling.framework/ExceptionHandling) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/ExceptionHandling.framework/ExceptionHandling' (no such file), '/System/Library/Frameworks/ExceptionHandling.framework/ExceptionHandling' (no such file)
+PROBE_START /System/Library/Frameworks/Foundation.framework/Foundation
+PROBE_DLOPEN_OK /System/Library/Frameworks/Foundation.framework/Foundation
+PROBE_START /System/Library/Frameworks/GSS.framework/GSS
+PROBE_DLOPEN_OK /System/Library/Frameworks/GSS.framework/GSS
+PROBE_START /System/Library/Frameworks/IOKit.framework/IOKit
+PROBE_DLOPEN_OK /System/Library/Frameworks/IOKit.framework/IOKit
+PROBE_START /System/Library/Frameworks/ImageIO.framework/ImageIO
+PROBE_DLOPEN_OK /System/Library/Frameworks/ImageIO.framework/ImageIO
+PROBE_START /System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore
+PROBE_DLOPEN_OK /System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore
+PROBE_PREFLIGHT /System/Library/Frameworks/Kerberos.framework/Kerberos
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/Kerberos.framework/Kerberos: dlopen_preflight(/System/Library/Frameworks/Kerberos.framework/Kerberos) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Kerberos.framework/Kerberos' (no such file), '/System/Library/Frameworks/Kerberos.framework/Kerberos' (no such file)
+PROBE_START /System/Library/Frameworks/MediaAccessibility.framework/MediaAccessibility
+PROBE_DLOPEN_OK /System/Library/Frameworks/MediaAccessibility.framework/MediaAccessibility
+PROBE_START /System/Library/Frameworks/Metal.framework/Metal
+PROBE_DLOPEN_OK /System/Library/Frameworks/Metal.framework/Metal
+PROBE_START /System/Library/Frameworks/MetalPerformanceShaders.framework/MetalPerformanceShaders
+PROBE_DLOPEN_OK /System/Library/Frameworks/MetalPerformanceShaders.framework/MetalPerformanceShaders
+PROBE_PREFLIGHT /System/Library/Frameworks/NetFS.framework/NetFS
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/NetFS.framework/NetFS: dlopen_preflight(/System/Library/Frameworks/NetFS.framework/NetFS) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/NetFS.framework/NetFS' (no such file), '/System/Library/Frameworks/NetFS.framework/NetFS' (no such file)
+PROBE_START /System/Library/Frameworks/Network.framework/Network
+PROBE_DLOPEN_OK /System/Library/Frameworks/Network.framework/Network
+PROBE_PREFLIGHT /System/Library/Frameworks/OpenGL.framework/OpenGL
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/OpenGL.framework/OpenGL: dlopen_preflight(/System/Library/Frameworks/OpenGL.framework/OpenGL) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/OpenGL.framework/OpenGL' (no such file), '/System/Library/Frameworks/OpenGL.framework/OpenGL' (no such file)
+PROBE_PREFLIGHT /System/Library/Frameworks/Quartz.framework/Quartz
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/Quartz.framework/Quartz: dlopen_preflight(/System/Library/Frameworks/Quartz.framework/Quartz) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/Quartz.framework/Quartz' (no such file), '/System/Library/Frameworks/Quartz.framework/Quartz' (no such file)
+PROBE_START /System/Library/Frameworks/QuartzCore.framework/QuartzCore
+PROBE_DLOPEN_OK /System/Library/Frameworks/QuartzCore.framework/QuartzCore
+PROBE_START /System/Library/Frameworks/QuickLook.framework/QuickLook
+PROBE_DLOPEN_OK /System/Library/Frameworks/QuickLook.framework/QuickLook
+PROBE_PREFLIGHT /System/Library/Frameworks/ScriptingBridge.framework/ScriptingBridge
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/ScriptingBridge.framework/ScriptingBridge: dlopen_preflight(/System/Library/Frameworks/ScriptingBridge.framework/ScriptingBridge) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/ScriptingBridge.framework/ScriptingBridge' (no such file), '/System/Library/Frameworks/ScriptingBridge.framework/ScriptingBridge' (no such file)
+PROBE_PREFLIGHT /System/Library/Frameworks/SecurityInterface.framework/SecurityInterface
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/SecurityInterface.framework/SecurityInterface: dlopen_preflight(/System/Library/Frameworks/SecurityInterface.framework/SecurityInterface) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/SecurityInterface.framework/SecurityInterface' (no such file), '/System/Library/Frameworks/SecurityInterface.framework/SecurityInterface' (no such file)
+PROBE_PREFLIGHT /System/Library/Frameworks/ServiceManagement.framework/ServiceManagement
+PROBE_PREFLIGHT_ERROR /System/Library/Frameworks/ServiceManagement.framework/ServiceManagement: dlopen_preflight(/System/Library/Frameworks/ServiceManagement.framework/ServiceManagement) => false, tried: '/Library/Developer/CoreSimulator/Volumes/iOS_23C54/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/ServiceManagement.framework/ServiceManagement' (no such file), '/System/Library/Frameworks/ServiceManagement.framework/ServiceManagement' (no such file)
+PROBE_START /System/Library/Frameworks/SpriteKit.framework/SpriteKit
+PROBE_DLOPEN_OK /System/Library/Frameworks/SpriteKit.framework/SpriteKit
+PROBE_START /System/Library/Frameworks/StoreKit.framework/StoreKit
+PROBE_DLOPEN_OK /System/Library/Frameworks/StoreKit.framework/StoreKit
+PROBE_START /System/Library/Frameworks/SwiftUI.framework/SwiftUI
+PROBE_DLOPEN_OK /System/Library/Frameworks/SwiftUI.framework/SwiftUI
+PROBE_START /System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+PROBE_DLOPEN_OK /System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+PROBE_START /System/Library/Frameworks/UserNotifications.framework/UserNotifications
+PROBE_DLOPEN_OK /System/Library/Frameworks/UserNotifications.framework/UserNotifications
+PROBE_START /System/Library/Frameworks/WebKit.framework/WebKit
+PROBE_DLOPEN_OK /System/Library/Frameworks/WebKit.framework/WebKit

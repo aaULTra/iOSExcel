@@ -43,7 +43,7 @@ checks explicit unsupported-output behavior and compares all 17 compatibility ty
 encodings with the measured SDK encodings. Native definitions compile against the
 actual Apple declarations; iOS definitions compile with the measured desktop ABI.
 
-At introduction these new tests and the real-loader retry are **pending**. A
+Validation at ea11fa5aae2508d17a0f5d529d0ebefbcaa0b191 passed the full native workflow (38988363451): 16 rectangle and 16 intersection cases, 17 C type encodings, native Apple declarations, iOS compilation/signing and actual vendor facade/version checks. A
 successful compile, export or geometry check will not establish that Excel tolerates
 unavailable printing/clipboard functionality. No Microsoft entry, initialization,
 workbook, installed UIKit lifecycle or physical-device milestone is implied.
@@ -84,3 +84,9 @@ point was not reached, so no C operation was exercised by Excel. The original
 report's count 41 accidentally included two compatibility facades under Contents;
 exact vendor-closure classification gives 39 vendor images plus two owned facades.
 The raw report and correction are both retained.
+
+The expanded comparison passed including fractional disjointness within one
+integer region, containment in both directions, equal shapes, touching regions,
+empty shapes and negative coordinates. This confirms the implemented integer
+region rule for these tested rectangles, not arbitrary paths or all HIShape APIs.
+Evidence is in native-services-contracts.json and native-apple/compatibility-shapes.json.
