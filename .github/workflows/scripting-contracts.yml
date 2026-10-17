@@ -5,7 +5,7 @@ on:
     paths:
       - 'tools/capture_loader_contracts.py'
       - 'tools/scripting_bridge_values.m'
-      - 'experiments/scripting/**'
+      - 'shim/ExcelScriptingBridge.*'
       - 'docs/evidence/real-loader-latest.json'
       - '.github/workflows/scripting-contracts.yml'
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
           /tmp/excelport-scripting-values reports/scripting-bridge-values.json
       - name: Check measured hierarchy and five exact native method encodings for unavailable automation
         run: |
-          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Ishim -Iexperiments/scripting -DEXCELSHIM_SCRIPTING_CONTRACT=1 tools/scripting_bridge_values.m experiments/scripting/ExcelScriptingBridge.m shim/ExcelShim.m -framework Foundation -o /tmp/excelport-scripting-compat
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Ishim -DEXCELSHIM_SCRIPTING_CONTRACT=1 tools/scripting_bridge_values.m shim/ExcelScriptingBridge.m shim/ExcelShim.m -framework Foundation -o /tmp/excelport-scripting-compat
           /tmp/excelport-scripting-compat reports/scripting-bridge-compatibility.json
           python3 - <<'PY'
           import json

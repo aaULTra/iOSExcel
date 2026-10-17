@@ -10,18 +10,24 @@ across the two classes. No targets were instantiated or Apple events sent.
 Selectors appearing in the global Office inventory are candidates only; that
 inventory does not attribute every generic selector to ScriptingBridge callers.
 
-The small prototype under experiments/scripting reports automation unavailable.
+The small prototype in shim/ExcelScriptingBridge.m reports automation unavailable.
 Three application factories and two initializers return nil and log the disabled
 operation. No event target, running-app identity, permission, authentication result
 or successful Apple event is fabricated. Unknown selectors log and raise a named
 exception. This is explicitly not an Apple-event engine or full scripting support.
-It has not yet been integrated into the Excel load graph.
+It is now integrated behind a fifth distinct facade; the actual Excel loader result
+is pending.
 
 The native validation compares the exact five method encodings and both superclass
 relationships against the real Mac classes in separate processes, and checks that
 the prototype cannot manufacture an automation target. No Apple framework with
 the same class names is linked into the compatibility test process. The native
-baseline only reads metadata. Results are pending.
+baseline only reads metadata. Run 39021599736 (6c80ac0b6a8ac1e44de664a39b3099c25f7f49b9) passed
+all five method encodings and both superclass relationships.
+The first native compile rejected the SBApplication initializer without its
+designated super call; it now chains to the explicitly unavailable SBObject
+initializer, preserving the nil result without suppressing compiler checks.
+Evidence: docs/evidence/scripting-contract-validation.json.
 
 Measured encodings: both init methods and currentApplication return @16@0:8;
 applicationWithBundleIdentifier: is @24@0:8@16;

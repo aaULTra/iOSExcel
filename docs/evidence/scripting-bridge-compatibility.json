@@ -1,0 +1,52 @@
+{
+  "classes" : [
+    {
+      "name" : "SBObject",
+      "methods" : [
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "init"
+        },
+        {
+          "encoding" : "v24@0:8:16",
+          "class_method" : 0,
+          "selector" : "doesNotRecognizeSelector:"
+        },
+        {
+          "encoding" : "v24@0:8:16",
+          "class_method" : 1,
+          "selector" : "doesNotRecognizeSelector:"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    {
+      "name" : "SBApplication",
+      "methods" : [
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "init"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 1,
+          "selector" : "currentApplication"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 1,
+          "selector" : "applicationWithBundleIdentifier:"
+        },
+        {
+          "encoding" : "@20@0:8i16",
+          "class_method" : 1,
+          "selector" : "applicationWithProcessIdentifier:"
+        }
+      ],
+      "superclass" : "SBObject"
+    }
+  ],
+  "scope" : "Actual native Mac method encodings. No targets instantiated, no Apple events, authentication or Office code executed."
+}

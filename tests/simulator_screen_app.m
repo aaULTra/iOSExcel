@@ -1,8 +1,10 @@
 // Internal simulator host: synthetic principal/nib/delegate, no Office binary or UI.
 #import <UIKit/UIKit.h>
 #include <stdlib.h>
+#include <unistd.h>
 #import "ExcelAppKit.h"
 #import "ExcelScreen.h"
+#import "ExcelScriptingBridge.h"
 #import "simulator_view_contracts.h"
 static BOOL WillLaunch,DidLaunch,Started;
 static void Check(BOOL condition,NSString *reason) { if (!condition) @throw [NSException exceptionWithName:@"ScreenSimulatorFailure" reason:reason userInfo:nil]; }
@@ -25,6 +27,15 @@ static void Finish(NSDictionary *report,int result) {
 static void RunTests(void) {
     @try {
         Check(WillLaunch && DidLaunch && NSApp.isRunning && NSApp.isActive,@"Real UIKit bridge must load the synthetic nib and dispatch desktop callbacks");
+        Check(NSClassFromString(@"SBApplication")==SBApplication.class && NSClassFromString(@"SBObject")==SBObject.class,
+              @"ScriptingBridge class names must resolve to the compatibility classes in a real UIKit process");
+        Check(SBApplication.superclass==SBObject.class && SBObject.superclass==NSObject.class,
+              @"ScriptingBridge hierarchy must match the captured Mac hierarchy");
+        Check(![SBApplication currentApplication] &&
+              ![SBApplication applicationWithBundleIdentifier:NSBundle.mainBundle.bundleIdentifier] &&
+              ![SBApplication applicationWithProcessIdentifier:getpid()] &&
+              ![[SBApplication alloc] init] && ![[SBObject alloc] init],
+              @"Unavailable automation must never fabricate a target, including for this real process");
         UIWindow *window=nil;
         for (UIScene *scene in UIApplication.sharedApplication.connectedScenes)
             if ([scene isKindOfClass:UIWindowScene.class] && ((UIWindowScene *)scene).keyWindow) { window=((UIWindowScene *)scene).keyWindow; break; }

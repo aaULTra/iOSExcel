@@ -83,7 +83,7 @@ def main():
         '-Wall', '-Wextra', '-Werror', root/'tests/loader/probe_system_library.c', '-o', probe)
     run('codesign', '--force', '--sign', '-', probe)
     shim = frameworks/'libExcelShim.dylib'
-    sources = ['ExcelNibArchive.m', 'ExcelAppKit.m', 'ExcelShim.m', 'ExcelScreen.m', 'ExcelView.m', 'ExcelApplicationServices.m', 'ExcelKerberos.m']
+    sources = ['ExcelNibArchive.m', 'ExcelAppKit.m', 'ExcelShim.m', 'ExcelScreen.m', 'ExcelView.m', 'ExcelApplicationServices.m', 'ExcelKerberos.m', 'ExcelScriptingBridge.m']
     run('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
         '-fobjc-arc', '-fmodules', '-Wall', '-Wextra', '-Werror', '-Wno-unused-parameter',
         '-I'+str(root/'shim'), '-dynamiclib', *[root/'shim'/s for s in sources],
