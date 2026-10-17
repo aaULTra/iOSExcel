@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capture actual compiler ABI references for the first AppKit Swift-overlay failure."""
 import json
+import re
 import subprocess
 from pathlib import Path
 from loader_plan import load_json
@@ -26,9 +27,19 @@ def main():
     ir = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-ir', str(root/'tools/swift_appkit_probe.swift'))
     force_lines = [line.strip() for line in ir.splitlines() if '_swift_FORCE_LOAD_$_swiftAppKit' in line]
     (out/'swift-force-load-ir.json').write_text(json.dumps({'references': force_lines, 'scope': 'Own compiler probe LLVM references, no Apple implementation'}, indent=2)+'\n')
-    if not any(line.startswith('declare ') and 'void ' in line and '()' in line for line in force_lines):
-        print('FORCE_LOAD_REFERENCE_LINES', json.dumps(force_lines), flush=True)
-        raise RuntimeError('Unexpected compiler force-load function declaration')
+    anchor_ir = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayForce',
+                    '-module-link-name', 'swiftAppKit', '-Xfrontend', '-autolink-force-load', '-emit-ir',
+                    str(root/'experiments/swift-appkit/ForceLoad.swift'))
+    anchor = re.search(r'define[^\n]*void @"?_swift_FORCE_LOAD_\$_swiftAppKit"?\(\)[^{]*\{(.*?)^}', anchor_ir, re.S | re.M)
+    if not anchor or 'ret void' not in anchor[0]:
+        raise RuntimeError('Compiler did not emit the expected void force-load function')
+    inventory = load_json(root/'docs/evidence/excel-16.55.json.gz')
+    closure = load_json(root/'docs/evidence/dependencies-16.55.json.gz')['startup_closure']
+    marker_uses = [{'path': binary['path'], 'weak': entry['weak']} for binary in inventory['binaries']
+                   if binary['path'] in closure for entry in binary.get('undefined', [])
+                   if entry['name'] == '__swift_FORCE_LOAD_$_swiftAppKit']
+    if len(marker_uses) != 4 or not all(row['weak'] for row in marker_uses):
+        raise RuntimeError('Unexpected Office force-load import contract')
     refs = []
     for symbol in symbols:
         mangled = symbol.removeprefix('_')
@@ -66,7 +77,7 @@ def main():
         executable.unlink(missing_ok=True)
     report = {'scope': 'Actual Mac compiler lowering and valid two-component IndexPath behavior only. No iOS compatibility, rendering or Excel startup proven.',
         'failure': failure, 'sdk': sdk, 'compiler': run('xcrun', 'swiftc', '--version').strip(),
-        'symbols': refs, 'force_load_compiler_ir': force_lines, 'operation_declarations': enum, 'overlay_implemented': False}
+        'symbols': refs, 'force_load_compiler_ir': force_lines, 'explicit_compiler_anchor_ir': anchor[0].splitlines(), 'office_marker_imports': marker_uses, 'operation_declarations': enum, 'overlay_implemented': False}
     (out/'swift-appkit-contracts.json').write_text(json.dumps(report, indent=2)+'\n')
     print('Captured', len(refs), 'overlay imports; drawing and invalid-index behavior remain untested')
 

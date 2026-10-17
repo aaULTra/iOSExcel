@@ -35,11 +35,14 @@ def main():
         '-emit-library', '-emit-module', '-emit-module-path', str(build/'AppKit.swiftmodule'),
         str(source/'AppKit.swift'), *objects, '-o', str(library),
         '-Xlinker', '-install_name', '-Xlinker', '@rpath/libExcelSwiftAppKit.dylib')
-    exports = {line.split()[-1] for line in run('nm', '-gU', str(library)).splitlines() if line.split()}
+    export_types = {line.split()[-1]:line.split()[-2] for line in run('nm', '-gU', str(library)).splitlines() if len(line.split()) >= 2}
+    exports = set(export_types)
     baseline = json.loads((reports/'swift-appkit-contracts.json').read_text())
     required = [entry['symbol'] for entry in baseline['symbols']]
     if set(required)-exports:
         raise RuntimeError('Missing exact Swift exports: '+repr(sorted(set(required)-exports)))
+    if any(export_types[name].upper() != 'T' for name in required):
+        raise RuntimeError('Required overlay symbols must be functions, not data')
     executable = build/'client'
     run('xcrun', 'swiftc', *target, '-I', str(build), '-I', str(source), '-L', str(build),
         '-lExcelSwiftAppKit', '-Xlinker', '-rpath', '-Xlinker', str(build),
@@ -50,8 +53,6 @@ def main():
     for key in ('index_path_samples', 'index_path_layout', 'rect_layout', 'operation_layout'):
         if original[key] != actual[key]:
             raise RuntimeError('Native comparison failed: '+key)
-    if not original['force_load_function_found']:
-        raise RuntimeError('Native marker function lookup failed')
     (reports/'swift-overlay-validation.json').write_text(json.dumps({
         'exact_required_exports_checked':required, 'native_index_path_cases_checked':5,
         'native_layouts_match':True, 'force_marker_emitted_by_swift_compiler':True,
