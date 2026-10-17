@@ -19,12 +19,17 @@ from excel_retarget import rewrite_load_paths
 from loader_plan import load_json, plan, stage
 
 
-def output(*args):
-    return subprocess.check_output(list(map(str, args)), text=True).strip()
+def output(*args, timeout=120):
+    return subprocess.check_output(list(map(str, args)), text=True, timeout=timeout).strip()
 
 
 def run(*args):
     subprocess.run(list(map(str, args)), check=True)
+
+
+def sdk_stub(sdk, install):
+    path = sdk/install.lstrip('/')
+    return path.with_suffix('.tbd') if path.suffix == '.dylib' else Path(str(path)+'.tbd')
 
 
 def main():
@@ -40,27 +45,32 @@ def main():
     result = plan(args.app, load_json(root/'docs/evidence/excel-16.55.json.gz'), graph, platform=7)
     stage(args.app, destination, result)
     path_entries = json.loads(args.system_path_map.read_text()) if args.system_path_map else []
-    mapping = {}
+    sdk = Path(output('xcrun', '--sdk', 'iphonesimulator', '--show-sdk-path'))
+    known = {entry['original'] for entry in path_entries}
+    result['sdk_counterparts_absent'] = []
+    # The same Versions-path failure was observed for Security and Accelerate.
+    # Normalize this class of path only where both SDK and runtime checks pass.
+    for old in result['remaining_system_libraries']:
+        new = re.sub(r'/Versions/[^/]+', '', old)
+        if old in known or old == new or not old.startswith('/System/Library/Frameworks/'):
+            continue
+        stub = sdk_stub(sdk, new)
+        if not stub.is_file():
+            result['sdk_counterparts_absent'].append({'original': old, 'candidate': new})
+            continue
+        path_entries.append({'original': old, 'target': new, 'observed_failure_run': 38985243018,
+                             'scope': 'Same verified versioned-path normalization; runtime load must pass'})
+    if len({entry['target'] for entry in path_entries}) != len(path_entries):
+        raise ValueError('Duplicate canonical counterpart needs an explicit alias analysis')
     for entry in path_entries:
         old, new = entry['original'], entry['target']
-        if old in mapping or not old.startswith('/System/Library/Frameworks/') or not new.startswith('/System/Library/Frameworks/') or '..' in Path(new).parts:
+        if not old.startswith('/System/Library/Frameworks/') or not new.startswith('/System/Library/Frameworks/') or '..' in Path(new).parts:
             raise ValueError('Unexpected system library path mapping')
-        if not entry.get('observed_failure_run') or not entry.get('probe_symbol'):
-            raise ValueError('Path mapping needs an observed failure and a runtime probe')
-        mapping[old] = new
+        if not entry.get('observed_failure_run') or not sdk_stub(sdk, new).is_file():
+            raise ValueError('Counterpart needs failure evidence and an SDK declaration')
     result['system_path_modifications'] = []
-    for image in result['images']:
-        binary = destination/image['path']
-        changed, events = rewrite_load_paths(binary.read_bytes(), mapping)
-        if events:
-            binary.write_bytes(changed)
-            result['system_path_modifications'].append({'path': image['path'], 'events': events})
     (reports/'real-loader-transform.json').write_text(json.dumps(result, indent=2)+'\n')
     frameworks = destination/'Contents/Frameworks'
-    sdk = output('xcrun', '--sdk', 'iphonesimulator', '--show-sdk-path')
-    for entry in path_entries:
-        if not Path(str(Path(sdk)/entry['target'].lstrip('/'))+'.tbd').is_file():
-            raise ValueError('Counterpart missing from Simulator SDK: '+entry['target'])
     probe = destination/'probe-system-library'
     run('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
         '-Wall', '-Wextra', '-Werror', root/'tests/loader/probe_system_library.c', '-o', probe)
@@ -76,12 +86,6 @@ def main():
     for facade in result['facades']:
         build_one(shim, frameworks/Path(facade['install_name']).name,
                   facade['install_name'], facade['required_compatibility_version'], 'simulator')
-    # Only the verified startup closure is executable. No installer scripts,
-    # privileged helpers, authentication or activation workarounds are run.
-    for image in result['images']:
-        binary = destination/image['path']
-        run('codesign', '--force', '--sign', '-', binary)
-        run('codesign', '--verify', '--strict', binary)
     devices = json.loads(output('xcrun', 'simctl', 'list', 'devices', 'available', '--json'))['devices']
     candidates = []
     for runtime, items in devices.items():
@@ -111,39 +115,73 @@ def main():
     try:
         run('xcrun', 'simctl', 'boot', udid)
         subprocess.run(['xcrun', 'simctl', 'bootstatus', udid, '-b'], check=True, timeout=240)
-        report['system_library_probes'] = []
+        manifest = destination/'system-probes.tsv'
+        lines = []
         for entry in path_entries:
-            try:
-                checked = subprocess.run(['xcrun', 'simctl', 'spawn', udid, str(probe), entry['target'], entry['probe_symbol']],
-                                         text=True, capture_output=True, timeout=180)
-            except subprocess.TimeoutExpired as error:
-                def decode(value):
-                    return value.decode(errors='replace') if isinstance(value, bytes) else value or ''
-                report['status'] = 'Infrastructure/probe timeout before Excel launch; not an Excel result'
-                report['system_library_probes'].append({'target': entry['target'], 'timed_out': True,
-                    'stdout': decode(error.stdout), 'stderr': decode(error.stderr)})
-                raise
-            report['system_library_probes'].append({'target': entry['target'], 'symbol': entry['probe_symbol'],
-                                                   'returncode': checked.returncode, 'stdout': checked.stdout, 'stderr': checked.stderr})
-            print(checked.stdout, checked.stderr, flush=True)
-            checked.check_returncode()
+            lines.append('LIB\t'+entry['target'])
+            names = [name.removeprefix('_') for name in graph['system_imports'].get(entry['original'], [])]
+            if any(any(c in value for c in '\t\r\n') for value in [entry['target'], *names]):
+                raise ValueError('Unexpected control characters in probe inputs')
+            lines.extend('SYM\t'+name for name in names)
+        manifest.write_text('\n'.join(lines)+'\n')
+        try:
+            checked = subprocess.run(['xcrun', 'simctl', 'spawn', udid, str(probe), '--manifest', str(manifest)],
+                                     text=True, capture_output=True, timeout=300)
+        except subprocess.TimeoutExpired as error:
+            def decode(value):
+                return value.decode(errors='replace') if isinstance(value, bytes) else value or ''
+            report['status'] = 'Infrastructure/probe timeout before Excel launch; not an Excel result'
+            (reports/'system-probes.stdout.log').write_text(decode(error.stdout))
+            (reports/'system-probes.stderr.log').write_text(decode(error.stderr))
+            raise
+        (reports/'system-probes.stdout.log').write_text(checked.stdout)
+        (reports/'system-probes.stderr.log').write_text(checked.stderr)
+        checked.check_returncode()
+        groups = {}
+        current = None
+        for line in checked.stdout.splitlines():
+            row = line.split('\t')
+            if row[0] in ('LIBRARY_LOADED', 'LIBRARY_FAILED') and len(row) >= 2:
+                if row[1] in groups:
+                    raise ValueError('Duplicate runtime library result')
+                current = {'loaded': row[0] == 'LIBRARY_LOADED', 'found': [], 'missing': [], 'error': row[2:]}
+                groups[row[1]] = current
+            elif current is not None and row[0] in ('FOUND', 'MISSING') and len(row) >= 2:
+                current['found' if row[0] == 'FOUND' else 'missing'].append(row[1])
+            else:
+                raise ValueError('Unexpected runtime probe output: '+line)
+        if set(groups) != {entry['target'] for entry in path_entries}:
+            raise ValueError('Incomplete library probe batch')
+        mapping = {}
         report['runtime_symbol_audits'] = []
         for entry in path_entries:
-            # dlsym accepts C names without Mach-O's leading underscore. This
-            # queries exports only; no Microsoft or Security function is called.
-            required = graph['system_imports'].get(entry['original'], [])
-            names = [s.removeprefix('_') for s in required]
-            audited = subprocess.run(['xcrun', 'simctl', 'spawn', udid, str(probe), entry['target'], '--audit', *names],
-                                     text=True, capture_output=True, timeout=120)
-            audited.check_returncode()
-            rows = [line.split('\t') for line in audited.stdout.splitlines()]
-            found = [row[1] for row in rows if len(row) == 3 and row[0] == 'FOUND']
-            missing = [row[1] for row in rows if len(row) == 2 and row[0] == 'MISSING']
-            if set(found+missing) != set(names) or len(found)+len(missing) != len(names):
-                raise ValueError('Incomplete runtime export audit')
+            audited = groups[entry['target']]
+            names = [name.removeprefix('_') for name in graph['system_imports'].get(entry['original'], [])]
+            if audited['loaded']:
+                if set(audited['found']+audited['missing']) != set(names) or len(audited['found'])+len(audited['missing']) != len(names):
+                    raise ValueError('Incomplete runtime symbol audit')
+                if entry.get('probe_symbol') and entry['probe_symbol'] not in audited['found']:
+                    raise ValueError('Previously confirmed counterpart export disappeared')
+                mapping[entry['original']] = entry['target']
             report['runtime_symbol_audits'].append({'original': entry['original'], 'target': entry['target'],
-                'required_count': len(names), 'found_count': len(found), 'missing': missing,
-                'raw_output': audited.stdout, 'scope': 'Export lookup only; no API behavior or ABI guarantee'})
+                'runtime_loaded': audited['loaded'], 'required_count': len(names),
+                'found_count': len(audited['found']), 'missing': audited['missing'], 'load_error': audited['error'],
+                'scope': 'Runtime export lookup only; no API behavior, device availability or ABI guarantee'})
+        result['system_path_modifications'] = []
+        result['verified_system_path_mapping'] = mapping
+        for image in result['images']:
+            binary = destination/image['path']
+            changed, events = rewrite_load_paths(binary.read_bytes(), mapping)
+            if events:
+                binary.write_bytes(changed)
+                result['system_path_modifications'].append({'path': image['path'], 'events': events})
+        (reports/'real-loader-transform.json').write_text(json.dumps(result, indent=2)+'\n')
+        # Only the verified startup closure is executable. No installer scripts,
+        # privileged helpers, authentication or activation workarounds are run.
+        for image in result['images']:
+            binary = destination/image['path']
+            run('codesign', '--force', '--sign', '-', binary)
+            run('codesign', '--verify', '--strict', binary)
         executable = destination/'Contents/MacOS/Microsoft Excel'
         env = dict(os.environ)
         env['SIMCTL_CHILD_DYLD_PRINT_LIBRARIES'] = '1'
@@ -174,9 +212,9 @@ def main():
         report['status'] = 'Loader failure captured' if report['dyld_failure_present'] else 'Inspect logs; no Excel startup success inferred'
         print(stderr[-16000:], flush=True)
         try:
-            logs = output('xcrun', 'simctl', 'spawn', udid, 'log', 'show', '--last', '2m', '--style', 'compact', '--predicate', 'process == "Microsoft Excel"')
+            logs = output('xcrun', 'simctl', 'spawn', udid, 'log', 'show', '--last', '2m', '--style', 'compact', '--predicate', 'process == "Microsoft Excel"', timeout=45)
             (reports/'real-loader-unified.log').write_text(logs[-1000000:])
-        except subprocess.CalledProcessError as error:
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
             report['secondary_log_error'] = str(error)
     finally:
         (reports/'real-loader-result.json').write_text(json.dumps(report, indent=2)+'\n')
@@ -188,8 +226,11 @@ def main():
                 file.write('First failure: `'+report.get('first_failure', {}).get('name', 'See diagnostic reports')+'`\n\n')
                 file.write('**Microsoft entry point and Excel initialization remain unconfirmed. No IPA produced.**\n')
         print(json.dumps(report, indent=2), flush=True)
-        subprocess.run(['xcrun', 'simctl', 'shutdown', udid], check=False)
-        subprocess.run(['xcrun', 'simctl', 'delete', udid], check=False)
+        for operation in ('shutdown', 'delete'):
+            try:
+                subprocess.run(['xcrun', 'simctl', operation, udid], check=False, timeout=60)
+            except subprocess.TimeoutExpired:
+                print('Simulator cleanup timed out:', operation, flush=True)
 
 
 if __name__ == '__main__':

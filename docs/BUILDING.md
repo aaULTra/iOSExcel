@@ -102,3 +102,18 @@ host additionally checks NSView/UIView hierarchy agreement, flipped/scaled place
 actual CoreGraphics drawing callbacks and four positive/negative pixel samples. Its
 snapshot is sampled internally; only JSON/log reports are uploaded. No Excel code or
 unfinished app/IPA is supplied by these tests.
+
+## Real executable loader experiment
+
+The `real-loader.yml` workflow privately acquires verified Excel 16.55, stages its
+55-image startup closure for iOS Simulator (platform 7), compiles the matching shim
+and facades, re-signs the copies and attempts the original executable through
+`simctl spawn`. Run `tools/run_excel_loader.py` only on a Mac with an installed iPad
+Simulator runtime; its official-installer input must already be extracted.
+`--system-path-map tools/loader_system_paths.json` applies only recorded,
+evidence-backed path fixes and probes their actual runtime counterpart first.
+
+Reports include real dyld stdout/stderr, per-field transformation records, runtime
+probe results and a status JSON. Only reports are uploaded. This is not an installed
+application or device build and no IPA is created. See REAL_LOADER.md for observed
+failures and what this experiment can establish.

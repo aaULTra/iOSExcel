@@ -86,3 +86,14 @@ adapted CoreGraphics context; opposite origins are verified with pixel samples.
 No compatibility NSWindow is associated yet. Window conversion, constraints, view
 archives, input routing and full AppKit rendering remain separate unresolved layers.
 See VIEW.md for the implementation and proof boundary.
+
+## Real pre-entry loader gate
+
+The current dynamic experiment runs the original Excel MH_EXECUTE with its original
+framework-relative hierarchy using simctl spawn. It does not dlopen an executable or
+alter Excel's entry code. Simulator metadata, shim and facades are all explicitly
+platform 7; the device retarget remains platform 2. This is deliberately a pre-entry
+diagnostic gate, separate from registering an installed UIKit application and its
+resource/scene lifecycle. See REAL_LOADER.md for actual observed failures. Only
+an explicit entry marker or stronger execution evidence may advance the startup
+milestone; mapped-image traces alone cannot.

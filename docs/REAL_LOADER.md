@@ -63,3 +63,27 @@ not evidence that canonical Security is absent or that Excel advanced. The next
 run adds pre-/post-dlopen stderr markers, retains partial timeout output, allows
 a bounded 180-second probe and audits the actual required Security symbol names
 without invoking them.
+
+## Security path verified; next observed failure
+
+Run 38985243018, source 344e5fd5c1c3f62a8ec993c6002e41a7d2eb42d6,
+verified canonical Security loading and SecItemCopyMatching lookup in the same
+Simulator. The required-symbol audit found 131 of 183 names and reported 52
+missing, including desktop keychain/ACL/transform operations. No API was invoked
+and this does not establish device behavior or activation. The cold first probe
+took approximately 111 seconds to return; its original 60-second limit was too
+short to obtain this result.
+
+The actual Excel attempt then mapped 39 Microsoft images and aborted on
+`/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate`.
+The entry point remains unconfirmed. Reports: `docs/evidence/real-loader-security-*`.
+
+Two real failures now identify one consistent path-format issue. The next script
+normalizes versioned Apple framework paths only when an SDK stub exists and a
+same-runtime batch probe successfully loads the canonical counterpart. Missing
+SDK/runtime counterparts remain unchanged and are reported, not replaced with
+empty libraries. All required symbol names are audited without calling them.
+This consolidates the same path repair while retaining full two-level import
+indices and per-field modification logs. A single probe process avoids paying
+the first cold process-launch cost separately for each framework. Every API
+reported missing remains unimplemented; normalization is not API compatibility.

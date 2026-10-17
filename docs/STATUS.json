@@ -34,6 +34,6 @@
   "view_compatibility": "Partial NSResponder-based NSView model plus UIView projection: native hierarchy/geometry/lifetime tests, 32 exact ABI contracts and synthetic UIKit drawing/pixel/hierarchy tests passed. No NSWindow or Excel execution.",
   "view_native_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725023",
   "view_simulator_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725046",
-  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38984254220",
-  "real_loader_investigation": "First actual loader attempt mapped main plus 33 Microsoft dylibs and aborted on macOS-versioned Security path. Second run timed out in standalone Security probe before Excel launch; instrumented bounded retry prepared."
+  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38985243018",
+  "real_loader_investigation": "Security counterpart verified at runtime; actual executable advanced to 39 mapped Microsoft images then aborted on versioned Accelerate path. 131/183 Security names found, 52 missing in Simulator export lookup. Microsoft entry not reached. Same-class path normalization pending runtime verification."
 }

@@ -59,9 +59,10 @@ Do not delete dependencies to force that check to pass.
 The current priority is an internal **real Excel executable loader attempt**, using
 the original Microsoft startup closure on iPad Simulator. This is separate from
 the synthetic UI tests below. See docs/REAL_LOADER.md for the exact method and
-limits. The first attempt mapped the real main and 33 Microsoft dylibs, then
-dyld aborted on the macOS-versioned Security.framework path. Its entry point
-was not reached; no successful Excel initialization is established.
+limits. After fixing the first observed Security.framework path failure, the
+latest attempt mapped 39 Microsoft images and stopped on the same versioned-path
+issue for Accelerate. Runtime lookup found 131/183 Security names, with 52 missing.
+Its entry point was not reached; no successful Excel initialization is established.
 
 Source: https://github.com/aaULTra/iOSExcel
 

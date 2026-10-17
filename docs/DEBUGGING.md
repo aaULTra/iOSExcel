@@ -52,3 +52,18 @@ legacy selected target's clipping default and adapts drawRect: coordinates expli
 The view_contracts object in the internal simulator report records actual draw callback
 counts and pixel assertions. Passing those synthetic checks is not an Excel UI run.
 The native model report checks hierarchy lifetime and 32 exact method encodings.
+
+## Actual Excel loader
+
+Use `real-loader-result.json` and `real-loader.stderr.log` from the real-loader
+workflow, not the synthetic screen/view result, to identify the first actual dyld
+failure. A `DYLD_PRINT_LIBRARIES` mapping line does not prove that an initializer or
+the main entry ran. A green evidence-collection workflow does not mean Excel started.
+Simulator platform 7 must not be confused with device platform 2.
+
+Standalone system-library probes print PROBE_START before dlopen and
+PROBE_DLOPEN_OK afterward. A timeout with no start marker differs from a started
+probe stuck loading a library. Retain partial output and the infrastructure exception;
+do not label either as an Excel failure if its executable was never attempted.
+Runtime symbol audits use dlsym without invoking functions: a found name proves
+lookup only, not argument layouts, semantics or legitimate activation.
