@@ -31,6 +31,9 @@ void ExcelSwiftOverlayDrawingUnavailable(CGRect rect, NSUInteger operation) {
         case NSCompositingOperationSourceOver: mode = kCGBlendModeNormal; break;
         default: ExcelSwiftOverlayUnavailable("CGRect.fill(using:) unmeasured compositing operation");
     }
+    // Native AppKit leaves the measured negative-size rectangle empty; Quartz
+    // instead standardizes it and paints. Preserve the observed AppKit behavior.
+    if (rect.size.width <= 0 || rect.size.height <= 0) return;
     CGContextSaveGState(context);
     CGContextSetBlendMode(context, mode);
     CGContextFillRect(context, rect);
