@@ -95,6 +95,14 @@ def main():
         command('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
                 '-Wall', '-Wextra', '-Werror', ROOT/'tests/loader/probe_system_library.c', '-o', probe)
         command('codesign', '--force', '--sign', '-', probe)
+        # Build the cold Objective-C modules before Simulator boot competes for
+        # CPU/memory. Run 39020471590 exceeded the old 60-second compile limit;
+        # that was a build timeout, not an API or Excel runtime failure.
+        binary = reports/'kerberos-simulator-compatibility'
+        command('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
+                *common, '-framework', 'GSS', '-Wl,-export_dynamic', ROOT/'tests/kerberos_contracts.m',
+                ROOT/'shim/ExcelKerberos.m', ROOT/'shim/ExcelShim.m', '-o', binary, timeout=180)
+        command('codesign', '--force', '--sign', '-', binary)
         devices = json.loads(command('xcrun', 'simctl', 'list', 'devices', 'available', '--json'))['devices']
         candidates = [(runtime, device) for runtime, items in devices.items() if 'iOS-' in runtime
                       for device in items if 'iPad' in device['name'] and device.get('isAvailable')]
@@ -124,12 +132,7 @@ def main():
         queried = [r[1] for r in rows if r[0] in ('FOUND', 'MISSING')]
         if sorted(queried) != sorted(NAMES):
             raise RuntimeError('Incomplete or duplicate symbol results')
-        binary = reports/'kerberos-simulator-compatibility'
         try:
-            command('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
-                    *common, '-framework', 'GSS', '-Wl,-export_dynamic', ROOT/'tests/kerberos_contracts.m',
-                    ROOT/'shim/ExcelKerberos.m', ROOT/'shim/ExcelShim.m', '-o', binary)
-            command('codesign', '--force', '--sign', '-', binary)
             command('xcrun', 'simctl', 'spawn', udid, binary, reports/'kerberos-simulator-contracts.json', timeout=120)
         finally:
             binary.unlink(missing_ok=True)
@@ -146,6 +149,7 @@ def main():
         path.write_text(json.dumps(report, indent=2)+'\n')
         # This artifact must contain metadata only, never even our diagnostic executable.
         (reports/'gss-export-probe').unlink(missing_ok=True)
+        (reports/'kerberos-simulator-compatibility').unlink(missing_ok=True)
         if udid:
             for action in ('shutdown', 'delete'):
                 subprocess.run(['xcrun', 'simctl', action, udid], capture_output=True, timeout=60)

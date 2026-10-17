@@ -67,3 +67,11 @@ probe stuck loading a library. Retain partial output and the infrastructure exce
 do not label either as an Excel failure if its executable was never attempted.
 Runtime symbol audits use dlsym without invoking functions: a found name proves
 lookup only, not argument layouts, semantics or legitimate activation.
+
+## Cold simulator module compilation is a build failure
+
+SDK audit run 39020471590 timed out while clang built the standalone Simulator
+Objective-C helper with a 60-second compile limit; no API result or Excel regression
+was established. The audit now builds that helper before Simulator boot and permits
+a bounded 180 seconds for this cold compilation. Runtime calls retain their own
+time limits. Actual Excel runs independently repeated the provider gate successfully.
