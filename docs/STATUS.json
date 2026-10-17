@@ -37,5 +37,5 @@
   "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38989112909",
   "real_loader_investigation": "Guarded weakening of the unused ExceptionHandling load passed actual bind-table checks and advanced the real loader to Kerberos.framework. 39 Microsoft images and two owned facades mapped. Five Kerberos imports require a public SDK/runtime provider audit; no authentication calls or substitutions approved. Microsoft entry not reached.",
   "application_services": "Native Apple comparison passed for 16 rectangles and 16 intersections; 17 C ABI encodings matched; all 40 definitions compiled against Mac declarations and for iOS. Facade load observed in real Excel loader. Printing/pasteboard/Mac zoom remain explicitly disabled. Excel entry not reached.",
-  "kerberos_audit": "Prepared public macOS/iPhoneOS/Simulator header and same-runtime GSS symbol lookup audit; results pending."
+  "kerberos_audit": "Run 39018366500: all five Mac declarations captured; iPhoneOS SDK has no Kerberos umbrella/stub. On Simulator 18.5, GSS lookup found four genuine functions in private Heimdal, not legacy GSS_C_NT_USER_NAME. Runtime selection corrected for 26.2; isolated native/Simulator ownership and data ABI tests prepared before Excel redirection."
 }

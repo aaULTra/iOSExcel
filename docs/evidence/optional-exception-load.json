@@ -1,0 +1,22 @@
+{
+  "run_id": 38989112909,
+  "source_sha": "c54adbd283588a19ac54c222155812c657894a8d",
+  "modifications": [
+    {
+      "path": "Contents/MacOS/Microsoft Excel",
+      "events": [
+        {
+          "offset": 6616,
+          "length": 4,
+          "field": "optional LC_LOAD_WEAK_DYLIB",
+          "path": "/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling",
+          "before": 12,
+          "after": 2147483672,
+          "undefined_symbol_imports": 0,
+          "binding_sites": 0
+        }
+      ]
+    }
+  ],
+  "scope": "Actual checked command-kind modification, not Excel entry or behavior proof"
+}

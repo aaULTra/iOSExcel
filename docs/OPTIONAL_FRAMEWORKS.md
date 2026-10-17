@@ -1,6 +1,6 @@
 # ExceptionHandling optional-load experiment
 
-This policy is explicitly limited to the first remaining real loader failure:
+This policy is explicitly limited to the previously observed real loader failure:
 `ExceptionHandling.framework`. It is not a blanket rule for missing frameworks.
 
 Evidence at ea11fa5aae2508d17a0f5d529d0ebefbcaa0b191:
@@ -37,7 +37,10 @@ the policy validator until separately investigated and intentionally implemented
 Unit safety tests cover a binding absent from the ordinary symbol table, ordinary
 symbol use without a bind stream, flat lookup, malformed/unknown opcodes, stream
 bounds, ordinal attribution and exact modification windows. They are not Excel
-execution evidence. The first real experiment with this policy is pending.
+execution evidence. The real experiment in run 38989112909 passed the guards,
+changed only the main executable load command, and advanced the first loader
+failure to Kerberos.framework. Microsoft entry remained unconfirmed.
+See docs/evidence/optional-exception-load.json for actual modification metadata.
 
 Omitting optional framework initialization may still uncover a dynamic use or
 another failure. No application or workbook milestone follows from a successful

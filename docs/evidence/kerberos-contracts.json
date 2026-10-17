@@ -1,0 +1,163 @@
+{
+  "scope": "Actual Mac SDK interface declarations; no runtime behavior guarantee",
+  "first_failure": {
+    "kind": "library_not_loaded",
+    "name": "/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos"
+  },
+  "declarations": [
+    {
+      "name": "GSS_C_NT_USER_NAME",
+      "kind": "VarDecl",
+      "type": {
+        "desugaredQualType": "struct gss_OID_desc_struct *",
+        "qualType": "gss_OID",
+        "typeAliasDeclId": "0x15bb6da08"
+      },
+      "location": {
+        "offset": 11118,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/gssapi.h",
+        "line": 362,
+        "col": 27,
+        "tokLen": 18,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/Kerberos.h"
+        }
+      },
+      "parameters": []
+    },
+    {
+      "name": "krb5_free_context",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "void (krb5_context)"
+      },
+      "location": {
+        "offset": 55692,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/krb5.h",
+        "line": 1434,
+        "col": 20,
+        "tokLen": 17,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/Kerberos.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": null,
+          "type": {
+            "desugaredQualType": "struct _krb5_context *",
+            "qualType": "krb5_context",
+            "typeAliasDeclId": "0x120b291b8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "krb5_free_host_realm",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "krb5_error_code (krb5_context, char *const *)"
+      },
+      "location": {
+        "offset": 91032,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/krb5.h",
+        "line": 2102,
+        "col": 31,
+        "tokLen": 20,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/Kerberos.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": null,
+          "type": {
+            "desugaredQualType": "struct _krb5_context *",
+            "qualType": "krb5_context",
+            "typeAliasDeclId": "0x134b291b8"
+          }
+        },
+        {
+          "name": null,
+          "type": {
+            "qualType": "char *const *"
+          }
+        }
+      ]
+    },
+    {
+      "name": "krb5_get_host_realm",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "krb5_error_code (krb5_context, const char *, char ***)"
+      },
+      "location": {
+        "offset": 90801,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/krb5.h",
+        "line": 2098,
+        "col": 31,
+        "tokLen": 19,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/Kerberos.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": null,
+          "type": {
+            "desugaredQualType": "struct _krb5_context *",
+            "qualType": "krb5_context",
+            "typeAliasDeclId": "0x14d3291b8"
+          }
+        },
+        {
+          "name": null,
+          "type": {
+            "qualType": "const char *"
+          }
+        },
+        {
+          "name": null,
+          "type": {
+            "qualType": "char ***"
+          }
+        }
+      ]
+    },
+    {
+      "name": "krb5_init_context",
+      "kind": "FunctionDecl",
+      "type": {
+        "qualType": "krb5_error_code (krb5_context *)"
+      },
+      "location": {
+        "offset": 55292,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/krb5.h",
+        "line": 1430,
+        "col": 31,
+        "tokLen": 17,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/Kerberos.framework/Headers/Kerberos.h"
+        }
+      },
+      "parameters": [
+        {
+          "name": null,
+          "type": {
+            "qualType": "krb5_context *"
+          }
+        }
+      ]
+    }
+  ],
+  "unresolved": [],
+  "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+  "required_names": [
+    "_GSS_C_NT_USER_NAME",
+    "_krb5_free_context",
+    "_krb5_free_host_realm",
+    "_krb5_get_host_realm",
+    "_krb5_init_context"
+  ],
+  "status": "Interface capture complete; unresolved declarations remain explicit"
+}

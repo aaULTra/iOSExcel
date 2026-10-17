@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit real SDK declarations and Simulator GSS exports; never invoke auth APIs."""
+"""Audit SDK/GSS exports and genuine context/realm ownership without credentials."""
 import json
 import os
 import subprocess
@@ -54,7 +54,7 @@ def main():
     reports = ROOT/'reports'
     reports.mkdir(exist_ok=True)
     report = {'source_sha': os.environ.get('GITHUB_SHA'), 'names': NAMES,
-              'scope': 'SDK declarations and export lookup only. No credentials, authentication calls, Office code or load substitutions.',
+              'scope': 'SDK declarations, GSS exports and genuine context/realm allocation/free tests. No credentials, authentication, Office code or load substitutions.',
               'sdk_audits': []}
     path = reports/'kerberos-audit.json'
     udid = None
@@ -64,6 +64,28 @@ def main():
                              ('iphonesimulator', 'arm64-apple-ios18.0-simulator')]:
             report['sdk_audits'].append(sdk_audit(kind, target))
             path.write_text(json.dumps(report, indent=2)+'\n')
+        common = ['-fobjc-arc', '-fmodules', '-Wall', '-Wextra', '-Werror',
+                  '-Wno-deprecated-declarations', '-I'+str(ROOT/'shim'), '-framework', 'Foundation']
+        mac = report['sdk_audits'][0]['sdk']
+        for baseline in (True, False):
+            name = 'kerberos-native-baseline' if baseline else 'kerberos-native-compatibility'
+            binary = reports/name
+            sources = [ROOT/'tests/kerberos_contracts.m']
+            flags = ['-DEX_KERBEROS_BASELINE=1', '-framework', 'Kerberos'] if baseline else ['-framework', 'GSS', '-Wl,-export_dynamic']
+            if not baseline:
+                sources += [ROOT/'shim/ExcelKerberos.m', ROOT/'shim/ExcelShim.m']
+            try:
+                command('xcrun', 'clang', '-target', 'arm64-apple-macos11.0', '-isysroot', mac,
+                        *common, *flags, *sources, '-o', binary)
+                command(binary, reports/(name+'.json'))
+            finally:
+                binary.unlink(missing_ok=True)
+        original = json.loads((reports/'kerberos-native-baseline.json').read_text())
+        compat = json.loads((reports/'kerberos-native-compatibility.json').read_text())
+        for key in ('oid_base64', 'oid_length', 'oid_struct_size', 'oid_elements_offset'):
+            if original[key] != compat[key]:
+                raise RuntimeError('Legacy/public GSS OID ABI mismatch: '+key)
+        report['native_legacy_oid_and_function_contracts_passed'] = True
         sdk = report['sdk_audits'][-1]['sdk']
         # Probe only the SDK-backed public GSS framework. Do not search or load
         # private authentication providers or borrow a macOS framework.
@@ -76,7 +98,8 @@ def main():
         devices = json.loads(command('xcrun', 'simctl', 'list', 'devices', 'available', '--json'))['devices']
         candidates = [(runtime, device) for runtime, items in devices.items() if 'iOS-' in runtime
                       for device in items if 'iPad' in device['name'] and device.get('isAvailable')]
-        candidates.sort(key=lambda x: ('M4' not in x[1]['name'], 'Pro' not in x[1]['name'], x[0]))
+        candidates.sort(key=lambda x: ('M4' not in x[1]['name'], 'Pro' not in x[1]['name'],
+                        tuple(-int(v) for v in x[0].rsplit('iOS-', 1)[1].split('-'))))
         if not candidates:
             raise RuntimeError('No available iPad Simulator')
         runtime, device = candidates[0]
@@ -101,7 +124,21 @@ def main():
         queried = [r[1] for r in rows if r[0] in ('FOUND', 'MISSING')]
         if sorted(queried) != sorted(NAMES):
             raise RuntimeError('Incomplete or duplicate symbol results')
-        report['status'] = 'Audit captured; no replacement approved or implemented'
+        binary = reports/'kerberos-simulator-compatibility'
+        try:
+            command('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
+                    *common, '-framework', 'GSS', '-Wl,-export_dynamic', ROOT/'tests/kerberos_contracts.m',
+                    ROOT/'shim/ExcelKerberos.m', ROOT/'shim/ExcelShim.m', '-o', binary)
+            command('codesign', '--force', '--sign', '-', binary)
+            command('xcrun', 'simctl', 'spawn', udid, binary, reports/'kerberos-simulator-contracts.json', timeout=120)
+        finally:
+            binary.unlink(missing_ok=True)
+        mobile = json.loads((reports/'kerberos-simulator-contracts.json').read_text())
+        for key in ('oid_base64', 'oid_length', 'oid_struct_size', 'oid_elements_offset'):
+            if original[key] != mobile[key]:
+                raise RuntimeError('Simulator/legacy GSS OID ABI mismatch: '+key)
+        report['simulator_contracts'] = mobile
+        report['status'] = 'Native and Simulator forwarding contracts passed; Excel not attempted and private provider remains version-sensitive'
     except BaseException as error:
         report['error'] = str(error)
         raise
