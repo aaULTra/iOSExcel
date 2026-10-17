@@ -9,7 +9,7 @@ def run(*args, **kwargs):
     return subprocess.check_output(args, text=True, timeout=180, **kwargs)
 
 
-def build_overlay(root, build, platform, required_version="0.0.0"):
+def build_overlay(root, build, platform, required_version="0.0.0", test_context=False):
     build.mkdir(parents=True, exist_ok=True)
     source = root/'experiments/swift-appkit'
     sdk_name, triple = {'macos':('macosx','arm64-apple-macos11.0'), 'simulator':('iphonesimulator','arm64-apple-ios18.0-simulator'), 'ios':('iphoneos','arm64-apple-ios18.0')}[platform]
@@ -20,7 +20,7 @@ def build_overlay(root, build, platform, required_version="0.0.0"):
         obj = build/f'runtime-{index}.o'
         run('xcrun', 'clang', '-target', triple, '-isysroot', sdk,
             '-fobjc-arc', '-Wall', '-Wextra', '-Werror', '-I'+str(root/'shim'),
-            '-I'+str(source), '-c', str(path), '-o', str(obj))
+            '-I'+str(source), *(['-DEXCEL_OVERLAY_TEST_CONTEXT=1'] if test_context else []), '-c', str(path), '-o', str(obj))
         objects.append(str(obj))
     marker = build/'force-load.o'
     run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayForce',

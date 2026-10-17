@@ -10,7 +10,7 @@ public extension IndexPath {
 }
 public extension CGRect {
     func fill(using operation: NSCompositingOperation) {
-        // Drawing semantics and current-context ownership are not measured yet.
+        // Only the measured finite-rectangle copy/sourceOver subset is experimental.
         ExcelSwiftOverlayDrawingUnavailable(self, operation.rawValue)
     }
 }

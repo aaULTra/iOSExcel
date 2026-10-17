@@ -1,3 +1,4 @@
+#import <TargetConditionals.h>
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 typedef NS_ENUM(NSUInteger, NSCompositingOperation) {
@@ -32,4 +33,8 @@ typedef NS_ENUM(NSUInteger, NSCompositingOperation) {
     NSCompositingOperationLuminosity = 28,
 };
 void ExcelSwiftOverlayUnavailable(const char *operation) __attribute__((noreturn));
-void ExcelSwiftOverlayDrawingUnavailable(CGRect rect, NSUInteger operation) __attribute__((noreturn));
+// Historical name retained while the drawing subset remains experimental.
+void ExcelSwiftOverlayDrawingUnavailable(CGRect rect, NSUInteger operation);
+#if TARGET_OS_OSX
+void ExcelSwiftOverlaySetTestContext(CGContextRef context);
+#endif

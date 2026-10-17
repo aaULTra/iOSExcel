@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths:
       - 'tools/swift_overlay_drawing_values.swift'
+      - 'tools/test_swift_overlay_drawing.py'
+      - 'tools/test_swift_overlay.py'
+      - 'experiments/swift-appkit/**'
       - '.github/workflows/swift-drawing-contracts.yml'
   workflow_dispatch:
 permissions:
@@ -11,7 +14,7 @@ permissions:
 jobs:
   contracts:
     runs-on: macos-15
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Capture real offscreen pixels and graphics-state behavior
@@ -19,6 +22,10 @@ jobs:
           mkdir -p reports
           xcrun --sdk macosx swiftc -target arm64-apple-macos11.0 tools/swift_overlay_drawing_values.swift -o /tmp/excelport-swift-drawing
           /tmp/excelport-swift-drawing reports/swift-overlay-native-drawing.json
+      - name: Capture exact Swift exports and compare typed Mac and UIKit drawing
+        run: |
+          python3 tools/capture_swift_appkit.py
+          python3 tools/test_swift_overlay_drawing.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

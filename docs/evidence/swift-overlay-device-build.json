@@ -1,0 +1,12 @@
+{
+  "platform": 2,
+  "required_version": "1.0.0",
+  "required_exports_verified": [
+    "_$s10Foundation9IndexPathV6AppKitE4itemSivg",
+    "_$sSo6CGRectV6AppKitE4fill5usingySo22NSCompositingOperationV_tF",
+    "__swift_FORCE_LOAD_$_swiftAppKit"
+  ],
+  "signature_verified": true,
+  "device_execution": false,
+  "microsoft_executed": false
+}

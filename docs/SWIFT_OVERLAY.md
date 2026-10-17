@@ -74,3 +74,25 @@ older Office compiler's actual calls remain unverified.
 
 Primary compiler reference for the legacy marker:
 https://github.com/swiftlang/swift/blob/swift-5.5-RELEASE/lib/IRGen/IRGenModule.cpp
+
+## Cross-ABI checkpoint and drawing experiment
+
+Run 39031123869 at 053ed90c5141c36f27aff514eab7b67a99a297da passed both the
+native iOS caller and retargeted own Mac caller on M4 iOS 26.2 Simulator. Each
+matched five IndexPath cases and all layouts, reached the typed rectangle argument
+logger before expected missing-context abort, and rejected invalid paths. Device
+platform-2 compilation/signing passed separately; no device execution occurred.
+Evidence: swift-overlay-cross-abi.json and swift-overlay-device-build.json.
+
+Native run 39031310785 at 9a3a9a41d3988960a758040101e7b33b63db8f9c captured 96
+offscreen drawing cases: six finite rectangles, copy/sourceOver, flipped flags,
+transforms and preexisting blend states. Full pixel bytes and follow-up fills expose
+persistent graphics state. Evidence: swift-overlay-native-drawing.json.
+
+The current experimental backend maps only copy/sourceOver into a current UIKit
+CGContext, with save/restore. Mac testing uses an explicitly enabled thread-local
+test context instead of an AppKit implementation. Exact pixels and follow-up state
+must match all native cases before this subset is considered validated. Missing
+context, nonfinite geometry and unmeasured operations log then abort. NSGraphicsContext,
+other compositing, Microsoft compiler calls and real UI remain unimplemented or
+unverified. No Microsoft load redirection has been applied.
