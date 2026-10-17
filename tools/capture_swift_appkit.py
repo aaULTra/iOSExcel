@@ -23,15 +23,17 @@ def main():
     symbols = load_json(root/'docs/evidence/dependencies-16.55.json.gz')['system_imports'][name]
     sdk = run('xcrun', '--sdk', 'macosx', '--show-sdk-path').strip()
     target = ['-sdk', sdk, '-target', 'arm64-apple-macos11.0']
-    sil = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-silgen', str(root/'tools/swift_appkit_probe.swift'))
-    ir = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-ir', str(root/'tools/swift_appkit_probe.swift'))
+    sil = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-silgen', '-o', '-', str(root/'tools/swift_appkit_probe.swift'))
+    ir = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayProbe', '-emit-ir', '-o', '-', str(root/'tools/swift_appkit_probe.swift'))
     force_lines = [line.strip() for line in ir.splitlines() if '_swift_FORCE_LOAD_$_swiftAppKit' in line]
     (out/'swift-force-load-ir.json').write_text(json.dumps({'references': force_lines, 'scope': 'Own compiler probe LLVM references, no Apple implementation'}, indent=2)+'\n')
     anchor_ir = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayForce',
-                    '-module-link-name', 'swiftAppKit', '-Xfrontend', '-autolink-force-load', '-emit-ir',
+                    '-module-link-name', 'swiftAppKit', '-Xfrontend', '-autolink-force-load', '-emit-ir', '-o', '-',
                     str(root/'experiments/swift-appkit/ForceLoad.swift'))
     anchor = re.search(r'define[^\n]*void @"?_swift_FORCE_LOAD_\$_swiftAppKit"?\(\)[^{]*\{(.*?)^}', anchor_ir, re.S | re.M)
+    (out/'swift-explicit-marker-ir.json').write_text(json.dumps({'lines': [line for line in anchor_ir.splitlines() if 'FORCE_LOAD' in line], 'source':'own empty Swift module compiler output'},indent=2)+'\n')
     if not anchor or 'ret void' not in anchor[0]:
+        print('EXPLICIT_MARKER_LINES',json.dumps([line for line in anchor_ir.splitlines() if 'FORCE_LOAD' in line]),flush=True)
         raise RuntimeError('Compiler did not emit the expected void force-load function')
     inventory = load_json(root/'docs/evidence/excel-16.55.json.gz')
     closure = load_json(root/'docs/evidence/dependencies-16.55.json.gz')['startup_closure']

@@ -1,0 +1,31 @@
+name: Validate typed Swift overlay across Mac and iOS ABI
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/swift-appkit/**'
+      - 'tools/test_swift_overlay.py'
+      - 'tools/test_swift_overlay_cross_abi.py'
+      - 'tools/swift_overlay_client.swift'
+      - '.github/workflows/swift-overlay-cross-abi.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture native ABI and validate native replacement
+        run: |
+          python3 tools/capture_swift_appkit.py
+          python3 tools/test_swift_overlay.py
+      - name: Run own Mac-compiled and iOS-compiled callers against Simulator overlay
+        run: python3 tools/test_swift_overlay_cross_abi.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: swift-overlay-cross-abi
+          path: reports/
+          retention-days: 7

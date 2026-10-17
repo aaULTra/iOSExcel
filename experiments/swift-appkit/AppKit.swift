@@ -11,6 +11,6 @@ public extension IndexPath {
 public extension CGRect {
     func fill(using operation: NSCompositingOperation) {
         // Drawing semantics and current-context ownership are not measured yet.
-        ExcelSwiftOverlayUnavailable("CGRect.fill(using:) drawing not implemented")
+        ExcelSwiftOverlayDrawingUnavailable(self, operation.rawValue)
     }
 }

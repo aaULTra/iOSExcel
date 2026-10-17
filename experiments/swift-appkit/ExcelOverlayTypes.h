@@ -32,3 +32,4 @@ typedef NS_ENUM(NSUInteger, NSCompositingOperation) {
     NSCompositingOperationLuminosity = 28,
 };
 void ExcelSwiftOverlayUnavailable(const char *operation) __attribute__((noreturn));
+void ExcelSwiftOverlayDrawingUnavailable(CGRect rect, NSUInteger operation) __attribute__((noreturn));

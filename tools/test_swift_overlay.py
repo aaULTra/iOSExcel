@@ -9,19 +9,16 @@ def run(*args, **kwargs):
     return subprocess.check_output(args, text=True, timeout=180, **kwargs)
 
 
-def main():
-    root = Path(__file__).resolve().parents[1]
-    build = root/'build/swift-overlay-prototype'
+def build_overlay(root, build, platform):
     build.mkdir(parents=True, exist_ok=True)
-    reports = root/'reports'
-    reports.mkdir(exist_ok=True)
     source = root/'experiments/swift-appkit'
-    sdk = run('xcrun', '--sdk', 'macosx', '--show-sdk-path').strip()
-    target = ['-sdk', sdk, '-target', 'arm64-apple-macos11.0']
+    sdk_name, triple = {'macos':('macosx','arm64-apple-macos11.0'), 'simulator':('iphonesimulator','arm64-apple-ios18.0-simulator'), 'ios':('iphoneos','arm64-apple-ios18.0')}[platform]
+    sdk = run('xcrun', '--sdk', sdk_name, '--show-sdk-path').strip()
+    target = ['-sdk', sdk, '-target', triple]
     objects = []
     for index, path in enumerate([source/'OverlayRuntime.m', root/'shim/ExcelShim.m']):
         obj = build/f'runtime-{index}.o'
-        run('xcrun', 'clang', '-target', 'arm64-apple-macos11.0', '-isysroot', sdk,
+        run('xcrun', 'clang', '-target', triple, '-isysroot', sdk,
             '-fobjc-arc', '-Wall', '-Wextra', '-Werror', '-I'+str(root/'shim'),
             '-I'+str(source), '-c', str(path), '-o', str(obj))
         objects.append(str(obj))
@@ -37,12 +34,25 @@ def main():
         '-Xlinker', '-install_name', '-Xlinker', '@rpath/libExcelSwiftAppKit.dylib')
     export_types = {line.split()[-1]:line.split()[-2] for line in run('nm', '-gU', str(library)).splitlines() if len(line.split()) >= 2}
     exports = set(export_types)
-    baseline = json.loads((reports/'swift-appkit-contracts.json').read_text())
+    baseline = json.loads((root/'reports/swift-appkit-contracts.json').read_text())
     required = [entry['symbol'] for entry in baseline['symbols']]
     if set(required)-exports:
         raise RuntimeError('Missing exact Swift exports: '+repr(sorted(set(required)-exports)))
     if any(export_types[name].upper() != 'T' for name in required):
         raise RuntimeError('Required overlay symbols must be functions, not data')
+    return library, required
+
+
+def main():
+    root = Path(__file__).resolve().parents[1]
+    build = root/'build/swift-overlay-prototype'
+    build.mkdir(parents=True, exist_ok=True)
+    reports = root/'reports'
+    reports.mkdir(exist_ok=True)
+    source = root/'experiments/swift-appkit'
+    sdk = run('xcrun', '--sdk', 'macosx', '--show-sdk-path').strip()
+    target = ['-sdk', sdk, '-target', 'arm64-apple-macos11.0']
+    library, required = build_overlay(root, build, 'macos')
     executable = build/'client'
     run('xcrun', 'swiftc', *target, '-I', str(build), '-I', str(source), '-L', str(build),
         '-lExcelSwiftAppKit', '-Xlinker', '-rpath', '-Xlinker', str(build),

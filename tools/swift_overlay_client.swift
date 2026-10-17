@@ -1,6 +1,14 @@
 // Own fixture compiled against the replacement module, not Microsoft code.
 import Foundation
 import AppKit
+if CommandLine.arguments.contains("--draw") {
+    CGRect(x:1.25,y:2.5,width:20,height:30).fill(using:.sourceOver)
+    fatalError("Unsupported drawing unexpectedly returned")
+}
+if CommandLine.arguments.contains("--invalid") {
+    _ = IndexPath(indexes:[]).item
+    fatalError("Unsupported empty IndexPath unexpectedly returned")
+}
 let pairs = [[0,0], [2,7], [11,23], [1000,999999], [0,Int.max]]
 let samples: [[String: Any]] = pairs.map { ["indexes": $0, "item": IndexPath(indexes:$0).item] }
 let report: [String:Any] = ["index_path_samples":samples,
