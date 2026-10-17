@@ -204,3 +204,9 @@ Mac interface declarations, hierarchy and native method encodings without
 creating automation targets or sending Apple events. The shared SDK capture
 tool now understands ObjCInterfaceDecl, rather than incorrectly treating this
 class symbol as a C identifier. No ScriptingBridge compatibility is implemented yet.
+
+## ScriptingBridge dependency cleared; SecurityInterface is next
+
+Run 39021819752, source 50292f932906898b30344c0b501f3ba5d2e98a77, maps all 55 original Microsoft images and six owned images. It stops with missing SecurityInterface.framework, referenced by osfstorage2. Exit 134; entry/init/activation remain false. Exact imports are SFCertificateTrustPanel and SFChooseIdentityPanel. They cannot be covered by the zero-import optional-load policy. Next step is capture of actual Mac SDK contracts, with no fabricated trust, identity or authorization result.
+
+Evidence: real-loader-after-scripting.json, real-loader-securityinterface.stderr.log and real-loader-scripting-transform.json.gz in docs/evidence. Native build 39021819832 verified all five facade identities and 77 path changes across the actual closure, preserving code/link-edit before signing. UIKit run 39021819754 passed explicit ScriptingBridge namespace/hierarchy/nil-factory checks alongside screen/view/entry tests. These synthetic UIKit checks contain no Microsoft execution.

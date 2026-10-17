@@ -3,7 +3,7 @@
   "platform": "iOS Simulator (7), not an iPadOS device build",
   "device": "iPad Pro 11-inch (M4)",
   "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
-  "source_sha": "3610f8e3bf29dadf8f1dcfb2ad13c5cfba813cd8",
+  "source_sha": "50292f932906898b30344c0b501f3ba5d2e98a77",
   "microsoft_entrypoint_confirmed": false,
   "excel_initialised": false,
   "activation_verified": false,
@@ -1102,12 +1102,12 @@
   },
   "returncode": 134,
   "timed_out": false,
-  "elapsed_seconds": 45.0,
-  "mapped_microsoft_image_count": 39,
-  "mapped_compatibility_image_count": 3,
+  "elapsed_seconds": 2.47,
+  "mapped_microsoft_image_count": 55,
+  "mapped_compatibility_image_count": 6,
   "first_failure": {
     "kind": "library_not_loaded",
-    "name": "/System/Library/Frameworks/ScriptingBridge.framework/Versions/A/ScriptingBridge"
+    "name": "/System/Library/Frameworks/SecurityInterface.framework/Versions/A/SecurityInterface"
   },
   "dyld_failure_present": true,
   "status": "Loader failure captured"

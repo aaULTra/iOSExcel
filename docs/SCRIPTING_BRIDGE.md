@@ -16,7 +16,7 @@ operation. No event target, running-app identity, permission, authentication res
 or successful Apple event is fabricated. Unknown selectors log and raise a named
 exception. This is explicitly not an Apple-event engine or full scripting support.
 It is now integrated behind a fifth distinct facade; the actual Excel loader result
-is pending.
+in run 39021819752 passed this dependency and stopped at SecurityInterface. All 55 Microsoft images mapped, but Microsoft entry was not reached.
 
 The native validation compares the exact five method encodings and both superclass
 relationships against the real Mac classes in separate processes, and checks that
@@ -34,5 +34,4 @@ applicationWithBundleIdentifier: is @24@0:8@16;
 applicationWithProcessIdentifier: is @20@0:8i16 (a 32-bit PID).
 Native captures: docs/evidence/scripting-bridge-values.json and
 scripting-bridge-declarations.json. Actual Office callers may require different
-behavior; only the next real runtime result can establish whether startup can
-continue without automation. Workbook and activation milestones remain unproven.
+behavior; the loader result establishes dependency resolution only. Production UIKit tests in 39021819754 passed class-identity, hierarchy and all five nil-return checks; no automation target was created. Workbook and activation milestones remain unproven.

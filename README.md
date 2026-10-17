@@ -30,7 +30,7 @@ are included in this repository/archive.
 | M0 — extracted, native arm64 confirmed | Complete for all three compared versions |
 | M1 — dependencies | Static inventories, load graphs and first iPhoneOS SDK declaration audit complete; dynamic/runtime contracts pending |
 | M2 — retarget main | Platform metadata changed successfully on real 16.55 main; four bytes differ in the arm64 slice; 41,983,228-byte __text unchanged |
-| Relevant embedded binaries | All 55 startup images hash-verified; 75 facade path changes verified in device-target binary preparation; Simulator system path normalization verified separately; code/link-edit bytes unchanged before re-signing; not an app |
+| Relevant embedded binaries | All 55 startup images hash-verified; 77 facade path changes verified in device-target binary preparation; Simulator system path normalization verified separately; code/link-edit bytes unchanged before re-signing; not an app |
 | M3–M6 — loader/shim/UIKit/Excel initialization | NOT reached for Excel; production UIKit bridge tested with synthetic desktop classes/nib on iPad Simulator; no physical-device run |
 | M7–M15 — desktop UI/workbooks | NOT implemented or tested |
 
@@ -39,7 +39,7 @@ are included in this repository/archive.
 - `docs/COMPATIBILITY.md`: version comparison, dependency map, blockers and feasibility.
 - `docs/RESEARCH.md`: official sources, current CyPort findings and activation evidence.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
-- `docs/KERBEROS.md`: genuine provider/OID ABI tests and forwarding that passed in the real loader; current failure is ScriptingBridge after the NetFS/Quartz experiments.
+- `docs/KERBEROS.md`: genuine provider/OID ABI tests and forwarding that passed in the real loader; provider forwarding; the current loader failure is SecurityInterface.
 - `docs/OPTIONAL_FRAMEWORKS.md`: guarded single-framework diagnostics experiment; no blanket dependency removal.
 - `docs/APPLICATION_SERVICES.md`: typed partial C compatibility, verified against native Apple rectangle behavior.
 - `docs/LOADER.md`: distinct forwarding dylibs, native two-level binding proof and exact limits.
@@ -63,8 +63,7 @@ The current priority is an internal **real Excel executable loader attempt**, us
 the original Microsoft startup closure on iPad Simulator. This is separate from
 the synthetic UI tests below. See docs/REAL_LOADER.md for the exact method and
 limits. Verified framework path repairs and the typed ApplicationServices facade advanced
-the actual loader past Kerberos.framework to ScriptingBridge.framework after genuine provider/OID validation and guarded zero-use ExceptionHandling/NetFS/Quartz experiments. The real main, 38 Microsoft dylibs
-and three compatibility facades mapped; its entry point was not reached; no successful Excel initialization is established.
+the actual loader past ScriptingBridge.framework to SecurityInterface.framework after genuine provider/OID validation and guarded zero-use ExceptionHandling/NetFS/Quartz experiments. All 55 Microsoft images and six owned compatibility images mapped in run 39021819752. Microsoft entry was not reached. The two SecurityInterface class imports are being inspected before any implementation; no trust or identity decision is fabricated.
 
 Source: https://github.com/aaULTra/iOSExcel
 
