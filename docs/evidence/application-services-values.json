@@ -1,0 +1,33 @@
+{
+  "scope" : "Actual arm64 Mac SDK types and public constant values; no Office or clipboard operations",
+  "constants" : {
+    "kPMNotImplemented" : -30873,
+    "kPasteboardClientIsOwner" : 2,
+    "kPasteboardModified" : 1,
+    "paramErr" : -50,
+    "unimpErr" : -4
+  },
+  "types" : {
+    "PMResolution" : "{PMResolution=dd}",
+    "HIShapeRef" : "^{__HIShape=}",
+    "PMObject" : "^v",
+    "PasteboardSyncFlags" : "I",
+    "PMOrientation" : "S",
+    "PasteboardFlavorFlags" : "I",
+    "PMRect" : "{PMRect=dddd}",
+    "PasteboardItemID" : "^v",
+    "ItemCount" : "Q",
+    "Boolean" : "C",
+    "OSStatus" : "i",
+    "PMPrinter" : "^{OpaquePMPrinter=}",
+    "PMDestinationType" : "S",
+    "PMPageFormat" : "^{OpaquePMPageFormat=}",
+    "PMPrintSession" : "^{OpaquePMPrintSession=}",
+    "PMPrintSettings" : "^{OpaquePMPrintSettings=}",
+    "UAZoomChangeFocusType" : "I"
+  },
+  "names" : {
+    "kPasteboardClipboard" : "com.apple.pasteboard.clipboard",
+    "kPasteboardFind" : "com.apple.pasteboard.find"
+  }
+}

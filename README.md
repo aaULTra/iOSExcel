@@ -39,6 +39,7 @@ are included in this repository/archive.
 - `docs/COMPATIBILITY.md`: version comparison, dependency map, blockers and feasibility.
 - `docs/RESEARCH.md`: official sources, current CyPort findings and activation evidence.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
+- `docs/APPLICATION_SERVICES.md`: typed response to the first real missing library; new validation pending.
 - `docs/LOADER.md`: distinct forwarding dylibs, native two-level binding proof and exact limits.
 - `docs/SCREEN.md`: partial scene-backed NSScreen geometry and its validation boundary.
 - `docs/VIEW.md`: typed NSView hierarchy, drawing bridge, pixel tests and explicit limits.

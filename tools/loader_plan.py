@@ -16,6 +16,7 @@ from macho import arm64, commands, DYLIBS, unpack, string, version
 REDIRECTS = {
     '/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit': '@rpath/ExcelAppKit.dylib',
     '/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa': '@rpath/ExcelCocoa.dylib',
+    '/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices': '@rpath/ExcelApplicationServices.dylib',
 }
 
 
@@ -89,7 +90,7 @@ def plan(root, inventory, graph, minos='18.0', sdk='18.0', platform=2):
                 requirements[lib] = max(requirements[lib], unpack('<I', before, offset+20)[0])
         if paths != [edge['path'] for edge in graph['graph'][name]]:
             raise ValueError('Dependency graph differs from binary: ' + name)
-        if set(REDIRECTS).issubset(paths):
+        if all(old in paths for old in ('/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit', '/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa')):
             both.append(name)
         after, events = retarget(raw, minos, sdk, REDIRECTS, platform=platform)
         before_hashes, after_hashes = payload_hashes(before), payload_hashes(after)

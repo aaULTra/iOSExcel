@@ -56,3 +56,12 @@ app re-signing before a device loader test. No app bundle or IPA is produced by 
 Sources for the forwarding approach and two-level/version semantics:
 https://github.com/apple-oss-distributions/ld64/blob/main/doc/man/man1/ld-classic.1
 https://github.com/apple-oss-distributions/ruby/blob/main/reexport.sh
+
+## ApplicationServices extension pending validation
+
+The actual loader subsequently stopped on ApplicationServices. The redirection map
+now has a third distinct facade, ExcelApplicationServices.dylib, backed by the
+measured typed partial C layer. This adds six framework path rewrites to the
+original 68 AppKit/Cocoa changes. The historical native fixture remains a proof of
+the original two-facade topology. New real-image facade version/signature checks
+and an actual loader retry are pending; see APPLICATION_SERVICES.md.
