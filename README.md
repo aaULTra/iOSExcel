@@ -40,6 +40,7 @@ are included in this repository/archive.
 - `docs/RESEARCH.md`: official sources, current CyPort findings and activation evidence.
 - `docs/ARCHITECTURE.md`: conditional runtime and lifecycle design.
 - `docs/KERBEROS.md`: genuine provider/OID ABI tests and forwarding that passed in the real loader; provider forwarding; the current loader failure is the AppKit Swift overlay.
+- `docs/SWIFT_OVERLAY.md`: current loader blocker, exact Swift signatures and native value/layout evidence.
 - `docs/SERVICE_MANAGEMENT.md`: native contract capture and explicit unavailable-enumeration error.
 - `docs/SECURITY_INTERFACE.md`: measured certificate/identity class hierarchy and allocation-rejecting diagnostic guards.
 - `docs/SCRIPTING_BRIDGE.md`: measured class ABI and explicitly unavailable automation.
