@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'experiments/security/**'
+      - 'shim/ExcelSecurityInterface.*'
       - 'tools/security_interface_values.m'
       - '.github/workflows/security-contracts.yml'
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
           /tmp/excelport-security-native reports/security-interface-native.json
       - name: Verify guard hierarchy and rejected allocation without invoking security APIs
         run: |
-          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-unused-parameter -Ishim -Iexperiments/security -DEXCELSHIM_SECURITY_CONTRACT=1 tools/security_interface_values.m experiments/security/ExcelSecurityInterface.m shim/ExcelShim.m shim/ExcelAppKit.m shim/ExcelNibArchive.m -framework Foundation -o /tmp/excelport-security-guards
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-unused-parameter -Ishim -DEXCELSHIM_SECURITY_CONTRACT=1 tools/security_interface_values.m shim/ExcelSecurityInterface.m shim/ExcelShim.m shim/ExcelAppKit.m shim/ExcelNibArchive.m -framework Foundation -o /tmp/excelport-security-guards
           /tmp/excelport-security-guards reports/security-interface-guards.json
           python3 - <<'PYTHON'
           import json

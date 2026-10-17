@@ -1,0 +1,72 @@
+{
+  "classes": [
+    {
+      "name": "NSWindow",
+      "class_methods": [
+        {
+          "encoding": "@24@0:8^{_NSZone=}16",
+          "selector": "allocWithZone:"
+        }
+      ],
+      "superclass": "NSResponder"
+    },
+    {
+      "name": "NSPanel",
+      "class_methods": [
+        {
+          "encoding": "@24@0:8^{_NSZone=}16",
+          "selector": "allocWithZone:"
+        }
+      ],
+      "superclass": "NSWindow"
+    },
+    {
+      "name": "SFCertificatePanel",
+      "class_methods": [
+        {
+          "encoding": "@16@0:8",
+          "selector": "sharedCertificatePanel"
+        },
+        {
+          "encoding": "@24@0:8^{_NSZone=}16",
+          "selector": "allocWithZone:"
+        }
+      ],
+      "superclass": "NSPanel"
+    },
+    {
+      "name": "SFCertificateTrustPanel",
+      "class_methods": [
+        {
+          "encoding": "@16@0:8",
+          "selector": "sharedCertificatePanel"
+        },
+        {
+          "encoding": "@16@0:8",
+          "selector": "sharedCertificateTrustPanel"
+        },
+        {
+          "encoding": "@24@0:8^{_NSZone=}16",
+          "selector": "allocWithZone:"
+        }
+      ],
+      "superclass": "SFCertificatePanel"
+    },
+    {
+      "name": "SFChooseIdentityPanel",
+      "class_methods": [
+        {
+          "encoding": "@16@0:8",
+          "selector": "sharedChooseIdentityPanel"
+        },
+        {
+          "encoding": "@24@0:8^{_NSZone=}16",
+          "selector": "allocWithZone:"
+        }
+      ],
+      "superclass": "NSPanel"
+    }
+  ],
+  "excel_executed": false,
+  "scope": "Class hierarchy/method ABI only. No trust evaluation, trust changes, identity, authentication or Microsoft operation performed."
+}

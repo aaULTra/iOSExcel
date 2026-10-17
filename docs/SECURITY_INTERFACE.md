@@ -20,7 +20,7 @@ UI. A return value cannot safely be invented to replace a user's decision:
 - https://developer.apple.com/documentation/securityinterface/sfchooseidentitypanel/runmodal(foridentities:message:)
 - https://developer.apple.com/documentation/securityinterface/sfcertificatepanel
 
-The experiment in experiments/security preserves the expected named class chain
+The guard in shim/ExcelSecurityInterface.m preserves the expected named class chain
 (NSWindow -> NSResponder, NSPanel -> NSWindow, SFCertificatePanel -> NSPanel,
 SFCertificateTrustPanel -> SFCertificatePanel, SFChooseIdentityPanel -> NSPanel).
 It is a loader diagnostic guard, not a window implementation. All allocation
@@ -34,7 +34,7 @@ turning into a successful security decision.
 The native workflow first reads Apple class metadata without instantiating panels,
 then runs the guard in a separate Foundation-only process. It compares five direct
 superclasses, three factory method encodings and allocation encodings; it checks
-15 ordinary allocation paths and three factories stop. The first native metadata build (39022357419) failed because its baseline link omitted AppKit for direct NSWindow/NSPanel references. The baseline now explicitly links AppKit; the guard process does not. Runtime results are pending. No redirection is integrated until this evidence passes. No claim of
+15 ordinary allocation paths and three factories stop. The first native metadata build (39022357419) omitted AppKit for direct NSWindow/NSPanel references; this was corrected. The next build exposed existing unused parameters in the Mac-inactive UIKit entry, so the guard test now uses the existing native contract flags. Native run 39022498941 passed the exact hierarchy/ABI comparison and all rejection checks. The baseline links Apple AppKit/SecurityInterface; the guard process links neither. A sixth distinct forwarding facade is now integrated for the next real loader test; its outcome and UIKit provenance checks are pending. No claim of
 Excel initialization, UI, workbook use or legitimate iPadOS activation follows.
 
 The eventual real implementation must use supported platform trust/identity UI and

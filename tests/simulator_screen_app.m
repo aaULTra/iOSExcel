@@ -5,9 +5,16 @@
 #import "ExcelAppKit.h"
 #import "ExcelScreen.h"
 #import "ExcelScriptingBridge.h"
+#import "ExcelSecurityInterface.h"
+#import <objc/runtime.h>
 #import "simulator_view_contracts.h"
 static BOOL WillLaunch,DidLaunch,Started;
 static void Check(BOOL condition,NSString *reason) { if (!condition) @throw [NSException exceptionWithName:@"ScreenSimulatorFailure" reason:reason userInfo:nil]; }
+static BOOL SecurityGuardStops(void (^operation)(void)) {
+    @try { operation(); }
+    @catch (NSException *exception) { return [exception.name isEqualToString:@"ExcelShimUnimplemented"]; }
+    return NO;
+}
 static NSArray *EXScreenRectValues(CGRect rect) { return @[@(rect.origin.x),@(rect.origin.y),@(rect.size.width),@(rect.size.height)]; }
 static CGRect ExpectedVisible(UIWindow *window) {
     UIView *view=window.rootViewController.view;
@@ -36,6 +43,25 @@ static void RunTests(void) {
               ![SBApplication applicationWithProcessIdentifier:getpid()] &&
               ![[SBApplication alloc] init] && ![[SBObject alloc] init],
               @"Unavailable automation must never fabricate a target, including for this real process");
+        for (Class cls in @[[NSWindow class], [NSPanel class], [SFCertificatePanel class],
+                             [SFCertificateTrustPanel class], [SFChooseIdentityPanel class],
+                             [SBApplication class], [SBObject class]]) {
+            const char *image=class_getImageName(cls);
+            Check(NSClassFromString(NSStringFromClass(cls))==cls && image &&
+                  [[@(image) stringByResolvingSymlinksInPath] isEqualToString:[NSBundle.mainBundle.executablePath stringByResolvingSymlinksInPath]],
+                  @"Compatibility classes must come from this test executable, not a colliding Apple class");
+        }
+        for (Class cls in @[[NSWindow class], [NSPanel class], [SFCertificatePanel class],
+                             [SFCertificateTrustPanel class], [SFChooseIdentityPanel class]]) {
+            Check(SecurityGuardStops(^{ (void)[cls alloc]; }) &&
+                  SecurityGuardStops(^{ (void)[cls new]; }) &&
+                  SecurityGuardStops(^{ (void)[cls allocWithZone:NULL]; }),
+                  @"All guarded window/security classes must reject allocation in the real UIKit process");
+        }
+        Check(SecurityGuardStops(^{ (void)[SFCertificatePanel sharedCertificatePanel]; }) &&
+              SecurityGuardStops(^{ (void)[SFCertificateTrustPanel sharedCertificateTrustPanel]; }) &&
+              SecurityGuardStops(^{ (void)[SFChooseIdentityPanel sharedChooseIdentityPanel]; }),
+              @"Unavailable security dialogs must raise, not return a trust decision or identity");
         UIWindow *window=nil;
         for (UIScene *scene in UIApplication.sharedApplication.connectedScenes)
             if ([scene isKindOfClass:UIWindowScene.class] && ((UIWindowScene *)scene).keyWindow) { window=((UIWindowScene *)scene).keyWindow; break; }
@@ -64,7 +90,7 @@ static void RunTests(void) {
         window.bounds=originalBounds; window.rootViewController.additionalSafeAreaInsets=UIEdgeInsetsZero;
         [window setNeedsLayout]; [window layoutIfNeeded];
         NSDictionary *viewContracts=EXRunUIKitViewContracts(window);
-        Finish(@{@"view_contracts":viewContracts,@"passed":@YES,@"scope":@"iPad Simulator, real UIKit + production entry bridge, synthetic desktop classes/nib; NO Excel loaded",@"system_version":UIDevice.currentDevice.systemVersion,@"initial_workspace":EXScreenRectValues(initial),@"inset_visible_frame":EXScreenRectValues(insetVisible),@"resized_workspace":EXScreenRectValues(resized),@"scene_scale":@(scale),@"checks":@[@"UIKit lifecycle and synthetic desktop startup",@"key scene window",@"scene-backed scale",@"safe areas",@"backing round-trip",@"live UIKit bounds change",@"stable screen identity"],@"excel_executed":@NO,@"physical_device_test":@NO},0);
+        Finish(@{@"view_contracts":viewContracts,@"passed":@YES,@"scope":@"iPad Simulator, real UIKit + production entry bridge, synthetic desktop classes/nib; NO Excel loaded",@"system_version":UIDevice.currentDevice.systemVersion,@"initial_workspace":EXScreenRectValues(initial),@"inset_visible_frame":EXScreenRectValues(insetVisible),@"resized_workspace":EXScreenRectValues(resized),@"scene_scale":@(scale),@"checks":@[@"UIKit lifecycle and synthetic desktop startup",@"key scene window",@"compatibility class image provenance",@"security dialog factories and allocation rejected",@"scene-backed scale",@"safe areas",@"backing round-trip",@"live UIKit bounds change",@"stable screen identity"],@"excel_executed":@NO,@"physical_device_test":@NO},0);
     } @catch(NSException *exception) { Finish(@{@"passed":@NO,@"exception":exception.name,@"reason":exception.reason?:@"Unknown"},1); }
 }
 @interface EXTestApplication : NSApplication @end
