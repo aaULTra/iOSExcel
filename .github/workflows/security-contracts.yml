@@ -1,0 +1,40 @@
+name: Validate unavailable security dialog guards
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/security/**'
+      - 'tools/security_interface_values.m'
+      - '.github/workflows/security-contracts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: macos-15
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture native hierarchy and factory ABI without opening security dialogs
+        run: |
+          mkdir -p reports
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Wno-deprecated-declarations tools/security_interface_values.m -framework Foundation -framework SecurityInterface -o /tmp/excelport-security-native
+          /tmp/excelport-security-native reports/security-interface-native.json
+      - name: Verify guard hierarchy and rejected allocation without invoking security APIs
+        run: |
+          xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror -Ishim -Iexperiments/security -DEXCELSHIM_SECURITY_CONTRACT=1 tools/security_interface_values.m experiments/security/ExcelSecurityInterface.m shim/ExcelShim.m shim/ExcelAppKit.m shim/ExcelNibArchive.m -framework Foundation -o /tmp/excelport-security-guards
+          /tmp/excelport-security-guards reports/security-interface-guards.json
+          python3 - <<'PYTHON'
+          import json
+          from pathlib import Path
+          native=json.loads(Path('reports/security-interface-native.json').read_text())['classes']
+          guards=json.loads(Path('reports/security-interface-guards.json').read_text())['classes']
+          assert native==guards,(native,guards)
+          Path('reports/security-interface-validation.json').write_text(json.dumps({'hierarchies_checked':5,'factories_checked':3,'allocation_paths_rejected':15,'excel_executed':False,'security_decisions_fabricated':False},indent=2)+'\n')
+          PYTHON
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: security-interface-contracts
+          path: reports/
+          retention-days: 7

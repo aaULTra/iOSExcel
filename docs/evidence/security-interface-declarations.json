@@ -1,0 +1,350 @@
+{
+  "scope": "Actual Mac SDK interface declarations; no runtime behavior guarantee",
+  "first_failure": {
+    "kind": "library_not_loaded",
+    "name": "/System/Library/Frameworks/SecurityInterface.framework/Versions/A/SecurityInterface"
+  },
+  "declarations": [
+    {
+      "name": "SFCertificateTrustPanel",
+      "kind": "ObjCInterfaceDecl",
+      "type": null,
+      "location": {
+        "offset": 1814,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/SecurityInterface.framework/Headers/SFCertificateTrustPanel.h",
+        "line": 48,
+        "col": 12,
+        "tokLen": 23,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/SecurityInterface.framework/Headers/SecurityInterface.h"
+        }
+      },
+      "parameters": [],
+      "superclass": "SFCertificatePanel",
+      "protocols": [],
+      "methods": [
+        {
+          "selector": "sharedCertificateTrustPanel",
+          "instance": false,
+          "return_type": {
+            "qualType": "SFCertificateTrustPanel *"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "runModalForTrust:message:",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "long",
+            "qualType": "NSInteger",
+            "typeAliasDeclId": "0x1479630f0"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "struct __SecTrust *",
+              "qualType": "SecTrustRef",
+              "typeAliasDeclId": "0x148037928"
+            },
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "beginSheetForWindow:modalDelegate:didEndSelector:contextInfo:trust:message:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSWindow *"
+            },
+            {
+              "qualType": "id",
+              "typeAliasDeclId": "0x14785e000"
+            },
+            {
+              "desugaredQualType": "SEL *",
+              "qualType": "SEL",
+              "typeAliasDeclId": "0x14785df18"
+            },
+            {
+              "qualType": "void *"
+            },
+            {
+              "desugaredQualType": "struct __SecTrust *",
+              "qualType": "SecTrustRef",
+              "typeAliasDeclId": "0x148037928"
+            },
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "setInformativeText:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "informativeText",
+          "instance": true,
+          "return_type": {
+            "qualType": "NSString *"
+          },
+          "variadic": false,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "SFChooseIdentityPanel",
+      "kind": "ObjCInterfaceDecl",
+      "type": null,
+      "location": {
+        "offset": 1420,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/SecurityInterface.framework/Headers/SFChooseIdentityPanel.h",
+        "line": 44,
+        "col": 12,
+        "tokLen": 21,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/SecurityInterface.framework/Headers/SecurityInterface.h"
+        }
+      },
+      "parameters": [],
+      "superclass": "NSPanel",
+      "protocols": [],
+      "methods": [
+        {
+          "selector": "sharedChooseIdentityPanel",
+          "instance": false,
+          "return_type": {
+            "qualType": "SFChooseIdentityPanel *"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "runModalForIdentities:message:",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "long",
+            "qualType": "NSInteger",
+            "typeAliasDeclId": "0x1308ddef0"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSArray *"
+            },
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "beginSheetForWindow:modalDelegate:didEndSelector:contextInfo:identities:message:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSWindow *"
+            },
+            {
+              "qualType": "id",
+              "typeAliasDeclId": "0x14091e000"
+            },
+            {
+              "desugaredQualType": "SEL *",
+              "qualType": "SEL",
+              "typeAliasDeclId": "0x14091df18"
+            },
+            {
+              "qualType": "void *"
+            },
+            {
+              "qualType": "NSArray *"
+            },
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "identity",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "struct __SecIdentity *",
+            "qualType": "SecIdentityRef",
+            "typeAliasDeclId": "0x12082d908"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setPolicies:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "id",
+              "typeAliasDeclId": "0x14091e000"
+            }
+          ]
+        },
+        {
+          "selector": "policies",
+          "instance": true,
+          "return_type": {
+            "qualType": "NSArray *"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setDefaultButtonTitle:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "setAlternateButtonTitle:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "setShowsHelp:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "bool",
+              "qualType": "BOOL",
+              "typeAliasDeclId": "0x1308c9708"
+            }
+          ]
+        },
+        {
+          "selector": "showsHelp",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "bool",
+            "qualType": "BOOL",
+            "typeAliasDeclId": "0x1308c9708"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setHelpAnchor:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "helpAnchor",
+          "instance": true,
+          "return_type": {
+            "qualType": "NSString *"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setInformativeText:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "informativeText",
+          "instance": true,
+          "return_type": {
+            "qualType": "NSString *"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setDomain:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "NSString *"
+            }
+          ]
+        },
+        {
+          "selector": "domain",
+          "instance": true,
+          "return_type": {
+            "qualType": "NSString *"
+          },
+          "variadic": false,
+          "parameters": []
+        }
+      ]
+    }
+  ],
+  "unresolved": [],
+  "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+  "required_names": [
+    "_OBJC_CLASS_$_SFCertificateTrustPanel",
+    "_OBJC_CLASS_$_SFChooseIdentityPanel"
+  ],
+  "status": "Interface capture complete; unresolved declarations remain explicit"
+}
