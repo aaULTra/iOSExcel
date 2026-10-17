@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'tools/capture_loader_contracts.py'
+      - 'tools/audit_kerberos.py'
       - 'tools/application_services_values.m'
       - 'docs/evidence/real-loader-latest.json'
       - '.github/workflows/contracts.yml'
@@ -13,7 +14,7 @@ permissions:
 jobs:
   contracts:
     runs-on: macos-15
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Read actual Apple SDK declarations without executing Office
@@ -22,6 +23,8 @@ jobs:
         run: |
           xcrun --sdk macosx clang -target arm64-apple-macos11.0 -fobjc-arc -Wall -Wextra -Werror tools/application_services_values.m -framework Foundation -framework ApplicationServices -o /tmp/excelport-services-values
           /tmp/excelport-services-values reports/application-services-values.json
+      - name: Audit public Kerberos and GSS interfaces and Simulator exports without invoking authentication
+        run: python3 tools/audit_kerberos.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

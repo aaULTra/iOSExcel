@@ -62,7 +62,7 @@ The current priority is an internal **real Excel executable loader attempt**, us
 the original Microsoft startup closure on iPad Simulator. This is separate from
 the synthetic UI tests below. See docs/REAL_LOADER.md for the exact method and
 limits. Verified framework path repairs and the typed ApplicationServices facade advanced
-the actual loader to ExceptionHandling.framework. The real main, 38 Microsoft dylibs
+the actual loader to Kerberos.framework after a guarded optional ExceptionHandling experiment. The real main, 38 Microsoft dylibs
 and two compatibility facades mapped; its entry point was not reached; no successful Excel initialization is established.
 
 Source: https://github.com/aaULTra/iOSExcel

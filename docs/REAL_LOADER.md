@@ -140,3 +140,23 @@ monitoring via NSExceptionHandler. No exception framework has been removed or
 replaced on this evidence yet.
 https://developer.apple.com/documentation/exceptionhandling/
 https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/dlopen_preflight.3.html
+
+## Guarded optional diagnostics experiment advanced to Kerberos
+
+Run 38989112909 (c54adbd283588a19ac54c222155812c657894a8d) passed the
+checked undefined-symbol and classic-bind guards for the unused ExceptionHandling
+load. Only its load command kind was weakened; binding indices, executable text
+and link-edit data were preserved before signing. The actual loader advanced to
+`/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos` and aborted
+(134) before the Microsoft entry point. 39 Microsoft images and two owned
+facades mapped. A green workflow still means failure evidence was captured.
+
+Unlike ExceptionHandling, Kerberos has five measured imports:
+`GSS_C_NT_USER_NAME`, `krb5_init_context`, `krb5_free_context`,
+`krb5_get_host_realm`, `krb5_free_host_realm`. It cannot pass the optional-load
+guard and has not been removed, weakened, redirected or stubbed.
+`tools/audit_kerberos.py` compares actual public SDK declarations and probes
+these names against SDK-backed GSS in an isolated iPad Simulator process.
+It records provider image/platform provenance and never invokes those APIs,
+passes credentials or runs Excel. Missing names and macro aliases remain
+explicit; finding exports alone would not prove ABI or behavior compatibility.

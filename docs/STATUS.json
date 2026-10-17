@@ -34,7 +34,8 @@
   "view_compatibility": "Partial NSResponder-based NSView model plus UIView projection: native hierarchy/geometry/lifetime tests, 32 exact ABI contracts and synthetic UIKit drawing/pixel/hierarchy tests passed. No NSWindow or Excel execution.",
   "view_native_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725023",
   "view_simulator_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38982725046",
-  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38988363346",
-  "real_loader_investigation": "Actual main plus 38 vendor dylibs and two owned facades mapped; first failure ExceptionHandling. Canonical preflight failed for all 13 SDK-absent original framework counterparts; all 35 loaded SDK-backed counterpart images record Simulator platform 7. Guarded optional ExceptionHandling experiment prepared, not yet run.",
-  "application_services": "Native Apple comparison passed for 16 rectangles and 16 intersections; 17 C ABI encodings matched; all 40 definitions compiled against Mac declarations and for iOS. Facade load observed in real Excel loader. Printing/pasteboard/Mac zoom remain explicitly disabled. Excel entry not reached."
+  "real_loader_workflow": "https://github.com/aaULTra/iOSExcel/actions/runs/38989112909",
+  "real_loader_investigation": "Guarded weakening of the unused ExceptionHandling load passed actual bind-table checks and advanced the real loader to Kerberos.framework. 39 Microsoft images and two owned facades mapped. Five Kerberos imports require a public SDK/runtime provider audit; no authentication calls or substitutions approved. Microsoft entry not reached.",
+  "application_services": "Native Apple comparison passed for 16 rectangles and 16 intersections; 17 C ABI encodings matched; all 40 definitions compiled against Mac declarations and for iOS. Facade load observed in real Excel loader. Printing/pasteboard/Mac zoom remain explicitly disabled. Excel entry not reached.",
+  "kerberos_audit": "Prepared public macOS/iPhoneOS/Simulator header and same-runtime GSS symbol lookup audit; results pending."
 }
