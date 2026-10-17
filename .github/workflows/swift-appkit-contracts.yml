@@ -1,0 +1,26 @@
+name: Capture actual AppKit Swift overlay ABI
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/capture_swift_appkit.py'
+      - 'tools/swift_appkit_probe.swift'
+      - 'tools/swift_appkit_values.swift'
+      - '.github/workflows/swift-appkit-contracts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: macos-15
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Measure actual Swift signatures, compositing enum and IndexPath values
+        run: python3 tools/capture_swift_appkit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: swift-appkit-contracts
+          path: reports/
+          retention-days: 7

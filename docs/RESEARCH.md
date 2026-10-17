@@ -212,3 +212,7 @@ https://developer.apple.com/documentation/appkit/nsview/convert(_:to:)-6u9ir
 Apple also documents the clipping default change after macOS 13. The selected old
 Excel target uses explicit clipping in its projection to preserve the older baseline:
 https://developer.apple.com/documentation/appkit/nsview/clipstobounds
+
+## ServiceManagement and security-dialog boundary (2026-10-17)
+
+Actual SDK/native captures, not framework-name guesses, established two SecurityInterface classes and the SMCopyAllJobDictionaries/kSMDomainUserLaunchd imports. Native security guards matched the class chain and factory/allocation encodings; a real UIKit host confirmed own-image class provenance and rejection of panel allocation. Real loader 39022585600 passed SecurityInterface and failed at ServiceManagement before entry. Service capture 39022987157 measured the exact native domain string; adapter validation 39023106574 compared value/data ABI, compiled against Mac declarations and checked documented NULL failure behavior. No jobs were enumerated or helpers invoked; no activation path was demonstrated. See SECURITY_INTERFACE.md and SERVICE_MANAGEMENT.md for primary Apple references, raw interface facts and limitations.

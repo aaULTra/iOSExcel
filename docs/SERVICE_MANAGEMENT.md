@@ -24,7 +24,7 @@ No service submission/removal, helper launch or activation code is implemented.
 
 The contract workflow compiles the definitions against Apple's actual declarations,
 compares the native and adapter constant/type metadata, and requires NULL for the
-known user domain, an invalid domain and a null domain. Native run 39023106574 passed declaration compilation, constant/data comparison and all three failure cases. The adapter is now integrated behind a seventh forwarding identity; real loader and UIKit results are pending. A caller that requires successful job
+known user domain, an invalid domain and a null domain. Native run 39023106574 passed declaration compilation, constant/data comparison and all three failure cases. The adapter is now integrated behind a seventh forwarding identity; UIKit run 39023211932 passed the constant and all three error checks inside the real UIKit test host. Actual loader 39023211961 passed this dependency and stopped at /usr/lib/swift/libswiftAppKit.dylib before Microsoft entry. A caller that requires successful job
 enumeration must fail; later caller behavior is not replaced with success.
 
 This import alone does not establish that job enumeration performs Office licensing.
