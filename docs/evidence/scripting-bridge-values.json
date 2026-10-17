@@ -1,0 +1,422 @@
+{
+  "classes" : [
+    {
+      "name" : "SBObject",
+      "methods" : [
+        {
+          "encoding" : "v16@0:8",
+          "class_method" : 0,
+          "selector" : "dealloc"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "description"
+        },
+        {
+          "encoding" : "v16@0:8",
+          "class_method" : 0,
+          "selector" : "finalize"
+        },
+        {
+          "encoding" : "v24@0:8@16",
+          "class_method" : 0,
+          "selector" : "forwardInvocation:"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "init"
+        },
+        {
+          "encoding" : "B24@0:8@16",
+          "class_method" : 0,
+          "selector" : "isEqual:"
+        },
+        {
+          "encoding" : "B24@0:8#16",
+          "class_method" : 0,
+          "selector" : "isKindOfClass:"
+        },
+        {
+          "encoding" : "B24@0:8#16",
+          "class_method" : 0,
+          "selector" : "isMemberOfClass:"
+        },
+        {
+          "encoding" : "@24@0:8:16",
+          "class_method" : 0,
+          "selector" : "methodSignatureForSelector:"
+        },
+        {
+          "encoding" : "B24@0:8:16",
+          "class_method" : 0,
+          "selector" : "respondsToSelector:"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "context"
+        },
+        {
+          "encoding" : "v24@0:8@16",
+          "class_method" : 0,
+          "selector" : "encodeWithCoder:"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "initWithCoder:"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "initWithData:"
+        },
+        {
+          "encoding" : "v32@0:8@16@24",
+          "class_method" : 0,
+          "selector" : "setValue:forKey:"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "valueForKey:"
+        },
+        {
+          "encoding" : "r^{AEDesc=I^^{OpaqueAEDataStorageType}}16@0:8",
+          "class_method" : 0,
+          "selector" : "specifier"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "initWithProperties:"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "properties"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "lastError"
+        },
+        {
+          "encoding" : "v24@0:8@16",
+          "class_method" : 0,
+          "selector" : "setLastError:"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "get"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "_context"
+        },
+        {
+          "encoding" : "v24@0:8@16",
+          "class_method" : 0,
+          "selector" : "setTo:"
+        },
+        {
+          "encoding" : "@32@0:8@16r^{AEDesc=I^^{OpaqueAEDataStorageType}}24",
+          "class_method" : 0,
+          "selector" : "initWithApplication:specifier:"
+        },
+        {
+          "encoding" : "@48@0:8I16I20r^I24r^@32Q40",
+          "class_method" : 0,
+          "selector" : "sendEvent:id:keys:values:count:"
+        },
+        {
+          "encoding" : "B16@0:8",
+          "class_method" : 0,
+          "selector" : "_shouldUseForwarding"
+        },
+        {
+          "encoding" : "r^{AEDesc=I^^{OpaqueAEDataStorageType}}16@0:8",
+          "class_method" : 0,
+          "selector" : "_specifier"
+        },
+        {
+          "encoding" : "I24@0:8r^{AEDesc=I^^{OpaqueAEDataStorageType}}16",
+          "class_method" : 0,
+          "selector" : "_wanttype:"
+        },
+        {
+          "encoding" : "@40@0:8#16I24I28@32",
+          "class_method" : 0,
+          "selector" : "childWithClass:code:keyForm:keyData:"
+        },
+        {
+          "encoding" : "@52@0:8#16I24I28r^v32Q40I48",
+          "class_method" : 0,
+          "selector" : "childWithClass:code:keyForm:keyData:length:type:"
+        },
+        {
+          "encoding" : "@44@0:8#16I24I28@32I40",
+          "class_method" : 0,
+          "selector" : "childWithClass:code:keyForm:keyData:type:"
+        },
+        {
+          "encoding" : "@40@0:8#16I24I28r^{AEDesc=I^^{OpaqueAEDataStorageType}}32",
+          "class_method" : 0,
+          "selector" : "childWithClass:code:keyForm:keyDesc:"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "descriptionForSpecifier:"
+        },
+        {
+          "encoding" : "@20@0:8I16",
+          "class_method" : 0,
+          "selector" : "elementArrayWithCode:"
+        },
+        {
+          "encoding" : "@28@0:8I16@20",
+          "class_method" : 0,
+          "selector" : "elementWithCode:ID:"
+        },
+        {
+          "encoding" : "@24@0:8I16i20",
+          "class_method" : 0,
+          "selector" : "elementWithCode:atIndex:"
+        },
+        {
+          "encoding" : "@28@0:8I16@20",
+          "class_method" : 0,
+          "selector" : "elementWithCode:named:"
+        },
+        {
+          "encoding" : "@40@0:8#16@24@32",
+          "class_method" : 0,
+          "selector" : "initWithClass:properties:data:"
+        },
+        {
+          "encoding" : "@32@0:8@16r^{AEDesc=I^^{OpaqueAEDataStorageType}}24",
+          "class_method" : 0,
+          "selector" : "initWithContext:specifier:"
+        },
+        {
+          "encoding" : "@36@0:8I16@20@28",
+          "class_method" : 0,
+          "selector" : "initWithElementCode:properties:data:"
+        },
+        {
+          "encoding" : "B16@0:8",
+          "class_method" : 0,
+          "selector" : "isRangeSpecifier"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "positionAfter"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "positionBefore"
+        },
+        {
+          "encoding" : "@28@0:8#16I24",
+          "class_method" : 0,
+          "selector" : "propertyWithClass:code:"
+        },
+        {
+          "encoding" : "@20@0:8I16",
+          "class_method" : 0,
+          "selector" : "propertyWithCode:"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "qualifiedSpecifier"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "qualify:"
+        },
+        {
+          "encoding" : "@32@0:8I16I20r*24",
+          "class_method" : 0,
+          "selector" : "sendEvent:id:format:"
+        },
+        {
+          "encoding" : "@28@0:8I16I20I24",
+          "class_method" : 0,
+          "selector" : "sendEvent:id:parameters:"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "specifierDescription"
+        },
+        {
+          "encoding" : "I16@0:8",
+          "class_method" : 0,
+          "selector" : "wanttype"
+        }
+      ],
+      "superclass" : "NSObject"
+    },
+    {
+      "name" : "SBApplication",
+      "methods" : [
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "init"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "delegate"
+        },
+        {
+          "encoding" : "v24@0:8@16",
+          "class_method" : 0,
+          "selector" : "encodeWithCoder:"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "initWithCoder:"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "initWithURL:"
+        },
+        {
+          "encoding" : "v24@0:8@16",
+          "class_method" : 0,
+          "selector" : "setDelegate:"
+        },
+        {
+          "encoding" : "v24@0:8q16",
+          "class_method" : 0,
+          "selector" : "setTimeout:"
+        },
+        {
+          "encoding" : "q16@0:8",
+          "class_method" : 0,
+          "selector" : "timeout"
+        },
+        {
+          "encoding" : "v16@0:8",
+          "class_method" : 0,
+          "selector" : "activate"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "initWithBundleIdentifier:"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "initWithContext:"
+        },
+        {
+          "encoding" : "B16@0:8",
+          "class_method" : 0,
+          "selector" : "isRunning"
+        },
+        {
+          "encoding" : "@20@0:8i16",
+          "class_method" : 0,
+          "selector" : "initWithProcessIdentifier:"
+        },
+        {
+          "encoding" : "i16@0:8",
+          "class_method" : 0,
+          "selector" : "sendMode"
+        },
+        {
+          "encoding" : "v20@0:8i16",
+          "class_method" : 0,
+          "selector" : "setSendMode:"
+        },
+        {
+          "encoding" : "v20@0:8I16",
+          "class_method" : 0,
+          "selector" : "setLaunchFlags:"
+        },
+        {
+          "encoding" : "#24@0:8@16",
+          "class_method" : 0,
+          "selector" : "classForScriptingClass:"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "classNamesForCodes"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 0,
+          "selector" : "codesForPropertyNames"
+        },
+        {
+          "encoding" : "I16@0:8",
+          "class_method" : 0,
+          "selector" : "launchFlags"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 0,
+          "selector" : "objectWithSpecifier:"
+        },
+        {
+          "encoding" : "B16@0:8",
+          "class_method" : 0,
+          "selector" : "shouldCreateClasses"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 1,
+          "selector" : "currentApplication"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 1,
+          "selector" : "applicationWithBundleIdentifier:"
+        },
+        {
+          "encoding" : "@20@0:8i16",
+          "class_method" : 1,
+          "selector" : "applicationWithProcessIdentifier:"
+        },
+        {
+          "encoding" : "@24@0:8@16",
+          "class_method" : 1,
+          "selector" : "applicationWithURL:"
+        },
+        {
+          "encoding" : "v16@0:8",
+          "class_method" : 1,
+          "selector" : "ensureScriptingAdditionsLoaded"
+        },
+        {
+          "encoding" : "v16@0:8",
+          "class_method" : 1,
+          "selector" : "loadScriptingAdditions"
+        },
+        {
+          "encoding" : "@16@0:8",
+          "class_method" : 1,
+          "selector" : "standardAdditions"
+        }
+      ],
+      "superclass" : "SBObject"
+    }
+  ],
+  "scope" : "Actual native Mac method encodings. No targets instantiated, no Apple events, authentication or Office code executed."
+}

@@ -1,10 +1,19 @@
 // Interface/ABI metadata only. Do not instantiate targets or send Apple events.
 #import <Foundation/Foundation.h>
+#ifdef EXCELSHIM_SCRIPTING_CONTRACT
+#import "ExcelScriptingBridge.h"
+#else
 #import <ScriptingBridge/ScriptingBridge.h>
+#endif
 #import <objc/runtime.h>
 
 int main(int argc, char **argv) { @autoreleasepool {
     if (argc != 2) return 2;
+#ifdef EXCELSHIM_SCRIPTING_CONTRACT
+    if (objc_lookUpClass("SBApplication") != [SBApplication class] || objc_lookUpClass("SBObject") != [SBObject class]) return 4;
+    if ([SBApplication currentApplication] || [SBApplication applicationWithBundleIdentifier:@"com.excelport.unavailable"] ||
+        [SBApplication applicationWithProcessIdentifier:0] || [[SBApplication alloc] init] || [[SBObject alloc] init]) return 5;
+#endif
     NSMutableArray *classes = [NSMutableArray array];
     for (Class cls in @[[SBObject class], [SBApplication class]]) {
         NSMutableArray *methods = [NSMutableArray array];

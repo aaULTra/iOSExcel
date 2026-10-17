@@ -1,0 +1,263 @@
+{
+  "scope": "Actual Mac SDK interface declarations; no runtime behavior guarantee",
+  "first_failure": {
+    "kind": "library_not_loaded",
+    "name": "/System/Library/Frameworks/ScriptingBridge.framework/Versions/A/ScriptingBridge"
+  },
+  "declarations": [
+    {
+      "name": "SBApplication",
+      "kind": "ObjCInterfaceDecl",
+      "type": null,
+      "location": {
+        "offset": 1805,
+        "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ScriptingBridge.framework/Headers/SBApplication.h",
+        "line": 45,
+        "col": 12,
+        "tokLen": 13,
+        "includedFrom": {
+          "file": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/System/Library/Frameworks/ScriptingBridge.framework/Headers/ScriptingBridge.h"
+        }
+      },
+      "parameters": [],
+      "superclass": "SBObject",
+      "protocols": [
+        "NSCoding"
+      ],
+      "methods": [
+        {
+          "selector": "initWithBundleIdentifier:",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "__kindof SBApplication *",
+            "qualType": "__kindof SBApplication * _Nullable"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "NSString *",
+              "qualType": "NSString * _Nonnull"
+            }
+          ]
+        },
+        {
+          "selector": "initWithURL:",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "__kindof SBApplication *",
+            "qualType": "__kindof SBApplication * _Nullable"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "NSURL *",
+              "qualType": "NSURL * _Nonnull"
+            }
+          ]
+        },
+        {
+          "selector": "initWithProcessIdentifier:",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "__kindof SBApplication *",
+            "qualType": "__kindof SBApplication * _Nullable"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "int",
+              "qualType": "pid_t",
+              "typeAliasDeclId": "0x12c9398f0"
+            }
+          ]
+        },
+        {
+          "selector": "applicationWithBundleIdentifier:",
+          "instance": false,
+          "return_type": {
+            "desugaredQualType": "__kindof SBApplication *",
+            "qualType": "__kindof SBApplication * _Nullable"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "NSString *",
+              "qualType": "NSString * _Nonnull"
+            }
+          ]
+        },
+        {
+          "selector": "applicationWithURL:",
+          "instance": false,
+          "return_type": {
+            "desugaredQualType": "__kindof SBApplication *",
+            "qualType": "__kindof SBApplication * _Nullable"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "NSURL *",
+              "qualType": "NSURL * _Nonnull"
+            }
+          ]
+        },
+        {
+          "selector": "applicationWithProcessIdentifier:",
+          "instance": false,
+          "return_type": {
+            "desugaredQualType": "__kindof SBApplication *",
+            "qualType": "__kindof SBApplication * _Nullable"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "int",
+              "qualType": "pid_t",
+              "typeAliasDeclId": "0x12c9398f0"
+            }
+          ]
+        },
+        {
+          "selector": "classForScriptingClass:",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "Class",
+            "qualType": "Class _Nullable",
+            "typeAliasDeclId": "0x12c8f18f0"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "NSString *",
+              "qualType": "NSString * _Nonnull"
+            }
+          ]
+        },
+        {
+          "selector": "activate",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "isRunning",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "bool",
+            "qualType": "BOOL",
+            "typeAliasDeclId": "0x12cb70708"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "delegate",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "id<SBApplicationDelegate>",
+            "qualType": "id<SBApplicationDelegate> _Nullable"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setDelegate:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "id<SBApplicationDelegate>",
+              "qualType": "id<SBApplicationDelegate> _Nullable"
+            }
+          ]
+        },
+        {
+          "selector": "launchFlags",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "enum LSLaunchFlags",
+            "qualType": "LSLaunchFlags",
+            "typeAliasDeclId": "0x130ec9638"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setLaunchFlags:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "enum LSLaunchFlags",
+              "qualType": "LSLaunchFlags",
+              "typeAliasDeclId": "0x130ec9638"
+            }
+          ]
+        },
+        {
+          "selector": "sendMode",
+          "instance": true,
+          "return_type": {
+            "desugaredQualType": "int",
+            "qualType": "AESendMode",
+            "typeAliasDeclId": "0x130d9e730"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setSendMode:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "desugaredQualType": "int",
+              "qualType": "AESendMode",
+              "typeAliasDeclId": "0x130d9e730"
+            }
+          ]
+        },
+        {
+          "selector": "timeout",
+          "instance": true,
+          "return_type": {
+            "qualType": "long"
+          },
+          "variadic": false,
+          "parameters": []
+        },
+        {
+          "selector": "setTimeout:",
+          "instance": true,
+          "return_type": {
+            "qualType": "void"
+          },
+          "variadic": false,
+          "parameters": [
+            {
+              "qualType": "long"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unresolved": [],
+  "sdk": "/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+  "required_names": [
+    "_OBJC_CLASS_$_SBApplication"
+  ],
+  "status": "Interface capture complete; unresolved declarations remain explicit"
+}
