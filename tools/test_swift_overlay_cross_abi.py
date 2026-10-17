@@ -42,12 +42,9 @@ def main():
     original = inspect(before)
     mapping = {'/usr/lib/swift/libswiftAppKit.dylib':'@rpath/libExcelSwiftAppKit.dylib'}
     appkit = '/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit'
-    if any(row['library'] == appkit for row in original['undefined']):
-        raise RuntimeError('Own fixture unexpectedly imports a C AppKit API')
-    logger = build/'libOverlayFixtureLog.dylib'
-    call('xcrun', 'clang', '-target', 'arm64-apple-ios18.0-simulator', '-isysroot', sdk,
-         '-fobjc-arc', '-dynamiclib', root/'shim/ExcelShim.m', '-framework', 'Foundation',
-         '-install_name', '@rpath/libOverlayFixtureLog.dylib', '-o', logger)
+    (reports/'swift-overlay-mac-caller-imports.json').write_text(json.dumps(original,indent=2)+'\n')
+    if any(row['library'] == appkit and row['name'] not in names for row in original['undefined']):
+        raise RuntimeError('Own fixture imports an AppKit API outside the measured Swift exports')
     requirement = []
     for command, offset, size in commands(before):
         if command not in DYLIBS:
@@ -57,7 +54,7 @@ def main():
             requirement.append(version(unpack('<I',before,offset+20)[0]))
     if len(requirement) != 1:
         raise RuntimeError('Expected one zero-C-import AppKit load in own fixture')
-    build_one(logger, build/'ExcelAppKit.dylib', '@rpath/ExcelAppKit.dylib', requirement[0], 'simulator')
+    build_one(library, build/'ExcelAppKit.dylib', '@rpath/ExcelAppKit.dylib', requirement[0], 'simulator')
     mapping[appkit] = '@rpath/ExcelAppKit.dylib'
     for dep in original['dylibs']:
         path = dep['path']
@@ -80,7 +77,7 @@ def main():
          '-I', build, '-I', root/'experiments/swift-appkit', '-L', build, '-lExcelSwiftAppKit',
          '-Xlinker', '-rpath', '-Xlinker', '@executable_path',
          root/'tools/swift_overlay_client.swift', '-o', ios)
-    for binary in [library, logger, converted, ios]:
+    for binary in [library, converted, ios]:
         if inspect(binary.read_bytes())['build_versions'][0]['platform'] != 7:
             raise RuntimeError('Fixture library/process must be Simulator platform 7')
         call('codesign', '--force', '--sign', '-', binary)

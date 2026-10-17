@@ -38,8 +38,10 @@ def build_overlay(root, build, platform):
     required = [entry['symbol'] for entry in baseline['symbols']]
     if set(required)-exports:
         raise RuntimeError('Missing exact Swift exports: '+repr(sorted(set(required)-exports)))
-    if any(export_types[name].upper() != 'T' for name in required):
-        raise RuntimeError('Required overlay symbols must be functions, not data')
+    if any(export_types[name].upper() != 'T' for name in required if name.startswith('_$s')):
+        raise RuntimeError('Both callable Swift overlay exports must be functions')
+    if export_types['__swift_FORCE_LOAD_$_swiftAppKit'].upper() not in ('S','D','B','C'):
+        raise RuntimeError('Expected compiler-generated marker data export')
     return library, required
 
 

@@ -7,7 +7,7 @@ let rows: [[String: Any]] = pairs.map { ["indexes": $0, "item": IndexPath(indexe
 guard let handle = dlopen("/usr/lib/swift/libswiftAppKit.dylib", RTLD_NOW | RTLD_LOCAL) else { fatalError("Native overlay unavailable") }
 // These are weak imports in all four Office users; newer SDKs may omit the marker.
 let markerPresent = dlsym(handle, "_swift_FORCE_LOAD_$_swiftAppKit") != nil
-let report: [String: Any] = ["force_load_function_found": markerPresent, "index_path_samples": rows,
+let report: [String: Any] = ["force_load_symbol_found": markerPresent, "index_path_samples": rows,
     "index_path_layout": [MemoryLayout<IndexPath>.size, MemoryLayout<IndexPath>.stride, MemoryLayout<IndexPath>.alignment],
     "rect_layout": [MemoryLayout<CGRect>.size, MemoryLayout<CGRect>.stride, MemoryLayout<CGRect>.alignment],
     "operation_layout": [MemoryLayout<NSCompositingOperation>.size, MemoryLayout<NSCompositingOperation>.stride, MemoryLayout<NSCompositingOperation>.alignment],

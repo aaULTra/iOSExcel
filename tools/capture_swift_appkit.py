@@ -30,11 +30,11 @@ def main():
     anchor_ir = run('xcrun', 'swiftc', *target, '-parse-as-library', '-module-name', 'ExcelOverlayForce',
                     '-module-link-name', 'swiftAppKit', '-Xfrontend', '-autolink-force-load', '-emit-ir', '-o', '-',
                     str(root/'experiments/swift-appkit/ForceLoad.swift'))
-    anchor = re.search(r'define[^\n]*void @"?_swift_FORCE_LOAD_\$_swiftAppKit"?\(\)[^{]*\{(.*?)^}', anchor_ir, re.S | re.M)
+    anchor = re.search(r'^@"_swift_FORCE_LOAD_\$_swiftAppKit" = common global i1 false[^\n]*$', anchor_ir, re.M)
     (out/'swift-explicit-marker-ir.json').write_text(json.dumps({'lines': [line for line in anchor_ir.splitlines() if 'FORCE_LOAD' in line], 'source':'own empty Swift module compiler output'},indent=2)+'\n')
-    if not anchor or 'ret void' not in anchor[0]:
+    if not anchor:
         print('EXPLICIT_MARKER_LINES',json.dumps([line for line in anchor_ir.splitlines() if 'FORCE_LOAD' in line]),flush=True)
-        raise RuntimeError('Compiler did not emit the expected void force-load function')
+        raise RuntimeError('Unexpected compiler-generated Boolean force-load anchor')
     inventory = load_json(root/'docs/evidence/excel-16.55.json.gz')
     closure = load_json(root/'docs/evidence/dependencies-16.55.json.gz')['startup_closure']
     marker_uses = [{'path': binary['path'], 'weak': entry['weak']} for binary in inventory['binaries']
